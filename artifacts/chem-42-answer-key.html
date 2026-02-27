@@ -188,9 +188,30 @@
 
   sub { font-size: 0.8em; }
   sup { font-size: 0.8em; }
+
+  .print-btn {
+    position: fixed;
+    top: 12px;
+    right: 16px;
+    padding: 8px 18px;
+    background: #1a73e8;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    z-index: 1000;
+  }
+  @media print {
+    .print-btn { display: none; }
+    body { background: white; color: black; }
+  }
 </style>
 </head>
 <body>
+
+<button class="print-btn" onclick="window.print()">Print</button>
 
 <div class="header">
   <span>CHEM 10</span>
