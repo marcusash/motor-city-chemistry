@@ -2,7 +2,7 @@ name: Squad Heartbeat (Ralph)
 
 on:
   schedule:
-    - cron: '*/30 * * * *'
+    - cron: '*/5 * * * *'
 
   issues:
     types: [closed, labeled]
