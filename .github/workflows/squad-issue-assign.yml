@@ -1,0 +1,80 @@
+name: Squad Issue Assign
+
+on:
+  issues:
+    types: [labeled]
+
+permissions:
+  issues: write
+  contents: read
+
+jobs:
+  assign-work:
+    if: startsWith(github.event.label.name, 'squad:')
+    runs-on: self-hosted
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Identify assigned member
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const issue = context.payload.issue;
+            const label = context.payload.label.name;
+
+            const memberName = label.replace('squad:', '').toLowerCase();
+
+            let teamFile = '.squad/team.md';
+            if (!fs.existsSync(teamFile)) {
+              core.warning('No .squad/team.md found');
+              return;
+            }
+
+            const content = fs.readFileSync(teamFile, 'utf8');
+            const lines = content.split('\n');
+
+            let assignedMember = null;
+            let inMembersTable = false;
+            for (const line of lines) {
+              if (line.match(/^##\s+(Members|Team Roster)/i)) {
+                inMembersTable = true;
+                continue;
+              }
+              if (inMembersTable && line.startsWith('## ')) break;
+              if (inMembersTable && line.startsWith('|') && !line.includes('---') && !line.includes('Name')) {
+                const cells = line.split('|').map(c => c.trim()).filter(Boolean);
+                if (cells.length >= 2 && cells[0].toLowerCase() === memberName) {
+                  assignedMember = { name: cells[0], role: cells[1] };
+                  break;
+                }
+              }
+            }
+
+            if (!assignedMember) {
+              core.warning(`No member found matching label "${label}"`);
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: issue.number,
+                body: `⚠️ No squad member found matching label \`${label}\`. Check \`.squad/team.md\` for valid member names.`
+              });
+              return;
+            }
+
+            const comment = [
+              `### 📋 Assigned to ${assignedMember.name} (${assignedMember.role})`,
+              '',
+              `**Issue:** #${issue.number}: ${issue.title}`,
+              '',
+              `${assignedMember.name} will pick this up in the next Copilot session.`,
+            ].join('\n');
+
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: issue.number,
+              body: comment
+            });
+
+            core.info(`Issue #${issue.number} assigned to ${assignedMember.name} (${assignedMember.role})`);

@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Practice Test: Standard 4.2 — Ionic Compound Formulas</title>
+<style>
+  @media print {
+    body { margin: 0.5in; }
+    .no-print { display: none; }
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    font-size: 14px;
+    line-height: 1.6;
+    color: #1a1a1a;
+    max-width: 8.5in;
+    margin: 0 auto;
+    padding: 0.5in;
+    background: #fff;
+  }
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 6px;
+  }
+
+  .header-left { font-size: 13px; font-weight: 700; }
+  .header-center { text-align: center; font-size: 13px; }
+  .header-right { text-align: right; font-size: 13px; }
+
+  .title-row {
+    font-size: 15px;
+    font-weight: 700;
+    margin: 8px 0 4px 0;
+  }
+
+  .name-block {
+    display: flex;
+    gap: 40px;
+    margin: 8px 0 16px 0;
+    font-size: 13px;
+  }
+
+  .name-block div {
+    display: flex;
+    align-items: baseline;
+    gap: 4px;
+  }
+
+  .name-block .blank {
+    border-bottom: 1px solid #333;
+    min-width: 160px;
+    display: inline-block;
+  }
+
+  .question-block {
+    margin: 18px 0;
+  }
+
+  .question-block .q-text {
+    margin-bottom: 8px;
+  }
+
+  .compound-pair {
+    display: flex;
+    justify-content: space-around;
+    margin: 16px 0;
+  }
+
+  .compound-box {
+    text-align: center;
+    font-size: 20px;
+    font-weight: 700;
+    padding: 8px 24px;
+  }
+
+  .work-area {
+    border: 1px solid #ccc;
+    min-height: 80px;
+    margin: 8px 0;
+    padding: 8px;
+  }
+
+  .fill-in-section {
+    margin: 10px 0;
+    line-height: 2.2;
+  }
+
+  .fill-blank {
+    border-bottom: 1px solid #333;
+    display: inline-block;
+    min-width: 40px;
+    text-align: center;
+  }
+
+  .circle-option {
+    border: 1px solid #333;
+    border-radius: 4px;
+    padding: 1px 6px;
+    font-weight: 600;
+    margin: 0 2px;
+  }
+
+  table.formula-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 8px 0 16px 0;
+    font-size: 13px;
+  }
+
+  table.formula-table th,
+  table.formula-table td {
+    border: 1px solid #333;
+    padding: 8px 10px;
+    text-align: center;
+  }
+
+  table.formula-table th {
+    background: #f0f0f0;
+    font-weight: 600;
+    font-size: 12px;
+  }
+
+  table.formula-table td {
+    height: 36px;
+  }
+
+  table.formula-table td.label-cell {
+    text-align: left;
+    font-weight: 500;
+    background: #fafafa;
+  }
+
+  table.naming-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 8px 0 16px 0;
+    font-size: 13px;
+  }
+
+  table.naming-table th,
+  table.naming-table td {
+    border: 1px solid #333;
+    padding: 8px 12px;
+  }
+
+  table.naming-table th {
+    background: #f0f0f0;
+    font-weight: 600;
+    font-size: 12px;
+  }
+
+  table.naming-table td {
+    height: 32px;
+  }
+
+  .skill-tag {
+    font-size: 11px;
+    font-weight: 600;
+    color: #333;
+    float: right;
+    border: 1px solid #999;
+    padding: 1px 6px;
+    border-radius: 3px;
+  }
+
+  .reference-box {
+    border: 2px solid #333;
+    padding: 12px;
+    margin: 24px 0 12px 0;
+    background: #fafafa;
+  }
+
+  .reference-box h3 {
+    font-size: 13px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    text-align: center;
+  }
+
+  .ref-columns {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+
+  .ref-col {
+    flex: 1;
+    min-width: 140px;
+    padding: 0 6px;
+  }
+
+  .ref-col h4 {
+    font-size: 11px;
+    font-weight: 700;
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 3px;
+    padding-bottom: 2px;
+  }
+
+  .ref-col p {
+    font-size: 11px;
+    margin: 1px 0;
+  }
+
+  sub { font-size: 0.8em; }
+  sup { font-size: 0.8em; }
+</style>
+</head>
+<body>
+
+<!-- HEADER: matches Kai's exam format -->
+<div class="header">
+  <div class="header-left">CHEM 10</div>
+  <div class="header-center">SAAS</div>
+  <div class="header-right">Concept Series</div>
+</div>
+
+<div class="title-row">4.2 Ionic Compound Formulas:</div>
+
+<div class="name-block">
+  <div>Name: <span class="blank">&nbsp;</span></div>
+  <div>Block: <span class="blank" style="min-width:60px;">&nbsp;</span></div>
+  <div>Date: <span class="blank" style="min-width:100px;">&nbsp;</span></div>
+</div>
+
+<!-- ============================================ -->
+<!-- Q4: Polyatomic Ion ID + Neutral Check (4.2.1) -->
+<!-- ============================================ -->
+
+<div class="question-block">
+  <p class="q-text">
+    <b>4.</b> The compounds below each contain a polyatomic ion, but only one is written with the proper formula.
+    (1) Identify the polyatomic ion in each formula and
+    (2) explain why each formula is or is not correct as written.
+    <span class="skill-tag">4.2.1</span>
+  </p>
+
+  <div class="compound-pair">
+    <div class="compound-box">Mg(OH)<sub>3</sub></div>
+    <div class="compound-box">K<sub>2</sub>SO<sub>4</sub></div>
+  </div>
+
+  <div class="work-area"></div>
+</div>
+
+<!-- ============================================ -->
+<!-- Q5: Compound Analysis (4.2.2) -->
+<!-- ============================================ -->
+
+<div class="question-block">
+  <p class="q-text">
+    <b>5.</b> Circle or <u>Highlight</u> each option and fill in each blank with a <i>number</i> to complete the statement:
+    <span class="skill-tag">4.2.2</span>
+  </p>
+
+  <div class="fill-in-section">
+    <p style="margin-bottom: 10px;">
+      <b>Ca(NO<sub>3</sub>)<sub>2</sub></b> is the formula for a compound
+    </p>
+    <p>
+      Calcium (Ca) is the (<span class="circle-option">anion</span> / <span class="circle-option">cation</span>) (circle)
+      and Nitrate (NO<sub>3</sub>) is the (<span class="circle-option">anion</span> / <span class="circle-option">cation</span>) in this ionic compound
+    </p>
+    <p>
+      The charge of Nitrate (NO<sub>3</sub>) is <span class="fill-blank">&nbsp;</span> (fill in)
+      and the charge of Calcium (Ca) is <span class="fill-blank">&nbsp;</span> (fill in)
+    </p>
+    <p>
+      The number of atoms of each element in the formula Ca(NO<sub>3</sub>)<sub>2</sub> are:
+      &ensp;Ca: <span class="fill-blank">&nbsp;</span>
+      &ensp;N: <span class="fill-blank">&nbsp;</span>
+      &ensp;O: <span class="fill-blank">&nbsp;</span>
+    </p>
+  </div>
+</div>
+
+<!-- ============================================ -->
+<!-- Q6: Formula Table (4.2.3, 4.2.4, 4.2.5) -->
+<!-- ============================================ -->
+
+<div class="question-block">
+  <p class="q-text">
+    <b>6.</b> Fill out the table below to determine the ionic compound formulas and names for each pair:
+  </p>
+
+  <table class="formula-table">
+    <tr>
+      <th></th>
+      <th>Cation (and charge)</th>
+      <th>Anion (and charge)</th>
+      <th>Neutral Formula</th>
+      <th>Skill</th>
+    </tr>
+    <tr>
+      <td class="label-cell">Na and Cl</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><span class="skill-tag" style="float:none;">4.2.3</span></td>
+    </tr>
+    <tr>
+      <td class="label-cell">Ba and O</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><span class="skill-tag" style="float:none;">4.2.3</span></td>
+    </tr>
+    <tr>
+      <td class="label-cell">n/a</td>
+      <td>Li<sup>+</sup></td>
+      <td>OH<sup>&minus;</sup></td>
+      <td></td>
+      <td><span class="skill-tag" style="float:none;">4.2.4</span></td>
+    </tr>
+    <tr>
+      <td class="label-cell">n/a</td>
+      <td>Cu<sup>2+</sup></td>
+      <td>CO<sub>3</sub><sup>2&minus;</sup></td>
+      <td></td>
+      <td><span class="skill-tag" style="float:none;">4.2.5</span></td>
+    </tr>
+  </table>
+</div>
+
+<!-- ============================================ -->
+<!-- Q7: Naming Table (4.2.6, 4.2.7, 4.2.8) -->
+<!-- ============================================ -->
+
+<div class="question-block">
+  <p class="q-text">
+    <b>7.</b> Complete the table by naming each compound or providing the formula for a given nomenclature.
+  </p>
+
+  <table class="naming-table">
+    <tr>
+      <th style="width: 45%;">
+        Formula of Compound<br>
+        <span style="font-size:10px; font-weight:400;">(4.2.8)</span>
+      </th>
+      <th style="width: 55%;">
+        Name of Compound<br>
+        <span style="font-size:10px; font-weight:400;">(4.2.6) (4.2.7)</span>
+      </th>
+    </tr>
+    <tr>
+      <td>K<sub>2</sub>O</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>MgBr<sub>2</sub></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>FeCl<sub>2</sub></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Ca(OH)<sub>2</sub></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>(NH<sub>4</sub>)<sub>3</sub>PO<sub>4</sub></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Potassium nitrate</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Copper(II) sulfate</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Aluminum chloride</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Barium phosphate</td>
+    </tr>
+  </table>
+</div>
+
+<!-- ============================================ -->
+<!-- REFERENCE TABLE -->
+<!-- ============================================ -->
+
+<div class="reference-box">
+  <h3>Commonly Used Polyatomic Ions</h3>
+  <div class="ref-columns">
+    <div class="ref-col">
+      <h4>(1+) Cation</h4>
+      <p>Ammonium &ensp; NH<sub>4</sub><sup>+</sup></p>
+    </div>
+    <div class="ref-col">
+      <h4>(1&minus;) Anion</h4>
+      <p>Chlorate &ensp; ClO<sub>3</sub><sup>&minus;</sup></p>
+      <p>Chlorite &ensp; ClO<sub>2</sub><sup>&minus;</sup></p>
+      <p>Hydroxide &ensp; OH<sup>&minus;</sup></p>
+      <p>Nitrate &ensp; NO<sub>3</sub><sup>&minus;</sup></p>
+      <p>Nitrite &ensp; NO<sub>2</sub><sup>&minus;</sup></p>
+    </div>
+    <div class="ref-col">
+      <h4>(2&minus;) Anion</h4>
+      <p>Carbonate &ensp; CO<sub>3</sub><sup>2&minus;</sup></p>
+      <p>Sulfate &ensp; SO<sub>4</sub><sup>2&minus;</sup></p>
+      <p>Sulfite &ensp; SO<sub>3</sub><sup>2&minus;</sup></p>
+    </div>
+    <div class="ref-col">
+      <h4>(3&minus;) Anion</h4>
+      <p>Phosphate &ensp; PO<sub>4</sub><sup>3&minus;</sup></p>
+      <p>Phosphite &ensp; PO<sub>3</sub><sup>3&minus;</sup></p>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

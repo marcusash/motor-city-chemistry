@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Practice Test #2: Targeted Review</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #1a1a1a;
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 20px;
+    background: #fff;
+  }
+  .header {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+  h1 { font-size: 18px; margin: 4px 0 2px 0; }
+  .subtitle { font-size: 13px; color: #555; margin-bottom: 16px; }
+  .name-line {
+    border-bottom: 1px solid #000;
+    width: 250px;
+    display: inline-block;
+    margin: 8px 0 16px 0;
+    font-size: 14px;
+  }
+
+  .ref-box {
+    background: #f8f8f8;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    padding: 12px 14px;
+    margin: 12px 0;
+    font-size: 13px;
+    page-break-inside: avoid;
+  }
+  .ref-box b { font-size: 13px; }
+
+  .section-header {
+    background: #f0f0f0;
+    border: 1px solid #ccc;
+    padding: 8px 14px;
+    margin: 24px 0 4px 0;
+    font-weight: 700;
+    font-size: 15px;
+    border-radius: 4px;
+  }
+  .section-desc {
+    font-size: 13px;
+    color: #555;
+    margin: 4px 0 10px 14px;
+    font-style: italic;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 8px 0 16px 0;
+    font-size: 14px;
+  }
+  th, td {
+    border: 1px solid #999;
+    padding: 10px 12px;
+    text-align: left;
+    vertical-align: top;
+  }
+  th {
+    background: #f0f0f0;
+    font-size: 12px;
+    font-weight: 600;
+  }
+  td.answer-cell {
+    height: 36px;
+    min-width: 180px;
+  }
+  td.check-cell {
+    width: 70px;
+    text-align: center;
+  }
+
+  .question-block {
+    margin: 12px 0;
+    padding: 12px 14px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    page-break-inside: avoid;
+  }
+  .q-num { font-weight: 700; font-size: 14px; margin-bottom: 4px; }
+  .q-prompt { font-size: 14px; margin-bottom: 6px; }
+  .write-line {
+    border-bottom: 1px solid #bbb;
+    height: 28px;
+    margin: 6px 0;
+  }
+
+  sub { font-size: 0.8em; }
+  sup { font-size: 0.8em; }
+
+  .footer {
+    text-align: center;
+    margin-top: 24px;
+    font-size: 11px;
+    color: #999;
+  }
+
+  @media print {
+    body { padding: 0; font-size: 14px; }
+    .ref-box { page-break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <span>CHEM 10</span>
+  <span>Motor City Chemistry</span>
+  <span>Practice Test #2</span>
+</div>
+
+<h1>Standard 4.2: Targeted Review</h1>
+<div class="subtitle">Focus: Naming rules, transition metal charges, criss-cross method</div>
+
+<b style="font-size: 13px;">Name:</b> <span class="name-line">&nbsp;</span>
+
+<!-- KEY RULE BOX -->
+<div class="ref-box">
+  <b>THE BIG RULE: When do you use prefixes (mono-, di-, tri-)?</b><br>
+  <b>Ionic (metal + nonmetal):</b> NEVER use prefixes. Just say the metal name + nonmetal-ide. The charges already set the ratio.<br>
+  <b>Covalent (nonmetal + nonmetal):</b> ALWAYS use prefixes. Nonmetals can combine in different ratios, so you need prefixes to tell them apart.<br>
+  <b>Quick check:</b> Is the first element a metal? &rarr; Ionic, no prefixes. Both nonmetals? &rarr; Covalent, use prefixes.
+</div>
+
+<!-- POLYATOMIC ION REFERENCE -->
+<div class="ref-box">
+  <b>Polyatomic Ion Reference Table</b>
+  <table style="margin-top: 6px;">
+    <tr>
+      <th>(1+) Cation</th>
+      <th>(1-) Anion</th>
+      <th>(2-) Anion</th>
+      <th>(3-) Anion</th>
+    </tr>
+    <tr>
+      <td>NH<sub>4</sub><sup>+</sup> ammonium</td>
+      <td>NO<sub>3</sub><sup>-</sup> nitrate</td>
+      <td>CO<sub>3</sub><sup>2-</sup> carbonate</td>
+      <td>PO<sub>4</sub><sup>3-</sup> phosphate</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>OH<sup>-</sup> hydroxide</td>
+      <td>SO<sub>4</sub><sup>2-</sup> sulfate</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>ClO<sub>3</sub><sup>-</sup> chlorate</td>
+      <td>CrO<sub>4</sub><sup>2-</sup> chromate</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>C<sub>2</sub>H<sub>3</sub>O<sub>2</sub><sup>-</sup> acetate</td>
+      <td></td>
+      <td></td>
+    </tr>
+  </table>
+</div>
+
+<!-- COVALENT PREFIXES REFERENCE -->
+<div class="ref-box">
+  <b>Covalent Prefixes</b> (only for nonmetal + nonmetal compounds)<br>
+  1 = mono, 2 = di, 3 = tri, 4 = tetra, 5 = penta, 6 = hexa
+</div>
+
+<!-- ========================================== -->
+<!-- SECTION A -->
+<!-- ========================================== -->
+<div class="section-header">Section A: Ionic or Covalent? Name It. (6 questions)</div>
+<div class="section-desc">First decide if the compound is ionic or covalent. Then name it using the correct rules.</div>
+
+<table>
+  <tr>
+    <th>#</th>
+    <th>Formula</th>
+    <th>Ionic or Covalent?</th>
+    <th>Name</th>
+  </tr>
+  <tr>
+    <td>1</td>
+    <td>CaF<sub>2</sub></td>
+    <td class="answer-cell"></td>
+    <td class="answer-cell"></td>
+  </tr>
+  <tr>
+    <td>2</td>
+    <td>N<sub>2</sub>O<sub>3</sub></td>
+    <td class="answer-cell"></td>
+    <td class="answer-cell"></td>
+  </tr>
+  <tr>
+    <td>3</td>
+    <td>Li<sub>2</sub>S</td>
+    <td class="answer-cell"></td>
+    <td class="answer-cell"></td>
+  </tr>
+  <tr>
+    <td>4</td>
+    <td>CO</td>
+    <td class="answer-cell"></td>
+    <td class="answer-cell"></td>
+  </tr>
+  <tr>
+    <td>5</td>
+    <td>SrCl<sub>2</sub></td>
+    <td class="answer-cell"></td>
+    <td class="answer-cell"></td>
+  </tr>
+  <tr>
+    <td>6</td>
+    <td>P<sub>2</sub>O<sub>5</sub></td>
+    <td class="answer-cell"></td>
+    <td class="answer-cell"></td>
+  </tr>
+</table>
+
+<!-- ========================================== -->
+<!-- SECTION B -->
+<!-- ========================================== -->
+<div class="section-header">Section B: Name These Transition Metal Compounds (4 questions)</div>
+<div class="section-desc">These are all ionic (metal + nonmetal). Figure out the metal's charge, then include the Roman numeral.</div>
+
+<table>
+  <tr>
+    <th>#</th>
+    <th>Formula</th>
+    <th>Metal's charge (show work)</th>
+    <th>Name</th>
+  </tr>
+  <tr>
+    <td>7</td>
+    <td>CuCl<sub>2</sub></td>
+    <td class="answer-cell"></td>
+    <td class="answer-cell"></td>
+  </tr>
+  <tr>
+    <td>8</td>
+    <td>Fe<sub>2</sub>O<sub>3</sub></td>
+    <td class="answer-cell"></td>
+    <td class="answer-cell"></td>
+  </tr>
+  <tr>
+    <td>9</td>
+    <td>CoBr<sub>2</sub></td>
+    <td class="answer-cell"></td>
+    <td class="answer-cell"></td>
+  </tr>
+  <tr>
+    <td>10</td>
+    <td>SnO<sub>2</sub></td>
+    <td class="answer-cell"></td>
+    <td class="answer-cell"></td>
+  </tr>
+</table>
+
+<!-- ========================================== -->
+<!-- SECTION C -->
+<!-- ========================================== -->
+<div class="section-header">Section C: Write the Formula from the Name (5 questions)</div>
+<div class="section-desc">Look up charges, criss-cross if they're not equal, and check that the formula is neutral.</div>
+
+<table>
+  <tr>
+    <th>#</th>
+    <th>Compound Name</th>
+    <th>Cation charge</th>
+    <th>Anion charge</th>
+    <th>Formula</th>
+    <th>Neutral? (check)</th>
+  </tr>
+  <tr>
+    <td>11</td>
+    <td>Calcium chloride</td>
+    <td class="answer-cell"></td>
+    <td class="answer-cell"></td>
+    <td class="answer-cell"></td>
+    <td class="check-cell"></td>
+  </tr>
+  <tr>
+    <td>12</td>
+    <td>Iron(III) bromide</td>
+    <td class="answer-cell"></td>
+    <td class="answer-cell"></td>
+    <td class="answer-cell"></td>
+    <td class="check-cell"></td>
+  </tr>
+  <tr>
+    <td>13</td>
+    <td>Aluminum oxide</td>
+    <td class="answer-cell"></td>
+    <td class="answer-cell"></td>
+    <td class="answer-cell"></td>
+    <td class="check-cell"></td>
+  </tr>
+  <tr>
+    <td>14</td>
+    <td>Magnesium nitrate</td>
+    <td class="answer-cell"></td>
+    <td class="answer-cell"></td>
+    <td class="answer-cell"></td>
+    <td class="check-cell"></td>
+  </tr>
+  <tr>
+    <td>15</td>
+    <td>Calcium phosphate</td>
+    <td class="answer-cell"></td>
+    <td class="answer-cell"></td>
+    <td class="answer-cell"></td>
+    <td class="check-cell"></td>
+  </tr>
+</table>
+
+<div class="footer">
+  Motor City Chemistry . Practice Test #2 . Standard 4.2 Targeted Review
+</div>
+
+</body>
+</html>

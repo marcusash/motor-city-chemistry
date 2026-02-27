@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Kai's Chem 10 Quiz 9 — Grade Report + Autograder Design</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #1a1a1a;
+    background: #0f1117;
+    padding: 32px;
+  }
+
+  .canvas {
+    max-width: 960px;
+    margin: 0 auto;
+  }
+
+  /* ---- HEADER ---- */
+  .report-header {
+    background: #1a1d23;
+    border-radius: 12px;
+    padding: 28px 32px;
+    margin-bottom: 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .report-header h1 {
+    color: #fff;
+    font-size: 22px;
+    font-weight: 700;
+  }
+
+  .report-header .meta {
+    color: #94a3b8;
+    font-size: 13px;
+    text-align: right;
+    line-height: 1.7;
+  }
+
+  /* ---- SUMMARY CARDS ---- */
+  .summary-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+
+  .summary-card {
+    background: #1a1d23;
+    border-radius: 10px;
+    padding: 20px 24px;
+    text-align: center;
+  }
+
+  .summary-card .label {
+    color: #94a3b8;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 6px;
+  }
+
+  .summary-card .value {
+    font-size: 32px;
+    font-weight: 700;
+  }
+
+  .summary-card .sub {
+    color: #94a3b8;
+    font-size: 12px;
+    margin-top: 4px;
+  }
+
+  .color-green { color: #22c55e; }
+  .color-red { color: #ef4444; }
+  .color-amber { color: #f59e0b; }
+  .color-blue { color: #3b82f6; }
+  .color-white { color: #fff; }
+
+  /* ---- STANDARD SECTIONS ---- */
+  .standard-section {
+    background: #1a1d23;
+    border-radius: 10px;
+    padding: 24px 28px;
+    margin-bottom: 20px;
+  }
+
+  .standard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #2a2d35;
+  }
+
+  .standard-header h2 {
+    color: #fff;
+    font-size: 16px;
+    font-weight: 700;
+  }
+
+  .standard-badge {
+    font-size: 12px;
+    font-weight: 600;
+    padding: 3px 12px;
+    border-radius: 20px;
+  }
+
+  .badge-p { background: #166534; color: #22c55e; }
+  .badge-np { background: #7f1d1d; color: #ef4444; }
+  .badge-mixed { background: #78350f; color: #f59e0b; }
+  .badge-practice { background: #1e3a5f; color: #60a5fa; }
+
+  /* ---- SKILL TABLE ---- */
+  .skill-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  .skill-table th {
+    text-align: left;
+    color: #64748b;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 6px 12px;
+    border-bottom: 1px solid #2a2d35;
+  }
+
+  .skill-table td {
+    padding: 10px 12px;
+    color: #e2e8f0;
+    font-size: 13px;
+    border-bottom: 1px solid #1e2028;
+  }
+
+  .skill-table tr:last-child td {
+    border-bottom: none;
+  }
+
+  .skill-code {
+    font-family: 'Cascadia Code', 'Fira Code', monospace;
+    font-size: 12px;
+    color: #94a3b8;
+    background: #252830;
+    padding: 2px 8px;
+    border-radius: 4px;
+  }
+
+  .grade-pill {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 2px 10px;
+    border-radius: 12px;
+    min-width: 32px;
+    text-align: center;
+  }
+
+  .pill-p { background: #166534; color: #4ade80; }
+  .pill-np { background: #7f1d1d; color: #f87171; }
+
+  .kai-answer {
+    color: #94a3b8;
+    font-size: 12px;
+    font-style: italic;
+    margin-top: 4px;
+  }
+
+  .error-note {
+    color: #f87171;
+    font-size: 11px;
+    margin-top: 2px;
+  }
+
+  /* ---- QUESTION DETAIL ---- */
+  .question-detail {
+    background: #252830;
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 8px 0;
+  }
+
+  .question-detail .q-label {
+    color: #60a5fa;
+    font-size: 12px;
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+
+  .question-detail .q-answer {
+    color: #e2e8f0;
+    font-size: 13px;
+  }
+
+  .question-detail .q-error {
+    color: #f87171;
+    font-size: 12px;
+    margin-top: 6px;
+    padding-left: 12px;
+    border-left: 2px solid #7f1d1d;
+  }
+
+  /* ---- DIAGNOSIS ---- */
+  .diagnosis-section {
+    background: #1a1d23;
+    border-radius: 10px;
+    padding: 24px 28px;
+    margin-bottom: 20px;
+    border-left: 4px solid #f59e0b;
+  }
+
+  .diagnosis-section h2 {
+    color: #f59e0b;
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 12px;
+  }
+
+  .diagnosis-list {
+    list-style: none;
+    padding: 0;
+  }
+
+  .diagnosis-list li {
+    color: #e2e8f0;
+    font-size: 13px;
+    padding: 6px 0;
+    padding-left: 20px;
+    position: relative;
+  }
+
+  .diagnosis-list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 12px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+  }
+
+  .diagnosis-list li.critical::before { background: #ef4444; }
+  .diagnosis-list li.moderate::before { background: #f59e0b; }
+  .diagnosis-list li.ok::before { background: #22c55e; }
+
+  /* ---- AUTOGRADER SECTION ---- */
+  .autograder-section {
+    background: #1a1d23;
+    border-radius: 10px;
+    padding: 28px 32px;
+    margin-top: 32px;
+    border-top: 3px solid #3b82f6;
+  }
+
+  .autograder-section h2 {
+    color: #3b82f6;
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 20px;
+  }
+
+  .flow-steps {
+    display: flex;
+    gap: 0;
+    margin: 20px 0 28px 0;
+    align-items: stretch;
+  }
+
+  .flow-step {
+    flex: 1;
+    background: #252830;
+    padding: 16px 14px;
+    text-align: center;
+    position: relative;
+  }
+
+  .flow-step:first-child { border-radius: 8px 0 0 8px; }
+  .flow-step:last-child { border-radius: 0 8px 8px 0; }
+
+  .flow-step .step-num {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    line-height: 24px;
+    border-radius: 50%;
+    background: #3b82f6;
+    color: #fff;
+    font-size: 12px;
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+
+  .flow-step .step-title {
+    color: #fff;
+    font-size: 12px;
+    font-weight: 600;
+    display: block;
+    margin-bottom: 4px;
+  }
+
+  .flow-step .step-desc {
+    color: #94a3b8;
+    font-size: 11px;
+    line-height: 1.4;
+  }
+
+  .flow-arrow {
+    width: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #3b82f6;
+    font-size: 18px;
+    background: #1a1d23;
+  }
+
+  /* ---- GRADING RULES ---- */
+  .grading-rules {
+    margin: 16px 0;
+  }
+
+  .rule-block {
+    background: #252830;
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin: 10px 0;
+  }
+
+  .rule-block h4 {
+    color: #e2e8f0;
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
+
+  .rule-block code {
+    font-family: 'Cascadia Code', 'Fira Code', monospace;
+    font-size: 12px;
+    color: #93c5fd;
+    background: #1a1d23;
+    padding: 2px 6px;
+    border-radius: 3px;
+  }
+
+  .rule-block p {
+    color: #94a3b8;
+    font-size: 12px;
+    margin: 4px 0;
+    line-height: 1.6;
+  }
+
+  .rule-block .example {
+    margin: 6px 0;
+    padding: 8px 12px;
+    background: #1a1d23;
+    border-radius: 4px;
+    font-family: 'Cascadia Code', 'Fira Code', monospace;
+    font-size: 12px;
+    color: #a5b4fc;
+  }
+
+  .tech-note {
+    background: #1e293b;
+    border: 1px solid #334155;
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 12px 0;
+  }
+
+  .tech-note h4 {
+    color: #60a5fa;
+    font-size: 12px;
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+
+  .tech-note p {
+    color: #94a3b8;
+    font-size: 12px;
+    line-height: 1.6;
+  }
+</style>
+</head>
+<body>
+<div class="canvas">
+
+<!-- ========== HEADER ========== -->
+<div class="report-header">
+  <div>
+    <h1>Kai's Chemistry Grade Report</h1>
+    <div style="color: #94a3b8; font-size: 13px; margin-top: 4px;">Chem 10 Quiz 9, Standards 4.1 / 4.2 / 4.3</div>
+  </div>
+  <div class="meta">
+    Teacher: Martin<br>
+    Date: 2/09/26<br>
+    Block 6, SAAS
+  </div>
+</div>
+
+<!-- ========== SUMMARY ========== -->
+<div class="summary-row">
+  <div class="summary-card">
+    <div class="label">Standard 4.1</div>
+    <div class="value color-green">P</div>
+    <div class="sub">Types of Bonds</div>
+  </div>
+  <div class="summary-card">
+    <div class="label">Standard 4.2</div>
+    <div class="value color-red">5/8 NP</div>
+    <div class="sub">Ionic Compound Formulas</div>
+  </div>
+  <div class="summary-card">
+    <div class="label">Standard 4.3</div>
+    <div class="value color-blue">Practice</div>
+    <div class="sub">Covalent Lewis Structures</div>
+  </div>
+</div>
+
+<!-- ========== STANDARD 4.1 ========== -->
+<div class="standard-section">
+  <div class="standard-header">
+    <h2>Standard 4.1: Types of Bonds</h2>
+    <span class="standard-badge badge-p">ALL 5 PROFICIENT</span>
+  </div>
+  <table class="skill-table">
+    <tr>
+      <th>Skill</th>
+      <th>Description</th>
+      <th>Q</th>
+      <th>Grade</th>
+    </tr>
+    <tr>
+      <td><span class="skill-code">4.1.1</span></td>
+      <td>Lewis dot structures for columns 1A-7A</td>
+      <td>Q3</td>
+      <td><span class="grade-pill pill-p">P</span></td>
+    </tr>
+    <tr>
+      <td><span class="skill-code">4.1.2</span></td>
+      <td>Metal vs nonmetal to select bonding type</td>
+      <td>Q3</td>
+      <td><span class="grade-pill pill-p">P</span></td>
+    </tr>
+    <tr>
+      <td><span class="skill-code">4.1.3</span></td>
+      <td>Preferred charge of elements</td>
+      <td>Q3</td>
+      <td><span class="grade-pill pill-p">P</span></td>
+    </tr>
+    <tr>
+      <td><span class="skill-code">4.1.4</span></td>
+      <td>Which atom gains/loses electrons in ionic bond</td>
+      <td>Q1</td>
+      <td><span class="grade-pill pill-p">P</span></td>
+    </tr>
+    <tr>
+      <td><span class="skill-code">4.1.5</span></td>
+      <td>Electron sharing in covalent bonding</td>
+      <td>Q2</td>
+      <td><span class="grade-pill pill-p">P</span></td>
+    </tr>
+  </table>
+
+  <div class="question-detail" style="margin-top: 12px;">
+    <div class="q-label">Q2 (4.1.5)</div>
+    <div class="q-answer">"Because all atoms are trying to either get rid of their valence shell or fill it up so they'll do whatever they have to... Eg. Sharing so they can both fill or transferring so one can lose."</div>
+    <div style="color: #4ade80; font-size: 12px; margin-top: 6px;">Proficient. GPT-4o misread the circled grade on this one.</div>
+  </div>
+</div>
+
+<!-- ========== STANDARD 4.2 ========== -->
+<div class="standard-section">
+  <div class="standard-header">
+    <h2>Standard 4.2: Ionic Compound Formulas</h2>
+    <span class="standard-badge badge-np">5 OF 8 NOT PROFICIENT</span>
+  </div>
+  <table class="skill-table">
+    <tr>
+      <th>Skill</th>
+      <th>Description</th>
+      <th>Q</th>
+      <th>Grade</th>
+    </tr>
+    <tr>
+      <td><span class="skill-code">4.2.1</span></td>
+      <td>Assess whether ionic formula is neutral</td>
+      <td>Q4</td>
+      <td><span class="grade-pill pill-np">NP</span></td>
+    </tr>
+    <tr>
+      <td><span class="skill-code">4.2.2</span></td>
+      <td>Determine number of atoms in compound</td>
+      <td>Q5</td>
+      <td><span class="grade-pill pill-np">NP</span></td>
+    </tr>
+    <tr>
+      <td><span class="skill-code">4.2.3</span></td>
+      <td>Use preferred charge to write formulas</td>
+      <td>Q6</td>
+      <td><span class="grade-pill pill-p">P</span></td>
+    </tr>
+    <tr>
+      <td><span class="skill-code">4.2.4</span></td>
+      <td>Write formulas using polyatomic ions</td>
+      <td>Q6</td>
+      <td><span class="grade-pill pill-p">P</span></td>
+    </tr>
+    <tr>
+      <td><span class="skill-code">4.2.5</span></td>
+      <td>Predict charge of single ions from formula</td>
+      <td>Q6</td>
+      <td><span class="grade-pill pill-p">P</span></td>
+    </tr>
+    <tr>
+      <td><span class="skill-code">4.2.6</span></td>
+      <td>Name simple ionic compounds (Type I)</td>
+      <td>Q7</td>
+      <td><span class="grade-pill pill-np">NP</span></td>
+    </tr>
+    <tr>
+      <td><span class="skill-code">4.2.7</span></td>
+      <td>Name transition metal / polyatomic (Type II/III)</td>
+      <td>Q7</td>
+      <td><span class="grade-pill pill-np">NP</span></td>
+    </tr>
+    <tr>
+      <td><span class="skill-code">4.2.8</span></td>
+      <td>Give formula from compound name</td>
+      <td>Q7</td>
+      <td><span class="grade-pill pill-np">NP</span></td>
+    </tr>
+  </table>
+
+  <!-- Q4 detail -->
+  <div class="question-detail" style="margin-top: 16px;">
+    <div class="q-label">Q4 (4.2.1) — "Is the formula neutral?"</div>
+    <div class="q-answer">Two compounds given: Ca(CO3)2 and AlPO4.<br>
+    Kai wrote: Ca(CO3)2 is "correct because it's neutral" (2- = 2 = 0).<br>
+    Kai wrote: AlPO4 has "3- polyatomic ion, has to be neutral."</div>
+    <div class="q-error">Ca(CO3)2 is NOT neutral: Ca = +2, two CO3 = 2(-2) = -4, total = -2. Correct formula is CaCO3.<br>
+    AlPO4 IS neutral: Al = +3, PO4 = -3, total = 0. Kai got the assessment backwards.</div>
+  </div>
+
+  <!-- Q5 detail -->
+  <div class="question-detail">
+    <div class="q-label">Q5 (4.2.2) — Fe(NO3)2 compound analysis</div>
+    <div class="q-answer">Kai correctly identified: Fe = cation, NO3 = anion.<br>
+    Charge of NO3: wrote <b>"2-"</b> (WRONG). Charge of Fe: wrote "2+" (correct).<br>
+    Atom count: Fe: 1, N: 2, O: 6 (all correct).</div>
+    <div class="q-error">Nitrate (NO3) is 1-, not 2-. This is a key misconception: Kai may be confusing nitrate with carbonate or sulfate charges. Atom count was perfect, grade is NP due to the charge error.</div>
+  </div>
+
+  <!-- Q6 detail -->
+  <div class="question-detail">
+    <div class="q-label">Q6 (4.2.3/4.2.4/4.2.5) — Formula writing table</div>
+    <div class="q-answer">
+      Row 1 (Ca + F): Ca2+, F1-, CaF2 — <span class="color-green">Correct</span><br>
+      Row 2 (Al + S): Al3+, S2-, Al2S3 — <span class="color-green">Correct</span><br>
+      Row 3 (NH4+ + SO4 2-): wrote something resembling "CNH4SO4" — <span class="color-red">Error</span><br>
+      Row 4 (Fe + CO3): wrote Fe2(CO3)3 — <span class="color-amber">Unclear, may have misread given charges</span>
+    </div>
+    <div class="q-error">Row 3: correct answer is (NH4)2SO4. Kai appears to have not used parentheses properly around NH4.<br>
+    Row 4: Fe2(CO3)3 is for Fe3+/CO3 2-. If the given ion was Fe2+, correct answer would be FeCO3. Teacher still marked skills P for this question overall.</div>
+  </div>
+
+  <!-- Q7 detail -->
+  <div class="question-detail">
+    <div class="q-label">Q7 (4.2.6/4.2.7/4.2.8) — Naming and formula table</div>
+    <div class="q-answer">
+      <b>Formula to name (5 rows):</b><br>
+      Na2O: wrote "Sodium oxide" — <span class="color-green">Correct</span><br>
+      P2S3: wrote "Diphosphorus trisulfide" — <span class="color-green">Correct (covalent naming)</span><br>
+      CF4: wrote "Carbon tetrafluoride" — <span class="color-green">Correct (covalent naming)</span><br>
+      Mg(NO3)2: wrote "Magnesium nitrate" — <span class="color-green">Correct</span><br>
+      Au2SO4: wrote "Gold(I) sulfate" — <span class="color-green">Correct</span><br><br>
+      <b>Name to formula (4 rows):</b><br>
+      Sulfur trioxide: <span class="color-amber">Answer unclear</span><br>
+      Iron(II) nitride: wrote "Fe3N2" — <span class="color-amber">Fe3N2 is correct if Fe2+ and N3-</span><br>
+      Barium oxide: <span class="color-amber">Answer unclear</span><br>
+      Lithium carbonate: <span class="color-amber">Answer unclear</span>
+    </div>
+    <div class="q-error">GPT-4o extraction shows most naming was attempted (earlier analysis suggested blanks, may have been cross-outs or faint writing). Several answers have corrections/cross-outs that are hard to parse. Teacher marked 4.2.6, 4.2.7, 4.2.8 all NP despite some correct naming responses. Low confidence on individual answer reads.</div>
+  </div>
+</div>
+
+<!-- ========== STANDARD 4.3 ========== -->
+<div class="standard-section">
+  <div class="standard-header">
+    <h2>Standard 4.3: Covalent Lewis Structures</h2>
+    <span class="standard-badge badge-practice">PRACTICE ONLY</span>
+  </div>
+  <table class="skill-table">
+    <tr>
+      <th>Skill</th>
+      <th>Description</th>
+      <th>Grade</th>
+    </tr>
+    <tr>
+      <td><span class="skill-code">4.3.1</span></td>
+      <td>Rank relative strength/length of single, double, triple bonds</td>
+      <td><span class="grade-pill pill-np">NP</span></td>
+    </tr>
+    <tr>
+      <td><span class="skill-code">4.3.2</span></td>
+      <td>Determine bond type using needed-available-shared method</td>
+      <td><span class="grade-pill pill-p">P</span></td>
+    </tr>
+    <tr>
+      <td><span class="skill-code">4.3.3</span></td>
+      <td>Determine center atom in molecular structure</td>
+      <td><span class="grade-pill pill-np">NP</span></td>
+    </tr>
+    <tr>
+      <td><span class="skill-code">4.3.4</span></td>
+      <td>Draw Lewis structure / structural formula</td>
+      <td><span class="grade-pill pill-np">NP</span></td>
+    </tr>
+    <tr>
+      <td><span class="skill-code">4.3.5</span></td>
+      <td>Name covalent compound from formula</td>
+      <td><span class="grade-pill pill-p">P</span></td>
+    </tr>
+    <tr>
+      <td><span class="skill-code">4.3.6</span></td>
+      <td>Give covalent formula from name</td>
+      <td><span class="grade-pill pill-np">NP</span></td>
+    </tr>
+  </table>
+  <p style="color: #64748b; font-size: 12px; margin-top: 10px;">Section 4.3 was marked "PRACTICE" on the rubric. Not counted toward graded assessment. Questions for 4.3 were not on pages 2-3 of this scan.</p>
+</div>
+
+<!-- ========== DIAGNOSIS ========== -->
+<div class="diagnosis-section">
+  <h2>Diagnosis: Where Kai Needs Work</h2>
+  <ul class="diagnosis-list">
+    <li class="critical"><b>Naming ionic compounds</b> (4.2.6, 4.2.7): This is the biggest gap. Kai can build formulas from ions but struggles with the naming conventions: Type I (simple metal + nonmetal-ide), Type II (transition metal with Roman numeral), Type III (polyatomic ion names).</li>
+    <li class="critical"><b>Writing formulas from names</b> (4.2.8): The reverse direction. Several answers were blank or crossed out. Kai needs to practice going from "iron(III) phosphate" to FePO4.</li>
+    <li class="moderate"><b>Polyatomic ion charges</b> (4.2.2): Kai wrote NO3 charge as 2- instead of 1-. He may be guessing charges rather than using the reference table. Practice looking up charges on the table.</li>
+    <li class="moderate"><b>Neutrality checking</b> (4.2.1): Charge math was done but the conclusion was wrong. He said Ca(CO3)2 was neutral when it's not. Needs to practice the full check: multiply charge by count, sum, verify zero.</li>
+    <li class="ok"><b>Formula writing from ions</b> (4.2.3, 4.2.4): Strong. CaF2, Al2S3 both correct. Parentheses usage needs a little work (NH4 row).</li>
+  </ul>
+</div>
+
+<!-- ========================================= -->
+<!-- AUTOGRADER DESIGN -->
+<!-- ========================================= -->
+<div class="autograder-section">
+  <h2>Autograder Design: Scan-to-Grade Pipeline</h2>
+
+  <!-- FLOW DIAGRAM -->
+  <div class="flow-steps">
+    <div class="flow-step">
+      <span class="step-num">1</span>
+      <span class="step-title">Print</span>
+      <span class="step-desc">Kai prints the practice test. Clean HTML, looks like his real quiz.</span>
+    </div>
+    <div class="flow-arrow">&#x25B6;</div>
+    <div class="flow-step">
+      <span class="step-num">2</span>
+      <span class="step-title">Write</span>
+      <span class="step-desc">Kai works the test on paper with a pencil. No computer needed.</span>
+    </div>
+    <div class="flow-arrow">&#x25B6;</div>
+    <div class="flow-step">
+      <span class="step-num">3</span>
+      <span class="step-title">Scan</span>
+      <span class="step-desc">Phone camera, scanner, or Microsoft Lens. JPEG or PDF output.</span>
+    </div>
+    <div class="flow-arrow">&#x25B6;</div>
+    <div class="flow-step">
+      <span class="step-num">4</span>
+      <span class="step-title">OCR</span>
+      <span class="step-desc">GPT-4o vision reads handwritten chemistry answers.</span>
+    </div>
+    <div class="flow-arrow">&#x25B6;</div>
+    <div class="flow-step">
+      <span class="step-num">5</span>
+      <span class="step-title">Review</span>
+      <span class="step-desc">Kai checks OCR output. Fixes any misreads.</span>
+    </div>
+    <div class="flow-arrow">&#x25B6;</div>
+    <div class="flow-step">
+      <span class="step-num">6</span>
+      <span class="step-title">Grade</span>
+      <span class="step-desc">Auto-grade runs. Per-question + per-skill results.</span>
+    </div>
+  </div>
+
+  <!-- GRADING RULES -->
+  <h3 style="color: #e2e8f0; font-size: 15px; margin: 20px 0 12px 0;">How the Grader Works</h3>
+
+  <div class="grading-rules">
+
+    <div class="rule-block">
+      <h4>1. Formula Normalizer</h4>
+      <p>Before comparing, both Kai's answer and the key are normalized:</p>
+      <div class="example">
+        "Ca(NO3)2" = "Ca(NO₃)₂" = "ca(no3)2" = "Ca (NO3)2"<br>
+        Strip spaces, lowercase, convert Unicode subscripts to digits
+      </div>
+      <p>This handles: case differences, spacing, Unicode vs ASCII subscripts, and minor formatting.</p>
+      <p>Match type: <code>exact match after normalization</code></p>
+    </div>
+
+    <div class="rule-block">
+      <h4>2. Name Normalizer</h4>
+      <p>Compound names are normalized before comparison:</p>
+      <div class="example">
+        "Iron(III) chloride" = "iron(iii) chloride" = "iron (III) chloride"<br>
+        "iron(III)chloride" (no space) — also accepted
+      </div>
+      <p>Rules: lowercase, collapse whitespace, normalize parentheses spacing around Roman numerals.</p>
+      <p>Match type: <code>fuzzy match</code> — also accepts common alternate names</p>
+      <div class="example">
+        "ferric chloride" → accepted as alt for "iron(III) chloride"<br>
+        "cupric oxide" → accepted as alt for "copper(II) oxide"
+      </div>
+    </div>
+
+    <div class="rule-block">
+      <h4>3. Charge Balance Grader (Q4-type)</h4>
+      <p>For "is this formula neutral?" questions:</p>
+      <div class="example">
+        Input: student's YES/NO + work shown (cation charge, anion charge, total)<br>
+        Grade: YES/NO must match key. Work is checked for correct charge values.<br>
+        If YES/NO is wrong but charges are correct → partial understanding noted
+      </div>
+    </div>
+
+    <div class="rule-block">
+      <h4>4. Atom Count Grader (Q5-type)</h4>
+      <p>For "count the atoms" questions:</p>
+      <div class="example">
+        Input: {"Ca": 3, "P": 2, "O": 8}<br>
+        Key:   {"Ca": 3, "P": 2, "O": 8}<br>
+        Grade: exact numeric match per element
+      </div>
+      <p>Each element count is independent. Partial credit possible (e.g., got Ca and P right but O wrong).</p>
+    </div>
+
+    <div class="rule-block">
+      <h4>5. Skill-Level Rollup</h4>
+      <p>The autograder grades per question, then rolls up to per-skill P/NP:</p>
+      <div class="example">
+        Skill 4.2.6 tested by: Q15, Q16, Q22 (3 questions)<br>
+        If Kai gets 2/3 or better → P<br>
+        If Kai gets 1/3 or worse → NP
+      </div>
+      <p>Threshold: <code>&gt;= 67% correct per skill = P</code>. This matches the teacher's approach of grading by standard, not by individual question.</p>
+    </div>
+
+  </div>
+
+  <!-- OCR SPECIFICS -->
+  <h3 style="color: #e2e8f0; font-size: 15px; margin: 20px 0 12px 0;">Chemistry OCR: How GPT-4o Reads Handwriting</h3>
+
+  <div class="tech-note">
+    <h4>The OCR Prompt</h4>
+    <p>GPT-4o vision gets the scanned image + a prompt that says: "This is a completed chemistry practice test. For each numbered question, extract the student's handwritten answer. Parse chemical formulas: subscripts as numbers (Fe2O3), charges as superscripts (Fe2+, CO3^2-). Return JSON: [{questionNumber, answer, confidence}]"</p>
+  </div>
+
+  <div class="tech-note">
+    <h4>Confidence Scoring</h4>
+    <p><span class="color-green">HIGH</span>: GPT-4o is confident in the read. Clear handwriting, unambiguous characters.<br>
+    <span class="color-amber">MEDIUM</span>: Some ambiguity. Could be "2" or "z", could be "Cl" or "CI".<br>
+    <span class="color-red">LOW</span>: Can't reliably read. Crossed-out text, overlapping characters, very faint.</p>
+    <p>MEDIUM and LOW answers get flagged in the Review step (Step 5) for Kai to confirm or fix.</p>
+  </div>
+
+  <div class="tech-note">
+    <h4>Chemistry-Specific OCR Challenges</h4>
+    <p>Handwritten chemistry is harder than regular text because:<br>
+    1. Subscripts and superscripts are small and often ambiguous (is that a subscript 2 or the next element?)<br>
+    2. Parentheses in formulas like (NH4)2SO4 can be misread<br>
+    3. Charges like 2+ or 3- are tiny and positioned above the line<br>
+    4. Element symbols are case-sensitive (Co = cobalt, CO = carbon monoxide)<br><br>
+    The Review step is the safety net. Kai sees what the OCR extracted and fixes anything wrong before grading runs. This way his grade reflects what he actually wrote, not what the OCR guessed.</p>
+  </div>
+
+  <!-- WHAT KAI SEES -->
+  <h3 style="color: #e2e8f0; font-size: 15px; margin: 20px 0 12px 0;">What Kai Sees at Each Step</h3>
+
+  <div class="rule-block">
+    <h4>Step 5: Review Screen</h4>
+    <div class="example" style="white-space: pre-line;">Q15. NaBr → Name this compound
+  Your answer: "sodium bromide" <span class="color-green">✓ confident</span>
+
+Q17. FeCl3 → Name this compound
+  Your answer: "iron (II) cholride" <span class="color-amber">⚠ check spelling</span>  [Edit]
+
+Q23. Potassium chloride → Write the formula
+  Your answer: <span class="color-red">couldn't read</span>  [Type your answer: ____]</div>
+  </div>
+
+  <div class="rule-block">
+    <h4>Step 6: Results Screen</h4>
+    <div class="example" style="white-space: pre-line;">STANDARD 4.2: IONIC COMPOUND FORMULAS
+
+  Skill 4.2.1  Neutral formula check     ●●○  2/3  <span class="color-amber">NP</span>
+  Skill 4.2.6  Name Type I compounds     ●●●  3/3  <span class="color-green">P</span>
+  Skill 4.2.7  Name Type II/III          ●●○○ 2/4  <span class="color-red">NP</span>
+  Skill 4.2.8  Formula from name         ●●●○ 3/4  <span class="color-green">P</span>
+
+  Areas to review: Type II naming (use Roman numerals for transition metals)</div>
+  </div>
+
+</div>
+
+</div>
+</body>
+</html>

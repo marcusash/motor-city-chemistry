@@ -1,0 +1,192 @@
+name: Squad Heartbeat (Ralph)
+
+on:
+  schedule:
+    - cron: '*/30 * * * *'
+
+  issues:
+    types: [closed, labeled]
+  pull_request:
+    types: [closed]
+
+  workflow_dispatch:
+
+permissions:
+  issues: write
+  contents: read
+  pull-requests: read
+
+jobs:
+  heartbeat:
+    runs-on: self-hosted
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Ralph - Check for squad work
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+
+            let teamFile = '.squad/team.md';
+            if (!fs.existsSync(teamFile)) {
+              core.info('No .squad/team.md found');
+              return;
+            }
+
+            const content = fs.readFileSync(teamFile, 'utf8');
+
+            if (!content.includes('Ralph') || !content.includes('🔄')) {
+              core.info('Ralph not on roster');
+              return;
+            }
+
+            // Parse members from roster
+            const lines = content.split('\n');
+            const members = [];
+            let inMembersTable = false;
+            for (const line of lines) {
+              if (line.match(/^##\s+(Members|Team Roster)/i)) {
+                inMembersTable = true;
+                continue;
+              }
+              if (inMembersTable && line.startsWith('## ')) break;
+              if (inMembersTable && line.startsWith('|') && !line.includes('---') && !line.includes('Name')) {
+                const cells = line.split('|').map(c => c.trim()).filter(Boolean);
+                if (cells.length >= 2 && !['Scribe', 'Ralph'].includes(cells[0])) {
+                  members.push({
+                    name: cells[0],
+                    role: cells[1],
+                    label: `squad:${cells[0].toLowerCase()}`
+                  });
+                }
+              }
+            }
+
+            if (members.length === 0) {
+              core.info('No squad members found');
+              return;
+            }
+
+            // Find untriaged issues (labeled "squad" but no "squad:{member}" label)
+            const { data: squadIssues } = await github.rest.issues.listForRepo({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              labels: 'squad',
+              state: 'open',
+              per_page: 20
+            });
+
+            const memberLabels = members.map(m => m.label);
+            const untriaged = squadIssues.filter(issue => {
+              const issueLabels = issue.labels.map(l => l.name);
+              return !memberLabels.some(ml => issueLabels.includes(ml));
+            });
+
+            // Find assigned but unstarted issues
+            const unstarted = [];
+            for (const member of members) {
+              try {
+                const { data: memberIssues } = await github.rest.issues.listForRepo({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  labels: member.label,
+                  state: 'open',
+                  per_page: 10
+                });
+                for (const issue of memberIssues) {
+                  if (!issue.assignees || issue.assignees.length === 0) {
+                    unstarted.push({ issue, member });
+                  }
+                }
+              } catch (e) {
+                // Label may not exist yet
+              }
+            }
+
+            // Report
+            core.info(`Ralph heartbeat: ${untriaged.length} untriaged, ${unstarted.length} unstarted`);
+
+            // Auto-triage untriaged issues
+            for (const issue of untriaged) {
+              const issueText = `${issue.title}\n${issue.body || ''}`.toLowerCase();
+              let assignedMember = null;
+              let reason = '';
+
+              for (const member of members) {
+                const role = member.role.toLowerCase();
+                if ((role.includes('security') || role.includes('ops') || role.includes('infra')) &&
+                    (issueText.includes('ci') || issueText.includes('runner') ||
+                     issueText.includes('deploy') || issueText.includes('infrastructure') ||
+                     issueText.includes('script') || issueText.includes('security'))) {
+                  assignedMember = member;
+                  reason = 'Matches infrastructure/security domain';
+                  break;
+                }
+                if ((role.includes('design') || role.includes('ui')) &&
+                    (issueText.includes('ui') || issueText.includes('design') ||
+                     issueText.includes('css') || issueText.includes('canvas') ||
+                     issueText.includes('brand') || issueText.includes('typography'))) {
+                  assignedMember = member;
+                  reason = 'Matches design/UI domain';
+                  break;
+                }
+                if ((role.includes('test') || role.includes('quality') || role.includes('qa')) &&
+                    (issueText.includes('test') || issueText.includes('bug') ||
+                     issueText.includes('coverage') || issueText.includes('regression'))) {
+                  assignedMember = member;
+                  reason = 'Matches testing/QA domain';
+                  break;
+                }
+                if ((role.includes('data') || role.includes('search') || role.includes('sentiment')) &&
+                    (issueText.includes('data') || issueText.includes('search') ||
+                     issueText.includes('sentiment') || issueText.includes('index'))) {
+                  assignedMember = member;
+                  reason = 'Matches data/search domain';
+                  break;
+                }
+                if ((role.includes('research') || role.includes('prompt') || role.includes('eval')) &&
+                    (issueText.includes('prompt') || issueText.includes('eval') ||
+                     issueText.includes('voice') || issueText.includes('tone'))) {
+                  assignedMember = member;
+                  reason = 'Matches research/eval domain';
+                  break;
+                }
+              }
+
+              // Default to Lead
+              if (!assignedMember) {
+                const lead = members.find(m =>
+                  m.role.toLowerCase().includes('lead') && m.role.toLowerCase().includes('architect')
+                );
+                if (lead) {
+                  assignedMember = lead;
+                  reason = 'No domain match, routed to Lead Architect';
+                }
+              }
+
+              if (assignedMember) {
+                await github.rest.issues.addLabels({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  issue_number: issue.number,
+                  labels: [assignedMember.label]
+                });
+
+                await github.rest.issues.createComment({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  issue_number: issue.number,
+                  body: [
+                    `### 🔄 Ralph: Auto-Triage`,
+                    '',
+                    `**Assigned to:** ${assignedMember.name} (${assignedMember.role})`,
+                    `**Reason:** ${reason}`,
+                    '',
+                    `> Ralph auto-triaged this issue via the squad heartbeat. To reassign, swap the \`squad:*\` label.`
+                  ].join('\n')
+                });
+
+                core.info(`Auto-triaged #${issue.number} to ${assignedMember.name}`);
+              }
+            }

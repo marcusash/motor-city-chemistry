@@ -1,0 +1,183 @@
+{
+  "testId": "chem-42-practice-v2",
+  "standard": "4.2",
+  "title": "Standard 4.2: Ionic Compound Formulas",
+  "format": "Matches Kai's Quiz 9 structure: Q4, Q5, Q6 (table), Q7 (naming table)",
+  "skillMap": {
+    "4.2.1": { "testedBy": "Q4", "description": "Assess whether ionic formula is neutral", "kaiStatus": "NP" },
+    "4.2.2": { "testedBy": "Q5", "description": "Determine number of atoms in compound", "kaiStatus": "NP" },
+    "4.2.3": { "testedBy": "Q6 rows 1-2", "description": "Use preferred charge to write formulas", "kaiStatus": "P" },
+    "4.2.4": { "testedBy": "Q6 row 3", "description": "Write formulas using polyatomic ions", "kaiStatus": "P" },
+    "4.2.5": { "testedBy": "Q6 row 4", "description": "Predict charge of single ions from formula", "kaiStatus": "P" },
+    "4.2.6": { "testedBy": "Q7 rows 1-2", "description": "Name simple ionic compounds (Type I)", "kaiStatus": "NP" },
+    "4.2.7": { "testedBy": "Q7 rows 3-5", "description": "Name Type II/III compounds", "kaiStatus": "NP" },
+    "4.2.8": { "testedBy": "Q7 rows 6-9", "description": "Give formula from name", "kaiStatus": "NP" }
+  },
+  "answers": {
+    "Q4": {
+      "skills": ["4.2.1"],
+      "type": "neutrality-check",
+      "prompt": "Two compounds with polyatomic ions. Only one has the proper formula. Identify the polyatomic ion in each and explain why each formula is or is not correct.",
+      "compounds": [
+        {
+          "formula": "Mg(OH)3",
+          "polyatomicIon": "OH- (hydroxide)",
+          "isNeutral": false,
+          "explanation": "Mg is +2, each OH is -1. Three OH gives -3. Total: +2 + (-3) = -1. NOT neutral. Correct formula is Mg(OH)2.",
+          "correctFormula": "Mg(OH)2"
+        },
+        {
+          "formula": "K2SO4",
+          "polyatomicIon": "SO4 2- (sulfate)",
+          "isNeutral": true,
+          "explanation": "Each K is +1, two K gives +2. SO4 is -2. Total: +2 + (-2) = 0. Neutral. This is the correct formula.",
+          "correctFormula": "K2SO4"
+        }
+      ]
+    },
+    "Q5": {
+      "skills": ["4.2.2"],
+      "type": "compound-analysis",
+      "compound": "Ca(NO3)2",
+      "answers": {
+        "cationAnion": {
+          "calcium": "cation",
+          "nitrate": "anion"
+        },
+        "charges": {
+          "nitrateCharge": "1-",
+          "calciumCharge": "2+",
+          "gradingNote": "NO3 is nitrate = 1- (not 2-). This is where Kai made his error on the real quiz with Fe(NO3)2."
+        },
+        "atomCount": {
+          "Ca": 1,
+          "N": 2,
+          "O": 6,
+          "gradingNote": "1 Ca, 2 N (1 x 2), 6 O (3 x 2). The subscript 2 outside the parentheses multiplies both N and O."
+        }
+      }
+    },
+    "Q6": {
+      "skills": ["4.2.3", "4.2.4", "4.2.5"],
+      "type": "formula-table",
+      "rows": [
+        {
+          "row": 1,
+          "skill": "4.2.3",
+          "elements": "Na and Cl",
+          "cation": "Na+",
+          "anion": "Cl-",
+          "formula": "NaCl",
+          "gradingNote": "Both 1:1 charge. Simple ratio."
+        },
+        {
+          "row": 2,
+          "skill": "4.2.3",
+          "elements": "Ba and O",
+          "cation": "Ba2+",
+          "anion": "O2-",
+          "formula": "BaO",
+          "gradingNote": "Both 2:2 charge. 1:1 ratio."
+        },
+        {
+          "row": 3,
+          "skill": "4.2.4",
+          "elements": "Li+ and OH-",
+          "cation": "Li+",
+          "anion": "OH-",
+          "formula": "LiOH",
+          "gradingNote": "Polyatomic ion (hydroxide). 1:1 ratio. No parentheses needed."
+        },
+        {
+          "row": 4,
+          "skill": "4.2.5",
+          "elements": "Cu2+ and CO3 2-",
+          "cation": "Cu2+",
+          "anion": "CO3 2-",
+          "formula": "CuCO3",
+          "gradingNote": "Both 2:2 charge. 1:1 ratio. Copper charge given as 2+ (student should be able to use this to predict)."
+        }
+      ]
+    },
+    "Q7": {
+      "skills": ["4.2.6", "4.2.7", "4.2.8"],
+      "type": "naming-table",
+      "formulaToName": [
+        {
+          "row": 1,
+          "skill": "4.2.6",
+          "formula": "K2O",
+          "answer": "potassium oxide",
+          "acceptableAnswers": ["potassium oxide"],
+          "gradingNote": "Type I: K is always +1, no Roman numeral. O root + -ide = oxide."
+        },
+        {
+          "row": 2,
+          "skill": "4.2.6",
+          "formula": "MgBr2",
+          "answer": "magnesium bromide",
+          "acceptableAnswers": ["magnesium bromide"],
+          "gradingNote": "Type I: Mg is always +2, no Roman numeral. Br root + -ide = bromide."
+        },
+        {
+          "row": 3,
+          "skill": "4.2.7",
+          "formula": "FeCl2",
+          "answer": "iron(II) chloride",
+          "acceptableAnswers": ["iron(II) chloride", "iron (II) chloride", "iron(ii) chloride", "ferrous chloride"],
+          "gradingNote": "Type II: Fe is a transition metal. 2 Cl- = -2, so Fe = +2. MUST include (II). Common error: forgetting the Roman numeral."
+        },
+        {
+          "row": 4,
+          "skill": "4.2.7",
+          "formula": "Ca(OH)2",
+          "answer": "calcium hydroxide",
+          "acceptableAnswers": ["calcium hydroxide"],
+          "gradingNote": "Type III: Ca is always +2 (no Roman numeral). OH = hydroxide (polyatomic ion name, not -ide suffix)."
+        },
+        {
+          "row": 5,
+          "skill": "4.2.7",
+          "formula": "(NH4)3PO4",
+          "answer": "ammonium phosphate",
+          "acceptableAnswers": ["ammonium phosphate"],
+          "gradingNote": "Type III: Both ions are polyatomic. NH4 = ammonium, PO4 = phosphate. No metal, no Roman numeral."
+        }
+      ],
+      "nameToFormula": [
+        {
+          "row": 6,
+          "skill": "4.2.8",
+          "name": "Potassium nitrate",
+          "answer": "KNO3",
+          "acceptableAnswers": ["KNO3"],
+          "gradingNote": "K+ and NO3-. 1:1 ratio. No parentheses (only one nitrate)."
+        },
+        {
+          "row": 7,
+          "skill": "4.2.8",
+          "name": "Copper(II) sulfate",
+          "answer": "CuSO4",
+          "acceptableAnswers": ["CuSO4"],
+          "gradingNote": "Cu2+ (Roman numeral II tells you) and SO4 2-. 1:1 ratio."
+        },
+        {
+          "row": 8,
+          "skill": "4.2.8",
+          "name": "Aluminum chloride",
+          "answer": "AlCl3",
+          "acceptableAnswers": ["AlCl3"],
+          "gradingNote": "Al3+ and Cl-. Need 3 Cl- to balance."
+        },
+        {
+          "row": 9,
+          "skill": "4.2.8",
+          "name": "Barium phosphate",
+          "answer": "Ba3(PO4)2",
+          "acceptableAnswers": ["Ba3(PO4)2"],
+          "gradingNote": "Ba2+ and PO4 3-. Cross charges: 3 Ba, 2 PO4. Parentheses around PO4."
+        }
+      ]
+    }
+  }
+}

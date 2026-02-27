@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+<title>Answer Key: Standard 4.2</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: -apple-system, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    font-size: 17px;
+    line-height: 1.6;
+    color: #1a1a1a;
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 16px;
+    background: #fff;
+  }
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+
+  h1 { font-size: 20px; margin: 6px 0 4px 0; }
+
+  .instructions {
+    font-size: 15px;
+    color: #444;
+    margin: 8px 0 20px 0;
+    padding: 12px 16px;
+    background: #f0f7ff;
+    border-left: 3px solid #3b82f6;
+    border-radius: 6px;
+  }
+
+  .section-header {
+    background: #f0f0f0;
+    border: 1px solid #ccc;
+    padding: 10px 14px;
+    margin: 28px 0 8px 0;
+    font-weight: 700;
+    font-size: 17px;
+    border-radius: 4px;
+  }
+
+  .question-block {
+    margin: 14px 0;
+    padding: 14px 16px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+  }
+
+  .q-label { font-weight: 700; font-size: 16px; margin-bottom: 4px; }
+  .q-prompt { font-size: 15px; color: #333; margin-bottom: 10px; }
+
+  .hint-box {
+    background: #fffbeb;
+    border: 1px solid #fcd34d;
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin: 10px 0;
+  }
+
+  .hint-label {
+    font-size: 12px;
+    font-weight: 700;
+    color: #92400e;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 4px;
+  }
+
+  .hint-box p {
+    font-size: 15px;
+    color: #78350f;
+    margin: 4px 0;
+  }
+
+  .answer-box {
+    background: #f0fdf4;
+    border: 1px solid #86efac;
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin: 10px 0;
+  }
+
+  .answer-label {
+    font-size: 12px;
+    font-weight: 700;
+    color: #166534;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 4px;
+  }
+
+  .answer-box p {
+    font-size: 15px;
+    color: #14532d;
+    margin: 4px 0;
+  }
+
+  .the-answer {
+    font-size: 17px;
+    font-weight: 700;
+    color: #166534;
+    margin: 8px 0;
+    padding: 8px 12px;
+    background: #dcfce7;
+    border-radius: 4px;
+  }
+
+  .step {
+    margin: 4px 0;
+    padding-left: 24px;
+    position: relative;
+    font-size: 15px;
+    color: #14532d;
+  }
+
+  .step::before {
+    content: attr(data-step);
+    position: absolute;
+    left: 0;
+    font-weight: 700;
+    color: #166534;
+  }
+
+  .watch-out {
+    background: #fef2f2;
+    border: 1px solid #fca5a5;
+    border-radius: 6px;
+    padding: 10px 14px;
+    margin: 8px 0;
+  }
+
+  .watch-out .wo-label {
+    font-size: 12px;
+    font-weight: 700;
+    color: #991b1b;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 2px;
+  }
+
+  .watch-out p { font-size: 14px; color: #7f1d1d; }
+
+  .rule-reminder {
+    background: #eff6ff;
+    border: 1px solid #93c5fd;
+    border-radius: 6px;
+    padding: 10px 14px;
+    margin: 8px 0;
+  }
+
+  .rule-reminder .rule-label {
+    font-size: 12px;
+    font-weight: 700;
+    color: #1e40af;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 2px;
+  }
+
+  .rule-reminder p { font-size: 14px; color: #1e3a5f; }
+
+  table.ref-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 8px 0;
+    font-size: 14px;
+  }
+
+  table.ref-table th, table.ref-table td {
+    border: 1px solid #999;
+    padding: 8px 10px;
+    text-align: left;
+  }
+
+  table.ref-table th {
+    background: #f0f0f0;
+    font-weight: 600;
+  }
+
+  sub { font-size: 0.8em; }
+  sup { font-size: 0.8em; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <span>CHEM 10</span>
+  <span>SAAS</span>
+  <span>Answer Key</span>
+</div>
+
+<h1>4.2 Ionic Compound Formulas: Hints + Answers</h1>
+
+<div class="instructions">
+  <b>How to use this:</b> Try each problem on the practice test FIRST. Then scroll here to check your work. Each question has a <b>hint</b> (yellow box) and the <b>full answer</b> (green box) below it.
+</div>
+
+<!-- ======================================== -->
+<!-- Q4 -->
+<!-- ======================================== -->
+<div class="section-header">Question 4: Is the Formula Neutral?</div>
+
+<div class="question-block">
+  <div class="q-label">Q4: Mg(OH)<sub>3</sub> and K<sub>2</sub>SO<sub>4</sub></div>
+  <div class="q-prompt">Two compounds with polyatomic ions. Only one has the proper formula. Identify the polyatomic ion in each and explain why each is or is not correct.</div>
+
+  <div class="hint-box">
+    <div class="hint-label">Hint</div>
+    <p>Look at the polyatomic ion reference table. What is the charge of hydroxide (OH)? What is the charge of sulfate (SO<sub>4</sub>)?</p>
+    <p>Now look at the metal. What group is Mg in? What group is K in? What charge does each prefer?</p>
+    <p>For each compound: multiply the metal's charge by how many there are. Multiply the polyatomic ion's charge by how many there are. Add them up. Does it equal zero?</p>
+  </div>
+
+  <div class="answer-box">
+    <div class="answer-label">Full Answer</div>
+    <p><b>Mg(OH)<sub>3</sub></b></p>
+    <div class="step" data-step="1.">Find the charges. Mg is in group 2A, so its preferred charge is <b>+2</b>. OH (hydroxide) is on the reference table as <b>1-</b>.</div>
+    <div class="step" data-step="2.">Count them. There is 1 Mg and 3 OH (the subscript 3 outside the parentheses).</div>
+    <div class="step" data-step="3.">Multiply. Mg: (+2)(1) = +2. OH: (-1)(3) = -3.</div>
+    <div class="step" data-step="4.">Add. +2 + (-3) = <b>-1</b>. Not zero, so <b>NOT neutral</b>.</div>
+    <div class="step" data-step="5.">The correct formula would be <b>Mg(OH)<sub>2</sub></b> because (+2) + (-1)(2) = 0.</div>
+
+    <br>
+    <p><b>K<sub>2</sub>SO<sub>4</sub></b></p>
+    <div class="step" data-step="1.">Find the charges. K is in group 1A: <b>+1</b>. SO<sub>4</sub> (sulfate) is on the reference table as <b>2-</b>.</div>
+    <div class="step" data-step="2.">Count them. 2 K and 1 SO<sub>4</sub>.</div>
+    <div class="step" data-step="3.">Multiply. K: (+1)(2) = +2. SO<sub>4</sub>: (-2)(1) = -2.</div>
+    <div class="step" data-step="4.">Add. +2 + (-2) = <b>0</b>. This <b>IS neutral</b>. Correct formula.</div>
+
+    <div class="the-answer">Mg(OH)<sub>3</sub> = NOT correct. K<sub>2</sub>SO<sub>4</sub> = correct.</div>
+
+    <div class="rule-reminder">
+      <div class="rule-label">Remember</div>
+      <p>An ionic compound must be electrically neutral. The total positive charge has to exactly cancel the total negative charge. If the charges don't add to zero, the formula is wrong.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ======================================== -->
+<!-- Q5 -->
+<!-- ======================================== -->
+<div class="section-header">Question 5: Compound Analysis</div>
+
+<div class="question-block">
+  <div class="q-label">Q5: Ca(NO<sub>3</sub>)<sub>2</sub></div>
+  <div class="q-prompt">Circle cation/anion, fill in charges, count atoms.</div>
+
+  <div class="hint-box">
+    <div class="hint-label">Hint</div>
+    <p>The cation is the positive ion (the metal). The anion is the negative ion. Which one is the metal here?</p>
+    <p>For the charge of nitrate: don't guess. Look it up on the reference table. It's listed under "(1-) Anion".</p>
+    <p>For atom counting: the subscript 2 outside the parentheses multiplies EVERYTHING inside. So (NO<sub>3</sub>)<sub>2</sub> means 2 copies of NO<sub>3</sub>.</p>
+  </div>
+
+  <div class="answer-box">
+    <div class="answer-label">Full Answer</div>
+    <p><b>Cation or Anion:</b></p>
+    <div class="step" data-step="1.">Calcium (Ca) is a <b>metal</b> (group 2A). Metals form positive ions. Ca is the <b>cation</b>.</div>
+    <div class="step" data-step="2.">Nitrate (NO<sub>3</sub>) is a <b>polyatomic ion</b> on the reference table. It's negative. NO<sub>3</sub> is the <b>anion</b>.</div>
+
+    <br>
+    <p><b>Charges:</b></p>
+    <div class="step" data-step="3.">Reference table: Nitrate (NO<sub>3</sub>) is under "(1-) Anion". Its charge is <b>1-</b>.</div>
+    <div class="step" data-step="4.">Ca is group 2A. Its preferred charge is <b>2+</b>.</div>
+    <div class="step" data-step="5.">Check: (+2) + (-1)(2) = 0. Neutral.</div>
+
+    <br>
+    <p><b>Atom count:</b></p>
+    <div class="step" data-step="6."><b>Ca: 1</b> (just one calcium)</div>
+    <div class="step" data-step="7."><b>N: 2</b> (1 nitrogen inside parentheses x 2 outside = 2)</div>
+    <div class="step" data-step="8."><b>O: 6</b> (3 oxygens inside parentheses x 2 outside = 6)</div>
+
+    <div class="the-answer">Cation: Ca. Anion: NO<sub>3</sub>. Nitrate charge: 1-. Calcium charge: 2+. Atoms: Ca=1, N=2, O=6.</div>
+
+    <div class="watch-out">
+      <div class="wo-label">Common Mistake</div>
+      <p>Nitrate (NO<sub>3</sub>) is <b>1-</b>, not 2-. A lot of students mix this up because carbonate (CO<sub>3</sub>) and sulfate (SO<sub>4</sub>) are both 2-. But nitrate is only 1-. When in doubt, check the reference table.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ======================================== -->
+<!-- Q6 -->
+<!-- ======================================== -->
+<div class="section-header">Question 6: Write the Neutral Formula</div>
+
+<!-- Q6 Row 1 -->
+<div class="question-block">
+  <div class="q-label">Q6, Row 1: Sodium (Na) and Chlorine (Cl)</div>
+
+  <div class="hint-box">
+    <div class="hint-label">Hint</div>
+    <p>Na is in group 1A. Cl is in group 7A. What charge does each prefer? If both charges are the same size, what ratio do you need?</p>
+  </div>
+
+  <div class="answer-box">
+    <div class="answer-label">Full Answer</div>
+    <div class="step" data-step="1.">Na is group 1A: charge = <b>+1</b>. Cl is group 7A: charge = <b>-1</b>.</div>
+    <div class="step" data-step="2.">Equal and opposite, so 1:1 ratio.</div>
+    <div class="the-answer">Na<sup>+</sup> | Cl<sup>-</sup> | NaCl</div>
+  </div>
+</div>
+
+<!-- Q6 Row 2 -->
+<div class="question-block">
+  <div class="q-label">Q6, Row 2: Barium (Ba) and Oxygen (O)</div>
+
+  <div class="hint-box">
+    <div class="hint-label">Hint</div>
+    <p>Ba is in group 2A. O is in group 6A. Both charges are size 2. What ratio?</p>
+  </div>
+
+  <div class="answer-box">
+    <div class="answer-label">Full Answer</div>
+    <div class="step" data-step="1.">Ba is group 2A: charge = <b>+2</b>. O is group 6A: charge = <b>-2</b>.</div>
+    <div class="step" data-step="2.">Equal and opposite, so 1:1 ratio.</div>
+    <div class="the-answer">Ba<sup>2+</sup> | O<sup>2-</sup> | BaO</div>
+  </div>
+</div>
+
+<!-- Q6 Row 3 -->
+<div class="question-block">
+  <div class="q-label">Q6, Row 3: Li<sup>+</sup> and OH<sup>-</sup></div>
+
+  <div class="hint-box">
+    <div class="hint-label">Hint</div>
+    <p>The charges are already given: Li is +1, OH is -1. What ratio balances to zero? Do you need parentheses around OH?</p>
+    <p>You only need parentheses around a polyatomic ion when there is more than one of it.</p>
+  </div>
+
+  <div class="answer-box">
+    <div class="answer-label">Full Answer</div>
+    <div class="step" data-step="1.">Li<sup>+</sup> is +1. OH<sup>-</sup> is -1. Ratio: 1:1.</div>
+    <div class="step" data-step="2.">Only one hydroxide, so no parentheses needed.</div>
+    <div class="the-answer">Li<sup>+</sup> | OH<sup>-</sup> | LiOH</div>
+
+    <div class="rule-reminder">
+      <div class="rule-label">Parentheses Rule</div>
+      <p>Only put parentheses around a polyatomic ion when you need MORE THAN ONE of it. LiOH has just one OH, so no parentheses. Ca(OH)<sub>2</sub> has two OH groups, so you need parentheses.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Q6 Row 4 -->
+<div class="question-block">
+  <div class="q-label">Q6, Row 4: Cu<sup>2+</sup> and CO<sub>3</sub><sup>2-</sup></div>
+
+  <div class="hint-box">
+    <div class="hint-label">Hint</div>
+    <p>Both charges are already given: Cu is 2+ and CO<sub>3</sub> is 2-. Think about the ratio. Do you need more than one of either ion?</p>
+  </div>
+
+  <div class="answer-box">
+    <div class="answer-label">Full Answer</div>
+    <div class="step" data-step="1.">Cu<sup>2+</sup> is +2. CO<sub>3</sub><sup>2-</sup> is -2. Equal and opposite.</div>
+    <div class="step" data-step="2.">1:1 ratio. Only one carbonate, so no parentheses.</div>
+    <div class="the-answer">Cu<sup>2+</sup> | CO<sub>3</sub><sup>2-</sup> | CuCO<sub>3</sub></div>
+  </div>
+</div>
+
+<!-- ======================================== -->
+<!-- Q7 -->
+<!-- ======================================== -->
+<div class="section-header">Question 7: Name the Compound / Write the Formula</div>
+
+<div class="rule-reminder" style="margin-top: 10px;">
+  <div class="rule-label">Naming Rules to Remember</div>
+  <p><b>Type I</b> (simple metal + nonmetal): Write the metal name, then the nonmetal root + "<b>-ide</b>". Example: NaCl = sodium chlor<b>ide</b>.</p>
+  <p><b>Type II</b> (transition metal + nonmetal): Same as Type I, but add a <b>Roman numeral</b> after the metal name to show its charge. Example: FeCl<sub>2</sub> = iron<b>(II)</b> chloride. You figure out the charge from the formula.</p>
+  <p><b>Type III</b> (contains a polyatomic ion): Use the metal name + the polyatomic ion's name from the reference table. Don't add "-ide" because the polyatomic ion already has its own name. Example: Ca(NO<sub>3</sub>)<sub>2</sub> = calcium <b>nitrate</b>.</p>
+</div>
+
+<!-- Q7 Row 1: K2O -->
+<div class="question-block">
+  <div class="q-label">Q7, Row 1: K<sub>2</sub>O &#8594; Name?</div>
+
+  <div class="hint-box">
+    <div class="hint-label">Hint</div>
+    <p>Is potassium a transition metal? (No, group 1A.) So is this Type I or Type II? What's the nonmetal? Change its ending to "-ide".</p>
+    <p>Important: is this an ionic compound (metal + nonmetal) or a covalent compound (nonmetal + nonmetal)? The naming rules are completely different for each.</p>
+  </div>
+
+  <div class="answer-box">
+    <div class="answer-label">Full Answer</div>
+    <div class="step" data-step="1.">K is potassium (group 1A, not a transition metal). O is oxygen.</div>
+    <div class="step" data-step="2."><b>Type I</b>: simple metal + nonmetal. No Roman numeral needed.</div>
+    <div class="step" data-step="3.">Metal name: potassium. Nonmetal root + -ide: oxide.</div>
+    <div class="the-answer">potassium oxide</div>
+
+    <div class="watch-out">
+      <div class="wo-label">Why NOT "dipotassium monoxide"?</div>
+      <p>Prefixes like mono-, di-, tri- are <b>only for covalent (molecular) compounds</b>, which are made of two nonmetals. Examples: CO<sub>2</sub> = carbon di<b>oxide</b>, N<sub>2</sub>O<sub>5</sub> = di<b>nitrogen</b> pent<b>oxide</b>.</p>
+      <p>K<sub>2</sub>O is an <b>ionic</b> compound (metal + nonmetal), so you NEVER use those prefixes. You just say the metal name + nonmetal-ide. The subscripts come automatically from the charges (K is always +1, O is always -2, so you always need 2 K to balance 1 O). Since the ratio is always the same, you don't need to say "two" or "one."</p>
+    </div>
+
+    <div class="rule-reminder">
+      <div class="rule-label">The Big Rule: When Do You Use Prefixes?</div>
+      <p><b>Ionic compounds (metal + nonmetal):</b> NEVER use mono-, di-, tri-. The charges already tell you the ratio. Just say the names.</p>
+      <p><b>Covalent compounds (nonmetal + nonmetal):</b> ALWAYS use prefixes (mono-, di-, tri-, tetra-, penta-) because nonmetals can combine in different ratios. CO is carbon mon<b>oxide</b>. CO<sub>2</sub> is carbon di<b>oxide</b>. They are different compounds, so you need the prefix to tell them apart.</p>
+      <p><b>Quick check:</b> Is the first element a metal? If yes, it's ionic. No prefixes. Is the first element a nonmetal? Then it's covalent. Use prefixes.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Q7 Row 2: MgBr2 -->
+<div class="question-block">
+  <div class="q-label">Q7, Row 2: MgBr<sub>2</sub> &#8594; Name?</div>
+
+  <div class="hint-box">
+    <div class="hint-label">Hint</div>
+    <p>Mg is in group 2A. Is it a transition metal? What's the naming pattern for non-transition metals?</p>
+    <p>Think about whether this is ionic or covalent. Does that change whether you use prefixes?</p>
+  </div>
+
+  <div class="answer-box">
+    <div class="answer-label">Full Answer</div>
+    <div class="step" data-step="1.">Mg is magnesium (group 2A, not a transition metal). Br is bromine.</div>
+    <div class="step" data-step="2."><b>Type I</b>. No Roman numeral.</div>
+    <div class="step" data-step="3.">Metal: magnesium. Nonmetal root + -ide: bromide.</div>
+    <div class="the-answer">magnesium bromide</div>
+
+    <div class="watch-out">
+      <div class="wo-label">Why NOT "magnesium dibromide"?</div>
+      <p>Same rule as K<sub>2</sub>O above. Mg is a <b>metal</b> and Br is a <b>nonmetal</b>, so MgBr<sub>2</sub> is ionic. No prefixes for ionic compounds.</p>
+      <p>Mg is ALWAYS +2. Br is ALWAYS -1. So you ALWAYS need 2 Br to balance 1 Mg. Since there's only one possible ratio, saying "di" adds no information. Everyone already knows it's 2 bromides.</p>
+      <p>Compare to covalent: NO<sub>2</sub> is nitrogen <b>di</b>oxide but N<sub>2</sub>O<sub>4</sub> is <b>di</b>nitrogen <b>tetr</b>oxide. Both are nitrogen + oxygen, but the ratios are different. That's why covalent compounds need prefixes and ionic compounds don't.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Q7 Row 3: FeCl2 -->
+<div class="question-block">
+  <div class="q-label">Q7, Row 3: FeCl<sub>2</sub> &#8594; Name?</div>
+
+  <div class="hint-box">
+    <div class="hint-label">Hint</div>
+    <p>Fe (iron) is a <b>transition metal</b>. It can have different charges. You need to figure out which charge iron has in THIS compound.</p>
+    <p>Use the anion to work backwards: what's the charge of Cl? If there are 2 Cl atoms, what's the total negative charge? What must Fe's charge be to make it neutral?</p>
+  </div>
+
+  <div class="answer-box">
+    <div class="answer-label">Full Answer</div>
+    <div class="step" data-step="1.">Fe is iron (transition metal). Cl is chlorine (group 7A, charge = -1).</div>
+    <div class="step" data-step="2.">2 Cl atoms. Total negative charge: (-1)(2) = -2.</div>
+    <div class="step" data-step="3.">Formula must be neutral, so Fe's charge must be <b>+2</b>.</div>
+    <div class="step" data-step="4."><b>Type II</b>: transition metal, MUST include Roman numeral.</div>
+    <div class="step" data-step="5.">Iron is +2, so Roman numeral (II). Cl root + -ide = chloride.</div>
+    <div class="the-answer">iron(II) chloride</div>
+
+    <div class="watch-out">
+      <div class="wo-label">Common Mistake</div>
+      <p>If you just write "iron chloride" without the (II), it's wrong. Iron can be +2 or +3, so you MUST say which one. The Roman numeral is not optional for transition metals.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Q7 Row 4: Ca(OH)2 -->
+<div class="question-block">
+  <div class="q-label">Q7, Row 4: Ca(OH)<sub>2</sub> &#8594; Name?</div>
+
+  <div class="hint-box">
+    <div class="hint-label">Hint</div>
+    <p>Does this compound contain a polyatomic ion? Check the reference table. If it does, use the polyatomic ion's name directly. Don't change it to "-ide".</p>
+  </div>
+
+  <div class="answer-box">
+    <div class="answer-label">Full Answer</div>
+    <div class="step" data-step="1.">Ca is calcium (group 2A, not a transition metal). OH is hydroxide (on the reference table).</div>
+    <div class="step" data-step="2."><b>Type III</b>: contains a polyatomic ion.</div>
+    <div class="step" data-step="3.">Metal: calcium. Polyatomic ion name: hydroxide (use it as-is).</div>
+    <div class="step" data-step="4.">Ca is NOT a transition metal, so no Roman numeral.</div>
+    <div class="the-answer">calcium hydroxide</div>
+  </div>
+</div>
+
+<!-- Q7 Row 5: (NH4)3PO4 -->
+<div class="question-block">
+  <div class="q-label">Q7, Row 5: (NH<sub>4</sub>)<sub>3</sub>PO<sub>4</sub> &#8594; Name?</div>
+
+  <div class="hint-box">
+    <div class="hint-label">Hint</div>
+    <p>This one has TWO polyatomic ions. Look at the reference table. What is NH<sub>4</sub> called? What is PO<sub>4</sub> called? Just use both names.</p>
+  </div>
+
+  <div class="answer-box">
+    <div class="answer-label">Full Answer</div>
+    <div class="step" data-step="1.">NH<sub>4</sub> is ammonium (the only polyatomic cation). PO<sub>4</sub> is phosphate.</div>
+    <div class="step" data-step="2."><b>Type III</b>: contains polyatomic ions.</div>
+    <div class="step" data-step="3.">Cation: ammonium. Anion: phosphate.</div>
+    <div class="the-answer">ammonium phosphate</div>
+  </div>
+</div>
+
+<!-- Q7 Row 6: Potassium nitrate -->
+<div class="question-block">
+  <div class="q-label">Q7, Row 6: Potassium nitrate &#8594; Formula?</div>
+
+  <div class="hint-box">
+    <div class="hint-label">Hint</div>
+    <p>Potassium is K. "Nitrate" is a polyatomic ion. Look up its formula and charge on the reference table. Then figure out the ratio that makes it neutral.</p>
+  </div>
+
+  <div class="answer-box">
+    <div class="answer-label">Full Answer</div>
+    <div class="step" data-step="1.">Potassium = K, group 1A, charge = +1.</div>
+    <div class="step" data-step="2.">Nitrate = NO<sub>3</sub>, from the reference table, charge = 1-.</div>
+    <div class="step" data-step="3.">+1 and -1: 1:1 ratio. Only one nitrate, no parentheses.</div>
+    <div class="the-answer">KNO<sub>3</sub></div>
+  </div>
+</div>
+
+<!-- Q7 Row 7: Copper(II) sulfate -->
+<div class="question-block">
+  <div class="q-label">Q7, Row 7: Copper(II) sulfate &#8594; Formula?</div>
+
+  <div class="hint-box">
+    <div class="hint-label">Hint</div>
+    <p>The "(II)" tells you copper's charge is +2. "Sulfate" is a polyatomic ion. Look up sulfate's charge. Are they the same size?</p>
+  </div>
+
+  <div class="answer-box">
+    <div class="answer-label">Full Answer</div>
+    <div class="step" data-step="1.">Copper(II) = Cu, charge = <b>+2</b> (the II tells you).</div>
+    <div class="step" data-step="2.">Sulfate = SO<sub>4</sub>, from the reference table, charge = 2-.</div>
+    <div class="step" data-step="3.">Both 2: 1:1 ratio. Only one sulfate, no parentheses.</div>
+    <div class="the-answer">CuSO<sub>4</sub></div>
+
+    <div class="rule-reminder">
+      <div class="rule-label">Reading Roman Numerals in Names</div>
+      <p>When a compound name includes (II) or (III), that tells you the metal's charge. You don't need to figure it out. I = +1, II = +2, III = +3.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Q7 Row 8: Aluminum chloride -->
+<div class="question-block">
+  <div class="q-label">Q7, Row 8: Aluminum chloride &#8594; Formula?</div>
+
+  <div class="hint-box">
+    <div class="hint-label">Hint</div>
+    <p>Al is in group 3A. "Chloride" means Cl with a -1 charge. How many Cl atoms do you need to balance Al's charge?</p>
+  </div>
+
+  <div class="answer-box">
+    <div class="answer-label">Full Answer</div>
+    <div class="step" data-step="1.">Aluminum = Al, group 3A, charge = +3.</div>
+    <div class="step" data-step="2.">"Chloride" = Cl<sup>-</sup> (the "-ide" tells you it's a single element, charge = -1).</div>
+    <div class="step" data-step="3.">To balance +3, need 3 chloride: (-1)(3) = -3. Total: +3 + (-3) = 0.</div>
+    <div class="the-answer">AlCl<sub>3</sub></div>
+  </div>
+</div>
+
+<!-- Q7 Row 9: Barium phosphate -->
+<div class="question-block">
+  <div class="q-label">Q7, Row 9: Barium phosphate &#8594; Formula?</div>
+
+  <div class="hint-box">
+    <div class="hint-label">Hint</div>
+    <p>Ba is group 2A (charge = +2). "Phosphate" is a polyatomic ion. Look up its charge. The charges are different sizes this time, so you'll need the "criss-cross" method: the number from one charge becomes the subscript of the other.</p>
+  </div>
+
+  <div class="answer-box">
+    <div class="answer-label">Full Answer</div>
+    <div class="step" data-step="1.">Barium = Ba, group 2A, charge = +2.</div>
+    <div class="step" data-step="2.">Phosphate = PO<sub>4</sub>, from the reference table, charge = 3-.</div>
+    <div class="step" data-step="3.">Different charges (+2 and -3). Criss-cross:</div>
+    <div class="step" data-step="">&emsp;The 3 from phosphate becomes Ba's subscript: Ba<sub>3</sub></div>
+    <div class="step" data-step="">&emsp;The 2 from barium becomes PO<sub>4</sub>'s subscript: (PO<sub>4</sub>)<sub>2</sub></div>
+    <div class="step" data-step="4.">Check: (+2)(3) + (-3)(2) = +6 + (-6) = 0. Neutral.</div>
+    <div class="step" data-step="5.">Parentheses needed around PO<sub>4</sub> because there are 2 of them.</div>
+    <div class="the-answer">Ba<sub>3</sub>(PO<sub>4</sub>)<sub>2</sub></div>
+
+    <div class="watch-out">
+      <div class="wo-label">Common Mistake</div>
+      <p>When you criss-cross, don't forget parentheses around the polyatomic ion if the subscript is greater than 1. Writing BaPO<sub>42</sub> would mean something completely different.</p>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div style="margin-top: 32px; padding-top: 16px; border-top: 2px solid #e0e0e0;">
+  <div style="font-size: 15px; font-weight: 700; margin-bottom: 8px;">Quick Reference: The Three Types</div>
+  <table class="ref-table">
+    <tr>
+      <th>Type</th>
+      <th>When</th>
+      <th>How to name</th>
+      <th>Example</th>
+    </tr>
+    <tr>
+      <td><b>I</b></td>
+      <td>Metal has ONE charge (groups 1A, 2A, 3A)</td>
+      <td>metal + nonmetal root + "-ide"</td>
+      <td>NaCl = sodium chloride</td>
+    </tr>
+    <tr>
+      <td><b>II</b></td>
+      <td><b>Transition metal</b> (multiple charges)</td>
+      <td>metal + <b>(Roman numeral)</b> + root + "-ide"</td>
+      <td>FeCl<sub>2</sub> = iron(II) chloride</td>
+    </tr>
+    <tr>
+      <td><b>III</b></td>
+      <td>Has a <b>polyatomic ion</b></td>
+      <td>metal + polyatomic ion name</td>
+      <td>Ca(NO<sub>3</sub>)<sub>2</sub> = calcium nitrate</td>
+    </tr>
+  </table>
+</div>
+
+<div style="text-align: center; margin-top: 20px; font-size: 12px; color: #999;">
+  Motor City Chemistry . Answer Key . Standard 4.2
+</div>
+
+</body>
+</html>

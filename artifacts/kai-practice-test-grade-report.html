@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kai's Practice Test Grade Report</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    background: #111318;
+    color: #e2e8f0;
+    padding: 24px;
+    line-height: 1.5;
+  }
+  .container { max-width: 900px; margin: 0 auto; }
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 6px;
+  }
+  .header-left { font-size: 13px; color: #94a3b8; font-weight: 600; }
+  .header-right { font-size: 13px; color: #94a3b8; }
+  h1 { font-size: 22px; color: #f1f5f9; margin-bottom: 4px; }
+  .subtitle { font-size: 14px; color: #64748b; margin-bottom: 24px; }
+
+  /* Summary cards */
+  .summary-row {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+  }
+  .summary-card {
+    flex: 1;
+    min-width: 140px;
+    background: #1e2028;
+    border: 1px solid #2d3141;
+    border-radius: 8px;
+    padding: 16px;
+    text-align: center;
+  }
+  .summary-card .label { font-size: 11px; color: #64748b; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px; }
+  .summary-card .value { font-size: 28px; font-weight: 700; }
+  .summary-card .detail { font-size: 12px; color: #94a3b8; margin-top: 4px; }
+  .val-p { color: #22c55e; }
+  .val-np { color: #ef4444; }
+  .val-skip { color: #64748b; }
+  .val-improved { color: #3b82f6; }
+
+  /* Skill table */
+  .section-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: #f1f5f9;
+    margin: 28px 0 10px 0;
+    padding-bottom: 6px;
+    border-bottom: 1px solid #2d3141;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 10px 0 20px 0;
+    font-size: 14px;
+  }
+  th {
+    background: #1a1d24;
+    color: #94a3b8;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 10px 12px;
+    text-align: left;
+    border-bottom: 1px solid #2d3141;
+  }
+  td {
+    padding: 10px 12px;
+    border-bottom: 1px solid #1e2028;
+    vertical-align: top;
+  }
+  tr:hover { background: #1a1d24; }
+
+  .badge {
+    display: inline-block;
+    padding: 2px 10px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 700;
+    text-align: center;
+    min-width: 32px;
+  }
+  .badge-p { background: #14532d; color: #22c55e; }
+  .badge-np { background: #450a0a; color: #ef4444; }
+  .badge-skip { background: #1e293b; color: #64748b; }
+  .badge-improved { background: #172554; color: #60a5fa; }
+
+  /* Question detail blocks */
+  .q-block {
+    background: #1a1d24;
+    border: 1px solid #2d3141;
+    border-radius: 8px;
+    padding: 14px 16px;
+    margin: 10px 0;
+  }
+  .q-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+  }
+  .q-title { font-weight: 700; font-size: 15px; color: #e2e8f0; }
+
+  .q-row {
+    display: flex;
+    gap: 16px;
+    margin: 6px 0;
+    font-size: 14px;
+  }
+  .q-label-sm { color: #64748b; min-width: 100px; flex-shrink: 0; }
+  .q-val { color: #cbd5e1; }
+  .q-val-wrong { color: #fca5a5; }
+  .q-val-right { color: #86efac; }
+
+  .error-box {
+    background: #1c1012;
+    border: 1px solid #7f1d1d;
+    border-radius: 6px;
+    padding: 10px 14px;
+    margin: 8px 0 0 0;
+    font-size: 13px;
+    color: #fca5a5;
+  }
+  .error-box b { color: #ef4444; }
+
+  .improve-box {
+    background: #0c1a12;
+    border: 1px solid #14532d;
+    border-radius: 6px;
+    padding: 10px 14px;
+    margin: 8px 0 0 0;
+    font-size: 13px;
+    color: #86efac;
+  }
+
+  .compare-arrow { color: #3b82f6; font-weight: 700; }
+
+  /* Diagnosis */
+  .diagnosis {
+    background: #1a1d24;
+    border: 1px solid #2d3141;
+    border-radius: 8px;
+    padding: 18px 20px;
+    margin: 20px 0;
+  }
+  .diagnosis h3 { font-size: 16px; color: #f1f5f9; margin-bottom: 10px; }
+  .diagnosis ol { padding-left: 20px; }
+  .diagnosis li { margin: 8px 0; font-size: 14px; color: #cbd5e1; }
+  .diagnosis li b { color: #f1f5f9; }
+
+  .footer {
+    text-align: center;
+    margin-top: 32px;
+    font-size: 12px;
+    color: #475569;
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+<div class="header">
+  <span class="header-left">CHEM 10 . SAAS . Block: Dad</span>
+  <span class="header-right">Practice Test . 02/26/2026</span>
+</div>
+<h1>Kai Ash: Practice Test Grade Report</h1>
+<div class="subtitle">Standard 4.2: Ionic Compound Formulas (Q6 skipped, not assessed)</div>
+
+<!-- Summary Cards -->
+<div class="summary-row">
+  <div class="summary-card">
+    <div class="label">Proficient</div>
+    <div class="value val-p">3</div>
+    <div class="detail">of 5 assessed skills</div>
+  </div>
+  <div class="summary-card">
+    <div class="label">Not Proficient</div>
+    <div class="value val-np">2</div>
+    <div class="detail">4.2.6, 4.2.8</div>
+  </div>
+  <div class="summary-card">
+    <div class="label">Skipped</div>
+    <div class="value val-skip">3</div>
+    <div class="detail">4.2.3, 4.2.4, 4.2.5</div>
+  </div>
+  <div class="summary-card">
+    <div class="label">Improved from Quiz 9</div>
+    <div class="value val-improved">3</div>
+    <div class="detail">4.2.1, 4.2.2, 4.2.7</div>
+  </div>
+</div>
+
+<!-- Skill-Level Comparison -->
+<div class="section-title">Skill-Level Results vs Quiz 9</div>
+<table>
+  <tr>
+    <th>Skill</th>
+    <th>Description</th>
+    <th>Quiz 9</th>
+    <th></th>
+    <th>Practice</th>
+    <th>Questions</th>
+    <th>Score</th>
+  </tr>
+  <tr>
+    <td>4.2.1</td>
+    <td>Assess whether ionic formula is neutral</td>
+    <td><span class="badge badge-np">NP</span></td>
+    <td class="compare-arrow">&rarr;</td>
+    <td><span class="badge badge-p">P</span></td>
+    <td>Q4</td>
+    <td>1/1</td>
+  </tr>
+  <tr>
+    <td>4.2.2</td>
+    <td>Determine atoms, charges in compound</td>
+    <td><span class="badge badge-np">NP</span></td>
+    <td class="compare-arrow">&rarr;</td>
+    <td><span class="badge badge-p">P</span></td>
+    <td>Q5</td>
+    <td>1/1</td>
+  </tr>
+  <tr>
+    <td>4.2.3</td>
+    <td>Use preferred charge to write formulas</td>
+    <td><span class="badge badge-p">P</span></td>
+    <td></td>
+    <td><span class="badge badge-skip">SKIP</span></td>
+    <td>Q6 R1-2</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>4.2.4</td>
+    <td>Write formulas using polyatomic ions</td>
+    <td><span class="badge badge-p">P</span></td>
+    <td></td>
+    <td><span class="badge badge-skip">SKIP</span></td>
+    <td>Q6 R3</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>4.2.5</td>
+    <td>Predict charge of ions from formula</td>
+    <td><span class="badge badge-p">P</span></td>
+    <td></td>
+    <td><span class="badge badge-skip">SKIP</span></td>
+    <td>Q6 R4</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>4.2.6</td>
+    <td>Name simple ionic compounds (Type I)</td>
+    <td><span class="badge badge-np">NP</span></td>
+    <td></td>
+    <td><span class="badge badge-np">NP</span></td>
+    <td>Q7 R1-2</td>
+    <td>0/2</td>
+  </tr>
+  <tr>
+    <td>4.2.7</td>
+    <td>Name Type II / III compounds</td>
+    <td><span class="badge badge-np">NP</span></td>
+    <td class="compare-arrow">&rarr;</td>
+    <td><span class="badge badge-p">P</span></td>
+    <td>Q7 R3-5</td>
+    <td>2/3</td>
+  </tr>
+  <tr>
+    <td>4.2.8</td>
+    <td>Write formula from compound name</td>
+    <td><span class="badge badge-np">NP</span></td>
+    <td></td>
+    <td><span class="badge badge-np">NP</span></td>
+    <td>Q7 R6-9</td>
+    <td>2/4</td>
+  </tr>
+</table>
+
+<!-- Question-by-Question Detail -->
+<div class="section-title">Question-by-Question Breakdown</div>
+
+<!-- Q4 -->
+<div class="q-block">
+  <div class="q-header">
+    <span class="q-title">Q4: Is the Formula Neutral? (Skill 4.2.1)</span>
+    <span class="badge badge-p">P</span>
+  </div>
+  <div class="q-row">
+    <span class="q-label-sm">Mg(OH)&#8323;</span>
+    <span class="q-val-right">Correctly identified as NOT neutral. "Mg&#178;&#8314; needs 2 OH, not 4."</span>
+  </div>
+  <div class="q-row">
+    <span class="q-label-sm">K&#8322;SO&#8324;</span>
+    <span class="q-val-right">Correctly identified as neutral/correct. "2 K&#8314; balances the SO&#8324;&#178;&#8315;."</span>
+  </div>
+  <div class="improve-box">
+    <b>Improved from Quiz 9.</b> On the real quiz, Kai got the neutrality check backwards on Ca(CO&#8323;)&#8322; vs AlPO&#8324;. This time he nailed both.
+    <br>Minor note: wrote "not four" instead of "not three" (the subscript is 3), but his reasoning and conclusion are correct.
+  </div>
+</div>
+
+<!-- Q5 -->
+<div class="q-block">
+  <div class="q-header">
+    <span class="q-title">Q5: Compound Analysis, Ca(NO&#8323;)&#8322; (Skill 4.2.2)</span>
+    <span class="badge badge-p">P</span>
+  </div>
+  <div class="q-row">
+    <span class="q-label-sm">Cation/Anion</span>
+    <span class="q-val-right">Ca = cation, NO&#8323; = anion. Correct.</span>
+  </div>
+  <div class="q-row">
+    <span class="q-label-sm">Charges</span>
+    <span class="q-val-right">NO&#8323; = 1-. Ca = 2+. Both correct.</span>
+  </div>
+  <div class="q-row">
+    <span class="q-label-sm">Atom Count</span>
+    <span class="q-val-right">Ca=1, N=2, O=6. All correct.</span>
+  </div>
+  <div class="improve-box">
+    <b>Big improvement.</b> On Quiz 9, Kai wrote NO&#8323; charge as 2- (should be 1-). This time he got it right. This was his biggest single error on the real quiz.
+  </div>
+</div>
+
+<!-- Q6 -->
+<div class="q-block" style="border-color: #334155;">
+  <div class="q-header">
+    <span class="q-title">Q6: Formula Table (Skills 4.2.3, 4.2.4, 4.2.5)</span>
+    <span class="badge badge-skip">SKIPPED</span>
+  </div>
+  <div class="q-row">
+    <span class="q-val" style="color: #64748b;">Not assessed. Kai skipped this section per Marcus (won't be assessed on these skills).</span>
+  </div>
+</div>
+
+<!-- Q7 Row 1 -->
+<div class="q-block">
+  <div class="q-header">
+    <span class="q-title">Q7 Row 1: K&#8322;O &rarr; Name (Skill 4.2.6)</span>
+    <span class="badge badge-np">NP</span>
+  </div>
+  <div class="q-row">
+    <span class="q-label-sm">Kai wrote</span>
+    <span class="q-val-wrong">Dipotassium monoxide</span>
+  </div>
+  <div class="q-row">
+    <span class="q-label-sm">Correct</span>
+    <span class="q-val-right">potassium oxide</span>
+  </div>
+  <div class="error-box">
+    <b>Error: Used covalent prefixes on an ionic compound.</b> "Di-" and "mono-" are only for covalent compounds (two nonmetals). K&#8322;O is ionic (metal + nonmetal), so no prefixes. The charges already determine the ratio.
+  </div>
+</div>
+
+<!-- Q7 Row 2 -->
+<div class="q-block">
+  <div class="q-header">
+    <span class="q-title">Q7 Row 2: MgBr&#8322; &rarr; Name (Skill 4.2.6)</span>
+    <span class="badge badge-np">NP</span>
+  </div>
+  <div class="q-row">
+    <span class="q-label-sm">Kai wrote</span>
+    <span class="q-val-wrong">Magnesium Dibromide</span>
+  </div>
+  <div class="q-row">
+    <span class="q-label-sm">Correct</span>
+    <span class="q-val-right">magnesium bromide</span>
+  </div>
+  <div class="error-box">
+    <b>Same error as Row 1.</b> Used "Di-" prefix on ionic compound. Mg is always +2, Br is always -1, so the 2:1 ratio is automatic. No prefix needed.
+  </div>
+</div>
+
+<!-- Q7 Row 3 -->
+<div class="q-block">
+  <div class="q-header">
+    <span class="q-title">Q7 Row 3: FeCl&#8322; &rarr; Name (Skill 4.2.7)</span>
+    <span class="badge badge-np">NP</span>
+  </div>
+  <div class="q-row">
+    <span class="q-label-sm">Kai wrote</span>
+    <span class="q-val-wrong">Iron(I) DiChloride</span>
+  </div>
+  <div class="q-row">
+    <span class="q-label-sm">Correct</span>
+    <span class="q-val-right">iron(II) chloride</span>
+  </div>
+  <div class="error-box">
+    <b>Two errors:</b><br>
+    1. <b>Wrong Roman numeral.</b> Wrote (I) instead of (II). To find Fe's charge: 2 Cl each at -1 = -2 total. Fe must be +2 to balance. So the Roman numeral is (II), not (I).<br>
+    2. <b>Used "Di" prefix.</b> Same ionic vs covalent confusion. No prefixes for ionic compounds.
+  </div>
+</div>
+
+<!-- Q7 Row 4 -->
+<div class="q-block">
+  <div class="q-header">
+    <span class="q-title">Q7 Row 4: Ca(OH)&#8322; &rarr; Name (Skill 4.2.7)</span>
+    <span class="badge badge-p">P</span>
+  </div>
+  <div class="q-row">
+    <span class="q-label-sm">Kai wrote</span>
+    <span class="q-val-right">Calcium Hydroxide</span>
+  </div>
+  <div class="q-row">
+    <span class="q-label-sm">Correct</span>
+    <span class="q-val-right">calcium hydroxide</span>
+  </div>
+</div>
+
+<!-- Q7 Row 5 -->
+<div class="q-block">
+  <div class="q-header">
+    <span class="q-title">Q7 Row 5: (NH&#8324;)&#8323;PO&#8324; &rarr; Name (Skill 4.2.7)</span>
+    <span class="badge badge-p">P</span>
+  </div>
+  <div class="q-row">
+    <span class="q-label-sm">Kai wrote</span>
+    <span class="q-val-right">Ammonium Phosphate</span>
+  </div>
+  <div class="q-row">
+    <span class="q-label-sm">Correct</span>
+    <span class="q-val-right">ammonium phosphate</span>
+  </div>
+</div>
+
+<!-- Q7 Row 6 -->
+<div class="q-block">
+  <div class="q-header">
+    <span class="q-title">Q7 Row 6: Potassium nitrate &rarr; Formula (Skill 4.2.8)</span>
+    <span class="badge badge-p">P</span>
+  </div>
+  <div class="q-row">
+    <span class="q-label-sm">Kai wrote</span>
+    <span class="q-val-right">KNO&#8323;</span>
+  </div>
+  <div class="q-row">
+    <span class="q-label-sm">Correct</span>
+    <span class="q-val-right">KNO&#8323;</span>
+  </div>
+</div>
+
+<!-- Q7 Row 7 -->
+<div class="q-block">
+  <div class="q-header">
+    <span class="q-title">Q7 Row 7: Copper(II) sulfate &rarr; Formula (Skill 4.2.8)</span>
+    <span class="badge badge-p">P</span>
+  </div>
+  <div class="q-row">
+    <span class="q-label-sm">Kai wrote</span>
+    <span class="q-val-right">Cu(SO&#8324;)</span>
+  </div>
+  <div class="q-row">
+    <span class="q-label-sm">Correct</span>
+    <span class="q-val-right">CuSO&#8324;</span>
+  </div>
+  <div class="improve-box">
+    Correct compound. Minor note: parentheses around SO&#8324; are unnecessary when there is only one sulfate ion. Not a conceptual error.
+  </div>
+</div>
+
+<!-- Q7 Row 8 -->
+<div class="q-block">
+  <div class="q-header">
+    <span class="q-title">Q7 Row 8: Aluminum chloride &rarr; Formula (Skill 4.2.8)</span>
+    <span class="badge badge-np">NP</span>
+  </div>
+  <div class="q-row">
+    <span class="q-label-sm">Kai wrote</span>
+    <span class="q-val-wrong">AlCl&#8322;</span>
+  </div>
+  <div class="q-row">
+    <span class="q-label-sm">Correct</span>
+    <span class="q-val-right">AlCl&#8323;</span>
+  </div>
+  <div class="error-box">
+    <b>Wrong subscript.</b> Al is in group 3A, so its charge is +3. Each Cl is -1. You need <b>3</b> Cl to balance: (+3) + (-1)(3) = 0. Kai wrote 2, which gives (+3) + (-1)(2) = +1. Not neutral.
+  </div>
+</div>
+
+<!-- Q7 Row 9 -->
+<div class="q-block">
+  <div class="q-header">
+    <span class="q-title">Q7 Row 9: Barium phosphate &rarr; Formula (Skill 4.2.8)</span>
+    <span class="badge badge-np">NP</span>
+  </div>
+  <div class="q-row">
+    <span class="q-label-sm">Kai wrote</span>
+    <span class="q-val-wrong">Ba(PO&#8324;)</span>
+  </div>
+  <div class="q-row">
+    <span class="q-label-sm">Correct</span>
+    <span class="q-val-right">Ba&#8323;(PO&#8324;)&#8322;</span>
+  </div>
+  <div class="error-box">
+    <b>Didn't criss-cross the charges.</b> Ba is +2 and PO&#8324; is -3. Since the charges are different sizes, you criss-cross: the 3 from phosphate becomes Ba's subscript (Ba&#8323;), and the 2 from barium becomes phosphate's subscript ((PO&#8324;)&#8322;). Check: (+2)(3) + (-3)(2) = 0. Kai wrote 1:1, which gives +2 + (-3) = -1. Not neutral.
+  </div>
+</div>
+
+<!-- Diagnosis -->
+<div class="diagnosis">
+  <h3>Diagnosis: What Kai Needs to Study</h3>
+  <ol>
+    <li>
+      <b>Ionic vs Covalent naming (4.2.6, FeCl&#8322;)</b><br>
+      This is Kai's #1 gap right now. He is applying covalent prefixes (mono-, di-, tri-) to ionic compounds. The rule is simple: if the first element is a <b>metal</b>, it's ionic, and you NEVER use prefixes. Prefixes are only for compounds where BOTH elements are nonmetals (like CO&#8322; = carbon dioxide). This caused errors on Q7 Rows 1, 2, and 3.
+    </li>
+    <li>
+      <b>Calculating transition metal charge from formula (FeCl&#8322;)</b><br>
+      Kai wrote Iron(I) but it should be Iron(II). The method: figure out the total negative charge from the anions (2 Cl&#8315; = -2), then the metal must be the opposite (+2). The Roman numeral matches the metal's charge, not the number of anions.
+    </li>
+    <li>
+      <b>Criss-cross method for unequal charges (AlCl&#8323;, Ba&#8323;(PO&#8324;)&#8322;)</b><br>
+      When the charges aren't equal, the number from one charge becomes the subscript of the other ion. Kai needs to practice this for cases where the charges don't cancel 1:1. Always check by multiplying charge x subscript and confirming the total is zero.
+    </li>
+  </ol>
+</div>
+
+<!-- What went well -->
+<div class="diagnosis" style="border-color: #14532d;">
+  <h3 style="color: #22c55e;">What Went Well</h3>
+  <ol>
+    <li><b>Neutrality check (4.2.1):</b> Went from NP to P. Correctly assessed both compounds.</li>
+    <li><b>NO&#8323; charge (4.2.2):</b> Got it right this time (1-). This was his biggest error on Quiz 9 (wrote 2-).</li>
+    <li><b>Type III naming (4.2.7):</b> Correctly named calcium hydroxide and ammonium phosphate. Knows polyatomic ion names.</li>
+    <li><b>Simple formulas from names:</b> KNO&#8323; and CuSO&#8324; both correct. Can look up polyatomic ions and build formulas when charges are equal.</li>
+    <li><b>Atom counting:</b> Ca=1, N=2, O=6 all correct. Understands parentheses distribute the subscript.</li>
+  </ol>
+</div>
+
+<div class="footer">
+  Motor City Chemistry . Practice Test Grade Report . Standard 4.2 . Graded 02/26/2026
+</div>
+
+</div>
+</body>
+</html>
