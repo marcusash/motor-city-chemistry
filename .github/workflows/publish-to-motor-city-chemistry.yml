@@ -1,0 +1,39 @@
+name: Publish to Motor City Chemistry
+
+on:
+  workflow_dispatch:
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+
+    steps:
+      - name: Checkout enterprise repo
+        uses: actions/checkout@v4
+        with:
+          repository: marcusash_microsoft/motor-city-chemistry
+          path: source
+
+      - name: Clone personal repo
+        run: |
+          git clone https://x-access-token:${{ secrets.MOTOR_CITY_CHEM_TOKEN }}@github.com/marcusash/motor-city-chemistry.git target
+
+      - name: Copy files to personal repo
+        run: |
+          cp source/index.html target/index.html
+          cp source/README.md target/README.md
+          rm -rf target/artifacts
+          cp -r source/artifacts target/artifacts
+
+      - name: Commit and push
+        run: |
+          cd target
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git config user.name "github-actions[bot]"
+          git add -A
+          git commit -m "sync from motor-city-chemistry" && git push origin master || echo "Nothing to commit"
+
+      - name: Echo Pages URL
+        run: echo "Published to https://marcusash.github.io/motor-city-chemistry"
