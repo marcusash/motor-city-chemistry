@@ -1,74 +1,116 @@
-# Copilot Instructions — Motor City Chemistry
+# Copilot Instructions: Motor City Chemistry
 
-> This file is read by the GitHub Copilot Coding Agent before every task in this repo.
-> Keep it accurate and current. Owner: GA (Grind Lead Architect).
+> Read this before every task. It tells you what this project is, how it works, and what quality looks like.
 
 ## What This Project Is
 
-Motor City Chemistry is an adaptive chemistry learning tool built for Kai, a high school student.
-The goal: make chemistry engaging, visual, and personalized. Think Khan Academy but smaller, faster, and built for one student.
+Motor City Chemistry is an adaptive chemistry study tool for one student: Kai Ash (15, SAAS, Chem 10). It generates practice tests that target his specific weak areas, grades his scanned handwritten answers, and tracks improvement over time.
 
-## Who Uses It
+The workflow: Kai takes tests on paper. His work is scanned. The system grades it using GPT-4o vision OCR, identifies per-skill gaps, and generates the next practice test.
 
-- **Kai** — the student. High school level. Needs clear explanations, visual aids, encouraging feedback.
-- **Marcus** — the parent/owner. Reviews content and outcomes. Approves what ships.
+## Tech Stack (read carefully)
 
-## Tech Stack
+- **HTML + CSS only** for all student-facing content. Zero JavaScript. No frameworks.
+- **Node.js scripts** (CJS) for the grading pipeline, test generation, and OCR.
+- **JSON files** in `data/` for question banks, answer keys, and grade data.
+- **GPT-4o** via GitHub Models API for OCR of handwritten chemistry notation.
+- **No package.json yet.** If your task needs one, create it with `npm init -y` and add dependencies explicitly.
+- **No build step.** HTML files are opened directly in a browser or iOS Files app.
 
-- Language: TypeScript
-- Framework: Next.js (or static if not yet scaffolded — check package.json)
-- Data: JSON files in /data
-- Tests: Jest
-- CI: GitHub Actions
-- Hosting: GitHub Pages (via personal repo marcusash/motor-city-chemistry)
+## Critical Constraints
 
-## Code Standards
+1. **No JavaScript in HTML files.** Kai opens HTML files on his iPhone in the iOS Files app preview, which does not execute JavaScript. No `<script>` tags. No `<details>/<summary>` (broken in Files app). All content must be flat HTML+CSS, always visible.
 
-- All new features must include unit tests. Tests live in /tests.
-- Use descriptive variable names. This codebase may be read by students.
-- Comments are encouraged — explain the chemistry concept, not just the code.
-- TypeScript strict mode. No implicit any.
-- No hardcoded secrets. Use environment variables or GitHub Secrets.
+2. **Paper first.** Tests are printed and taken with pencil on paper. The system works with scanned input, not interactive screens.
+
+3. **Teacher format matching.** Practice tests must look like Kai's real school quizzes: same question numbering style (Q4, Q5, etc.), same table structures, same reference tables. Familiar format reduces test anxiety.
+
+4. **Verified correctness.** Every answer in every answer key must be chemically correct. All charge balances must be verified. If you generate chemistry content, double-check: ion charges, formula subscripts, compound names (IUPAC), and that all formulas are electrically neutral.
+
+5. **Standards-based grading.** Kai's teacher grades P (Proficient) or NP (Not Proficient) per skill, with a 67% threshold. The system must match this. Do not invent a different grading scheme.
 
 ## Repository Structure
 
-\\\
-data/          -- JSON data files (elements, compounds, questions, etc.)
-docs/          -- Architecture and content documentation
-scripts/       -- Utility and build scripts
-tests/         -- Unit and integration tests
-shared/        -- Shared utilities and types
-artifacts/     -- Generated outputs (do not commit generated files here manually)
-.squad/        -- Squad workflow config (do not modify unless you are GP or FO)
-.github/       -- CI workflows and templates (do not modify workflows unless you are GP)
-\\\
+```
+artifacts/         Student-facing HTML files (practice tests, answer keys, grade reports)
+data/              JSON data files (question banks, answer keys, grade data)
+docs/              Project documentation and briefs
+scripts/           Node.js pipeline scripts (OCR, grading, test generation)
+shared/            Shared utility functions (formula normalizer, name normalizer)
+tests/             Unit tests for grading logic and normalizers
+.squad/            Squad workflow config (DO NOT MODIFY)
+.github/           CI workflows and templates (DO NOT MODIFY workflows)
+```
+
+## File Naming
+
+- Practice tests: `chem-{standard}-practice-test-{n}.html`
+- Answer keys: `chem-{standard}-answer-key-{n}.html` (HTML) and `.json` (machine-readable)
+- Grade reports: `kai-{test-name}-grade-report.html`
+- Scripts: descriptive kebab-case in `scripts/`, `.cjs` extension
+
+## Chemistry Content Rules
+
+- Use IUPAC naming conventions for all compounds.
+- Distinguish ionic vs covalent naming: ionic compounds never use prefixes (mono-, di-). Covalent compounds do.
+- Transition metals require Roman numeral notation: Iron(II) chloride, not ferrous chloride.
+- All formulas must be charge-balanced. Verify: (cation charge x subscript) + (anion charge x subscript) = 0.
+- Difficulty levels: 1 (intro), 2 (standard), 3 (advanced). Tag all content.
+- Include reference tables (polyatomic ions, common charges) in practice tests.
+
+## Answer Key Format (HTML)
+
+Answer keys use this visual pattern:
+- **Hint boxes:** Yellow background, show before the answer. Give a nudge without revealing the answer.
+- **Answer boxes:** Green background, show the correct answer with step-by-step rationale.
+- **"Why not X?" callouts:** Address common mistakes Kai has made (e.g., "Why not dipotassium monoxide? Because ionic compounds don't use prefixes.").
+- All boxes are always visible (no toggles, no JS, no interaction).
+
+## Answer Key Format (JSON)
+
+Machine-readable answer keys follow this schema:
+```json
+{
+  "standard": "4.2",
+  "testId": "practice-test-1",
+  "questions": [
+    {
+      "id": "Q4a",
+      "skill": "4.2.1",
+      "question": "Is CaCl2 electrically neutral?",
+      "answer": "Yes",
+      "verification": "Ca2+ (2+) + 2 Cl- (2-) = 0",
+      "difficulty": 2,
+      "hints": ["Check: do the total positive charges equal the total negative charges?"]
+    }
+  ]
+}
+```
+
+## Formula/Name Normalization Rules
+
+When comparing student answers to correct answers:
+- Strip spaces, lowercase, convert Unicode subscripts to ASCII digits
+- Accept equivalent notations: `Cu(SO4)` = `CuSO4` when subscript is 1
+- For names: lowercase, collapse whitespace, normalize Roman numeral spacing
+- Accept common alternates: "ferrous chloride" for "iron(II) chloride"
 
 ## What a Complete PR Looks Like
 
-A PR is only complete when ALL of these are true:
-1. The exit criteria listed in the linked issue are fully met (check each one)
-2. Unit tests exist for all new logic and they pass
-3. No TypeScript errors (tsc --noEmit passes)
-4. README.md updated if a new feature was added
-5. No files modified outside the scope of the issue
+1. All exit criteria from the linked issue are met (check each one).
+2. Chemistry content is factually correct and charge-balanced.
+3. HTML files render correctly with no JavaScript. Test by opening the file in a browser.
+4. If scripts were added: they run with `node scripts/<name>.cjs` and produce expected output.
+5. If tests were added: they pass.
+6. README.md updated if a new feature or file was added.
+7. No files modified outside the scope of the issue.
+8. Commit messages are clear and descriptive.
 
 ## Never Do These Things
 
-- Do not modify .squad/team.md
-- Do not modify .github/workflows/ unless the issue explicitly asks for it
-- Do not commit package-lock.json changes unless dependencies actually changed
-- Do not add TODO comments without a linked GitHub issue number
-- Do not hardcode Kai's name in logic — use config or props
-
-## Chemistry Content Standards
-
-- All chemistry facts must be accurate. When in doubt, cite a source in a comment.
-- Difficulty levels: 1 (intro), 2 (standard), 3 (advanced). Label all content.
-- Questions must have exactly one correct answer unless explicitly specified otherwise.
-- Use IUPAC naming conventions for all chemical compounds.
-
-## Key Docs
-
-- Architecture: docs/ARCHITECTURE.md (create if missing)
-- Content plan: docs/content-plan.md (create if missing)
-- Data schema: docs/data-schema.md (create if missing)
+- Do not add JavaScript to HTML files in `artifacts/`.
+- Do not modify `.squad/` or `.github/workflows/`.
+- Do not hardcode Kai's name in logic. Use config or function parameters.
+- Do not publish an answer key without verifying every charge balance.
+- Do not use `<details>`, `<summary>`, or any interactive HTML elements.
+- Do not add CSS that depends on `:hover` or other interaction states for content visibility.
