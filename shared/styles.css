@@ -1,0 +1,50 @@
+/* ---- Light Mode (default) ---- */
+:root {
+    --bg-page: #F4F5F9;
+    --bg-card: #FFFFFF;
+    --text-primary: #1A1F36;
+    --text-secondary: #5E6378;
+    --text-inverse: #FFFFFF;
+    --accent-red: #C8102E;
+    --accent-blue: #1D42BA;
+    --accent-navy: #002D62;
+    --border-default: #C8CCD8;
+    --border-subtle: #E2E5EF;
+    --shadow-card: 0 2px 8px rgba(0, 45, 98, 0.06);
+}
+
+/* ---- Dark Mode (Arena Mode) ---- */
+body.arena-mode {
+    --bg-page: #0A0E1A;
+    --bg-card: #141B2D;
+    --text-primary: #E0E4EB;
+    --text-secondary: #8B92A8;
+    --text-inverse: #0A0E1A;
+    --accent-red: #E8334A;
+    --accent-blue: #4A72E8;
+    --accent-navy: #A0B8E8;
+    --border-default: #2A3352;
+    --border-subtle: #1E2742;
+    --shadow-card: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* ---- Arena Mode Toggle Button ---- */
+.arena-toggle {
+    position: fixed;
+    top: 16px;
+    right: 16px;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 1px solid var(--border-default);
+    background: var(--bg-card);
+    font-size: 20px;
+    cursor: pointer;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--shadow-card);
+    z-index: 100;
+    line-height: 1;
+}

@@ -2,7 +2,9 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Kai's Chem 10 Quiz 9 — Grade Report + Autograder Design</title>
+<link rel="stylesheet" href="../shared/styles.css">
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -10,8 +12,8 @@
     font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
     font-size: 14px;
     line-height: 1.5;
-    color: #1a1a1a;
-    background: #0f1117;
+    color: var(--text-primary);
+    background: var(--bg-page);
     padding: 32px;
   }
 
@@ -22,23 +24,24 @@
 
   /* ---- HEADER ---- */
   .report-header {
-    background: #1a1d23;
+    background: var(--bg-card);
     border-radius: 12px;
     padding: 28px 32px;
     margin-bottom: 24px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    box-shadow: var(--shadow-card);
   }
 
   .report-header h1 {
-    color: #fff;
+    color: var(--text-primary);
     font-size: 22px;
     font-weight: 700;
   }
 
   .report-header .meta {
-    color: #94a3b8;
+    color: var(--text-secondary);
     font-size: 13px;
     text-align: right;
     line-height: 1.7;
@@ -53,14 +56,15 @@
   }
 
   .summary-card {
-    background: #1a1d23;
+    background: var(--bg-card);
     border-radius: 10px;
     padding: 20px 24px;
     text-align: center;
+    box-shadow: var(--shadow-card);
   }
 
   .summary-card .label {
-    color: #94a3b8;
+    color: var(--text-secondary);
     font-size: 11px;
     text-transform: uppercase;
     letter-spacing: 1px;
@@ -73,7 +77,7 @@
   }
 
   .summary-card .sub {
-    color: #94a3b8;
+    color: var(--text-secondary);
     font-size: 12px;
     margin-top: 4px;
   }
@@ -82,14 +86,15 @@
   .color-red { color: #ef4444; }
   .color-amber { color: #f59e0b; }
   .color-blue { color: #3b82f6; }
-  .color-white { color: #fff; }
+  .color-white { color: var(--text-primary); }
 
   /* ---- STANDARD SECTIONS ---- */
   .standard-section {
-    background: #1a1d23;
+    background: var(--bg-card);
     border-radius: 10px;
     padding: 24px 28px;
     margin-bottom: 20px;
+    box-shadow: var(--shadow-card);
   }
 
   .standard-header {
@@ -98,11 +103,11 @@
     align-items: center;
     margin-bottom: 16px;
     padding-bottom: 12px;
-    border-bottom: 1px solid #2a2d35;
+    border-bottom: 1px solid var(--border-subtle);
   }
 
   .standard-header h2 {
-    color: #fff;
+    color: var(--text-primary);
     font-size: 16px;
     font-weight: 700;
   }
@@ -127,19 +132,19 @@
 
   .skill-table th {
     text-align: left;
-    color: #64748b;
+    color: var(--text-secondary);
     font-size: 11px;
     text-transform: uppercase;
     letter-spacing: 0.5px;
     padding: 6px 12px;
-    border-bottom: 1px solid #2a2d35;
+    border-bottom: 1px solid var(--border-subtle);
   }
 
   .skill-table td {
     padding: 10px 12px;
-    color: #e2e8f0;
+    color: var(--text-primary);
     font-size: 13px;
-    border-bottom: 1px solid #1e2028;
+    border-bottom: 1px solid var(--border-subtle);
   }
 
   .skill-table tr:last-child td {
@@ -149,8 +154,8 @@
   .skill-code {
     font-family: 'Cascadia Code', 'Fira Code', monospace;
     font-size: 12px;
-    color: #94a3b8;
-    background: #252830;
+    color: var(--text-secondary);
+    background: var(--border-subtle);
     padding: 2px 8px;
     border-radius: 4px;
   }
@@ -169,7 +174,7 @@
   .pill-np { background: #7f1d1d; color: #f87171; }
 
   .kai-answer {
-    color: #94a3b8;
+    color: var(--text-secondary);
     font-size: 12px;
     font-style: italic;
     margin-top: 4px;
@@ -183,21 +188,21 @@
 
   /* ---- QUESTION DETAIL ---- */
   .question-detail {
-    background: #252830;
+    background: var(--border-subtle);
     border-radius: 8px;
     padding: 14px 18px;
     margin: 8px 0;
   }
 
   .question-detail .q-label {
-    color: #60a5fa;
+    color: var(--accent-blue);
     font-size: 12px;
     font-weight: 600;
     margin-bottom: 4px;
   }
 
   .question-detail .q-answer {
-    color: #e2e8f0;
+    color: var(--text-primary);
     font-size: 13px;
   }
 
@@ -211,11 +216,12 @@
 
   /* ---- DIAGNOSIS ---- */
   .diagnosis-section {
-    background: #1a1d23;
+    background: var(--bg-card);
     border-radius: 10px;
     padding: 24px 28px;
     margin-bottom: 20px;
     border-left: 4px solid #f59e0b;
+    box-shadow: var(--shadow-card);
   }
 
   .diagnosis-section h2 {
@@ -231,7 +237,7 @@
   }
 
   .diagnosis-list li {
-    color: #e2e8f0;
+    color: var(--text-primary);
     font-size: 13px;
     padding: 6px 0;
     padding-left: 20px;
@@ -254,11 +260,12 @@
 
   /* ---- AUTOGRADER SECTION ---- */
   .autograder-section {
-    background: #1a1d23;
+    background: var(--bg-card);
     border-radius: 10px;
     padding: 28px 32px;
     margin-top: 32px;
     border-top: 3px solid #3b82f6;
+    box-shadow: var(--shadow-card);
   }
 
   .autograder-section h2 {
@@ -277,7 +284,7 @@
 
   .flow-step {
     flex: 1;
-    background: #252830;
+    background: var(--border-subtle);
     padding: 16px 14px;
     text-align: center;
     position: relative;
@@ -300,7 +307,7 @@
   }
 
   .flow-step .step-title {
-    color: #fff;
+    color: var(--text-primary);
     font-size: 12px;
     font-weight: 600;
     display: block;
@@ -308,7 +315,7 @@
   }
 
   .flow-step .step-desc {
-    color: #94a3b8;
+    color: var(--text-secondary);
     font-size: 11px;
     line-height: 1.4;
   }
@@ -320,7 +327,7 @@
     justify-content: center;
     color: #3b82f6;
     font-size: 18px;
-    background: #1a1d23;
+    background: var(--bg-card);
   }
 
   /* ---- GRADING RULES ---- */
@@ -329,14 +336,14 @@
   }
 
   .rule-block {
-    background: #252830;
+    background: var(--border-subtle);
     border-radius: 8px;
     padding: 16px 20px;
     margin: 10px 0;
   }
 
   .rule-block h4 {
-    color: #e2e8f0;
+    color: var(--text-primary);
     font-size: 13px;
     font-weight: 600;
     margin-bottom: 8px;
@@ -345,14 +352,14 @@
   .rule-block code {
     font-family: 'Cascadia Code', 'Fira Code', monospace;
     font-size: 12px;
-    color: #93c5fd;
-    background: #1a1d23;
+    color: var(--accent-blue);
+    background: var(--bg-card);
     padding: 2px 6px;
     border-radius: 3px;
   }
 
   .rule-block p {
-    color: #94a3b8;
+    color: var(--text-secondary);
     font-size: 12px;
     margin: 4px 0;
     line-height: 1.6;
@@ -361,43 +368,44 @@
   .rule-block .example {
     margin: 6px 0;
     padding: 8px 12px;
-    background: #1a1d23;
+    background: var(--bg-card);
     border-radius: 4px;
     font-family: 'Cascadia Code', 'Fira Code', monospace;
     font-size: 12px;
-    color: #a5b4fc;
+    color: var(--accent-blue);
   }
 
   .tech-note {
-    background: #1e293b;
-    border: 1px solid #334155;
+    background: var(--bg-card);
+    border: 1px solid var(--border-default);
     border-radius: 8px;
     padding: 14px 18px;
     margin: 12px 0;
   }
 
   .tech-note h4 {
-    color: #60a5fa;
+    color: var(--accent-blue);
     font-size: 12px;
     font-weight: 600;
     margin-bottom: 6px;
   }
 
   .tech-note p {
-    color: #94a3b8;
+    color: var(--text-secondary);
     font-size: 12px;
     line-height: 1.6;
   }
 </style>
 </head>
 <body>
+<button class="arena-toggle" aria-label="Toggle dark mode">🌙</button>
 <div class="canvas">
 
 <!-- ========== HEADER ========== -->
 <div class="report-header">
   <div>
     <h1>Kai's Chemistry Grade Report</h1>
-    <div style="color: #94a3b8; font-size: 13px; margin-top: 4px;">Chem 10 Quiz 9, Standards 4.1 / 4.2 / 4.3</div>
+    <div style="color: var(--text-secondary); font-size: 13px; margin-top: 4px;">Chem 10 Quiz 9, Standards 4.1 / 4.2 / 4.3</div>
   </div>
   <div class="meta">
     Teacher: Martin<br>
@@ -635,7 +643,7 @@
       <td><span class="grade-pill pill-np">NP</span></td>
     </tr>
   </table>
-  <p style="color: #64748b; font-size: 12px; margin-top: 10px;">Section 4.3 was marked "PRACTICE" on the rubric. Not counted toward graded assessment. Questions for 4.3 were not on pages 2-3 of this scan.</p>
+  <p style="color: var(--text-secondary); font-size: 12px; margin-top: 10px;">Section 4.3 was marked "PRACTICE" on the rubric. Not counted toward graded assessment. Questions for 4.3 were not on pages 2-3 of this scan.</p>
 </div>
 
 <!-- ========== DIAGNOSIS ========== -->
@@ -696,7 +704,7 @@
   </div>
 
   <!-- GRADING RULES -->
-  <h3 style="color: #e2e8f0; font-size: 15px; margin: 20px 0 12px 0;">How the Grader Works</h3>
+  <h3 style="color: var(--text-primary); font-size: 15px; margin: 20px 0 12px 0;">How the Grader Works</h3>
 
   <div class="grading-rules">
 
@@ -761,7 +769,7 @@
   </div>
 
   <!-- OCR SPECIFICS -->
-  <h3 style="color: #e2e8f0; font-size: 15px; margin: 20px 0 12px 0;">Chemistry OCR: How GPT-4o Reads Handwriting</h3>
+  <h3 style="color: var(--text-primary); font-size: 15px; margin: 20px 0 12px 0;">Chemistry OCR: How GPT-4o Reads Handwriting</h3>
 
   <div class="tech-note">
     <h4>The OCR Prompt</h4>
@@ -787,7 +795,7 @@
   </div>
 
   <!-- WHAT KAI SEES -->
-  <h3 style="color: #e2e8f0; font-size: 15px; margin: 20px 0 12px 0;">What Kai Sees at Each Step</h3>
+  <h3 style="color: var(--text-primary); font-size: 15px; margin: 20px 0 12px 0;">What Kai Sees at Each Step</h3>
 
   <div class="rule-block">
     <h4>Step 5: Review Screen</h4>
@@ -816,5 +824,20 @@ Q23. Potassium chloride → Write the formula
 </div>
 
 </div>
+
+<script>
+(function() {
+  var mode = localStorage.getItem('mcc-theme');
+  if (mode === 'dark') document.body.classList.add('arena-mode');
+  var btn = document.querySelector('.arena-toggle');
+  btn.textContent = document.body.classList.contains('arena-mode') ? '\u2600\uFE0F' : '\uD83C\uDF19';
+  btn.addEventListener('click', function() {
+    document.body.classList.toggle('arena-mode');
+    localStorage.setItem('mcc-theme', document.body.classList.contains('arena-mode') ? 'dark' : 'light');
+    this.textContent = document.body.classList.contains('arena-mode') ? '\u2600\uFE0F' : '\uD83C\uDF19';
+  });
+})();
+</script>
+
 </body>
 </html>

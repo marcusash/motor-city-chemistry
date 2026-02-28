@@ -4,12 +4,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Kai's Practice Test Grade Report</title>
+<link rel="stylesheet" href="../shared/styles.css">
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body {
     font-family: -apple-system, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
-    background: #111318;
-    color: #e2e8f0;
+    background: var(--bg-page);
+    color: var(--text-primary);
     padding: 24px;
     line-height: 1.5;
   }
@@ -21,10 +22,10 @@
     align-items: baseline;
     margin-bottom: 6px;
   }
-  .header-left { font-size: 13px; color: #94a3b8; font-weight: 600; }
-  .header-right { font-size: 13px; color: #94a3b8; }
-  h1 { font-size: 22px; color: #f1f5f9; margin-bottom: 4px; }
-  .subtitle { font-size: 14px; color: #64748b; margin-bottom: 24px; }
+  .header-left { font-size: 13px; color: var(--text-secondary); font-weight: 600; }
+  .header-right { font-size: 13px; color: var(--text-secondary); }
+  h1 { font-size: 22px; color: var(--text-primary); margin-bottom: 4px; }
+  .subtitle { font-size: 14px; color: var(--text-secondary); margin-bottom: 24px; }
 
   /* Summary cards */
   .summary-row {
@@ -36,28 +37,29 @@
   .summary-card {
     flex: 1;
     min-width: 140px;
-    background: #1e2028;
-    border: 1px solid #2d3141;
+    background: var(--bg-card);
+    border: 1px solid var(--border-default);
     border-radius: 8px;
     padding: 16px;
     text-align: center;
+    box-shadow: var(--shadow-card);
   }
-  .summary-card .label { font-size: 11px; color: #64748b; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px; }
+  .summary-card .label { font-size: 11px; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px; }
   .summary-card .value { font-size: 28px; font-weight: 700; }
-  .summary-card .detail { font-size: 12px; color: #94a3b8; margin-top: 4px; }
+  .summary-card .detail { font-size: 12px; color: var(--text-secondary); margin-top: 4px; }
   .val-p { color: #22c55e; }
   .val-np { color: #ef4444; }
-  .val-skip { color: #64748b; }
+  .val-skip { color: var(--text-secondary); }
   .val-improved { color: #3b82f6; }
 
   /* Skill table */
   .section-title {
     font-size: 16px;
     font-weight: 700;
-    color: #f1f5f9;
+    color: var(--text-primary);
     margin: 28px 0 10px 0;
     padding-bottom: 6px;
-    border-bottom: 1px solid #2d3141;
+    border-bottom: 1px solid var(--border-subtle);
   }
 
   table {
@@ -67,21 +69,21 @@
     font-size: 14px;
   }
   th {
-    background: #1a1d24;
-    color: #94a3b8;
+    background: var(--bg-card);
+    color: var(--text-secondary);
     font-size: 11px;
     text-transform: uppercase;
     letter-spacing: 0.5px;
     padding: 10px 12px;
     text-align: left;
-    border-bottom: 1px solid #2d3141;
+    border-bottom: 1px solid var(--border-subtle);
   }
   td {
     padding: 10px 12px;
-    border-bottom: 1px solid #1e2028;
+    border-bottom: 1px solid var(--border-subtle);
     vertical-align: top;
   }
-  tr:hover { background: #1a1d24; }
+  tr:hover { background: var(--border-subtle); }
 
   .badge {
     display: inline-block;
@@ -99,11 +101,12 @@
 
   /* Question detail blocks */
   .q-block {
-    background: #1a1d24;
-    border: 1px solid #2d3141;
+    background: var(--bg-card);
+    border: 1px solid var(--border-default);
     border-radius: 8px;
     padding: 14px 16px;
     margin: 10px 0;
+    box-shadow: var(--shadow-card);
   }
   .q-header {
     display: flex;
@@ -111,7 +114,7 @@
     align-items: center;
     margin-bottom: 8px;
   }
-  .q-title { font-weight: 700; font-size: 15px; color: #e2e8f0; }
+  .q-title { font-weight: 700; font-size: 15px; color: var(--text-primary); }
 
   .q-row {
     display: flex;
@@ -119,8 +122,8 @@
     margin: 6px 0;
     font-size: 14px;
   }
-  .q-label-sm { color: #64748b; min-width: 100px; flex-shrink: 0; }
-  .q-val { color: #cbd5e1; }
+  .q-label-sm { color: var(--text-secondary); min-width: 100px; flex-shrink: 0; }
+  .q-val { color: var(--text-primary); }
   .q-val-wrong { color: #fca5a5; }
   .q-val-right { color: #86efac; }
 
@@ -149,26 +152,28 @@
 
   /* Diagnosis */
   .diagnosis {
-    background: #1a1d24;
-    border: 1px solid #2d3141;
+    background: var(--bg-card);
+    border: 1px solid var(--border-default);
     border-radius: 8px;
     padding: 18px 20px;
     margin: 20px 0;
+    box-shadow: var(--shadow-card);
   }
-  .diagnosis h3 { font-size: 16px; color: #f1f5f9; margin-bottom: 10px; }
+  .diagnosis h3 { font-size: 16px; color: var(--text-primary); margin-bottom: 10px; }
   .diagnosis ol { padding-left: 20px; }
-  .diagnosis li { margin: 8px 0; font-size: 14px; color: #cbd5e1; }
-  .diagnosis li b { color: #f1f5f9; }
+  .diagnosis li { margin: 8px 0; font-size: 14px; color: var(--text-primary); }
+  .diagnosis li b { color: var(--text-primary); }
 
   .footer {
     text-align: center;
     margin-top: 32px;
     font-size: 12px;
-    color: #475569;
+    color: var(--text-secondary);
   }
 </style>
 </head>
 <body>
+<button class="arena-toggle" aria-label="Toggle dark mode">🌙</button>
 <div class="container">
 
 <div class="header">
@@ -335,13 +340,13 @@
 </div>
 
 <!-- Q6 -->
-<div class="q-block" style="border-color: #334155;">
+<div class="q-block" style="border-color: var(--border-subtle);">
   <div class="q-header">
     <span class="q-title">Q6: Formula Table (Skills 4.2.3, 4.2.4, 4.2.5)</span>
     <span class="badge badge-skip">SKIPPED</span>
   </div>
   <div class="q-row">
-    <span class="q-val" style="color: #64748b;">Not assessed. Kai skipped this section per Marcus (won't be assessed on these skills).</span>
+    <span class="q-val" style="color: var(--text-secondary);">Not assessed. Kai skipped this section per Marcus (won't be assessed on these skills).</span>
   </div>
 </div>
 
@@ -545,5 +550,20 @@
 </div>
 
 </div>
+
+<script>
+(function() {
+  var mode = localStorage.getItem('mcc-theme');
+  if (mode === 'dark') document.body.classList.add('arena-mode');
+  var btn = document.querySelector('.arena-toggle');
+  btn.textContent = document.body.classList.contains('arena-mode') ? '\u2600\uFE0F' : '\uD83C\uDF19';
+  btn.addEventListener('click', function() {
+    document.body.classList.toggle('arena-mode');
+    localStorage.setItem('mcc-theme', document.body.classList.contains('arena-mode') ? 'dark' : 'light');
+    this.textContent = document.body.classList.contains('arena-mode') ? '\u2600\uFE0F' : '\uD83C\uDF19';
+  });
+})();
+</script>
+
 </body>
 </html>
