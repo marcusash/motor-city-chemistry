@@ -1,0 +1,30 @@
+name: Publish to motor-city-chemistry
+on:
+  workflow_dispatch:
+
+jobs:
+  publish:
+    name: Sync to motor-city-chemistry
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Push to motor-city-chemistry
+        env:
+          MCC_TOKEN: ${{ secrets.MOTOR_CITY_CHEM_TOKEN }}
+        run: |
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+          git clone https://x-access-token:${MCC_TOKEN}@github.com/marcusash/motor-city-chemistry.git /tmp/mcc
+          [ -f "index.html" ] && cp "index.html" /tmp/mcc/index.html && echo "synced index.html"
+          [ -f "README.md" ] && cp "README.md" /tmp/mcc/README.md && echo "synced README.md"
+          [ -d "artifacts" ] && cp -r artifacts /tmp/mcc/ && echo "synced artifacts/"
+          cd /tmp/mcc
+          git add -A
+          if git diff --staged --quiet; then
+            echo "Nothing to publish"
+            exit 0
+          fi
+          git commit -m "sync from motor-city-chemistry"
+          git push https://x-access-token:${MCC_TOKEN}@github.com/marcusash/motor-city-chemistry.git main
+          echo "Published to https://marcusash.github.io/motor-city-chemistry/"
