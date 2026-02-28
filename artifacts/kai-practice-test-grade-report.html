@@ -556,11 +556,15 @@
   var mode = localStorage.getItem('mcc-theme');
   if (mode === 'dark') document.body.classList.add('arena-mode');
   var btn = document.querySelector('.arena-toggle');
-  btn.textContent = document.body.classList.contains('arena-mode') ? '\u2600\uFE0F' : '\uD83C\uDF19';
+  var dark = document.body.classList.contains('arena-mode');
+  btn.textContent = dark ? '\u2600\uFE0F' : '\uD83C\uDF19';
+  btn.setAttribute('aria-label', dark ? 'Switch to light mode' : 'Switch to dark mode');
   btn.addEventListener('click', function() {
     document.body.classList.toggle('arena-mode');
-    localStorage.setItem('mcc-theme', document.body.classList.contains('arena-mode') ? 'dark' : 'light');
-    this.textContent = document.body.classList.contains('arena-mode') ? '\u2600\uFE0F' : '\uD83C\uDF19';
+    var isDark = document.body.classList.contains('arena-mode');
+    localStorage.setItem('mcc-theme', isDark ? 'dark' : 'light');
+    this.textContent = isDark ? '\u2600\uFE0F' : '\uD83C\uDF19';
+    this.setAttribute('aria-label', isDark ? 'Switch to light mode' : 'Switch to dark mode');
   });
 })();
 </script>
