@@ -16,9 +16,6 @@ permissions:
 jobs:
   heartbeat:
     runs-on: [self-hosted, Windows]
-    defaults:
-      run:
-        shell: bash
     steps:
       - uses: actions/checkout@v4
 

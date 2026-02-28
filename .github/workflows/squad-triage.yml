@@ -12,9 +12,6 @@ jobs:
   triage:
     if: github.event.label.name == 'squad'
     runs-on: [self-hosted, Windows]
-    defaults:
-      run:
-        shell: bash
     steps:
       - uses: actions/checkout@v4
 
