@@ -149,6 +149,58 @@
     font-size: 12px;
     color: #999;
   }
+
+  @media print {
+    body { padding: 0; font-size: 14px; background: #fff; }
+    .instructions {
+      background: #fff !important;
+      border: 1px solid #999;
+      border-left: 3px solid #555;
+    }
+    .section-header {
+      background: #f0f0f0 !important;
+      border: 1px solid #999;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+    .question-block {
+      page-break-inside: avoid;
+      border: 1px solid #ccc;
+    }
+    .hint-box {
+      background: #fff !important;
+      border: 1px solid #999;
+    }
+    .hint-label { color: #333 !important; }
+    .hint-box p { color: #333 !important; }
+    .answer-box {
+      background: #fff !important;
+      border: 1px solid #999;
+    }
+    .answer-label { color: #333 !important; }
+    .answer-box p { color: #333 !important; }
+    .the-answer {
+      background: #f0f0f0 !important;
+      color: #000 !important;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+    .step { color: #000 !important; }
+    .step::before { color: #000 !important; }
+    .watch-out {
+      background: #fff !important;
+      border: 1px solid #999;
+    }
+    .watch-out .wo-label { color: #333 !important; }
+    .watch-out p { color: #333 !important; }
+    .rule-reminder {
+      background: #fff !important;
+      border: 1px solid #999;
+    }
+    .rule-reminder .rule-label { color: #333 !important; }
+    .rule-reminder p { color: #333 !important; }
+    .footer { color: #555 !important; }
+  }
 </style>
 </head>
 <body>

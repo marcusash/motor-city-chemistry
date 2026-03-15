@@ -112,8 +112,26 @@
   }
 
   @media print {
-    body { padding: 0; font-size: 14px; }
-    .ref-box { page-break-inside: avoid; }
+    body { padding: 0; font-size: 14px; background: #fff; }
+    .ref-box {
+      page-break-inside: avoid;
+      background: #fff !important;
+      border: 1px solid #999;
+    }
+    .section-header {
+      background: #f0f0f0 !important;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+    th {
+      background: #f0f0f0 !important;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+    .question-block {
+      page-break-inside: avoid;
+      border: 1px solid #999;
+    }
   }
 </style>
 </head>
