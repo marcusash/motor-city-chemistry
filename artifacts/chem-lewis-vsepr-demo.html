@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lewis Structures &amp; VSEPR — Motor City Chemistry</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #1a1a1a;
+    max-width: 9.5in;
+    margin: 0 auto;
+    padding: 0.4in;
+    background: #fff;
+  }
+  .pg-header {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    font-weight: 700;
+    border-bottom: 2px solid #1a1a1a;
+    padding-bottom: 4px;
+    margin-bottom: 6px;
+  }
+  h1 { font-size: 17px; font-weight: 700; margin: 6px 0 2px 0; }
+  .subtitle { font-size: 11px; color: #666; margin-bottom: 14px; }
+  h2 {
+    font-size: 13px;
+    font-weight: 700;
+    background: #f0f0f0;
+    border: 1px solid #bbb;
+    padding: 5px 10px;
+    margin: 18px 0 8px 0;
+    border-radius: 3px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .note {
+    background: #fffbea;
+    border: 1px solid #d4b800;
+    border-radius: 4px;
+    padding: 6px 10px;
+    font-size: 11px;
+    margin-bottom: 10px;
+    color: #555;
+  }
+
+  /* Lewis Structure Grid */
+  .lewis-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    margin-bottom: 6px;
+  }
+  .lewis-card {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 6px 4px 4px 4px;
+    text-align: center;
+    background: #fff;
+    page-break-inside: avoid;
+  }
+  .lewis-card .mol-name {
+    font-size: 11px;
+    font-weight: 700;
+    color: #222;
+    margin-bottom: 4px;
+  }
+  .lewis-card .mol-info {
+    font-size: 10px;
+    color: #777;
+    margin-top: 4px;
+  }
+  .lewis-card svg { display: block; margin: 0 auto; }
+
+  /* VSEPR Table */
+  .vsepr-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12px;
+    margin-bottom: 6px;
+  }
+  .vsepr-table th {
+    background: #f0f0f0;
+    border: 1px solid #bbb;
+    padding: 6px 8px;
+    font-size: 11px;
+    font-weight: 700;
+    text-align: center;
+  }
+  .vsepr-table td {
+    border: 1px solid #ccc;
+    padding: 6px 10px;
+    vertical-align: middle;
+  }
+  .vsepr-table td.dc { text-align: center; padding: 4px; }
+  .vsepr-table tr:nth-child(even) td { background: #fafafa; }
+  .shape-name { font-weight: 700; }
+
+  /* Structural Formulas Grid */
+  .sf-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    margin-bottom: 6px;
+  }
+  .sf-card {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 6px 4px 4px 4px;
+    text-align: center;
+    background: #fff;
+  }
+  .sf-card canvas { display: block; margin: 0 auto; }
+  .sf-card .mol-name { font-size: 11px; font-weight: 700; color: #222; margin-top: 3px; }
+  .sf-card .mol-smiles { font-size: 9px; color: #999; font-family: 'Courier New', monospace; }
+
+  /* Polarity Grid */
+  .pol-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+  }
+  .pol-card {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 8px 4px 6px 4px;
+    text-align: center;
+    background: #fff;
+  }
+  .pol-label { font-size: 11px; font-weight: 700; margin-top: 4px; }
+  .pol-type { font-size: 11px; color: #555; }
+  .polar-badge { color: #c00; font-weight: 700; }
+  .nonpolar-badge { color: #060; font-weight: 700; }
+
+  .tech-notes {
+    margin-top: 20px;
+    padding: 10px 14px;
+    background: #f5f5f5;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 11px;
+    color: #555;
+    line-height: 1.7;
+  }
+  .tech-notes b { color: #333; }
+
+  @media print {
+    body { padding: 0.25in; }
+    h2 {
+      background: #f0f0f0 !important;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+    .vsepr-table th {
+      background: #f0f0f0 !important;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+    .vsepr-table tr:nth-child(even) td {
+      background: #fafafa !important;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+    .note {
+      background: #fffbea !important;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+    .tech-notes { background: #f5f5f5 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  }
+</style>
+</head>
+<body>
+
+<div class="pg-header">
+  <span>CHEM 10</span>
+  <span>Motor City Chemistry</span>
+  <span>Lewis Structures &amp; VSEPR — FA Dev Prototype</span>
+</div>
+
+<h1>Lewis Structures, VSEPR Geometry &amp; Structural Formulas</h1>
+<div class="subtitle">Prototype demonstrating SmilesDrawer (organic formulas) + hand-crafted SVG (Lewis dots, VSEPR, polarity)</div>
+
+<!-- ═══════════════ A. LEWIS DOT STRUCTURES ═══════════════ -->
+<h2>A. Lewis Dot Structures</h2>
+<div class="note">
+  Lines = bonding pairs (shared electrons). Dot pairs ( &bull;&bull; ) = lone (nonbonding) pairs. Each line = 2 electrons. Each dot pair = 2 electrons.
+</div>
+
+<div class="lewis-grid">
+
+  <!-- H2O -->
+  <div class="lewis-card">
+    <div class="mol-name">Water — H₂O</div>
+    <svg viewBox="0 0 150 110" width="148" height="108" xmlns="http://www.w3.org/2000/svg">
+      <line x1="68" y1="62" x2="25" y2="90" stroke="#1a1a1a" stroke-width="1.8"/>
+      <line x1="82" y1="62" x2="125" y2="90" stroke="#1a1a1a" stroke-width="1.8"/>
+      <!-- Lone pair top-left of O -->
+      <circle cx="49" cy="43" r="2.8" fill="#1a1a1a"/>
+      <circle cx="61" cy="43" r="2.8" fill="#1a1a1a"/>
+      <!-- Lone pair top-right of O -->
+      <circle cx="89" cy="43" r="2.8" fill="#1a1a1a"/>
+      <circle cx="101" cy="43" r="2.8" fill="#1a1a1a"/>
+      <text x="75" y="67" text-anchor="middle" font-size="18" font-family="Arial, sans-serif" font-weight="bold">O</text>
+      <text x="18" y="102" text-anchor="middle" font-size="16" font-family="Arial, sans-serif">H</text>
+      <text x="132" y="102" text-anchor="middle" font-size="16" font-family="Arial, sans-serif">H</text>
+    </svg>
+    <div class="mol-info">8 val e⁻ · 2 bond pairs · 2 lone pairs</div>
+  </div>
+
+  <!-- NH3 -->
+  <div class="lewis-card">
+    <div class="mol-name">Ammonia — NH₃</div>
+    <svg viewBox="0 0 160 120" width="158" height="118" xmlns="http://www.w3.org/2000/svg">
+      <line x1="68" y1="62" x2="20" y2="94" stroke="#1a1a1a" stroke-width="1.8"/>
+      <line x1="80" y1="68" x2="80" y2="100" stroke="#1a1a1a" stroke-width="1.8"/>
+      <line x1="92" y1="62" x2="140" y2="94" stroke="#1a1a1a" stroke-width="1.8"/>
+      <!-- Lone pair top of N -->
+      <circle cx="66" cy="40" r="2.8" fill="#1a1a1a"/>
+      <circle cx="78" cy="40" r="2.8" fill="#1a1a1a"/>
+      <text x="80" y="66" text-anchor="middle" font-size="18" font-family="Arial, sans-serif" font-weight="bold">N</text>
+      <text x="13" y="108" text-anchor="middle" font-size="16" font-family="Arial, sans-serif">H</text>
+      <text x="80" y="115" text-anchor="middle" font-size="16" font-family="Arial, sans-serif">H</text>
+      <text x="147" y="108" text-anchor="middle" font-size="16" font-family="Arial, sans-serif">H</text>
+    </svg>
+    <div class="mol-info">8 val e⁻ · 3 bond pairs · 1 lone pair</div>
+  </div>
+
+  <!-- CH4 -->
+  <div class="lewis-card">
+    <div class="mol-name">Methane — CH₄</div>
+    <svg viewBox="0 0 150 140" width="148" height="138" xmlns="http://www.w3.org/2000/svg">
+      <line x1="75" y1="60" x2="75" y2="20" stroke="#1a1a1a" stroke-width="1.8"/>
+      <line x1="68" y1="70" x2="22" y2="92" stroke="#1a1a1a" stroke-width="1.8"/>
+      <line x1="82" y1="70" x2="128" y2="92" stroke="#1a1a1a" stroke-width="1.8"/>
+      <line x1="75" y1="78" x2="75" y2="114" stroke="#1a1a1a" stroke-width="1.8"/>
+      <text x="75" y="74" text-anchor="middle" font-size="18" font-family="Arial, sans-serif" font-weight="bold">C</text>
+      <text x="75" y="15" text-anchor="middle" font-size="16" font-family="Arial, sans-serif">H</text>
+      <text x="14" y="105" text-anchor="middle" font-size="16" font-family="Arial, sans-serif">H</text>
+      <text x="136" y="105" text-anchor="middle" font-size="16" font-family="Arial, sans-serif">H</text>
+      <text x="75" y="128" text-anchor="middle" font-size="16" font-family="Arial, sans-serif">H</text>
+    </svg>
+    <div class="mol-info">8 val e⁻ · 4 bond pairs · 0 lone pairs</div>
+  </div>
+
+  <!-- CO2 -->
+  <div class="lewis-card">
+    <div class="mol-name">Carbon Dioxide — CO₂</div>
+    <svg viewBox="0 0 220 90" width="218" height="88" xmlns="http://www.w3.org/2000/svg">
+      <!-- Left double bond O=C -->
+      <line x1="46" y1="38" x2="96" y2="38" stroke="#1a1a1a" stroke-width="1.8"/>
+      <line x1="46" y1="52" x2="96" y2="52" stroke="#1a1a1a" stroke-width="1.8"/>
+      <!-- Right double bond C=O -->
+      <line x1="124" y1="38" x2="174" y2="38" stroke="#1a1a1a" stroke-width="1.8"/>
+      <line x1="124" y1="52" x2="174" y2="52" stroke="#1a1a1a" stroke-width="1.8"/>
+      <!-- Lone pairs on left O: top + bottom -->
+      <circle cx="16" cy="32" r="2.5" fill="#1a1a1a"/>
+      <circle cx="28" cy="32" r="2.5" fill="#1a1a1a"/>
+      <circle cx="16" cy="58" r="2.5" fill="#1a1a1a"/>
+      <circle cx="28" cy="58" r="2.5" fill="#1a1a1a"/>
+      <!-- Lone pairs on right O: top + bottom -->
+      <circle cx="192" cy="32" r="2.5" fill="#1a1a1a"/>
+      <circle cx="204" cy="32" r="2.5" fill="#1a1a1a"/>
+      <circle cx="192" cy="58" r="2.5" fill="#1a1a1a"/>
+      <circle cx="204" cy="58" r="2.5" fill="#1a1a1a"/>
+      <text x="36" y="50" text-anchor="middle" font-size="18" font-family="Arial, sans-serif" font-weight="bold">O</text>
+      <text x="110" y="50" text-anchor="middle" font-size="18" font-family="Arial, sans-serif" font-weight="bold">C</text>
+      <text x="184" y="50" text-anchor="middle" font-size="18" font-family="Arial, sans-serif" font-weight="bold">O</text>
+    </svg>
+    <div class="mol-info">16 val e⁻ · 2 double bonds · 2 LP per O</div>
+  </div>
+
+  <!-- HCl -->
+  <div class="lewis-card">
+    <div class="mol-name">Hydrogen Chloride — HCl</div>
+    <svg viewBox="0 0 190 90" width="188" height="88" xmlns="http://www.w3.org/2000/svg">
+      <line x1="40" y1="45" x2="88" y2="45" stroke="#1a1a1a" stroke-width="1.8"/>
+      <!-- 3 lone pairs on Cl: top, bottom, right -->
+      <circle cx="104" cy="28" r="2.5" fill="#1a1a1a"/>
+      <circle cx="118" cy="28" r="2.5" fill="#1a1a1a"/>
+      <circle cx="104" cy="62" r="2.5" fill="#1a1a1a"/>
+      <circle cx="118" cy="62" r="2.5" fill="#1a1a1a"/>
+      <circle cx="150" cy="38" r="2.5" fill="#1a1a1a"/>
+      <circle cx="150" cy="52" r="2.5" fill="#1a1a1a"/>
+      <text x="29" y="51" text-anchor="middle" font-size="18" font-family="Arial, sans-serif" font-weight="bold">H</text>
+      <text x="112" y="51" text-anchor="middle" font-size="18" font-family="Arial, sans-serif" font-weight="bold">Cl</text>
+    </svg>
+    <div class="mol-info">8 val e⁻ · 1 bond pair · 3 LP on Cl</div>
+  </div>
+
+  <!-- N2 -->
+  <div class="lewis-card">
+    <div class="mol-name">Nitrogen Gas — N₂</div>
+    <svg viewBox="0 0 190 90" width="188" height="88" xmlns="http://www.w3.org/2000/svg">
+      <!-- Triple bond -->
+      <line x1="54" y1="38" x2="136" y2="38" stroke="#1a1a1a" stroke-width="1.8"/>
+      <line x1="54" y1="45" x2="136" y2="45" stroke="#1a1a1a" stroke-width="1.8"/>
+      <line x1="54" y1="52" x2="136" y2="52" stroke="#1a1a1a" stroke-width="1.8"/>
+      <!-- Lone pair left N -->
+      <circle cx="20" cy="40" r="2.5" fill="#1a1a1a"/>
+      <circle cx="20" cy="52" r="2.5" fill="#1a1a1a"/>
+      <!-- Lone pair right N -->
+      <circle cx="168" cy="40" r="2.5" fill="#1a1a1a"/>
+      <circle cx="168" cy="52" r="2.5" fill="#1a1a1a"/>
+      <text x="45" y="50" text-anchor="middle" font-size="18" font-family="Arial, sans-serif" font-weight="bold">N</text>
+      <text x="145" y="50" text-anchor="middle" font-size="18" font-family="Arial, sans-serif" font-weight="bold">N</text>
+    </svg>
+    <div class="mol-info">10 val e⁻ · 1 triple bond · 1 LP per N</div>
+  </div>
+
+  <!-- O2 -->
+  <div class="lewis-card">
+    <div class="mol-name">Oxygen Gas — O₂</div>
+    <svg viewBox="0 0 190 90" width="188" height="88" xmlns="http://www.w3.org/2000/svg">
+      <!-- Double bond -->
+      <line x1="54" y1="39" x2="136" y2="39" stroke="#1a1a1a" stroke-width="1.8"/>
+      <line x1="54" y1="51" x2="136" y2="51" stroke="#1a1a1a" stroke-width="1.8"/>
+      <!-- Lone pairs left O: top + bottom -->
+      <circle cx="22" cy="32" r="2.5" fill="#1a1a1a"/>
+      <circle cx="36" cy="32" r="2.5" fill="#1a1a1a"/>
+      <circle cx="22" cy="60" r="2.5" fill="#1a1a1a"/>
+      <circle cx="36" cy="60" r="2.5" fill="#1a1a1a"/>
+      <!-- Lone pairs right O: top + bottom -->
+      <circle cx="150" cy="32" r="2.5" fill="#1a1a1a"/>
+      <circle cx="164" cy="32" r="2.5" fill="#1a1a1a"/>
+      <circle cx="150" cy="60" r="2.5" fill="#1a1a1a"/>
+      <circle cx="164" cy="60" r="2.5" fill="#1a1a1a"/>
+      <text x="45" y="50" text-anchor="middle" font-size="18" font-family="Arial, sans-serif" font-weight="bold">O</text>
+      <text x="145" y="50" text-anchor="middle" font-size="18" font-family="Arial, sans-serif" font-weight="bold">O</text>
+    </svg>
+    <div class="mol-info">12 val e⁻ · 1 double bond · 2 LP per O</div>
+  </div>
+
+  <!-- F2 -->
+  <div class="lewis-card">
+    <div class="mol-name">Fluorine Gas — F₂</div>
+    <svg viewBox="0 0 190 90" width="188" height="88" xmlns="http://www.w3.org/2000/svg">
+      <line x1="58" y1="45" x2="132" y2="45" stroke="#1a1a1a" stroke-width="1.8"/>
+      <!-- 3 LP on left F -->
+      <circle cx="26" cy="32" r="2.5" fill="#1a1a1a"/>
+      <circle cx="40" cy="32" r="2.5" fill="#1a1a1a"/>
+      <circle cx="26" cy="58" r="2.5" fill="#1a1a1a"/>
+      <circle cx="40" cy="58" r="2.5" fill="#1a1a1a"/>
+      <circle cx="14" cy="40" r="2.5" fill="#1a1a1a"/>
+      <circle cx="14" cy="52" r="2.5" fill="#1a1a1a"/>
+      <!-- 3 LP on right F -->
+      <circle cx="148" cy="32" r="2.5" fill="#1a1a1a"/>
+      <circle cx="162" cy="32" r="2.5" fill="#1a1a1a"/>
+      <circle cx="148" cy="58" r="2.5" fill="#1a1a1a"/>
+      <circle cx="162" cy="58" r="2.5" fill="#1a1a1a"/>
+      <circle cx="174" cy="40" r="2.5" fill="#1a1a1a"/>
+      <circle cx="174" cy="52" r="2.5" fill="#1a1a1a"/>
+      <text x="49" y="50" text-anchor="middle" font-size="18" font-family="Arial, sans-serif" font-weight="bold">F</text>
+      <text x="141" y="50" text-anchor="middle" font-size="18" font-family="Arial, sans-serif" font-weight="bold">F</text>
+    </svg>
+    <div class="mol-info">14 val e⁻ · 1 bond pair · 3 LP per F</div>
+  </div>
+
+</div>
+
+<!-- ═══════════════ B. VSEPR GEOMETRY ═══════════════ -->
+<h2>B. VSEPR Molecular Geometry</h2>
+<div class="note">
+  Electron geometry (counts lone pairs) vs. molecular geometry (shape of atoms only). Lone pairs on the central atom compress bond angles below the ideal.
+</div>
+
+<table class="vsepr-table">
+  <tr>
+    <th style="width:14%">Shape</th>
+    <th style="width:9%">Bonding Pairs</th>
+    <th style="width:9%">Lone Pairs (central)</th>
+    <th style="width:9%">Bond Angle</th>
+    <th style="width:22%">Examples</th>
+    <th style="width:37%">Diagram</th>
+  </tr>
+
+  <!-- Linear -->
+  <tr>
+    <td><span class="shape-name">Linear</span></td>
+    <td style="text-align:center">2</td>
+    <td style="text-align:center">0</td>
+    <td style="text-align:center">180°</td>
+    <td>CO₂, N₂, HCl, BeCl₂</td>
+    <td class="dc">
+      <svg viewBox="0 0 200 55" width="190" height="52">
+        <line x1="30" y1="27" x2="170" y2="27" stroke="#555" stroke-width="1.4"/>
+        <circle cx="30" cy="27" r="12" fill="#4080c0" stroke="#2050a0" stroke-width="1.2"/>
+        <circle cx="100" cy="27" r="15" fill="#d04030" stroke="#a02010" stroke-width="1.2"/>
+        <circle cx="170" cy="27" r="12" fill="#4080c0" stroke="#2050a0" stroke-width="1.2"/>
+        <text x="100" y="50" text-anchor="middle" font-size="10" fill="#555" font-family="Arial">180°</text>
+      </svg>
+    </td>
+  </tr>
+
+  <!-- Bent -->
+  <tr>
+    <td><span class="shape-name">Bent</span></td>
+    <td style="text-align:center">2</td>
+    <td style="text-align:center">2</td>
+    <td style="text-align:center">~104.5°</td>
+    <td>H₂O, H₂S</td>
+    <td class="dc">
+      <svg viewBox="0 0 200 100" width="190" height="95">
+        <line x1="96" y1="44" x2="32" y2="82" stroke="#555" stroke-width="1.4"/>
+        <line x1="104" y1="44" x2="168" y2="82" stroke="#555" stroke-width="1.4"/>
+        <!-- angle arc -->
+        <path d="M 62 72 A 38 38 0 0 1 138 72" stroke="#bbb" stroke-width="1" fill="none" stroke-dasharray="3,2"/>
+        <text x="100" y="62" text-anchor="middle" font-size="9" fill="#888" font-family="Arial">104.5°</text>
+        <!-- lone pair clouds -->
+        <ellipse cx="84" cy="20" rx="9" ry="5" fill="none" stroke="#bbb" stroke-width="1.2" stroke-dasharray="2,1"/>
+        <ellipse cx="116" cy="20" rx="9" ry="5" fill="none" stroke="#bbb" stroke-width="1.2" stroke-dasharray="2,1"/>
+        <text x="100" y="15" text-anchor="middle" font-size="8" fill="#bbb" font-family="Arial">LP  LP</text>
+        <circle cx="32" cy="84" r="11" fill="#4080c0" stroke="#2050a0" stroke-width="1.2"/>
+        <circle cx="100" cy="40" r="15" fill="#d04030" stroke="#a02010" stroke-width="1.2"/>
+        <circle cx="168" cy="84" r="11" fill="#4080c0" stroke="#2050a0" stroke-width="1.2"/>
+        <text x="100" y="96" text-anchor="middle" font-size="9" fill="#aaa" font-family="Arial">(lone pairs not part of molecular shape)</text>
+      </svg>
+    </td>
+  </tr>
+
+  <!-- Trigonal Planar -->
+  <tr>
+    <td><span class="shape-name">Trigonal Planar</span></td>
+    <td style="text-align:center">3</td>
+    <td style="text-align:center">0</td>
+    <td style="text-align:center">120°</td>
+    <td>BF₃, SO₃, NO₃⁻</td>
+    <td class="dc">
+      <svg viewBox="0 0 200 130" width="190" height="123">
+        <line x1="100" y1="55" x2="100" y2="16" stroke="#555" stroke-width="1.4"/>
+        <line x1="100" y1="66" x2="26" y2="110" stroke="#555" stroke-width="1.4"/>
+        <line x1="100" y1="66" x2="174" y2="110" stroke="#555" stroke-width="1.4"/>
+        <circle cx="100" cy="13" r="11" fill="#4080c0" stroke="#2050a0" stroke-width="1.2"/>
+        <circle cx="22" cy="113" r="11" fill="#4080c0" stroke="#2050a0" stroke-width="1.2"/>
+        <circle cx="178" cy="113" r="11" fill="#4080c0" stroke="#2050a0" stroke-width="1.2"/>
+        <circle cx="100" cy="60" r="15" fill="#d04030" stroke="#a02010" stroke-width="1.2"/>
+        <text x="100" y="128" text-anchor="middle" font-size="10" fill="#555" font-family="Arial">120°</text>
+      </svg>
+    </td>
+  </tr>
+
+  <!-- Trigonal Pyramidal -->
+  <tr>
+    <td><span class="shape-name">Trigonal Pyramidal</span></td>
+    <td style="text-align:center">3</td>
+    <td style="text-align:center">1</td>
+    <td style="text-align:center">~107°</td>
+    <td>NH₃, PCl₃, AsCl₃</td>
+    <td class="dc">
+      <svg viewBox="0 0 200 140" width="190" height="133">
+        <ellipse cx="100" cy="22" rx="13" ry="7" fill="none" stroke="#bbb" stroke-width="1.4" stroke-dasharray="2,1"/>
+        <text x="100" y="17" text-anchor="middle" font-size="8" fill="#bbb" font-family="Arial">LP</text>
+        <line x1="94" y1="52" x2="28" y2="100" stroke="#555" stroke-width="1.4"/>
+        <line x1="100" y1="57" x2="100" y2="108" stroke="#555" stroke-width="1.4"/>
+        <line x1="106" y1="52" x2="172" y2="100" stroke="#555" stroke-width="1.4"/>
+        <circle cx="24" cy="104" r="11" fill="#4080c0" stroke="#2050a0" stroke-width="1.2"/>
+        <circle cx="100" cy="112" r="11" fill="#4080c0" stroke="#2050a0" stroke-width="1.2"/>
+        <circle cx="176" cy="104" r="11" fill="#4080c0" stroke="#2050a0" stroke-width="1.2"/>
+        <circle cx="100" cy="46" r="15" fill="#d04030" stroke="#a02010" stroke-width="1.2"/>
+        <text x="100" y="130" text-anchor="middle" font-size="10" fill="#555" font-family="Arial">~107°</text>
+      </svg>
+    </td>
+  </tr>
+
+  <!-- Tetrahedral -->
+  <tr>
+    <td><span class="shape-name">Tetrahedral</span></td>
+    <td style="text-align:center">4</td>
+    <td style="text-align:center">0</td>
+    <td style="text-align:center">109.5°</td>
+    <td>CH₄, CCl₄, NH₄⁺</td>
+    <td class="dc">
+      <svg viewBox="0 0 200 140" width="190" height="133">
+        <!-- in-plane bonds (left, right) -->
+        <line x1="86" y1="64" x2="20" y2="64" stroke="#555" stroke-width="1.4"/>
+        <line x1="114" y1="64" x2="180" y2="64" stroke="#555" stroke-width="1.4"/>
+        <!-- dashed bond going back (top) -->
+        <line x1="100" y1="50" x2="100" y2="12" stroke="#555" stroke-width="1.4" stroke-dasharray="5,3"/>
+        <!-- wedge bond coming forward (bottom triangle) -->
+        <polygon points="94,76 106,76 100,120" fill="#333" stroke="none"/>
+        <circle cx="16" cy="64" r="11" fill="#4080c0" stroke="#2050a0" stroke-width="1.2"/>
+        <circle cx="184" cy="64" r="11" fill="#4080c0" stroke="#2050a0" stroke-width="1.2"/>
+        <circle cx="100" cy="8" r="11" fill="#4080c0" stroke="#2050a0" stroke-width="1.2"/>
+        <circle cx="100" cy="124" r="11" fill="#4080c0" stroke="#2050a0" stroke-width="1.2"/>
+        <circle cx="100" cy="64" r="15" fill="#d04030" stroke="#a02010" stroke-width="1.2"/>
+        <text x="30" y="110" text-anchor="start" font-size="9" fill="#888" font-family="Arial">solid = toward viewer</text>
+        <text x="30" y="122" text-anchor="start" font-size="9" fill="#888" font-family="Arial">dashed = away from viewer</text>
+        <text x="100" y="136" text-anchor="middle" font-size="10" fill="#555" font-family="Arial">109.5°</text>
+      </svg>
+    </td>
+  </tr>
+</table>
+
+<!-- ═══════════════ C. STRUCTURAL FORMULAS ═══════════════ -->
+<h2>C. Structural Formulas via SmilesDrawer</h2>
+<div class="note">
+  Rendered automatically from SMILES strings via <b>SmilesDrawer 2.3.0</b> (CDN, no server required). Accurate bond geometry and ring systems. Best for organic molecules.
+</div>
+
+<div class="sf-grid">
+  <div class="sf-card">
+    <canvas data-smiles="C" width="170" height="110"></canvas>
+    <div class="mol-name">Methane (CH₄)</div>
+    <div class="mol-smiles">SMILES: C</div>
+  </div>
+  <div class="sf-card">
+    <canvas data-smiles="O=C=O" width="170" height="110"></canvas>
+    <div class="mol-name">Carbon Dioxide</div>
+    <div class="mol-smiles">SMILES: O=C=O</div>
+  </div>
+  <div class="sf-card">
+    <canvas data-smiles="CC" width="170" height="110"></canvas>
+    <div class="mol-name">Ethane (C₂H₆)</div>
+    <div class="mol-smiles">SMILES: CC</div>
+  </div>
+  <div class="sf-card">
+    <canvas data-smiles="CCO" width="170" height="110"></canvas>
+    <div class="mol-name">Ethanol (C₂H₅OH)</div>
+    <div class="mol-smiles">SMILES: CCO</div>
+  </div>
+  <div class="sf-card">
+    <canvas data-smiles="CCC" width="170" height="110"></canvas>
+    <div class="mol-name">Propane (C₃H₈)</div>
+    <div class="mol-smiles">SMILES: CCC</div>
+  </div>
+  <div class="sf-card">
+    <canvas data-smiles="CC(=O)O" width="170" height="110"></canvas>
+    <div class="mol-name">Acetic Acid</div>
+    <div class="mol-smiles">SMILES: CC(=O)O</div>
+  </div>
+  <div class="sf-card">
+    <canvas data-smiles="c1ccccc1" width="170" height="110"></canvas>
+    <div class="mol-name">Benzene</div>
+    <div class="mol-smiles">SMILES: c1ccccc1</div>
+  </div>
+  <div class="sf-card">
+    <canvas data-smiles="C1CCCCC1" width="170" height="110"></canvas>
+    <div class="mol-name">Cyclohexane</div>
+    <div class="mol-smiles">SMILES: C1CCCCC1</div>
+  </div>
+</div>
+
+<!-- ═══════════════ D. POLARITY REFERENCE ═══════════════ -->
+<h2>D. Polarity &amp; Dipole Moments</h2>
+<div class="note">
+  Polar bonds form when electronegativity differs. Net dipole = vector sum of all bond dipoles. Symmetric molecules cancel to zero = nonpolar molecule.
+  Symbol: &delta;+ (partial positive), &delta;&minus; (partial negative). Arrow points from &delta;+ toward &delta;&minus;.
+</div>
+
+<div class="pol-grid">
+
+  <!-- HF: polar -->
+  <div class="pol-card">
+    <svg viewBox="0 0 200 90" width="190" height="86">
+      <line x1="60" y1="44" x2="128" y2="44" stroke="#333" stroke-width="1.8"/>
+      <text x="44" y="50" text-anchor="middle" font-size="18" font-family="Arial" font-weight="bold">H</text>
+      <text x="144" y="50" text-anchor="middle" font-size="18" font-family="Arial" font-weight="bold">F</text>
+      <text x="50" y="28" text-anchor="middle" font-size="13" fill="#b03030" font-family="Arial">&#948;+</text>
+      <text x="138" y="28" text-anchor="middle" font-size="13" fill="#3030b0" font-family="Arial">&#948;&#8722;</text>
+      <!-- dipole arrow: + cross at H end, arrowhead at F end -->
+      <line x1="54" y1="68" x2="122" y2="68" stroke="#555" stroke-width="1.5"/>
+      <polygon points="122,63 134,68 122,73" fill="#555"/>
+      <line x1="46" y1="64" x2="46" y2="72" stroke="#555" stroke-width="1.5"/>
+      <line x1="42" y1="68" x2="50" y2="68" stroke="#555" stroke-width="1.5"/>
+      <text x="95" y="84" text-anchor="middle" font-size="9" fill="#555" font-family="Arial">net dipole &#8594; toward F</text>
+    </svg>
+    <div class="pol-label">Hydrogen Fluoride (HF)</div>
+    <div class="pol-type"><span class="polar-badge">POLAR</span> — asymmetric, net dipole ≠ 0</div>
+  </div>
+
+  <!-- H2O: polar -->
+  <div class="pol-card">
+    <svg viewBox="0 0 200 105" width="190" height="100">
+      <line x1="94" y1="50" x2="44" y2="80" stroke="#333" stroke-width="1.8"/>
+      <line x1="106" y1="50" x2="156" y2="80" stroke="#333" stroke-width="1.8"/>
+      <text x="36" y="92" text-anchor="middle" font-size="16" font-family="Arial">H</text>
+      <text x="100" y="48" text-anchor="middle" font-size="18" font-family="Arial" font-weight="bold">O</text>
+      <text x="164" y="92" text-anchor="middle" font-size="16" font-family="Arial">H</text>
+      <text x="42" y="68" text-anchor="middle" font-size="11" fill="#b03030">&#948;+</text>
+      <text x="100" y="26" text-anchor="middle" font-size="11" fill="#3030b0">&#948;&#8722;</text>
+      <text x="158" y="68" text-anchor="middle" font-size="11" fill="#b03030">&#948;+</text>
+      <!-- net dipole arrow pointing up toward O -->
+      <line x1="100" y1="96" x2="100" y2="60" stroke="#555" stroke-width="1.5"/>
+      <polygon points="95,60 105,60 100,50" fill="#555"/>
+      <text x="100" y="104" text-anchor="middle" font-size="9" fill="#555" font-family="Arial">net dipole &#8593; toward O</text>
+    </svg>
+    <div class="pol-label">Water (H₂O)</div>
+    <div class="pol-type"><span class="polar-badge">POLAR</span> — bent shape, dipoles don't cancel</div>
+  </div>
+
+  <!-- CO2: nonpolar -->
+  <div class="pol-card">
+    <svg viewBox="0 0 230 90" width="220" height="86">
+      <line x1="52" y1="40" x2="95" y2="40" stroke="#333" stroke-width="1.8"/>
+      <line x1="52" y1="52" x2="95" y2="52" stroke="#333" stroke-width="1.8"/>
+      <line x1="119" y1="40" x2="162" y2="40" stroke="#333" stroke-width="1.8"/>
+      <line x1="119" y1="52" x2="162" y2="52" stroke="#333" stroke-width="1.8"/>
+      <text x="40" y="51" text-anchor="middle" font-size="18" font-family="Arial" font-weight="bold">O</text>
+      <text x="107" y="51" text-anchor="middle" font-size="18" font-family="Arial" font-weight="bold">C</text>
+      <text x="174" y="51" text-anchor="middle" font-size="18" font-family="Arial" font-weight="bold">O</text>
+      <text x="40" y="28" text-anchor="middle" font-size="11" fill="#3030b0">&#948;&#8722;</text>
+      <text x="107" y="28" text-anchor="middle" font-size="11" fill="#b03030">&#948;+</text>
+      <text x="174" y="28" text-anchor="middle" font-size="11" fill="#3030b0">&#948;&#8722;</text>
+      <!-- Two opposing arrows that cancel -->
+      <line x1="82" y1="72" x2="48" y2="72" stroke="#888" stroke-width="1.4"/>
+      <polygon points="48,67 38,72 48,77" fill="#888"/>
+      <line x1="130" y1="72" x2="166" y2="72" stroke="#888" stroke-width="1.4"/>
+      <polygon points="166,67 176,72 166,77" fill="#888"/>
+      <text x="107" y="87" text-anchor="middle" font-size="9" fill="#555" font-family="Arial">equal, opposite dipoles cancel &#8594; net = 0</text>
+    </svg>
+    <div class="pol-label">Carbon Dioxide (CO₂)</div>
+    <div class="pol-type"><span class="nonpolar-badge">NONPOLAR</span> — linear, dipoles cancel</div>
+  </div>
+
+</div>
+
+<!-- ═══════════════ TECH NOTES ═══════════════ -->
+<div class="tech-notes">
+  <b>Technology Notes (FA dev prototype):</b><br>
+  <b>SmilesDrawer v2.3.0</b> (Section C): Open source, MIT license, CDN via unpkg.com. Input = SMILES strings. Renders to HTML canvas. Zero server dependency. Best for organic/covalent structural formulas with accurate bond geometry and ring systems. Not suitable for Lewis dot structures or polarity diagrams.<br>
+  <b>Inline SVG</b> (Sections A, B, D): No dedicated JavaScript library exists for Lewis electron dot diagrams or VSEPR geometry. Hand-crafted SVG is the standard approach. Finite molecule set for high school chem (~20-30 common molecules). Once built, SVG components are reusable across all quiz files. Recommended next step: extract SVGs into a shared component library.<br>
+  <b>Libraries evaluated and not recommended for this use case:</b> RDKit.js (35MB WASM, overkill), Kekule.js (full cheminformatics toolkit, no Lewis dots), OpenChemLib JS (SMILES-to-SVG, no Lewis dots), 3Dmol.js (interactive 3D, doesn't print).
+</div>
+
+<!-- SmilesDrawer CDN -->
+<script src="https://unpkg.com/smiles-drawer@2.3.0/dist/smiles-drawer.min.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    SmilesDrawer.apply({
+      width: 170,
+      height: 110,
+      bondThickness: 1.4,
+      shortBondLength: 0.85,
+      fontSizeLarge: 11,
+      fontSizeSmall: 8,
+    });
+  });
+</script>
+
+</body>
+</html>
