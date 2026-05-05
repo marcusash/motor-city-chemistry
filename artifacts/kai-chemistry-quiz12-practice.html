@@ -1,0 +1,999 @@
+<!-- Co-authored-by: Copilot <223556219+Copilot@users.noreply.github.com> -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kai: Chemistry Practice  -  Standards 5.1 &amp; 5.2</title>
+<link rel="stylesheet" href="../canvas-base.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'$',right:'$',display:false},{left:'$$',right:'$$',display:true}]})"></script>
+<style>
+:root{
+  --bg:#0A0A0F;--card:#13131E;--border:#252535;
+  --text:#E8E8F2;--dim:#7070A0;--sub:#9090B8;
+  --maize:#FFCB05;--blue:#4A90D9;--green:#22C55E;--red:#CE1126;
+  --pass-bg:rgba(34,197,94,.07);--pass-bd:rgba(34,197,94,.28);
+  --fail-bg:rgba(206,17,38,.07);--fail-bd:rgba(206,17,38,.28);
+  --font:'Segoe UI Variable','Segoe UI',system-ui,sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:var(--font);font-size:15px;line-height:1.55}
+.wrap{max-width:940px;margin:0 auto;padding:0 22px 60px}
+
+/* SCREEN HEADER */
+.s-hdr{background:var(--card);border-bottom:3px solid var(--maize);padding:24px 24px 20px;margin-bottom:26px}
+.s-hdr-eye{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--dim);margin-bottom:5px}
+.s-hdr h1{font-size:22px;font-weight:900;color:var(--maize);margin-bottom:4px}
+.s-hdr-sub{color:var(--sub);font-size:14px;margin-bottom:14px}
+.chip-row{display:flex;flex-wrap:wrap;gap:7px;margin:8px 0}
+.chip{font-size:12px;font-weight:700;padding:4px 11px;border-radius:20px;white-space:nowrap}
+.chip.np{background:var(--fail-bg);color:var(--red);border:1px solid var(--fail-bd)}
+.chip.p{background:var(--pass-bg);color:var(--green);border:1px solid var(--pass-bd)}
+.btn-print{background:var(--blue);color:#fff;border:none;padding:9px 20px;border-radius:8px;
+  font-size:13px;font-weight:700;cursor:pointer;margin-top:10px}
+
+/* PRINT HEADER (hidden on screen) */
+.p-hdr{display:none}
+
+/* REFERENCE BOX */
+.ref-box{border:1px solid var(--border);border-left:3px solid var(--maize);border-radius:10px;
+  background:var(--card);padding:14px 18px;margin-bottom:28px}
+.ref-box h3{font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:var(--maize);margin-bottom:12px}
+.ref-2col{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+@media(max-width:560px){.ref-2col{grid-template-columns:1fr}}
+.ref-col h4{font-size:13px;font-weight:700;color:var(--sub);margin-bottom:7px}
+.ref-col ul{padding-left:16px}
+.ref-col li{font-size:13px;line-height:1.55;padding:2px 0}
+.ref-col li strong{color:var(--maize)}
+.en-tbl{width:100%;border-collapse:collapse;font-size:12px;margin-top:8px}
+.en-tbl th,.en-tbl td{border:1px solid var(--border);padding:5px 8px;text-align:center}
+.en-tbl th{background:rgba(255,255,255,.05);color:var(--dim);font-size:12px;
+  text-transform:uppercase;letter-spacing:.06em}
+.en-tbl td{font-weight:700}
+
+/* PART */
+.part{margin-bottom:44px}
+.part-hdr{background:var(--card);border:1px solid var(--border);border-radius:10px 10px 0 0;
+  padding:12px 16px;display:flex;align-items:center;gap:12px}
+.part-badge{background:var(--blue);color:#fff;font-size:13px;font-weight:900;
+  min-width:32px;height:32px;border-radius:8px;display:flex;align-items:center;
+  justify-content:center;flex-shrink:0}
+.part-info{flex:1}
+.part-info h2{font-size:16px;font-weight:700;color:var(--text)}
+.part-info p{font-size:12px;color:var(--dim);margin-top:2px}
+.std-tag{font-size:12px;font-weight:700;background:var(--fail-bg);color:var(--red);
+  border:1px solid var(--fail-bd);padding:3px 9px;border-radius:12px;white-space:nowrap}
+.part-body{background:var(--card);border:1px solid var(--border);border-top:none;
+  border-radius:0 0 10px 10px;padding:18px}
+
+/* LEWIS GRID */
+.lewis-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:20px}
+@media(max-width:560px){.lewis-grid{grid-template-columns:repeat(2,1fr)}}
+.lewis-cell{background:rgba(255,255,255,.03);border:1px solid var(--border);border-radius:8px;
+  padding:12px 8px 10px;text-align:center}
+.lewis-cell .mol-num{font-size:12px;color:var(--dim);margin-bottom:3px;text-transform:uppercase;
+  letter-spacing:.08em}
+.lewis-cell .mol-name{font-size:14px;font-weight:800;color:var(--maize);margin-bottom:10px}
+.lewis-svg{color:var(--text);display:block;margin:0 auto;overflow:visible}
+.lewis-note{font-size:12px;color:var(--sub);margin-top:8px;line-height:1.4}
+
+/* VSEPR TABLE */
+.vsepr-wrap{overflow-x:auto;border-radius:8px;border:1px solid var(--border)}
+.vsepr-tbl{width:100%;border-collapse:collapse;font-size:14px;min-width:540px}
+.vsepr-tbl th{background:rgba(255,255,255,.05);color:var(--dim);font-size:12px;
+  text-transform:uppercase;letter-spacing:.07em;padding:9px 10px;text-align:center;
+  border-bottom:1px solid var(--border)}
+.vsepr-tbl th:first-child{text-align:left}
+.vsepr-tbl td{padding:11px 10px;border-bottom:1px solid rgba(255,255,255,.06);
+  text-align:center;vertical-align:middle}
+.vsepr-tbl td:first-child{text-align:left;font-weight:700}
+.vsepr-tbl tr:last-child td{border-bottom:none}
+.aline{display:inline-block;border-bottom:2px solid var(--dim);min-width:68px;height:22px}
+.aline-sm{min-width:46px}
+.aline-lg{min-width:110px}
+
+/* WEDGE LEGEND */
+.wedge-legend{background:rgba(255,255,255,.03);border:1px solid var(--border);border-radius:8px;
+  padding:10px 14px;margin-bottom:16px}
+.wedge-legend h4{font-size:12px;font-weight:700;color:var(--maize);margin-bottom:8px}
+.wl-row{display:flex;gap:28px;flex-wrap:wrap}
+.wl-item{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--sub)}
+
+/* DRAW GRID */
+.draw-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:540px){.draw-grid{grid-template-columns:1fr}}
+.draw-box{border:2px dashed var(--dim);border-radius:8px;min-height:172px;
+  padding:10px;display:flex;flex-direction:column}
+.draw-lbl{font-size:12px;font-weight:700;color:var(--maize);margin-bottom:3px}
+.draw-sub{font-size:12px;color:var(--dim)}
+
+/* SHORT ANSWER */
+.q-block{margin-bottom:20px;padding-bottom:20px;border-bottom:1px solid rgba(255,255,255,.07)}
+.q-block:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0}
+.q-num{font-size:12px;font-weight:800;color:var(--maize);margin-bottom:5px;
+  text-transform:uppercase;letter-spacing:.09em}
+.q-text{font-size:15px;color:var(--text);margin-bottom:10px;line-height:1.55}
+.q-text em{color:var(--maize);font-style:normal;font-weight:700}
+.answer-area{border:1px solid rgba(255,255,255,.15);border-radius:6px;min-height:96px;
+  padding:8px;background:rgba(255,255,255,.02)}
+.fill-row{display:flex;gap:8px;align-items:center;flex-wrap:wrap;font-size:15px;margin-bottom:8px}
+.fblank{border-bottom:2px solid var(--dim);min-width:88px;height:24px;display:inline-block}
+.fblank-sm{min-width:58px}
+
+/* POLARITY */
+.polar-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:580px){.polar-grid{grid-template-columns:1fr}}
+.polar-cell{background:rgba(255,255,255,.03);border:1px solid var(--border);border-radius:8px;padding:14px}
+.polar-cell h4{font-size:14px;font-weight:700;color:var(--text);margin-bottom:10px}
+.polar-cell .task{font-size:12px;color:var(--sub);margin-top:10px;line-height:1.45}
+.polar-result{margin-top:10px;font-size:14px;display:flex;gap:8px;align-items:center}
+
+/* IMF TABLE */
+.imf-wrap{overflow-x:auto;border-radius:8px;border:1px solid var(--border)}
+.imf-tbl{width:100%;border-collapse:collapse;font-size:14px;min-width:480px}
+.imf-tbl th{background:rgba(255,255,255,.05);color:var(--dim);font-size:12px;
+  text-transform:uppercase;letter-spacing:.07em;padding:9px 10px;text-align:center;
+  border-bottom:1px solid var(--border)}
+.imf-tbl th:nth-child(2){text-align:left}
+.imf-tbl td{padding:10px;border-bottom:1px solid rgba(255,255,255,.06);text-align:center;
+  vertical-align:middle}
+.imf-tbl td:nth-child(2){text-align:left;font-weight:600}
+.imf-tbl tr:last-child td{border-bottom:none}
+.mol-lbl{display:inline-block;background:rgba(255,255,255,.08);border-radius:5px;
+  padding:2px 8px;font-weight:800;margin-right:4px}
+.cbox{display:inline-block;width:22px;height:22px;border:2px solid var(--dim);border-radius:4px}
+
+.screen-print-bar{display:none}
+
+/* MCC worksheet view */
+@media screen{
+  *{
+    box-shadow:none!important;
+    text-shadow:none!important;
+    color:#000!important;
+    border-color:#000!important;
+    outline-color:#000!important;
+  }
+  .wrap *,.s-hdr,.s-hdr *,.chip,.btn-print{
+    background-color:#fff!important;
+    color:#000!important;
+    border-color:#000!important;
+  }
+  body{
+    background:#eee;
+    color:#000;
+    font-family:'Times New Roman',serif;
+    font-size:11pt;
+    padding:24px 12px;
+  }
+  .screen-print-bar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:12px;
+    max-width:8.5in;
+    margin:0 auto 12px;
+    padding:10px 12px;
+    background:#fff;
+    border:1px solid #000;
+    font-family:'Segoe UI',system-ui,sans-serif;
+    font-size:13px;
+  }
+  .screen-print-bar a,.screen-print-bar button{
+    color:#000;
+    background:#fff;
+    border:1px solid #000;
+    border-radius:4px;
+    padding:7px 10px;
+    text-decoration:none;
+    font:inherit;
+    cursor:pointer;
+  }
+  .screen-print-bar button{font-weight:700}
+  .wrap{
+    max-width:8.5in;
+    margin:0 auto;
+    padding:.65in;
+    background:#fff;
+    border:1px solid #bbb;
+  }
+  .s-hdr{display:none!important}
+  .p-hdr{
+    display:block!important;
+    padding-bottom:14px;
+    margin-bottom:20px;
+    border-bottom:2px solid #000;
+  }
+  .p-hdr h1{font-size:18pt;font-weight:900;margin-bottom:4px}
+  .p-hdr p{font-size:10pt;margin-bottom:10px;color:#000!important}
+  .p-hdr-fields{display:flex;gap:40px;font-size:11pt;margin-top:10px}
+  .p-hdr-fields .field{border-bottom:1.5px solid #000;min-width:160px;
+    display:inline-block;padding-bottom:2px}
+  .ref-box,.part-body,.lewis-cell,.wedge-legend,.polar-cell{
+    background:#fff!important;
+    border-color:#000!important;
+  }
+  .ref-box{border-left:3px solid #000;page-break-inside:avoid}
+  .ref-box h3,.ref-col h4,.ref-col li strong,.lewis-cell .mol-name,
+  .part-info h2,.draw-lbl,.q-num,.q-text,.q-text em,.polar-cell h4{
+    color:#000!important;
+  }
+  .ref-col li,.lewis-note,.part-info p,.std-tag,.draw-sub,.polar-cell .task{
+    color:#000!important;
+  }
+  .en-tbl,.en-tbl th,.en-tbl td{border-color:#999!important}
+  .en-tbl th{background:#fff!important;color:#000!important;border-bottom:2px solid #000!important}
+  .lewis-grid{page-break-inside:avoid}
+  .lewis-svg{color:#000!important}
+  .lewis-svg text,svg text{fill:#000!important}
+  .lewis-svg line,.lewis-svg polygon,.lewis-svg circle,svg line{stroke:#000!important}
+  .lewis-svg circle,.lewis-svg polygon,svg polygon,svg circle{fill:#000!important;stroke:#000!important}
+  .part-hdr{
+    background:#fff!important;
+    border-color:#000!important;
+    border-bottom:2px solid #000!important;
+    page-break-after:avoid;
+  }
+  .part-badge{
+    background:#fff!important;
+    color:#000!important;
+    border:2px solid #000!important;
+  }
+  .std-tag{background:#fff!important;border-color:#000!important}
+  .vsepr-wrap,.imf-wrap{border-color:#000!important}
+  .vsepr-tbl,.vsepr-tbl th,.vsepr-tbl td,
+  .imf-tbl,.imf-tbl th,.imf-tbl td{border-color:#000!important}
+  .vsepr-tbl th,.imf-tbl th{background:#fff!important;color:#000!important;border-bottom:2px solid #000!important}
+  .aline,.aline-sm,.aline-lg,.fblank,.fblank-sm{border-color:#000!important}
+  .draw-grid,.polar-grid{gap:18pt}
+  .draw-box{
+    border:2px dashed #000;
+    min-height:2.35in;
+    padding:12pt;
+    page-break-inside:avoid;
+  }
+  .draw-lbl{font-size:12pt;margin-bottom:4pt}
+  .draw-sub{font-size:10pt}
+  .q-block{
+    margin-bottom:24pt;
+    padding-bottom:22pt;
+    border-bottom:1px solid #999;
+    page-break-inside:avoid;
+  }
+  .q-text{font-size:11.5pt}
+  .answer-area{
+    border:1.5px solid #000;
+    background:#fff!important;
+    min-height:1.15in!important;
+    padding:10pt;
+  }
+  .fill-row{margin-bottom:10pt}
+  .polar-cell{
+    min-height:2.25in;
+    padding:12pt;
+    page-break-inside:avoid;
+  }
+  .polar-cell svg{margin:6pt auto 10pt}
+  .polar-cell .task{font-size:10.5pt;margin-top:8pt}
+  .polar-result{margin-top:12pt}
+  .mol-lbl{background:#fff!important;border:1px solid #000}
+  .cbox{border-color:#000}
+  .part{page-break-inside:auto;break-inside:auto;margin-bottom:30pt}
+  .part-body{padding:14pt}
+  .imf-tbl td{height:34pt}
+  svg{color:#000!important}
+}
+
+/* PRINT */
+@media print{
+  *{
+    -webkit-print-color-adjust:economy!important;
+    print-color-adjust:economy!important;
+    box-shadow:none!important;
+    text-shadow:none!important;
+    background-color:#fff!important;
+    color:#000!important;
+    border-color:#000!important;
+    outline-color:#000!important;
+  }
+  body{background:#fff!important;color:#000!important;font-size:11pt;
+    font-family:'Times New Roman',serif}
+  .s-hdr{display:none!important}
+  .p-hdr{display:block!important;padding-bottom:14px;margin-bottom:20px;
+    border-bottom:2px solid #000}
+  .p-hdr h1{font-size:18pt;font-weight:900;margin-bottom:4px}
+  .p-hdr p{font-size:10pt;margin-bottom:10px}
+  .p-hdr-fields{display:flex;gap:40px;font-size:11pt;margin-top:10px}
+  .p-hdr-fields .field{border-bottom:1.5px solid #000;min-width:160px;
+    display:inline-block;padding-bottom:2px}
+  .ref-box{border-color:#000;border-left:3px solid #000;page-break-inside:avoid}
+  .en-tbl,.en-tbl th,.en-tbl td{border-color:#999!important}
+  .en-tbl th{border-bottom:2px solid #000!important}
+  .lewis-grid{page-break-inside:avoid}
+  .lewis-cell{border-color:#000}
+  .lewis-svg{color:#000!important}
+  .lewis-svg text{fill:#000!important}
+  .lewis-svg line,.lewis-svg polygon,.lewis-svg circle{stroke:#000!important}
+  .lewis-svg circle,.lewis-svg polygon{fill:#000!important}
+  .part-hdr{border-color:#000;border-bottom:2px solid #000;page-break-after:avoid}
+  .part-body{background:#fff;border-color:#000}
+  .part-badge{background:#fff!important;color:#000!important;border:2px solid #000}
+  .std-tag{background:#fff!important;border-color:#000}
+  .vsepr-wrap,.imf-wrap{border-color:#000}
+  .vsepr-tbl,.vsepr-tbl th,.vsepr-tbl td,
+  .imf-tbl,.imf-tbl th,.imf-tbl td{border-color:#000!important}
+  .vsepr-tbl th,.imf-tbl th{border-bottom:2px solid #000!important}
+  .aline,.aline-sm,.aline-lg{border-color:#000}
+  .fblank,.fblank-sm{border-color:#000}
+  .wedge-legend{border-color:#000}
+  .draw-grid,.polar-grid{gap:18pt}
+  .draw-box{
+    border:2px dashed #000;
+    min-height:2.35in;
+    padding:12pt;
+    page-break-inside:avoid;
+  }
+  .draw-lbl{font-size:12pt;margin-bottom:4pt}
+  .draw-sub{font-size:10pt}
+  .q-block{
+    margin-bottom:24pt;
+    padding-bottom:22pt;
+    border-bottom:1px solid #999;
+    page-break-inside:avoid;
+  }
+  .q-text{font-size:11.5pt}
+  .answer-area{
+    border:1.5px solid #000;
+    background:#fff;
+    min-height:1.15in!important;
+    padding:10pt;
+  }
+  .fill-row{margin-bottom:10pt}
+  .polar-cell{border-color:#000}
+  .polar-cell{
+    min-height:2.25in;
+    padding:12pt;
+    page-break-inside:avoid;
+  }
+  .polar-cell svg{margin:6pt auto 10pt}
+  .polar-cell .task{font-size:10.5pt;margin-top:8pt}
+  .polar-result{margin-top:12pt}
+  .mol-lbl{background:#fff!important;border:1px solid #000}
+  .cbox{border-color:#000}
+  .part{
+    page-break-inside:auto;
+    break-inside:auto;
+    margin-bottom:30pt;
+  }
+  .part-body{padding:14pt}
+  .imf-tbl td{height:34pt}
+  svg{color:#000!important}
+  svg text{fill:#000!important}
+  svg line{stroke:#000!important}
+  svg polygon,svg circle{fill:#000!important;stroke:#000!important}
+  .screen-print-bar{display:none!important}
+  @page{margin:.75in}
+}
+</style>
+</head>
+<body>
+<div class="screen-print-bar">
+  <a href="../index.html">Motor City Chemistry home</a>
+  <button type="button" onclick="window.print()">Print worksheet</button>
+</div>
+<div class="wrap">
+
+<!-- SCREEN HEADER -->
+<div class="s-hdr">
+  <div class="s-hdr-eye">CHEM 10 · Quiz 12 Remediation · Molecular Shape &amp; IMFs</div>
+  <h1>Chemistry Practice Test</h1>
+  <div class="s-hdr-sub">Kai Ash · Quiz 12 (9/1/26) targeted drill · Standards 5.1 &amp; 5.2 · All new molecules</div>
+  <div class="chip-row">
+    <span class="chip np">5.1.1 NP  -  Bonding sites &amp; lone pairs</span>
+    <span class="chip np">5.1.2 NP  -  Name molecular shape</span>
+    <span class="chip np">5.1.3 NP  -  3-D wedge/dash drawing</span>
+    <span class="chip np">5.1.6 NP  -  Polarity arrows</span>
+    <span class="chip np">5.1.7 NP  -  Lone pair vs bond pair angles</span>
+    <span class="chip np">5.2.2 NP  -  Identify IMF type</span>
+    <span class="chip np">5.2.3 NP  -  Properties from IMFs</span>
+  </div>
+  <div class="chip-row">
+    <span class="chip p">5.1.4 P  -  Bond polarity (EN)</span>
+    <span class="chip p">5.1.5 P  -  Molecular polarity</span>
+    <span class="chip p">5.2.1 P  -  Rank IMF strength</span>
+    <span class="chip p">5.2.4 P  -  Solubility definition</span>
+    <span class="chip p">5.2.5 P  -  Solubility assessment</span>
+    <span class="chip p">5.2.6 P  -  IMF arrow diagrams</span>
+  </div>
+  <button class="btn-print" onclick="window.print()">Print Practice Test</button>
+</div>
+
+<!-- PRINT HEADER -->
+<div class="p-hdr">
+  <h1>Chemistry Practice Test  -  Standards 5.1 &amp; 5.2</h1>
+  <p>CHEM 10 · Molecular Shape, Polarity, and Intermolecular Forces · Remediation Practice</p>
+  <div class="p-hdr-fields">
+    <span>Name: <span class="field">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>
+    <span>Date: <span class="field">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>
+    <span>Period: <span class="field">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>
+  </div>
+</div>
+
+<!-- REFERENCE BOX -->
+<div class="ref-box">
+  <h3>Reference  -  Key Rules</h3>
+  <div class="ref-2col">
+    <div class="ref-col">
+      <h4>VSEPR Rules</h4>
+      <ul>
+        <li><strong>1 domain = 1 bonded atom</strong> (regardless of single/double/triple bond)</li>
+        <li><strong>Count lone pairs on the central atom only</strong></li>
+        <li>Total domains = bonding domains + lone pairs</li>
+        <li>More lone pairs → <strong>smaller bond angle</strong> (LP repels more than BP)</li>
+        <li>Shape name is based on <strong>atom positions only</strong>, not total domains</li>
+      </ul>
+    </div>
+    <div class="ref-col">
+      <h4>IMF Rules</h4>
+      <ul>
+        <li><strong>ALL</strong> molecules: London Dispersion Forces (LDF)</li>
+        <li><strong>Polar</strong> molecules: add Dipole-Dipole (DD)</li>
+        <li><strong>N-H, O-H, or F-H bond</strong>: add Hydrogen Bonding (HB)</li>
+        <li>Stronger IMF → higher boiling point, slower evaporation</li>
+        <li>Larger molecule → stronger LDF (more surface area)</li>
+      </ul>
+      <h4 style="margin-top:10px">Electronegativity Table</h4>
+      <table class="en-tbl">
+        <tr><th>H</th><th>C</th><th>N</th><th>O</th><th>F</th><th>Cl</th><th>Br</th><th>S</th><th>P</th></tr>
+        <tr><td>2.1</td><td>2.5</td><td>3.0</td><td>3.5</td><td>4.0</td><td>3.0</td><td>2.8</td><td>2.5</td><td>2.1</td></tr>
+      </table>
+      <p style="font-size:12px;color:var(--dim);margin-top:5px">EN diff 0-0.4: Nonpolar covalent &nbsp;|&nbsp; 0.5-1.7: Polar covalent &nbsp;|&nbsp; 1.8+: Ionic</p>
+    </div>
+  </div>
+</div>
+
+<!-- PART A -->
+<div class="part">
+  <div class="part-hdr">
+    <div class="part-badge">A</div>
+    <div class="part-info">
+      <h2>VSEPR: Bonding Domains &amp; Molecular Shape</h2>
+      <p>Examine each Lewis structure. Complete the table for each molecule.</p>
+    </div>
+    <span class="std-tag">5.1.1 &amp; 5.1.2</span>
+  </div>
+  <div class="part-body">
+
+    <!-- Lewis Structure Grid -->
+    <div class="lewis-grid">
+
+      <!-- 1: CO2 -->
+      <div class="lewis-cell">
+        <div class="mol-num">Molecule 1</div>
+        <div class="mol-name">CO<sub>2</sub></div>
+        <svg viewBox="0 0 220 82" width="190" height="70" class="lewis-svg" aria-label="CO2 Lewis structure">
+          <!-- LP on left O: above and below -->
+          <circle cx="22" cy="9" r="3.5" fill="currentColor"/>
+          <circle cx="34" cy="9" r="3.5" fill="currentColor"/>
+          <circle cx="22" cy="73" r="3.5" fill="currentColor"/>
+          <circle cx="34" cy="73" r="3.5" fill="currentColor"/>
+          <!-- Left O -->
+          <text x="38" y="41" dominant-baseline="middle" text-anchor="middle" font-family="Georgia,serif" font-size="22" font-weight="bold" fill="currentColor">O</text>
+          <!-- Double bond left -->
+          <line x1="51" y1="30" x2="88" y2="30" stroke="currentColor" stroke-width="2"/>
+          <line x1="51" y1="52" x2="88" y2="52" stroke="currentColor" stroke-width="2"/>
+          <!-- Central C -->
+          <text x="104" y="41" dominant-baseline="middle" text-anchor="middle" font-family="Georgia,serif" font-size="22" font-weight="bold" fill="currentColor">C</text>
+          <!-- Double bond right -->
+          <line x1="120" y1="30" x2="157" y2="30" stroke="currentColor" stroke-width="2"/>
+          <line x1="120" y1="52" x2="157" y2="52" stroke="currentColor" stroke-width="2"/>
+          <!-- Right O -->
+          <text x="171" y="41" dominant-baseline="middle" text-anchor="middle" font-family="Georgia,serif" font-size="22" font-weight="bold" fill="currentColor">O</text>
+          <!-- LP on right O: above and below -->
+          <circle cx="185" cy="9" r="3.5" fill="currentColor"/>
+          <circle cx="197" cy="9" r="3.5" fill="currentColor"/>
+          <circle cx="185" cy="73" r="3.5" fill="currentColor"/>
+          <circle cx="197" cy="73" r="3.5" fill="currentColor"/>
+        </svg>
+        <div class="lewis-note">Each double bond = <strong>1 electron domain</strong></div>
+      </div>
+
+      <!-- 2: BCl3 -->
+      <div class="lewis-cell">
+        <div class="mol-num">Molecule 2</div>
+        <div class="mol-name">BCl<sub>3</sub></div>
+        <svg viewBox="0 0 210 178" width="170" height="144" class="lewis-svg" aria-label="BCl3 Lewis structure">
+          <!-- Cl top LP (three lone pairs, away from B) -->
+          <circle cx="99" cy="4" r="3.5" fill="currentColor"/>
+          <circle cx="111" cy="4" r="3.5" fill="currentColor"/>
+          <circle cx="82" cy="14" r="3.5" fill="currentColor"/>
+          <circle cx="82" cy="25" r="3.5" fill="currentColor"/>
+          <circle cx="128" cy="14" r="3.5" fill="currentColor"/>
+          <circle cx="128" cy="25" r="3.5" fill="currentColor"/>
+          <!-- Cl-top label -->
+          <text x="105" y="18" dominant-baseline="middle" text-anchor="middle" font-family="Georgia,serif" font-size="20" font-weight="bold" fill="currentColor">Cl</text>
+          <!-- Bond B to Cl-top -->
+          <line x1="105" y1="84" x2="105" y2="32" stroke="currentColor" stroke-width="2"/>
+          <!-- Central B  -  NO lone pairs -->
+          <text x="105" y="96" dominant-baseline="middle" text-anchor="middle" font-family="Georgia,serif" font-size="22" font-weight="bold" fill="currentColor">B</text>
+          <!-- Bond B to Cl-BL -->
+          <line x1="98" y1="106" x2="50" y2="140" stroke="currentColor" stroke-width="2"/>
+          <!-- Bond B to Cl-BR -->
+          <line x1="112" y1="106" x2="160" y2="140" stroke="currentColor" stroke-width="2"/>
+          <!-- Cl-BL LP -->
+          <circle cx="26" cy="128" r="3.5" fill="currentColor"/>
+          <circle cx="38" cy="128" r="3.5" fill="currentColor"/>
+          <circle cx="14" cy="146" r="3.5" fill="currentColor"/>
+          <circle cx="14" cy="158" r="3.5" fill="currentColor"/>
+          <circle cx="28" cy="165" r="3.5" fill="currentColor"/>
+          <circle cx="40" cy="165" r="3.5" fill="currentColor"/>
+          <!-- Cl-BL label -->
+          <text x="32" y="150" dominant-baseline="middle" text-anchor="middle" font-family="Georgia,serif" font-size="20" font-weight="bold" fill="currentColor">Cl</text>
+          <!-- Cl-BR LP -->
+          <circle cx="172" cy="128" r="3.5" fill="currentColor"/>
+          <circle cx="184" cy="128" r="3.5" fill="currentColor"/>
+          <circle cx="196" cy="146" r="3.5" fill="currentColor"/>
+          <circle cx="196" cy="158" r="3.5" fill="currentColor"/>
+          <circle cx="170" cy="165" r="3.5" fill="currentColor"/>
+          <circle cx="182" cy="165" r="3.5" fill="currentColor"/>
+          <!-- Cl-BR label -->
+          <text x="178" y="150" dominant-baseline="middle" text-anchor="middle" font-family="Georgia,serif" font-size="20" font-weight="bold" fill="currentColor">Cl</text>
+        </svg>
+        <div class="lewis-note">Note: B has <strong>no lone pairs</strong></div>
+      </div>
+
+      <!-- 3: SO2 -->
+      <div class="lewis-cell">
+        <div class="mol-num">Molecule 3</div>
+        <div class="mol-name">SO<sub>2</sub></div>
+        <svg viewBox="0 0 200 165" width="170" height="140" class="lewis-svg" aria-label="SO2 Lewis structure">
+          <!-- LP on S (1 lone pair, above S) -->
+          <circle cx="88" cy="32" r="3.5" fill="currentColor"/>
+          <circle cx="100" cy="32" r="3.5" fill="currentColor"/>
+          <!-- S label -->
+          <text x="100" y="62" dominant-baseline="middle" text-anchor="middle" font-family="Georgia,serif" font-size="22" font-weight="bold" fill="currentColor">S</text>
+          <!-- Double bond S=O1 (left, 2 lines) -->
+          <line x1="95" y1="74" x2="42" y2="124" stroke="currentColor" stroke-width="2"/>
+          <line x1="87" y1="68" x2="34" y2="118" stroke="currentColor" stroke-width="2"/>
+          <!-- Double bond S=O2 (right, 2 lines) -->
+          <line x1="113" y1="69" x2="163" y2="120" stroke="currentColor" stroke-width="2"/>
+          <line x1="105" y1="75" x2="155" y2="126" stroke="currentColor" stroke-width="2"/>
+          <!-- O1 label -->
+          <text x="28" y="132" dominant-baseline="middle" text-anchor="middle" font-family="Georgia,serif" font-size="22" font-weight="bold" fill="currentColor">O</text>
+          <!-- O1 LP -->
+          <circle cx="7" cy="124" r="3.5" fill="currentColor"/>
+          <circle cx="7" cy="136" r="3.5" fill="currentColor"/>
+          <circle cx="18" cy="150" r="3.5" fill="currentColor"/>
+          <circle cx="30" cy="150" r="3.5" fill="currentColor"/>
+          <!-- O2 label -->
+          <text x="172" y="132" dominant-baseline="middle" text-anchor="middle" font-family="Georgia,serif" font-size="22" font-weight="bold" fill="currentColor">O</text>
+          <!-- O2 LP -->
+          <circle cx="193" cy="124" r="3.5" fill="currentColor"/>
+          <circle cx="193" cy="136" r="3.5" fill="currentColor"/>
+          <circle cx="162" cy="150" r="3.5" fill="currentColor"/>
+          <circle cx="174" cy="150" r="3.5" fill="currentColor"/>
+        </svg>
+        <div class="lewis-note">S has <strong>1 lone pair</strong> shown above</div>
+      </div>
+
+      <!-- 4: CH4 -->
+      <div class="lewis-cell">
+        <div class="mol-num">Molecule 4</div>
+        <div class="mol-name">CH<sub>4</sub></div>
+        <svg viewBox="0 0 160 160" width="140" height="140" class="lewis-svg" aria-label="CH4 Lewis structure">
+          <!-- Bond to H-top -->
+          <line x1="80" y1="68" x2="80" y2="26" stroke="currentColor" stroke-width="2"/>
+          <!-- Bond to H-left -->
+          <line x1="68" y1="80" x2="26" y2="80" stroke="currentColor" stroke-width="2"/>
+          <!-- Bond to H-right -->
+          <line x1="92" y1="80" x2="134" y2="80" stroke="currentColor" stroke-width="2"/>
+          <!-- Bond to H-bottom -->
+          <line x1="80" y1="92" x2="80" y2="134" stroke="currentColor" stroke-width="2"/>
+          <!-- Central C (NO lone pairs) -->
+          <text x="80" y="80" dominant-baseline="middle" text-anchor="middle" font-family="Georgia,serif" font-size="22" font-weight="bold" fill="currentColor">C</text>
+          <!-- H labels -->
+          <text x="80" y="16" dominant-baseline="middle" text-anchor="middle" font-family="Georgia,serif" font-size="20" font-weight="bold" fill="currentColor">H</text>
+          <text x="16" y="80" dominant-baseline="middle" text-anchor="middle" font-family="Georgia,serif" font-size="20" font-weight="bold" fill="currentColor">H</text>
+          <text x="144" y="80" dominant-baseline="middle" text-anchor="middle" font-family="Georgia,serif" font-size="20" font-weight="bold" fill="currentColor">H</text>
+          <text x="80" y="144" dominant-baseline="middle" text-anchor="middle" font-family="Georgia,serif" font-size="20" font-weight="bold" fill="currentColor">H</text>
+        </svg>
+        <div class="lewis-note">No lone pairs on C</div>
+      </div>
+
+      <!-- 5: NH3 -->
+      <div class="lewis-cell">
+        <div class="mol-num">Molecule 5</div>
+        <div class="mol-name">NH<sub>3</sub></div>
+        <svg viewBox="0 0 160 175" width="140" height="153" class="lewis-svg" aria-label="NH3 Lewis structure">
+          <!-- LP on N (1 lone pair, above N) -->
+          <circle cx="70" cy="54" r="3.5" fill="currentColor"/>
+          <circle cx="84" cy="54" r="3.5" fill="currentColor"/>
+          <!-- N label -->
+          <text x="80" y="86" dominant-baseline="middle" text-anchor="middle" font-family="Georgia,serif" font-size="22" font-weight="bold" fill="currentColor">N</text>
+          <!-- Bond N-H left -->
+          <line x1="73" y1="96" x2="38" y2="138" stroke="currentColor" stroke-width="2"/>
+          <!-- Bond N-H center -->
+          <line x1="80" y1="98" x2="80" y2="148" stroke="currentColor" stroke-width="2"/>
+          <!-- Bond N-H right -->
+          <line x1="87" y1="96" x2="122" y2="138" stroke="currentColor" stroke-width="2"/>
+          <!-- H labels -->
+          <text x="28" y="152" dominant-baseline="middle" text-anchor="middle" font-family="Georgia,serif" font-size="20" font-weight="bold" fill="currentColor">H</text>
+          <text x="80" y="162" dominant-baseline="middle" text-anchor="middle" font-family="Georgia,serif" font-size="20" font-weight="bold" fill="currentColor">H</text>
+          <text x="132" y="152" dominant-baseline="middle" text-anchor="middle" font-family="Georgia,serif" font-size="20" font-weight="bold" fill="currentColor">H</text>
+        </svg>
+        <div class="lewis-note">N has <strong>1 lone pair</strong> above</div>
+      </div>
+
+      <!-- 6: H2O -->
+      <div class="lewis-cell">
+        <div class="mol-num">Molecule 6</div>
+        <div class="mol-name">H<sub>2</sub>O</div>
+        <svg viewBox="0 0 172 165" width="148" height="142" class="lewis-svg" aria-label="H2O Lewis structure">
+          <!-- LP1 on O (left pair, above) -->
+          <circle cx="64" cy="46" r="3.5" fill="currentColor"/>
+          <circle cx="76" cy="46" r="3.5" fill="currentColor"/>
+          <!-- LP2 on O (right pair, above) -->
+          <circle cx="96" cy="46" r="3.5" fill="currentColor"/>
+          <circle cx="108" cy="46" r="3.5" fill="currentColor"/>
+          <!-- O label -->
+          <text x="86" y="76" dominant-baseline="middle" text-anchor="middle" font-family="Georgia,serif" font-size="22" font-weight="bold" fill="currentColor">O</text>
+          <!-- Bond O-H left -->
+          <line x1="78" y1="86" x2="38" y2="133" stroke="currentColor" stroke-width="2"/>
+          <!-- Bond O-H right -->
+          <line x1="94" y1="86" x2="134" y2="133" stroke="currentColor" stroke-width="2"/>
+          <!-- H labels -->
+          <text x="26" y="148" dominant-baseline="middle" text-anchor="middle" font-family="Georgia,serif" font-size="20" font-weight="bold" fill="currentColor">H</text>
+          <text x="146" y="148" dominant-baseline="middle" text-anchor="middle" font-family="Georgia,serif" font-size="20" font-weight="bold" fill="currentColor">H</text>
+        </svg>
+        <div class="lewis-note">O has <strong>2 lone pairs</strong> above</div>
+      </div>
+
+    </div><!-- /lewis-grid -->
+
+    <!-- VSEPR Table -->
+    <div class="vsepr-wrap">
+      <table class="vsepr-tbl">
+        <thead>
+          <tr>
+            <th style="width:14%">Molecule</th>
+            <th style="width:17%"># Bonding<br>Domains</th>
+            <th style="width:17%"># Lone Pairs<br>on Central Atom</th>
+            <th style="width:14%">Total<br>Domains</th>
+            <th style="width:22%">Shape Name</th>
+            <th style="width:16%">Bond<br>Angle</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>1. CO<sub>2</sub></td><td><span class="aline aline-sm"></span></td><td><span class="aline aline-sm"></span></td><td><span class="aline aline-sm"></span></td><td><span class="aline aline-lg"></span></td><td><span class="aline"></span></td></tr>
+          <tr><td>2. BCl<sub>3</sub></td><td><span class="aline aline-sm"></span></td><td><span class="aline aline-sm"></span></td><td><span class="aline aline-sm"></span></td><td><span class="aline aline-lg"></span></td><td><span class="aline"></span></td></tr>
+          <tr><td>3. SO<sub>2</sub></td><td><span class="aline aline-sm"></span></td><td><span class="aline aline-sm"></span></td><td><span class="aline aline-sm"></span></td><td><span class="aline aline-lg"></span></td><td><span class="aline"></span></td></tr>
+          <tr><td>4. CH<sub>4</sub></td><td><span class="aline aline-sm"></span></td><td><span class="aline aline-sm"></span></td><td><span class="aline aline-sm"></span></td><td><span class="aline aline-lg"></span></td><td><span class="aline"></span></td></tr>
+          <tr><td>5. NH<sub>3</sub></td><td><span class="aline aline-sm"></span></td><td><span class="aline aline-sm"></span></td><td><span class="aline aline-sm"></span></td><td><span class="aline aline-lg"></span></td><td><span class="aline"></span></td></tr>
+          <tr><td>6. H<sub>2</sub>O</td><td><span class="aline aline-sm"></span></td><td><span class="aline aline-sm"></span></td><td><span class="aline aline-sm"></span></td><td><span class="aline aline-lg"></span></td><td><span class="aline"></span></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div><!-- /part-body A -->
+</div><!-- /part A -->
+
+<!-- PART B: 3D DRAWING -->
+<div class="part">
+  <div class="part-hdr">
+    <div class="part-badge">B</div>
+    <div class="part-info">
+      <h2>3-D Molecular Drawing with Wedges &amp; Dashes</h2>
+      <p>Draw each molecule using proper 3-D notation. Label all atoms.</p>
+    </div>
+    <span class="std-tag">5.1.3</span>
+  </div>
+  <div class="part-body">
+
+    <div class="wedge-legend">
+      <h4>Wedge-Dash Key</h4>
+      <div class="wl-row">
+        <div class="wl-item">
+          <svg width="50" height="24" viewBox="0 0 50 24">
+            <polygon points="2,12 48,5 48,19" fill="currentColor"/>
+          </svg>
+          <span><strong>Solid wedge</strong>  -  bond coming <em>toward</em> you (out of page)</span>
+        </div>
+        <div class="wl-item">
+          <svg width="50" height="24" viewBox="0 0 50 24">
+            <line x1="2" y1="12" x2="48" y2="12" stroke="currentColor" stroke-width="2.5" stroke-dasharray="6,4"/>
+          </svg>
+          <span><strong>Dashed line</strong>  -  bond going <em>away</em> from you (behind page)</span>
+        </div>
+        <div class="wl-item">
+          <svg width="50" height="24" viewBox="0 0 50 24">
+            <line x1="2" y1="12" x2="48" y2="12" stroke="currentColor" stroke-width="2.5"/>
+          </svg>
+          <span><strong>Solid line</strong>  -  bond <em>in the plane</em> of the paper</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="draw-grid">
+      <div class="draw-box">
+        <div class="draw-lbl">1. CH<sub>4</sub>  -  Tetrahedral</div>
+        <div class="draw-sub">4 bonding domains, 0 lone pairs · 109.5°</div>
+      </div>
+      <div class="draw-box">
+        <div class="draw-lbl">2. NH<sub>3</sub>  -  Trigonal Pyramidal</div>
+        <div class="draw-sub">3 bonding domains, 1 lone pair · ~107° · Show lone pair above N</div>
+      </div>
+      <div class="draw-box">
+        <div class="draw-lbl">3. H<sub>2</sub>O  -  Bent (tetrahedral parent)</div>
+        <div class="draw-sub">2 bonding domains, 2 lone pairs · ~104.5° · Show both lone pairs on O</div>
+      </div>
+      <div class="draw-box">
+        <div class="draw-lbl">4. BCl<sub>3</sub>  -  Trigonal Planar</div>
+        <div class="draw-sub">3 bonding domains, 0 lone pairs · 120° · All bonds in same plane (no wedge needed)</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- PART C: LONE PAIR EFFECTS -->
+<div class="part">
+  <div class="part-hdr">
+    <div class="part-badge">C</div>
+    <div class="part-info">
+      <h2>Lone Pair Effects on Bond Angles</h2>
+      <p>Short answer. Use complete sentences where asked.</p>
+    </div>
+    <span class="std-tag">5.1.7</span>
+  </div>
+  <div class="part-body">
+
+    <div class="q-block">
+      <div class="q-num">Question 1</div>
+      <div class="q-text">The ideal tetrahedral bond angle is 109.5°. The actual bond angle in H<sub>2</sub>O is approximately 104.5°. <em>Explain why the H-O-H angle is smaller than 109.5°.</em> Reference the repulsion hierarchy in your answer.</div>
+      <div class="answer-area"></div>
+    </div>
+
+    <div class="q-block">
+      <div class="q-num">Question 2</div>
+      <div class="q-text"><em>Rank CH<sub>4</sub>, NH<sub>3</sub>, and H<sub>2</sub>O from largest to smallest bond angle.</em> Then explain your reasoning in one sentence.</div>
+      <div class="fill-row">
+        Ranking: <span class="fblank"></span> &gt; <span class="fblank"></span> &gt; <span class="fblank"></span>
+      </div>
+      <div class="answer-area" style="min-height:70px"></div>
+    </div>
+
+    <div class="q-block">
+      <div class="q-num">Question 3</div>
+      <div class="q-text">BCl<sub>3</sub> has a bond angle of exactly 120°. SO<sub>2</sub> also has 3 electron domains on the central atom but its bond angle is <em>less than</em> 120°. <em>Why is the SO<sub>2</sub> angle smaller?</em></div>
+      <div class="answer-area"></div>
+    </div>
+
+    <div class="q-block">
+      <div class="q-num">Question 4</div>
+      <div class="q-text">A classmate says: <em>"BF<sub>3</sub> and NF<sub>3</sub> must have the same shape and bond angle because they both have exactly 3 F atoms bonded to the central atom."</em> What is the error in this reasoning? State the correct shape and bond angle for each molecule.</div>
+      <div class="answer-area"></div>
+    </div>
+
+  </div>
+</div>
+
+<!-- PART D: POLARITY ARROWS -->
+<div class="part">
+  <div class="part-hdr">
+    <div class="part-badge">D</div>
+    <div class="part-info">
+      <h2>Polarity Arrows on Molecules</h2>
+      <p>For each structure: (a) draw an arrow on each polar bond pointing toward the more EN atom, (b) state whether there is a net molecular dipole.</p>
+    </div>
+    <span class="std-tag">5.1.6</span>
+  </div>
+  <div class="part-body">
+    <p style="font-size:13px;color:var(--sub);margin-bottom:14px">Convention: Arrow points from <strong style="color:var(--text)">δ+</strong> (less EN) toward <strong style="color:var(--text)">δ−</strong> (more EN). Use the EN table in the reference box.</p>
+
+    <div class="polar-grid">
+
+      <!-- HCl -->
+      <div class="polar-cell">
+        <h4>1. HCl</h4>
+        <svg viewBox="0 0 200 72" width="180" height="65" class="lewis-svg" aria-label="HCl molecule">
+          <text x="30" y="36" dominant-baseline="middle" text-anchor="middle" font-family="Georgia,serif" font-size="22" font-weight="bold" fill="currentColor">H</text>
+          <line x1="44" y1="36" x2="140" y2="36" stroke="currentColor" stroke-width="2.5"/>
+          <text x="164" y="36" dominant-baseline="middle" text-anchor="middle" font-family="Georgia,serif" font-size="22" font-weight="bold" fill="currentColor">Cl</text>
+        </svg>
+        <div class="task">Draw a polarity arrow on the H-Cl bond. Add δ+ and δ− labels.</div>
+        <div class="polar-result">Net dipole? <span class="fblank fblank-sm"></span></div>
+      </div>
+
+      <!-- CO2 -->
+      <div class="polar-cell">
+        <h4>2. CO<sub>2</sub> (linear)</h4>
+        <svg viewBox="0 0 220 72" width="196" height="64" class="lewis-svg" aria-label="CO2 polarity structure">
+          <text x="30" y="36" dominant-baseline="middle" text-anchor="middle" font-family="Georgia,serif" font-size="22" font-weight="bold" fill="currentColor">O</text>
+          <line x1="44" y1="28" x2="90" y2="28" stroke="currentColor" stroke-width="1.8"/>
+          <line x1="44" y1="44" x2="90" y2="44" stroke="currentColor" stroke-width="1.8"/>
+          <text x="104" y="36" dominant-baseline="middle" text-anchor="middle" font-family="Georgia,serif" font-size="22" font-weight="bold" fill="currentColor">C</text>
+          <line x1="118" y1="28" x2="164" y2="28" stroke="currentColor" stroke-width="1.8"/>
+          <line x1="118" y1="44" x2="164" y2="44" stroke="currentColor" stroke-width="1.8"/>
+          <text x="178" y="36" dominant-baseline="middle" text-anchor="middle" font-family="Georgia,serif" font-size="22" font-weight="bold" fill="currentColor">O</text>
+        </svg>
+        <div class="task">Draw polarity arrows on both C=O bonds. Do they cancel? State whether there is a net molecular dipole and why.</div>
+        <div class="polar-result">Net dipole? <span class="fblank fblank-sm"></span></div>
+      </div>
+
+      <!-- NH3 -->
+      <div class="polar-cell">
+        <h4>3. NH<sub>3</sub> (trigonal pyramidal)</h4>
+        <svg viewBox="0 0 180 160" width="162" height="144" class="lewis-svg" aria-label="NH3 molecule shape">
+          <text x="90" y="30" dominant-baseline="middle" text-anchor="middle" font-family="Georgia,serif" font-size="22" font-weight="bold" fill="currentColor">N</text>
+          <line x1="82" y1="42" x2="38" y2="118" stroke="currentColor" stroke-width="2"/>
+          <line x1="90" y1="44" x2="90" y2="126" stroke="currentColor" stroke-width="2"/>
+          <line x1="98" y1="42" x2="142" y2="118" stroke="currentColor" stroke-width="2"/>
+          <text x="28" y="134" dominant-baseline="middle" text-anchor="middle" font-family="Georgia,serif" font-size="20" font-weight="bold" fill="currentColor">H</text>
+          <text x="90" y="144" dominant-baseline="middle" text-anchor="middle" font-family="Georgia,serif" font-size="20" font-weight="bold" fill="currentColor">H</text>
+          <text x="152" y="134" dominant-baseline="middle" text-anchor="middle" font-family="Georgia,serif" font-size="20" font-weight="bold" fill="currentColor">H</text>
+        </svg>
+        <div class="task">Draw polarity arrows on all 3 N-H bonds. Draw the <strong>net molecular dipole</strong> arrow showing the overall direction.</div>
+        <div class="polar-result">Net dipole? <span class="fblank fblank-sm"></span></div>
+      </div>
+
+      <!-- CH2F2 -->
+      <div class="polar-cell">
+        <h4>4. CH<sub>2</sub>F<sub>2</sub> (tetrahedral)</h4>
+        <svg viewBox="0 0 196 196" width="178" height="178" class="lewis-svg" aria-label="CH2F2 molecule shape">
+          <!-- H atoms at top -->
+          <text x="46" y="42" dominant-baseline="middle" text-anchor="middle" font-family="Georgia,serif" font-size="20" font-weight="bold" fill="currentColor">H</text>
+          <text x="150" y="42" dominant-baseline="middle" text-anchor="middle" font-family="Georgia,serif" font-size="20" font-weight="bold" fill="currentColor">H</text>
+          <!-- Bonds C to H (upper) -->
+          <line x1="91" y1="91" x2="56" y2="54" stroke="currentColor" stroke-width="2"/>
+          <line x1="105" y1="91" x2="140" y2="54" stroke="currentColor" stroke-width="2"/>
+          <!-- Central C -->
+          <text x="98" y="98" dominant-baseline="middle" text-anchor="middle" font-family="Georgia,serif" font-size="22" font-weight="bold" fill="currentColor">C</text>
+          <!-- Bonds C to F (lower) -->
+          <line x1="91" y1="105" x2="56" y2="142" stroke="currentColor" stroke-width="2"/>
+          <line x1="105" y1="105" x2="140" y2="142" stroke="currentColor" stroke-width="2"/>
+          <!-- F atoms at bottom -->
+          <text x="46" y="156" dominant-baseline="middle" text-anchor="middle" font-family="Georgia,serif" font-size="20" font-weight="bold" fill="currentColor">F</text>
+          <text x="150" y="156" dominant-baseline="middle" text-anchor="middle" font-family="Georgia,serif" font-size="20" font-weight="bold" fill="currentColor">F</text>
+        </svg>
+        <div class="task">Draw polarity arrows on all 4 bonds (C-H and C-F). Note: C-H bonds have a small polarity. The C-F bonds are strongly polar. Do the arrows cancel? Draw the net molecular dipole.</div>
+        <div class="polar-result">Net dipole? <span class="fblank fblank-sm"></span></div>
+      </div>
+
+    </div><!-- /polar-grid -->
+  </div>
+</div>
+
+<!-- PART E: IMF IDENTIFICATION -->
+<div class="part">
+  <div class="part-hdr">
+    <div class="part-badge">E</div>
+    <div class="part-info">
+      <h2>Intermolecular Force Identification</h2>
+      <p>Mark (✓) all IMFs present in each molecule.</p>
+    </div>
+    <span class="std-tag">5.2.2</span>
+  </div>
+  <div class="part-body">
+
+    <div class="imf-wrap">
+      <table class="imf-tbl">
+        <thead>
+          <tr>
+            <th style="width:7%">Label</th>
+            <th style="width:30%">Molecule</th>
+            <th style="width:13%">MW (g/mol)</th>
+            <th style="width:10%">Polar?</th>
+            <th style="width:13%">LDF</th>
+            <th style="width:13%">DD</th>
+            <th style="width:14%">HB</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="mol-lbl">A</span></td>
+            <td>Ar (argon)</td>
+            <td>39.95</td><td>No</td>
+            <td><span class="cbox"></span></td><td><span class="cbox"></span></td><td><span class="cbox"></span></td>
+          </tr>
+          <tr>
+            <td><span class="mol-lbl">B</span></td>
+            <td>HF (hydrogen fluoride)</td>
+            <td>20.01</td><td>Yes</td>
+            <td><span class="cbox"></span></td><td><span class="cbox"></span></td><td><span class="cbox"></span></td>
+          </tr>
+          <tr>
+            <td><span class="mol-lbl">C</span></td>
+            <td>C<sub>4</sub>H<sub>10</sub> (butane)</td>
+            <td>58.12</td><td>No</td>
+            <td><span class="cbox"></span></td><td><span class="cbox"></span></td><td><span class="cbox"></span></td>
+          </tr>
+          <tr>
+            <td><span class="mol-lbl">D</span></td>
+            <td>CH<sub>3</sub>OH (methanol)</td>
+            <td>32.04</td><td>Yes</td>
+            <td><span class="cbox"></span></td><td><span class="cbox"></span></td><td><span class="cbox"></span></td>
+          </tr>
+          <tr>
+            <td><span class="mol-lbl">E</span></td>
+            <td>CH<sub>3</sub>F (fluoromethane)</td>
+            <td>34.03</td><td>Yes</td>
+            <td><span class="cbox"></span></td><td><span class="cbox"></span></td><td><span class="cbox"></span></td>
+          </tr>
+          <tr>
+            <td><span class="mol-lbl">F</span></td>
+            <td>C<sub>6</sub>H<sub>14</sub> (hexane)</td>
+            <td>86.18</td><td>No</td>
+            <td><span class="cbox"></span></td><td><span class="cbox"></span></td><td><span class="cbox"></span></td>
+          </tr>
+          <tr>
+            <td><span class="mol-lbl">G</span></td>
+            <td>NH<sub>3</sub> (ammonia)</td>
+            <td>17.03</td><td>Yes</td>
+            <td><span class="cbox"></span></td><td><span class="cbox"></span></td><td><span class="cbox"></span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p style="font-size:12px;color:var(--dim);margin-top:10px">
+      <strong style="color:var(--sub)">HB rule:</strong> Hydrogen bonding ONLY if there is an <strong style="color:var(--maize)">H atom bonded directly to N, O, or F</strong>.
+      CH<sub>3</sub>F has F, but H is bonded to C  -  this does NOT qualify.
+    </p>
+
+  </div>
+</div>
+
+<!-- PART F: PROPERTIES FROM IMFs -->
+<div class="part">
+  <div class="part-hdr">
+    <div class="part-badge">F</div>
+    <div class="part-info">
+      <h2>Properties from Intermolecular Forces</h2>
+      <p>Use molecules A-G from Part E. Justify all answers using IMF reasoning.</p>
+    </div>
+    <span class="std-tag">5.2.3</span>
+  </div>
+  <div class="part-body">
+
+    <div class="q-block">
+      <div class="q-num">Question 1</div>
+      <div class="q-text">Which molecule (A-G) likely has the <em>highest boiling point</em>? Write its label and justify your answer by naming the IMFs present and explaining why they lead to a high boiling point.</div>
+      <div class="fill-row">Molecule: <span class="fblank fblank-sm"></span></div>
+      <div class="answer-area"></div>
+    </div>
+
+    <div class="q-block">
+      <div class="q-num">Question 2</div>
+      <div class="q-text">Which molecule (A-G) likely has the <em>lowest boiling point</em>? Justify using IMFs.</div>
+      <div class="fill-row">Molecule: <span class="fblank fblank-sm"></span></div>
+      <div class="answer-area"></div>
+    </div>
+
+    <div class="q-block">
+      <div class="q-num">Question 3</div>
+      <div class="q-text">At room temperature (25 °C), Ar has a boiling point of −186 °C. <em>Would you expect argon to be a solid, liquid, or gas at room temperature?</em> Use IMF reasoning  -  explain why Ar has such a low boiling point relative to other molecules in the table.</div>
+      <div class="fill-row">State at 25 °C: <span class="fblank"></span></div>
+      <div class="answer-area"></div>
+    </div>
+
+    <div class="q-block">
+      <div class="q-num">Question 4</div>
+      <div class="q-text">Butane (C, 58 g/mol, bp = −1 °C) and hexane (F, 86 g/mol, bp = +69 °C) are <em>both nonpolar</em> and have only LDF. <em>Why does hexane have a significantly higher boiling point than butane?</em></div>
+      <div class="answer-area"></div>
+    </div>
+
+    <div class="q-block">
+      <div class="q-num">Question 5</div>
+      <div class="q-text">HF (B, 20 g/mol, bp = +19.5 °C) and CH<sub>3</sub>F (E, 34 g/mol, bp = −78 °C) are both polar molecules  -  but HF has a <em>much higher</em> boiling point even though it is the smaller molecule. <em>Explain this using IMFs.</em> What does HF have that CH<sub>3</sub>F does not?</div>
+      <div class="answer-area"></div>
+    </div>
+
+  </div>
+</div>
+
+</div><!-- /wrap -->
+</body>
+</html>
