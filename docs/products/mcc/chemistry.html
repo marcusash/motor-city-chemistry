@@ -1,0 +1,957 @@
+﻿<!-- Co-authored-by: Copilot <223556219+Copilot@users.noreply.github.com> -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 80' fill='none'%3E%3Crect width='80' height='80' rx='14' fill='%230A0A0F'/%3E%3Cg transform='translate(8,12) scale(0.72)'%3E%3Cline x1='26' y1='14' x2='26' y2='66' stroke='%23FFCB05' stroke-width='4' stroke-linecap='round'/%3E%3Cline x1='26' y1='14' x2='64' y2='14' stroke='%23FFCB05' stroke-width='4' stroke-linecap='round'/%3E%3Cline x1='26' y1='42' x2='56' y2='42' stroke='%23FFCB05' stroke-width='4' stroke-linecap='round'/%3E%3Ccircle cx='26' cy='14' r='6' fill='%23FFCB05'/%3E%3Ccircle cx='26' cy='42' r='6' fill='%23FFCB05'/%3E%3Ccircle cx='64' cy='14' r='5' fill='none' stroke='%23FFCB05' stroke-width='3'/%3E%3Ccircle cx='56' cy='42' r='5' fill='none' stroke='%23FFCB05' stroke-width='3'/%3E%3Ccircle cx='26' cy='66' r='5' fill='none' stroke='%23FFCB05' stroke-width='3'/%3E%3C/g%3E%3C/svg%3E">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MCM Chemistry - Motor City Math Science Expansion</title>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg: #0A0A0F;
+  --surface: #161622;
+  --surface2: #1C1C2A;
+  --text: #E8E8F0;
+  --muted: #808099;
+  --border: #2A2A3E;
+  --maize: #FFCB05;
+  --green: #10B981;
+  --green-dim: rgba(16,185,129,0.12);
+  --green-border: rgba(16,185,129,0.28);
+  --purple: #7C3AED;
+  --purple-dim: rgba(124,58,237,0.12);
+  --red: #EF4444;
+  --amber: #F59E0B;
+  --sans: 'Segoe UI Variable', 'Segoe UI', system-ui, sans-serif;
+  --mono: 'Cascadia Code', 'Consolas', monospace;
+  --sidebar-w: 220px;
+}
+html, body { min-height: 100vh; background: var(--bg); color: var(--text); font-family: var(--sans); }
+/* Layout */
+.shell { display: flex; min-height: 100vh; }
+/* Sidebar */
+.sidebar {
+  width: var(--sidebar-w);
+  background: var(--surface);
+  border-right: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+}
+.sidebar-brand {
+  padding: 1.25rem 1rem 1rem;
+  border-bottom: 1px solid var(--border);
+}
+.brand-mark {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 0.5rem;
+}
+.brand-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--green);
+  box-shadow: 0 0 8px var(--green);
+}
+.brand-name {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: -0.01em;
+}
+.brand-sub {
+  font-family: var(--mono);
+  font-size: 0.48rem;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+.sidebar-nav { padding: 1rem 0; flex: 1; }
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.5rem 1rem;
+  font-size: 0.72rem;
+  color: var(--muted);
+  text-decoration: none;
+  transition: color 0.15s, background 0.15s;
+  cursor: pointer;
+  border-left: 2px solid transparent;
+}
+.nav-item:hover { color: var(--text); background: rgba(255,255,255,0.03); }
+.nav-item.active { color: var(--green); border-left-color: var(--green); background: var(--green-dim); }
+.nav-num {
+  font-family: var(--mono);
+  font-size: 0.48rem;
+  color: var(--muted);
+  width: 14px;
+  flex-shrink: 0;
+}
+.sidebar-footer {
+  padding: 0.75rem 1rem;
+  border-top: 1px solid var(--border);
+}
+.sidebar-footer-text {
+  font-family: var(--mono);
+  font-size: 0.44rem;
+  color: var(--border);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  line-height: 1.6;
+}
+/* Main content */
+.main { flex: 1; overflow-y: auto; }
+/* Section base */
+.section {
+  min-height: 100vh;
+  padding: 3rem 3.5rem;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.section:last-child { border-bottom: none; }
+/* Section header */
+.sec-tag {
+  font-family: var(--mono);
+  font-size: 0.52rem;
+  color: var(--green);
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  margin-bottom: 0.6rem;
+}
+.sec-num {
+  font-family: var(--mono);
+  font-size: 0.48rem;
+  color: var(--muted);
+  margin-right: 0.5rem;
+}
+/* Hero section */
+.hero-headline {
+  font-size: clamp(2rem, 4.5vw, 4rem);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  color: var(--text);
+  margin-bottom: 0.8rem;
+  max-width: 700px;
+}
+.hero-headline span { color: var(--green); }
+.hero-sub {
+  font-size: clamp(0.95rem, 1.5vw, 1.2rem);
+  font-weight: 300;
+  line-height: 1.65;
+  color: var(--muted);
+  max-width: 520px;
+  margin-bottom: 2.5rem;
+}
+.bar { width: 36px; height: 3px; background: var(--green); margin-bottom: 2rem; border-radius: 2px; }
+/* Value props */
+.vp-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-bottom: 2.5rem; }
+.vp-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 1.25rem;
+}
+.vp-icon { font-size: 1.4rem; margin-bottom: 0.75rem; }
+.vp-title { font-size: 0.85rem; font-weight: 600; color: var(--text); margin-bottom: 0.4rem; }
+.vp-body { font-size: 0.72rem; color: var(--muted); line-height: 1.6; }
+/* MCM mark */
+.mcm-mark-wrap {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 1.5rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  max-width: 480px;
+}
+.mark-label { font-size: 0.62rem; font-family: var(--mono); color: var(--muted); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.4rem; }
+.mark-name { font-size: 1rem; font-weight: 700; color: var(--text); }
+.mark-tagline { font-size: 0.65rem; color: var(--muted); margin-top: 0.25rem; }
+/* Section 2 - Problem */
+.section-title {
+  font-size: clamp(1.6rem, 3vw, 2.6rem);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.025em;
+  color: var(--text);
+  margin-bottom: 0.5rem;
+  max-width: 640px;
+}
+.section-lead {
+  font-size: 1rem;
+  font-weight: 300;
+  color: var(--muted);
+  line-height: 1.6;
+  max-width: 520px;
+  margin-bottom: 2rem;
+}
+.pain-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+.pain-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--red);
+  border-radius: 6px;
+  padding: 1.1rem 1.25rem;
+}
+.pain-card.amber { border-left-color: var(--amber); }
+.pain-title { font-size: 0.82rem; font-weight: 600; color: var(--text); margin-bottom: 0.35rem; }
+.pain-body { font-size: 0.7rem; color: var(--muted); line-height: 1.6; }
+.problem-stat {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: rgba(239,68,68,0.08);
+  border: 1px solid rgba(239,68,68,0.22);
+  border-radius: 8px;
+  padding: 1rem 1.5rem;
+  margin-bottom: 1.5rem;
+}
+.problem-stat-text { font-size: 0.8rem; color: var(--text); line-height: 1.5; }
+/* Section 3 - Approach */
+.approach-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 2rem; }
+.approach-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 1.25rem;
+}
+.approach-card.highlight { border-color: var(--green); background: var(--green-dim); }
+.approach-num { font-family: var(--mono); font-size: 0.55rem; color: var(--muted); margin-bottom: 0.5rem; text-transform: uppercase; letter-spacing: 0.08em; }
+.approach-title { font-size: 0.88rem; font-weight: 600; color: var(--text); margin-bottom: 0.4rem; }
+.approach-body { font-size: 0.7rem; color: var(--muted); line-height: 1.65; }
+.unit-pills { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1.5rem; }
+.unit-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 0.35rem 0.85rem;
+  font-size: 0.68rem;
+  color: var(--text);
+}
+.unit-pill .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--green); flex-shrink: 0; }
+/* Section 4 - Curriculum */
+.curr-table { width: 100%; border-collapse: collapse; border-radius: 8px; overflow: hidden; }
+.curr-table th {
+  background: var(--surface2);
+  font-family: var(--mono);
+  font-size: 0.52rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+  padding: 0.75rem 1rem;
+  text-align: left;
+  border-bottom: 1px solid var(--border);
+}
+.curr-table td {
+  padding: 0.85rem 1rem;
+  font-size: 0.75rem;
+  color: var(--text);
+  border-bottom: 1px solid var(--border);
+  vertical-align: top;
+}
+.curr-table tr:last-child td { border-bottom: none; }
+.curr-table tr:hover td { background: rgba(255,255,255,0.02); }
+.curr-table { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; }
+.diff-badge {
+  display: inline-block;
+  padding: 0.15rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.6rem;
+  font-weight: 600;
+  font-family: var(--mono);
+}
+.diff-hard { background: rgba(239,68,68,0.12); color: #F87171; border: 1px solid rgba(239,68,68,0.2); }
+.diff-med { background: rgba(245,158,11,0.12); color: #FBBF24; border: 1px solid rgba(245,158,11,0.2); }
+.diff-easy { background: rgba(16,185,129,0.12); color: #34D399; border: 1px solid rgba(16,185,129,0.2); }
+.mcm-link { font-family: var(--mono); font-size: 0.62rem; color: var(--purple); }
+/* Section 5 - Design */
+.design-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+.design-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 1.5rem;
+}
+.design-card-title { font-size: 0.9rem; font-weight: 600; color: var(--text); margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.6rem; }
+.design-card-body { font-size: 0.72rem; color: var(--muted); line-height: 1.7; }
+.notation-demo {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 0.75rem 1rem;
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  margin-top: 0.75rem;
+  color: var(--text);
+  line-height: 2;
+}
+.sub { vertical-align: sub; font-size: 0.65em; }
+.sup { vertical-align: super; font-size: 0.65em; }
+.color-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.4rem 0.75rem;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  font-family: var(--mono);
+  font-size: 0.62rem;
+  color: var(--muted);
+  margin-top: 0.6rem;
+}
+.color-swatch { width: 12px; height: 12px; border-radius: 3px; }
+.open-q { background: rgba(245,158,11,0.06); border: 1px solid rgba(245,158,11,0.18); border-radius: 4px; padding: 0.35rem 0.6rem; font-size: 0.62rem; color: #FBBF24; font-family: var(--mono); display: inline-block; margin-top: 0.5rem; }
+/* Section 6 - Open Questions */
+.oq-list { display: flex; flex-direction: column; gap: 0.85rem; max-width: 700px; }
+.oq-item {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 1rem 1.25rem;
+}
+.oq-n {
+  font-family: var(--mono);
+  font-size: 0.65rem;
+  color: var(--amber);
+  font-weight: 700;
+  width: 20px;
+  flex-shrink: 0;
+  padding-top: 0.1rem;
+}
+.oq-content { flex: 1; }
+.oq-title { font-size: 0.82rem; font-weight: 600; color: var(--text); margin-bottom: 0.3rem; }
+.oq-body { font-size: 0.7rem; color: var(--muted); line-height: 1.6; }
+.oq-tag {
+  display: inline-block;
+  margin-top: 0.4rem;
+  padding: 0.15rem 0.5rem;
+  background: rgba(245,158,11,0.1);
+  border: 1px solid rgba(245,158,11,0.2);
+  border-radius: 3px;
+  font-size: 0.55rem;
+  font-family: var(--mono);
+  color: var(--amber);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+/* Section 7 - Timeline */
+.timeline-track { position: relative; padding-left: 2rem; }
+.timeline-track::before {
+  content: '';
+  position: absolute;
+  left: 0.45rem;
+  top: 0.6rem;
+  bottom: 0.6rem;
+  width: 2px;
+  background: linear-gradient(to bottom, var(--green), var(--purple));
+  border-radius: 2px;
+}
+.tl-item { position: relative; padding: 0 0 2rem 1rem; }
+.tl-item:last-child { padding-bottom: 0; }
+.tl-dot {
+  position: absolute;
+  left: -1.65rem;
+  top: 0.25rem;
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  background: var(--surface);
+  border: 2px solid var(--green);
+}
+.tl-dot.milestone { border-color: var(--maize); }
+.tl-dot.future { border-color: var(--purple); }
+.tl-quarter { font-family: var(--mono); font-size: 0.58rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.3rem; }
+.tl-title { font-size: 0.9rem; font-weight: 600; color: var(--text); margin-bottom: 0.35rem; }
+.tl-body { font-size: 0.72rem; color: var(--muted); line-height: 1.6; }
+.tl-badge {
+  display: inline-block;
+  margin-top: 0.4rem;
+  padding: 0.15rem 0.5rem;
+  border-radius: 3px;
+  font-family: var(--mono);
+  font-size: 0.52rem;
+  font-weight: 600;
+}
+.tl-badge.shipped { background: rgba(16,185,129,0.12); color: #34D399; border: 1px solid rgba(16,185,129,0.2); }
+.tl-badge.planned { background: rgba(255,203,5,0.1); color: var(--maize); border: 1px solid rgba(255,203,5,0.2); }
+.tl-badge.future { background: rgba(124,58,237,0.1); color: #A78BFA; border: 1px solid rgba(124,58,237,0.2); }
+/* Scroll indicator */
+.scroll-hint {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 2rem;
+  font-family: var(--mono);
+  font-size: 0.48rem;
+  color: var(--border);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  pointer-events: none;
+}
+</style>
+</head>
+<body>
+
+<div class="shell">
+  <!-- Sidebar Nav -->
+  <nav class="sidebar" id="sidebar">
+    <div class="sidebar-brand">
+      <div class="brand-mark">
+        <div class="brand-dot"></div>
+        <div class="brand-name">MCM Chemistry</div>
+      </div>
+      <div class="brand-sub">Motor City Math Science Expansion</div>
+    </div>
+
+    <div class="sidebar-nav">
+      <a class="nav-item active" href="#s1" onclick="setActive(this)">
+        <span class="nav-num">01</span>Product Vision
+      </a>
+      <a class="nav-item" href="#s2" onclick="setActive(this)">
+        <span class="nav-num">02</span>The Problem
+      </a>
+      <a class="nav-item" href="#s3" onclick="setActive(this)">
+        <span class="nav-num">03</span>Our Approach
+      </a>
+      <a class="nav-item" href="#s4" onclick="setActive(this)">
+        <span class="nav-num">04</span>Curriculum Scope
+      </a>
+      <a class="nav-item" href="#s5" onclick="setActive(this)">
+        <span class="nav-num">05</span>Design Considerations
+      </a>
+      <a class="nav-item" href="#s6" onclick="setActive(this)">
+        <span class="nav-num">06</span>Open Questions
+      </a>
+      <a class="nav-item" href="#s7" onclick="setActive(this)">
+        <span class="nav-num">07</span>Timeline
+      </a>
+    </div>
+
+    <div class="sidebar-footer">
+      <div class="sidebar-footer-text">
+        FD Design Document<br>
+        MCM Chemistry Brief<br>
+        Chemistry Green #10B981
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main -->
+  <main class="main" id="main">
+
+    <!-- Section 1: Product Vision -->
+    <section class="section" id="s1">
+      <div class="sec-tag"><span class="sec-num">01</span>Product Vision</div>
+      <h1 class="hero-headline">Motor City Chemistry.<br><span>Math's logical next step.</span></h1>
+      <p class="hero-sub">
+        The same AI tutor model that makes Algebra 2 click, applied to high school chemistry.
+        Built for Kai first. Designed to scale.
+      </p>
+      <div class="bar"></div>
+
+      <div class="vp-grid">
+        <div class="vp-card">
+          <div class="vp-icon">&#x1F9E0;</div>
+          <div class="vp-title">Same AI tutor model</div>
+          <div class="vp-body">
+            The core AI explains why, not just what. The same question-bank architecture that
+            powers MCM Algebra 2, extended to chemistry concepts and notation.
+          </div>
+        </div>
+        <div class="vp-card">
+          <div class="vp-icon">&#x26A7;&#xFE0F;</div>
+          <div class="vp-title">Problem-based learning</div>
+          <div class="vp-body">
+            Students work through real chemistry problems: balancing equations, stoichiometry
+            calculations, reaction prediction. No passive reading. Every interaction is a problem.
+          </div>
+        </div>
+        <div class="vp-card">
+          <div class="vp-icon">&#x1F3D9;</div>
+          <div class="vp-title">Kai-first approach</div>
+          <div class="vp-body">
+            Every feature is tested on Kai before any expansion decision. If it does not help
+            Kai, it does not ship. This keeps the product honest and the scope realistic.
+          </div>
+        </div>
+      </div>
+
+      <!-- MCM Chemistry mark placeholder -->
+      <div class="mcm-mark-wrap">
+        <svg width="80" height="52" viewBox="0 0 80 52" fill="none" aria-label="MCM Chemistry mark">
+          <!-- Ramp-plateau-compound bezier in purple + chemistry green -->
+          <path d="M4 46 C12 46 16 28 22 22 C28 16 30 16 34 16 C38 16 40 16 44 16 C48 16 52 6 70 6"
+                stroke="url(#chem-grad)" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+          <!-- Atom ring hint -->
+          <ellipse cx="62" cy="20" rx="10" ry="5" stroke="#10B981" stroke-width="1.2" fill="none" opacity="0.5" transform="rotate(-25 62 20)"/>
+          <ellipse cx="62" cy="20" rx="10" ry="5" stroke="#7C3AED" stroke-width="1.2" fill="none" opacity="0.4" transform="rotate(55 62 20)"/>
+          <circle cx="62" cy="20" r="2.5" fill="#10B981"/>
+          <defs>
+            <linearGradient id="chem-grad" x1="4" y1="46" x2="70" y2="6" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stop-color="#7C3AED"/>
+              <stop offset="60%" stop-color="#7C3AED"/>
+              <stop offset="100%" stop-color="#10B981"/>
+            </linearGradient>
+          </defs>
+        </svg>
+        <div>
+          <div class="mark-label">Product Mark</div>
+          <div class="mark-name">MCM Chemistry</div>
+          <div class="mark-tagline">Ramp-plateau-compound in green. Same curve, new domain.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 2: The Problem -->
+    <section class="section" id="s2">
+      <div class="sec-tag"><span class="sec-num">02</span>The Problem</div>
+      <h2 class="section-title">Chemistry is harder to tutor than math.</h2>
+      <p class="section-lead">
+        No universal notation standard. Lab context that does not translate to a screen.
+        Parents who got through algebra but never understood moles. The gap is real.
+      </p>
+
+      <div class="problem-stat">
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="8" stroke="#EF4444" stroke-width="1.5"/><line x1="9" y1="5" x2="9" y2="10" stroke="#EF4444" stroke-width="1.5" stroke-linecap="round"/><circle cx="9" cy="12.5" r="0.75" fill="#EF4444"/></svg>
+        <div class="problem-stat-text">
+          Parents who helped with algebra cannot help with stoichiometry.
+          The notation gap compounds with each unit. By thermodynamics, students are alone.
+        </div>
+      </div>
+
+      <div class="pain-grid">
+        <div class="pain-card">
+          <div class="pain-title">Notation complexity</div>
+          <div class="pain-body">
+            Chemistry requires subscripts, superscripts, Greek letters, and arrows that do not
+            exist in standard keyboards. No shared notation means no shared understanding
+            between student, parent, and tutor.
+          </div>
+        </div>
+        <div class="pain-card">
+          <div class="pain-title">Unit conversion overload</div>
+          <div class="pain-body">
+            Molarity, molality, moles, grams, liters, atmospheres, Kelvin, Celsius. Every
+            problem crosses unit systems. Students lose points not because they cannot think
+            but because they cannot track.
+          </div>
+        </div>
+        <div class="pain-card amber">
+          <div class="pain-title">Balancing equations</div>
+          <div class="pain-body">
+            Balancing is the earliest wall students hit. It requires simultaneous tracking of
+            multiple element counts across reactants and products. Current tools offer answers,
+            not understanding.
+          </div>
+        </div>
+        <div class="pain-card amber">
+          <div class="pain-title">Conceptual gaps</div>
+          <div class="pain-body">
+            Electronegativity, oxidation states, thermodynamic spontaneity: these require mental
+            models that cannot be memorized. Students need an AI that explains the why
+            in plain language, repeatedly, without judgment.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 3: Our Approach -->
+    <section class="section" id="s3">
+      <div class="sec-tag"><span class="sec-num">03</span>Our Approach</div>
+      <h2 class="section-title">Same model. New domain.</h2>
+      <p class="section-lead">
+        The MCM Algebra 2 architecture is already proven. Chemistry is a content extension,
+        not a new platform. Ship the platform once. Expand the question bank.
+      </p>
+
+      <div class="approach-grid">
+        <div class="approach-card highlight">
+          <div class="approach-num">Core architecture</div>
+          <div class="approach-title">Same question-bank model as MCM Algebra 2</div>
+          <div class="approach-body">
+            Structured units. Difficulty-tiered questions. AI explanations on every wrong answer.
+            Progress tracking per student. The platform already exists. Chemistry adds content.
+          </div>
+        </div>
+        <div class="approach-card">
+          <div class="approach-num">Six core units</div>
+          <div class="approach-title">Atomic Structure to Kinetics</div>
+          <div class="approach-body">
+            Standard high school chemistry curriculum: Atomic Structure, Bonding, Reactions,
+            Stoichiometry, Thermodynamics, Kinetics. Mapped to Kai's actual coursework.
+          </div>
+        </div>
+        <div class="approach-card">
+          <div class="approach-num">AI explanation model</div>
+          <div class="approach-title">Explains why, not just the answer</div>
+          <div class="approach-body">
+            When a student gets a stoichiometry problem wrong, the AI explains the conceptual
+            error, not just the correct procedure. This is the core MCM promise, applied to chemistry.
+          </div>
+        </div>
+        <div class="approach-card">
+          <div class="approach-num">Expansion discipline</div>
+          <div class="approach-title">Kai tested first, then expanded</div>
+          <div class="approach-body">
+            No beta launch until Kai has used every unit and every question type. Expansion
+            decisions come after real usage data, not assumptions.
+          </div>
+        </div>
+      </div>
+
+      <div class="unit-pills">
+        <div class="unit-pill"><div class="dot"></div>Atomic Structure</div>
+        <div class="unit-pill"><div class="dot"></div>Chemical Bonding</div>
+        <div class="unit-pill"><div class="dot"></div>Chemical Reactions</div>
+        <div class="unit-pill"><div class="dot"></div>Stoichiometry</div>
+        <div class="unit-pill"><div class="dot"></div>Thermodynamics</div>
+        <div class="unit-pill"><div class="dot"></div>Kinetics</div>
+      </div>
+    </section>
+
+    <!-- Section 4: Curriculum Scope -->
+    <section class="section" id="s4">
+      <div class="sec-tag"><span class="sec-num">04</span>Curriculum Scope</div>
+      <h2 class="section-title">Six units. Mapped to math skills already in MCM.</h2>
+      <p class="section-lead">
+        Chemistry is not separate from math. Every unit relies on skills Kai already has.
+        The table below shows the connection.
+      </p>
+
+      <table class="curr-table">
+        <thead>
+          <tr>
+            <th>Unit</th>
+            <th>Topic Count</th>
+            <th>Difficulty</th>
+            <th>MCM Math Parallel</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <strong>Atomic Structure</strong><br>
+              <span style="font-size:0.65rem;color:var(--muted)">Electron config, periodic trends, atomic models</span>
+            </td>
+            <td><span style="font-family:var(--mono);font-size:0.78rem">12</span></td>
+            <td><span class="diff-easy">Foundational</span></td>
+            <td><span class="mcm-link">Number Systems, Sequences</span></td>
+          </tr>
+          <tr>
+            <td>
+              <strong>Chemical Bonding</strong><br>
+              <span style="font-size:0.65rem;color:var(--muted)">Ionic, covalent, Lewis structures, VSEPR</span>
+            </td>
+            <td><span style="font-family:var(--mono);font-size:0.78rem">14</span></td>
+            <td><span class="diff-med">Intermediate</span></td>
+            <td><span class="mcm-link">Geometry, Spatial Reasoning</span></td>
+          </tr>
+          <tr>
+            <td>
+              <strong>Chemical Reactions</strong><br>
+              <span style="font-size:0.65rem;color:var(--muted)">Balancing, reaction types, prediction</span>
+            </td>
+            <td><span style="font-family:var(--mono);font-size:0.78rem">16</span></td>
+            <td><span class="diff-med">Intermediate</span></td>
+            <td><span class="mcm-link">Equation Solving, Systems</span></td>
+          </tr>
+          <tr>
+            <td>
+              <strong>Stoichiometry</strong><br>
+              <span style="font-size:0.65rem;color:var(--muted)">Mole conversions, limiting reagents, percent yield</span>
+            </td>
+            <td><span style="font-family:var(--mono);font-size:0.78rem">18</span></td>
+            <td><span class="diff-hard">Hard</span></td>
+            <td><span class="mcm-link">Ratios, Proportional Reasoning</span></td>
+          </tr>
+          <tr>
+            <td>
+              <strong>Thermodynamics</strong><br>
+              <span style="font-size:0.65rem;color:var(--muted)">Enthalpy, entropy, Gibbs free energy</span>
+            </td>
+            <td><span style="font-family:var(--mono);font-size:0.78rem">14</span></td>
+            <td><span class="diff-hard">Hard</span></td>
+            <td><span class="mcm-link">Functions, Rate of Change</span></td>
+          </tr>
+          <tr>
+            <td>
+              <strong>Kinetics</strong><br>
+              <span style="font-size:0.65rem;color:var(--muted)">Reaction rates, rate laws, activation energy</span>
+            </td>
+            <td><span style="font-family:var(--mono);font-size:0.78rem">12</span></td>
+            <td><span class="diff-hard">Hard</span></td>
+            <td><span class="mcm-link">Exponential Functions, Calculus prep</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Section 5: Design Considerations -->
+    <section class="section" id="s5">
+      <div class="sec-tag"><span class="sec-num">05</span>Design Considerations</div>
+      <h2 class="section-title">Chemistry demands a notation layer.</h2>
+      <p class="section-lead">
+        Before building content, the platform needs to answer one question: how do we render
+        chemistry notation correctly on screen, on any device?
+      </p>
+
+      <div class="design-grid">
+        <div class="design-card">
+          <div class="design-card-title">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><rect x="1" y="1" width="12" height="12" rx="2" stroke="#10B981" stroke-width="1.2"/><line x1="4" y1="7" x2="10" y2="7" stroke="#10B981" stroke-width="1.2" stroke-linecap="round"/><line x1="7" y1="4" x2="7" y2="10" stroke="#10B981" stroke-width="1.2" stroke-linecap="round"/></svg>
+            Notation rendering spec
+          </div>
+          <div class="design-card-body">
+            Chemistry requires subscripts, superscripts, Greek letters, and reaction arrows.
+            Current approach: HTML inline elements with careful CSS. Requires a rendering spec
+            before the question bank can be built.
+          </div>
+          <div class="notation-demo">
+            H<span class="sub">2</span>O + CO<span class="sub">2</span> &#8594; H<span class="sub">2</span>CO<span class="sub">3</span><br>
+            Fe<span class="sup">3+</span> + e<span class="sup">-</span> &#8594; Fe<span class="sup">2+</span><br>
+            &#916;H = -285.8 kJ/mol<br>
+            K<span class="sub">eq</span> = [products] / [reactants]
+          </div>
+        </div>
+
+        <div class="design-card">
+          <div class="design-card-title">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><rect x="1" y="3" width="8" height="11" rx="1.5" stroke="#FFCB05" stroke-width="1.2"/><rect x="5" y="1" width="8" height="11" rx="1.5" stroke="#FFCB05" stroke-width="1.2" opacity="0.5"/></svg>
+            Mobile vs. laptop constraint
+          </div>
+          <div class="design-card-body">
+            Does Kai use MCM on a phone or a laptop? This is an open question for Marcus.
+            Notation rendering on mobile requires a different approach than on desktop.
+            Answer determines screen-size constraints for all question layouts.
+          </div>
+          <span class="open-q">? Open question for Marcus: phone or laptop?</span>
+        </div>
+
+        <div class="design-card">
+          <div class="design-card-title">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="5.5" stroke="#10B981" stroke-width="1.2"/><circle cx="7" cy="7" r="2" fill="#10B981"/></svg>
+            Chemistry Green color system
+          </div>
+          <div class="design-card-body">
+            Same TUI color system as MCM Algebra 2. New product accent: Chemistry Green.
+            Replaces MCM Purple as the primary accent for all chemistry-specific UI elements.
+            Purple is reserved for cross-product platform chrome.
+          </div>
+          <div style="display:flex;gap:0.5rem;flex-wrap:wrap;margin-top:0.6rem;">
+            <div class="color-chip">
+              <div class="color-swatch" style="background:#10B981"></div>
+              Chemistry Green #10B981
+            </div>
+            <div class="color-chip">
+              <div class="color-swatch" style="background:#7C3AED"></div>
+              Platform Purple #7C3AED
+            </div>
+          </div>
+        </div>
+
+        <div class="design-card">
+          <div class="design-card-title">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 11 C4 11 5 3 7 3 C8 3 8.5 3 9 3 C10 3 11 1 13 1" stroke="#10B981" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>
+            MCM Chemistry mark
+          </div>
+          <div class="design-card-body">
+            The MCM mark uses the ramp-plateau-compound bezier curve. The Chemistry variant
+            replaces the purple gradient with Chemistry Green at the compound end.
+            Atom ring motif added as secondary visual element.
+          </div>
+          <svg width="120" height="40" viewBox="0 0 120 40" fill="none" style="margin-top:0.75rem">
+            <path d="M4 34 C14 34 18 18 26 14 C32 10 36 10 44 10 C52 10 58 10 62 10 C70 10 78 2 108 2"
+                  stroke="url(#mark-g2)" stroke-width="2" fill="none" stroke-linecap="round"/>
+            <defs>
+              <linearGradient id="mark-g2" x1="4" y1="34" x2="108" y2="2" gradientUnits="userSpaceOnUse">
+                <stop offset="0%" stop-color="#7C3AED"/>
+                <stop offset="55%" stop-color="#7C3AED"/>
+                <stop offset="100%" stop-color="#10B981"/>
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 6: Open Questions -->
+    <section class="section" id="s6">
+      <div class="sec-tag"><span class="sec-num">06</span>Open Questions</div>
+      <h2 class="section-title">Five decisions for Marcus.</h2>
+      <p class="section-lead">
+        These are not blockers yet. But they become blockers the moment content development
+        starts. Each question changes a design or architecture decision.
+      </p>
+
+      <div class="oq-list">
+        <div class="oq-item">
+          <div class="oq-n">Q1</div>
+          <div class="oq-content">
+            <div class="oq-title">Grade level target</div>
+            <div class="oq-body">
+              Is MCM Chemistry targeting Kai's current grade, or is this a 9th grade intro chem product?
+              Grade level determines curriculum scope, question difficulty curve, and whether
+              AP Chemistry is in scope.
+            </div>
+            <div class="oq-tag">Decision Required</div>
+          </div>
+        </div>
+
+        <div class="oq-item">
+          <div class="oq-n">Q2</div>
+          <div class="oq-content">
+            <div class="oq-title">Notation renderer</div>
+            <div class="oq-body">
+              Plain HTML with CSS subscripts/superscripts, MathML, or a custom rendering layer?
+              This is a platform decision that affects every question in the chemistry bank.
+              Needs to be locked before content development begins.
+            </div>
+            <div class="oq-tag">Blocks Content Dev</div>
+          </div>
+        </div>
+
+        <div class="oq-item">
+          <div class="oq-n">Q3</div>
+          <div class="oq-content">
+            <div class="oq-title">School curriculum alignment</div>
+            <div class="oq-body">
+              Does MCM Chemistry follow Kai's specific school curriculum, or does it target a
+              standardized framework (Next Generation Science Standards, AP Chemistry, IB)?
+              Alignment determines question ordering and unit scoping.
+            </div>
+            <div class="oq-tag">Scope Decision</div>
+          </div>
+        </div>
+
+        <div class="oq-item">
+          <div class="oq-n">Q4</div>
+          <div class="oq-content">
+            <div class="oq-title">Beta group beyond Kai</div>
+            <div class="oq-body">
+              After Kai alpha, is there a second test group? If yes, who? Other students in
+              Kai's school, Marcus's network, or open beta? This decision affects how quickly
+              product data becomes meaningful.
+            </div>
+            <div class="oq-tag">Expansion Gate</div>
+          </div>
+        </div>
+
+        <div class="oq-item">
+          <div class="oq-n">Q5</div>
+          <div class="oq-content">
+            <div class="oq-title">Chemistry Green color lock</div>
+            <div class="oq-body">
+              Is #10B981 (Tailwind Emerald 500) the final Chemistry Green, or does FD need to
+              present alternatives? Locking the color lets GD and GA build UI without holding
+              for a design review.
+            </div>
+            <div class="oq-tag">Color Lock</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 7: Timeline -->
+    <section class="section" id="s7">
+      <div class="sec-tag"><span class="sec-num">07</span>Timeline</div>
+      <h2 class="section-title">Chemistry follows the MCM platform, not the other way around.</h2>
+      <p class="section-lead">
+        The dependency is clear: MCM Algebra 2 ships first. Chemistry is an expansion on top
+        of a proven platform. The timeline reflects that.
+      </p>
+
+      <div class="timeline-track">
+        <div class="tl-item">
+          <div class="tl-dot milestone"></div>
+          <div class="tl-quarter">Q1 2026</div>
+          <div class="tl-title">MCM Algebra 2 ships</div>
+          <div class="tl-body">
+            Full Algebra 2 question bank live. Kai using it daily. Platform architecture
+            validated. AI tutor explanation model confirmed working.
+          </div>
+          <span class="tl-badge planned">Planned</span>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-quarter">Q2 2026</div>
+          <div class="tl-title">Chemistry proof of concept (Kai alpha)</div>
+          <div class="tl-body">
+            First two units (Atomic Structure, Chemical Bonding) built on MCM platform.
+            Notation renderer decided and implemented. Kai is the only user.
+            All five open questions resolved before this starts.
+          </div>
+          <span class="tl-badge planned">Planned</span>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-dot future"></div>
+          <div class="tl-quarter">Q3 2026</div>
+          <div class="tl-title">MCM Chemistry v1 public</div>
+          <div class="tl-body">
+            All six units complete. Beta group expanded beyond Kai.
+            Chemistry Green locked and in production. Public launch tied to MCM brand umbrella.
+          </div>
+          <span class="tl-badge future">Future</span>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-dot future"></div>
+          <div class="tl-quarter">Q4 2026</div>
+          <div class="tl-title">MCM Platform (multi-subject)</div>
+          <div class="tl-body">
+            MCM becomes a platform, not a product. Algebra 2 and Chemistry are the first two
+            subjects. Platform architecture supports adding Biology, Physics, Statistics.
+            Forge org builds the platform layer. Grind builds the content.
+          </div>
+          <span class="tl-badge future">Future</span>
+        </div>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<div class="scroll-hint">Scroll to navigate sections</div>
+
+<script>
+function setActive(el) {
+  document.querySelectorAll('.nav-item').forEach(i => i.classList.remove('active'));
+  el.classList.add('active');
+}
+
+// Intersection observer to update active nav
+const sections = document.querySelectorAll('.section');
+const navItems = document.querySelectorAll('.nav-item');
+
+const obs = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const id = entry.target.id;
+      navItems.forEach(n => {
+        n.classList.toggle('active', n.getAttribute('href') === '#' + id);
+      });
+    }
+  });
+}, { threshold: 0.3, root: document.getElementById('main') });
+
+sections.forEach(s => obs.observe(s));
+</script>
+</body>
+</html>

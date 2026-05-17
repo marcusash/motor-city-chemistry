@@ -1,0 +1,475 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 80' fill='none'%3E%3Crect width='80' height='80' rx='14' fill='%230A0A0F'/%3E%3Cg transform='translate(8,12) scale(0.72)'%3E%3Cline x1='26' y1='14' x2='26' y2='66' stroke='%23FFCB05' stroke-width='4' stroke-linecap='round'/%3E%3Cline x1='26' y1='14' x2='64' y2='14' stroke='%23FFCB05' stroke-width='4' stroke-linecap='round'/%3E%3Cline x1='26' y1='42' x2='56' y2='42' stroke='%23FFCB05' stroke-width='4' stroke-linecap='round'/%3E%3Ccircle cx='26' cy='14' r='6' fill='%23FFCB05'/%3E%3Ccircle cx='26' cy='42' r='6' fill='%23FFCB05'/%3E%3Ccircle cx='64' cy='14' r='5' fill='none' stroke='%23FFCB05' stroke-width='3'/%3E%3Ccircle cx='56' cy='42' r='5' fill='none' stroke='%23FFCB05' stroke-width='3'/%3E%3Ccircle cx='26' cy='66' r='5' fill='none' stroke='%23FFCB05' stroke-width='3'/%3E%3C/g%3E%3C/svg%3E">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MCC Mark: C Locked</title>
+<style>
+  :root {
+    --bg: #0F1F30;
+    --surface: #1A2D40;
+    --surface2: #22384C;
+    --surface3: #2A3F54;
+    --border: rgba(167,139,250,0.15);
+    --text: #E8EAF0;
+    --text-sub: #6B7F95;
+    --size-bg: var(--surface);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', system-ui, sans-serif;
+    padding: 40px 48px 80px;
+  }
+  .page-title {
+    font-size: 3rem; font-weight: 700; letter-spacing: -0.02em;
+    margin-bottom: 6px;
+  }
+  .page-sub {
+    font-size: 1rem; color: var(--text-sub); margin-bottom: 48px;
+  }
+  .section { margin-bottom: 56px; }
+  .section-label {
+    font-size: 0.75rem; font-weight: 700; letter-spacing: 0.14em;
+    text-transform: uppercase; color: var(--text-sub);
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  /* Hero */
+  .hero {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 64px;
+    padding: 48px;
+  }
+  .hero-item {
+    display: flex; flex-direction: column; align-items: center; gap: 14px;
+  }
+  .hero-label {
+    font-size: 0.875rem; font-weight: 600; letter-spacing: 0.10em;
+    text-transform: uppercase; color: var(--text-sub);
+  }
+
+  /* Scale gallery */
+  .scale-row {
+    display: flex; align-items: flex-end; gap: 20px;
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 10px; padding: 28px 32px;
+  }
+  .scale-item {
+    display: flex; flex-direction: column; align-items: center; gap: 8px;
+  }
+  .scale-px {
+    font-size: 0.875rem; font-weight: 600; letter-spacing: 0.08em;
+    text-transform: uppercase; color: var(--text-sub);
+  }
+
+  /* Small sizes detail */
+  .small-grid {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px;
+  }
+  .small-card {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 8px; padding: 24px 20px;
+    display: flex; flex-direction: column; align-items: center; gap: 16px;
+  }
+  .small-card-label {
+    font-size: 0.875rem; font-weight: 600; color: var(--text-sub);
+    letter-spacing: 0.05em;
+  }
+  .zoom-box {
+    background: var(--surface2); border-radius: 6px;
+    display: flex; align-items: center; justify-content: center;
+    width: 100%; height: 80px;
+  }
+  .actual-box {
+    background: var(--surface2); border-radius: 6px;
+    display: flex; align-items: center; justify-content: center;
+    width: 100%; height: 48px;
+  }
+
+  /* Family */
+  .family-row {
+    display: flex; align-items: center; gap: 0;
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 10px; overflow: hidden;
+  }
+  .family-cell {
+    flex: 1; display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    gap: 10px; padding: 24px 16px;
+    border-right: 1px solid var(--border);
+  }
+  .family-cell:last-child { border-right: none; }
+  .family-agent {
+    font-size: 0.875rem; font-weight: 700; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--text-sub);
+  }
+  .family-cell.mcc-cell {
+    background: rgba(167,139,250,0.06);
+  }
+
+  /* Light bg */
+  .light-row {
+    display: flex; gap: 16px;
+  }
+  .light-card {
+    flex: 1; border-radius: 10px; padding: 32px;
+    display: flex; flex-direction: column; align-items: center; gap: 16px;
+  }
+  .light-card-label {
+    font-size: 0.875rem; font-weight: 600;
+  }
+
+  /* Context placements */
+  .context-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
+  }
+  .ctx-card {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 10px; overflow: hidden;
+  }
+  .ctx-title {
+    font-size: 0.875rem; font-weight: 700; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--text-sub);
+    padding: 12px 16px; border-bottom: 1px solid var(--border);
+  }
+  .ctx-body { padding: 20px; }
+
+  /* Nav mock */
+  .nav-mock {
+    background: var(--surface2); border-radius: 6px; overflow: hidden;
+  }
+  .nav-item {
+    display: flex; align-items: center; gap: 10px;
+    padding: 10px 14px; font-size: 0.875rem; color: var(--text-sub);
+    border-bottom: 1px solid var(--border);
+  }
+
+  /* Dispatch mock */
+  .dispatch-mock {
+    background: var(--surface2); border-radius: 6px; padding: 12px;
+    display: flex; flex-direction: column; gap: 8px;
+  }
+  .dispatch-row {
+    display: flex; align-items: center; gap: 10px;
+    padding: 8px 10px; border-radius: 5px; font-size: 0.875rem; color: var(--text-sub);
+    background: rgba(255,255,255,0.03);
+  }
+  .dispatch-row.active { background: rgba(167,139,250,0.10); color: var(--text); }
+  .dispatch-name { font-weight: 600; }
+  .dispatch-sub { font-size: 0.75rem; color: var(--text-sub); margin-left: auto; }
+
+  /* Badge mock */
+  .badge-row {
+    display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
+  }
+  .tag {
+    display: flex; align-items: center; gap: 6px;
+    background: var(--surface2); border: 1px solid var(--border);
+    border-radius: 4px; padding: 5px 10px;
+    font-size: 0.875rem; color: var(--text);
+  }
+</style>
+</head>
+<body>
+
+<h1 class="page-title">MCC Mark: C — Locked</h1>
+<p class="page-sub">Inverted Hierarchy. Large hollow O, small solid H, gap bonds. Grind Purple. Locked.</p>
+
+<div id="root"></div>
+
+<script>
+// MCC mark C — locked geometry
+// Grind Purple: A78BFA
+const MCC = 'rgb(167,139,250)';
+
+// Grind agent colors (locked)
+const AGENTS = [
+  { id: 'GA', name: 'App',      color: 'rgb(147,174,255)' },
+  { id: 'GD', name: 'Design',   color: 'rgb(61,61,61)'    },
+  { id: 'GF', name: 'QA',       color: 'rgb(110,231,183)' },
+  { id: 'GI', name: 'Data',     color: 'rgb(167,139,250)' },
+  { id: 'GP', name: 'Platform', color: 'rgb(238,40,40)'   },
+  { id: 'GR', name: 'Research', color: 'rgb(251,146,60)'  },
+];
+
+// Mark C SVG body — viewBox 0 0 128 128
+function markC(color, sw) {
+  const s = sw || 2.5;
+  return `
+    <line x1="55" y1="53" x2="34" y2="79" stroke="${color}" stroke-width="${s}" stroke-linecap="round"/>
+    <line x1="73" y1="53" x2="94" y2="79" stroke="${color}" stroke-width="${s}" stroke-linecap="round"/>
+    <circle cx="64" cy="42" r="12" stroke="${color}" stroke-width="${s}" fill="none"/>
+    <circle cx="28"  cy="86" r="5" fill="${color}"/>
+    <circle cx="100" cy="86" r="5" fill="${color}"/>
+  `;
+}
+
+// Viewport icon (Canvas watermark icon) for Grind agents
+function viewportIcon(color) {
+  return `
+    <line x1="14" y1="28" x2="14" y2="14" stroke="${color}" stroke-width="6" stroke-linecap="round"/>
+    <line x1="14" y1="14" x2="28" y2="14" stroke="${color}" stroke-width="6" stroke-linecap="round"/>
+    <line x1="66" y1="28" x2="66" y2="14" stroke="${color}" stroke-width="6" stroke-linecap="round"/>
+    <line x1="66" y1="14" x2="52" y2="14" stroke="${color}" stroke-width="6" stroke-linecap="round"/>
+    <line x1="14" y1="52" x2="14" y2="66" stroke="${color}" stroke-width="6" stroke-linecap="round"/>
+    <line x1="14" y1="66" x2="28" y2="66" stroke="${color}" stroke-width="6" stroke-linecap="round"/>
+    <line x1="66" y1="52" x2="66" y2="66" stroke="${color}" stroke-width="6" stroke-linecap="round"/>
+    <line x1="66" y1="66" x2="52" y2="66" stroke="${color}" stroke-width="6" stroke-linecap="round"/>
+    <circle cx="40" cy="40" r="6" fill="${color}"/>
+  `;
+}
+
+function svg(body, px, vb) {
+  const v = vb || '0 0 128 128';
+  return `<svg width="${px}" height="${px}" viewBox="${v}" xmlns="http://www.w3.org/2000/svg">${body}</svg>`;
+}
+
+// Heavier stroke version for small sizes
+function markCSmall(color) {
+  return `
+    <line x1="55" y1="53" x2="34" y2="79" stroke="${color}" stroke-width="4" stroke-linecap="round"/>
+    <line x1="73" y1="53" x2="94" y2="79" stroke="${color}" stroke-width="4" stroke-linecap="round"/>
+    <circle cx="64" cy="42" r="12" stroke="${color}" stroke-width="4" fill="none"/>
+    <circle cx="28"  cy="86" r="6" fill="${color}"/>
+    <circle cx="100" cy="86" r="6" fill="${color}"/>
+  `;
+}
+
+const root = document.getElementById('root');
+
+// ── SECTION 1: HERO ─────────────────────────────────────────────────────────
+root.innerHTML += `
+<div class="section">
+  <div class="section-label">Mark — Hero</div>
+  <div class="hero">
+    <div class="hero-item">
+      ${svg(markC(MCC), 256)}
+      <span class="hero-label">256px</span>
+    </div>
+    <div class="hero-item">
+      ${svg(markC(MCC), 160)}
+      <span class="hero-label">160px</span>
+    </div>
+    <div class="hero-item">
+      ${svg(markC(MCC), 96)}
+      <span class="hero-label">96px</span>
+    </div>
+    <div class="hero-item">
+      ${svg(markC(MCC), 72)}
+      <span class="hero-label">72px</span>
+    </div>
+  </div>
+</div>
+`;
+
+// ── SECTION 2: FULL SCALE STRIP ──────────────────────────────────────────────
+const scales = [64, 48, 40, 32, 24, 20, 16, 12];
+const scaleItems = scales.map(px => `
+  <div class="scale-item">
+    ${svg(markC(MCC), px)}
+    <span class="scale-px">${px}px</span>
+  </div>
+`).join('');
+
+root.innerHTML += `
+<div class="section">
+  <div class="section-label">Scale — 64px to 12px</div>
+  <div class="scale-row">${scaleItems}</div>
+</div>
+`;
+
+// ── SECTION 3: SMALL SIZE DETAIL ─────────────────────────────────────────────
+const smallSizes = [
+  { px: 32, label: '32px — standard icon' },
+  { px: 24, label: '24px — compact' },
+  { px: 20, label: '20px — nav item' },
+  { px: 16, label: '16px — minimum' },
+];
+
+const smallCards = smallSizes.map(s => `
+  <div class="small-card">
+    <span class="small-card-label">${s.label}</span>
+    <div class="zoom-box">${svg(markC(MCC), 64)}</div>
+    <div style="display:flex;align-items:center;gap:6px;font-size:0.75rem;color:var(--text-sub);">
+      <span>Standard stroke</span>
+    </div>
+    <div class="actual-box">${svg(markC(MCC), s.px)}</div>
+    <div class="actual-box" style="background:var(--surface3);">${svg(markCSmall(MCC), s.px)}</div>
+    <div style="display:flex;align-items:center;gap:6px;font-size:0.75rem;color:var(--text-sub);">
+      <span>Heavy stroke alt</span>
+    </div>
+  </div>
+`).join('');
+
+root.innerHTML += `
+<div class="section">
+  <div class="section-label">Small Sizes — Standard vs. Heavy Stroke</div>
+  <div class="small-grid">${smallCards}</div>
+</div>
+`;
+
+// ── SECTION 4: GRIND AGENT FAMILY ────────────────────────────────────────────
+const familyCells = AGENTS.map(a => {
+  const isMCC = a.id === 'GI';
+  return `
+    <div class="family-cell${isMCC ? ' mcc-cell' : ''}">
+      ${svg(viewportIcon(a.color), 40, '0 0 80 80')}
+      <span class="family-agent" style="color:${a.color};">${a.id}</span>
+      <div style="width:1px;height:12px;background:var(--border);margin:2px 0;"></div>
+      ${svg(markC(a.color), 40)}
+      <span class="family-agent" style="color:var(--text-sub);font-size:0.875rem;">MCC in ${a.id} color</span>
+    </div>
+  `;
+}).join('');
+
+// Add MCC locked column
+const mccCell = `
+  <div class="family-cell mcc-cell">
+    ${svg(markC(MCC), 40)}
+    <span class="family-agent" style="color:${MCC};">MCC</span>
+    <div style="font-size:0.875rem;color:var(--text-sub);letter-spacing:0.08em;text-transform:uppercase;margin-top:4px;">Locked</div>
+  </div>
+`;
+
+root.innerHTML += `
+<div class="section">
+  <div class="section-label">Grind Agent Family — Canvas Icon vs. MCC Mark</div>
+  <div class="family-row">
+    ${familyCells}
+    ${mccCell}
+  </div>
+</div>
+`;
+
+// ── SECTION 5: LIGHT + DARK ───────────────────────────────────────────────────
+root.innerHTML += `
+<div class="section">
+  <div class="section-label">Light and Dark Backgrounds</div>
+  <div class="light-row">
+    <div class="light-card" style="background:#0F1F30;border:1px solid var(--border);">
+      ${svg(markC(MCC), 96)}
+      <span class="light-card-label" style="color:#E8EAF0;">Dark — primary context</span>
+    </div>
+    <div class="light-card" style="background:#1A2D40;border:1px solid var(--border);">
+      ${svg(markC(MCC), 96)}
+      <span class="light-card-label" style="color:#E8EAF0;">Surface</span>
+    </div>
+    <div class="light-card" style="background:#F0F2F5;border:1px solid rgba(0,0,0,0.10);">
+      ${svg(markC(MCC), 96)}
+      <span class="light-card-label" style="color:#1A1D23;">Light — secondary context</span>
+    </div>
+    <div class="light-card" style="background:#FFFFFF;border:1px solid rgba(0,0,0,0.10);">
+      ${svg(markC(MCC), 96)}
+      <span class="light-card-label" style="color:#1A1D23;">White</span>
+    </div>
+  </div>
+</div>
+`;
+
+// ── SECTION 6: CONTEXT PLACEMENTS ────────────────────────────────────────────
+root.innerHTML += `
+<div class="section">
+  <div class="section-label">Context Placements</div>
+  <div class="context-grid">
+
+    <div class="ctx-card">
+      <div class="ctx-title">Dispatch — Project List</div>
+      <div class="ctx-body">
+        <div class="dispatch-mock">
+          <div class="dispatch-row">
+            ${svg(viewportIcon('rgb(147,174,255)'), 20, '0 0 80 80')}
+            <span class="dispatch-name">GA Session</span>
+            <span class="dispatch-sub">App</span>
+          </div>
+          <div class="dispatch-row">
+            ${svg(viewportIcon('rgb(110,231,183)'), 20, '0 0 80 80')}
+            <span class="dispatch-name">GF Session</span>
+            <span class="dispatch-sub">QA</span>
+          </div>
+          <div class="dispatch-row active">
+            ${svg(markC(MCC), 20)}
+            <span class="dispatch-name">Motor City Chemistry</span>
+            <span class="dispatch-sub">MCC</span>
+          </div>
+          <div class="dispatch-row">
+            ${svg(viewportIcon('rgb(251,146,60)'), 20, '0 0 80 80')}
+            <span class="dispatch-name">GR Session</span>
+            <span class="dispatch-sub">Research</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ctx-card">
+      <div class="ctx-title">Navigation — Sidebar</div>
+      <div class="ctx-body">
+        <div class="nav-mock">
+          <div class="nav-item">
+            <div style="width:3px;height:14px;border-radius:2px;background:rgb(147,174,255);flex-shrink:0;"></div>
+            Dashboard
+          </div>
+          <div class="nav-item">
+            <div style="width:3px;height:14px;border-radius:2px;background:rgb(110,231,183);flex-shrink:0;"></div>
+            Test Suite
+          </div>
+          <div class="nav-item active">
+            ${svg(markC(MCC), 16)}
+            Motor City Chemistry
+          </div>
+          <div class="nav-item">
+            <div style="width:3px;height:14px;border-radius:2px;background:rgb(251,146,60);flex-shrink:0;"></div>
+            Research
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ctx-card">
+      <div class="ctx-title">Tags and Badges</div>
+      <div class="ctx-body">
+        <div class="badge-row">
+          <div class="tag">
+            ${svg(markC(MCC), 16)} MCC
+          </div>
+          <div class="tag">
+            ${svg(markC(MCC), 16)} Motor City Chemistry
+          </div>
+          <div class="tag">
+            ${svg(markC(MCC), 20)} Chemistry
+          </div>
+          <div class="tag">
+            ${svg(markC(MCC), 16)} H2O
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ctx-card">
+      <div class="ctx-title">Canvas Header — Watermark Bar</div>
+      <div class="ctx-body">
+        <div style="background:#0A1520;border-radius:6px;height:40px;display:flex;align-items:center;padding:0 14px;gap:8px;">
+          ${svg(markC(MCC), 22)}
+          <span style="font-size:14px;font-weight:700;letter-spacing:0.14em;color:rgb(167,139,250);text-transform:uppercase;font-family:monospace;">MCC</span>
+          <span style="color:rgba(200,216,232,0.25);font-size:14px;">|</span>
+          <span style="font-size:14px;font-weight:600;color:rgba(200,216,232,0.80);">Motor City Chemistry</span>
+          <span style="margin-left:auto;font-size:14px;font-weight:700;color:rgb(167,139,250);background:rgba(167,139,250,0.12);border:1px solid rgba(167,139,250,0.25);border-radius:3px;padding:3px 6px;font-family:monospace;">Grind</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+`;
+</script>
+</body>
+</html>
