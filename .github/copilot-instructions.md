@@ -2,6 +2,18 @@
 
 > Read this before every task. It tells you what this project is, how it works, and what quality looks like.
 
+## Agent OS
+
+This repo is a spoke in the Forge agent system. For agent identity, skills, knowledge, and protocol:
+
+- **Hub repo:** `C:\GitHub\forge`
+- **Agent specs:** `forge/knowledge/agents/{ID}.md`
+- **Skills:** `forge/skills/{ID}/_index.md`
+- **Protocol:** `forge/.agent-protocol.md`
+- **Lessons:** `forge/LESSONS.md`
+
+Load your agent spec and skill index from the forge hub at session start.
+
 ## What This Project Is
 
 Motor City Chemistry is an adaptive chemistry study tool for one student: Kai Ash (15, SAAS, Chem 10). It generates practice tests that target his specific weak areas, grades his scanned handwritten answers, and tracks improvement over time.
