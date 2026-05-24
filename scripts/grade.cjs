@@ -19,6 +19,46 @@ const fs = require('fs');
 const path = require('path');
 const { normalizeFormula, normalizeName, answersMatch } = require('../shared/normalize.cjs');
 
+// --- @forge/prompts integration (optional LLM grading for open-ended questions) ---
+const PROMPTS_DIR = path.resolve(__dirname, '../../forge/packages/prompts/templates');
+
+function loadGradeTemplate() {
+  const p = path.join(PROMPTS_DIR, 'grade.md');
+  if (!fs.existsSync(p)) return null;
+  return fs.readFileSync(p, 'utf-8');
+}
+
+function fillTemplate(template, vars) {
+  let result = template;
+  for (const [key, value] of Object.entries(vars)) {
+    result = result.replace(new RegExp(`\\{\\{${key.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\}\\}`, 'g'), String(value));
+  }
+  return result;
+}
+
+/**
+ * Build an LLM prompt for grading open-ended questions using @forge/prompts grade template.
+ * Use when rule-based normalization can't evaluate the answer (e.g., explanations, diagrams).
+ */
+function buildLLMGradePrompt(studentAnswers, answerKey) {
+  const template = loadGradeTemplate();
+  if (!template) return null;
+
+  const standards = (answerKey.questions || [])
+    .map(q => q.standard || q.skill)
+    .filter((v, i, a) => a.indexOf(v) === i)
+    .join(', ');
+
+  return fillTemplate(template, {
+    answer_key: JSON.stringify(answerKey.questions || [], null, 2),
+    student_answers: JSON.stringify(studentAnswers.answers || {}, null, 2),
+    mastery_threshold: '67%',
+    standards: standards,
+    student_name: studentAnswers.studentName || 'Kai Ash',
+    date: new Date().toISOString().split('T')[0]
+  });
+}
+
 // --- Grading logic ---
 
 function gradeBySkill(studentAnswers, answerKey) {
@@ -133,4 +173,4 @@ if (require.main === module) {
   console.log(JSON.stringify(report, null, 2));
 }
 
-module.exports = { gradeBySkill, determineStatus, generateReport };
+module.exports = { gradeBySkill, determineStatus, generateReport, buildLLMGradePrompt };
