@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Practice Quiz: Standard 6.3 &mdash; Multi-Step Stoichiometry</title>
+<style>
+  @page {
+    size: letter;
+    margin: 0.5in;
+  }
+
+  @media print {
+    body { margin: 0; padding: 0; background: #fff; color: #000; }
+    .no-print { display: none; }
+    .page-break { break-before: page; page-break-before: always; }
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    font-size: 14px;
+    line-height: 1.6;
+    color: #000;
+    max-width: 8.5in;
+    margin: 0 auto;
+    padding: 0.5in;
+    background: #fff;
+  }
+
+  /* HEADER */
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    border-bottom: 2px solid #000;
+    padding-bottom: 6px;
+    margin-bottom: 8px;
+  }
+
+  .header-left  { font-size: 13px; font-weight: 700; }
+  .header-center { text-align: center; font-size: 13px; }
+  .header-right  { text-align: right; font-size: 13px; }
+
+  .title-row {
+    font-size: 16px;
+    font-weight: 700;
+    text-align: center;
+    margin: 8px 0 2px 0;
+  }
+
+  .subtitle {
+    text-align: center;
+    font-size: 12px;
+    color: #444;
+    margin-bottom: 12px;
+  }
+
+  .name-block {
+    display: flex;
+    gap: 32px;
+    margin: 8px 0 16px 0;
+    font-size: 13px;
+  }
+
+  .name-block .blank {
+    border-bottom: 1px solid #000;
+    min-width: 160px;
+    display: inline-block;
+  }
+
+  /* STANDARDS TABLE — neutral, low visual weight */
+  .standards-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0 0 16px 0;
+    font-size: 11px;
+  }
+
+  .standards-table th,
+  .standards-table td {
+    border: 1px solid #999;
+    padding: 4px 6px;
+    text-align: center;
+  }
+
+  .standards-table th {
+    background: #f0f0f0;
+    font-weight: 600;
+  }
+
+  /* REFERENCE BOX */
+  .reference-box {
+    border: 1px solid #bbb;
+    padding: 8px 12px;
+    margin: 0 0 20px 0;
+    font-size: 12px;
+  }
+
+  .reference-box strong {
+    display: block;
+    margin-bottom: 4px;
+  }
+
+  /* QUESTION BLOCKS */
+  .question-block {
+    margin: 28px 0;
+  }
+
+  .q-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    border-bottom: 1px solid #bbb;
+    padding-bottom: 4px;
+    margin-bottom: 8px;
+  }
+
+  .q-number {
+    font-weight: 700;
+    font-size: 15px;
+  }
+
+  .q-skill {
+    font-size: 11px;
+    color: #555;
+    font-style: italic;
+  }
+
+  .q-text {
+    margin-bottom: 8px;
+    font-size: 14px;
+  }
+
+  .q-parts {
+    margin-left: 8px;
+    margin-top: 8px;
+  }
+
+  .q-parts .part {
+    margin-bottom: 6px;
+    font-size: 13px;
+  }
+
+  /* REACTION BOX */
+  .rxn {
+    text-align: center;
+    margin: 10px 0;
+    padding: 8px 16px;
+    border: 1px solid #bbb;
+    font-family: 'Cambria', 'Times New Roman', serif;
+    font-size: 15px;
+    letter-spacing: 0.3px;
+  }
+
+  /* WORK SPACES */
+  .work-space {
+    border: 1px solid #bbb;
+    min-height: 130px;
+    margin: 8px 0;
+    padding: 22px 8px 8px 8px;
+    position: relative;
+  }
+
+  .work-space.tall  { min-height: 180px; }
+  .work-space.short { min-height: 90px; }
+  .work-space.med   { min-height: 120px; }
+
+  .ws-label {
+    position: absolute;
+    top: 5px;
+    left: 8px;
+    font-size: 10px;
+    color: #bbb;
+    font-style: italic;
+    line-height: 1.3;
+  }
+
+  /* ANSWER LINE */
+  .answer-line {
+    margin-top: 10px;
+    font-size: 13px;
+    font-weight: 600;
+  }
+
+  .answer-line .blank {
+    border-bottom: 1px solid #000;
+    min-width: 140px;
+    display: inline-block;
+  }
+
+  /* HINT */
+  .hint-strip {
+    border-left: 2px solid #999;
+    padding: 5px 10px;
+    margin: 8px 0;
+    font-size: 11px;
+    color: #333;
+  }
+
+  /* FRACTIONS (Q2 choices) */
+  .choices {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 28px;
+    align-items: flex-end;
+    margin: 10px 0;
+  }
+
+  .choice-item {
+    display: flex;
+    align-items: flex-end;
+    gap: 5px;
+    font-size: 13px;
+  }
+
+  .frac {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    line-height: 1.2;
+  }
+
+  .frac .num {
+    border-bottom: 1px solid #000;
+    padding: 1px 6px 2px 6px;
+    font-size: 12px;
+    white-space: nowrap;
+  }
+
+  .frac .den {
+    padding: 2px 6px 1px 6px;
+    font-size: 12px;
+    white-space: nowrap;
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header">
+  <div class="header-left">CHEM 10</div>
+  <div class="header-center">Practice Quiz 1<br>Standard 6.3</div>
+  <div class="header-right">Block 6</div>
+</div>
+
+<div class="title-row">Multi-Step Stoichiometry &mdash; Practice Quiz</div>
+<div class="subtitle">5 Questions &middot; Show ALL work &middot; Cancel units &middot; Label conversion factors</div>
+
+<div class="name-block">
+  <div>Name: <span class="blank"></span></div>
+  <div>Date: <span class="blank"></span></div>
+  <div>Score: <span class="blank" style="min-width:50px;"></span> / 4 P</div>
+</div>
+
+<table class="standards-table">
+  <tr>
+    <th>6.3.1</th><th>6.3.2</th><th>6.3.3</th><th>6.3.4</th>
+  </tr>
+  <tr>
+    <td>Identify conversion factors &amp; link steps</td>
+    <td>Pick correct CF for word problem</td>
+    <td>Solve with 2+ conversion factors</td>
+    <td>Lab: reasoning, units, chemicals</td>
+  </tr>
+</table>
+
+<div class="reference-box">
+  <strong>Reference Data (use as needed):</strong>
+  Avogadro&rsquo;s number = 6.022 &times; 10<sup>23</sup> particles/mol<br>
+  Molar masses (g/mol): H = 1.01 &middot; C = 12.01 &middot; N = 14.01 &middot; O = 16.00 &middot; F = 19.00
+  &middot; Na = 22.99 &middot; Mg = 24.31 &middot; Al = 26.98 &middot; S = 32.07
+  &middot; Cl = 35.45 &middot; Ca = 40.08 &middot; Fe = 55.85
+</div>
+
+<!-- Q1 -->
+<div class="question-block">
+  <div class="q-header">
+    <span class="q-number">1.</span>
+    <span class="q-skill">Standard 6.3.1 &mdash; Identify conversion factors &amp; link steps</span>
+  </div>
+  <div class="q-text">Consider the following reaction:</div>
+  <div class="rxn">2 Na(s) + Cl<sub>2</sub>(g) &rarr; 2 NaCl(s)</div>
+  <div class="q-text">You want to find: <strong>How many grams of NaCl are produced from 2.5 mol of Na?</strong></div>
+  <div class="q-parts">
+    <div class="part"><strong>(a)</strong> List the conversion factors you need, <em>in order</em>, to go from mol Na &rarr; grams NaCl. Write each as a fraction.</div>
+    <div class="work-space short"><span class="ws-label">Write conversion factors as fractions here</span></div>
+    <div class="part"><strong>(b)</strong> For each conversion factor, explain what it does to the units (what cancels, what remains).</div>
+    <div class="work-space short"><span class="ws-label">Explain each step</span></div>
+  </div>
+</div>
+
+<!-- Q2 -->
+<div class="question-block">
+  <div class="q-header">
+    <span class="q-number">2.</span>
+    <span class="q-skill">Standard 6.3.2 &mdash; Pick the right conversion factor</span>
+  </div>
+  <div class="q-text">&ldquo;How many <strong>molecules</strong> of CO<sub>2</sub> are produced when 3.0 mol of C<sub>3</sub>H<sub>8</sub> combusts completely?&rdquo;</div>
+  <div class="rxn">C<sub>3</sub>H<sub>8</sub>(g) + 5 O<sub>2</sub>(g) &rarr; 3 CO<sub>2</sub>(g) + 4 H<sub>2</sub>O(g)</div>
+  <div class="q-text"><strong>Circle</strong> the conversion factors needed and write them in the correct order:</div>
+  <div class="choices">
+    <span class="choice-item">(a)&nbsp;<span class="frac"><span class="num">3 mol CO<sub>2</sub></span><span class="den">1 mol C<sub>3</sub>H<sub>8</sub></span></span></span>
+    <span class="choice-item">(b)&nbsp;<span class="frac"><span class="num">1 mol C<sub>3</sub>H<sub>8</sub></span><span class="den">3 mol CO<sub>2</sub></span></span></span>
+    <span class="choice-item">(c)&nbsp;<span class="frac"><span class="num">6.022 &times; 10<sup>23</sup> molecules</span><span class="den">1 mol</span></span></span>
+    <span class="choice-item">(d)&nbsp;<span class="frac"><span class="num">1 mol</span><span class="den">6.022 &times; 10<sup>23</sup> molecules</span></span></span>
+    <span class="choice-item">(e)&nbsp;<span class="frac"><span class="num">44.01 g CO<sub>2</sub></span><span class="den">1 mol CO<sub>2</sub></span></span></span>
+    <span class="choice-item">(f)&nbsp;<span class="frac"><span class="num">44.09 g C<sub>3</sub>H<sub>8</sub></span><span class="den">1 mol C<sub>3</sub>H<sub>8</sub></span></span></span>
+  </div>
+  <div class="answer-line">Correct order (letters): <span class="blank" style="min-width:100px;"></span></div>
+  <div class="hint-strip"><strong>Hint:</strong> You start with mol C<sub>3</sub>H<sub>8</sub> and want molecules CO<sub>2</sub>. You need the mole ratio first, then convert moles to molecules.</div>
+</div>
+
+<!-- Q3 -->
+<div class="question-block">
+  <div class="q-header">
+    <span class="q-number">3.</span>
+    <span class="q-skill">Standard 6.3.3 &mdash; Solve multi-step (3 conversion factors)</span>
+  </div>
+  <div class="q-text">How many <strong>grams of water (H<sub>2</sub>O)</strong> are produced from <strong>3.01 &times; 10<sup>23</sup> molecules of CH<sub>4</sub></strong>?</div>
+  <div class="rxn">CH<sub>4</sub>(g) + 2 O<sub>2</sub>(g) &rarr; CO<sub>2</sub>(g) + 2 H<sub>2</sub>O(g)</div>
+  <div class="q-text"><strong>Solve completely.</strong> Show all conversion factors. Cancel units at each step. Box your final answer.</div>
+  <div class="work-space tall"><span class="ws-label">Show full dimensional analysis chain: molecules CH<sub>4</sub> &rarr; mol CH<sub>4</sub> &rarr; mol H<sub>2</sub>O &rarr; g H<sub>2</sub>O</span></div>
+  <div class="answer-line">Final answer: <span class="blank"></span> g H<sub>2</sub>O</div>
+</div>
+
+<!-- Q4 -->
+<div class="question-block">
+  <div class="q-header">
+    <span class="q-number">4.</span>
+    <span class="q-skill">Standard 6.3.4 &mdash; Lab setting with limiting reagent</span>
+  </div>
+  <div class="q-text"><strong>Lab Setting:</strong> You combine <strong>10.0 g of magnesium</strong> with <strong>10.0 g of HCl</strong> in a beaker.</div>
+  <div class="rxn">Mg(s) + 2 HCl(aq) &rarr; MgCl<sub>2</sub>(aq) + H<sub>2</sub>(g)</div>
+  <div class="q-parts">
+    <div class="part"><strong>(a)</strong> Convert both reactants to moles. Show work.</div>
+    <div class="work-space med"><span class="ws-label">Mg: g &divide; molar mass = mol &nbsp;&nbsp;|&nbsp;&nbsp; HCl: g &divide; molar mass = mol</span></div>
+    <div class="part"><strong>(b)</strong> Determine the <strong>limiting reagent</strong>. Show how you know (divide moles by coefficient, compare).</div>
+    <div class="work-space med"><span class="ws-label">Compare: mol Mg &divide; 1 vs. mol HCl &divide; 2 &rarr; smaller ratio = limiting</span></div>
+    <div class="part"><strong>(c)</strong> Calculate the maximum grams of MgCl<sub>2</sub> produced from the limiting reagent.</div>
+    <div class="work-space"><span class="ws-label">mol limiting &rarr; mol MgCl<sub>2</sub> (ratio) &rarr; g MgCl<sub>2</sub> (molar mass = 95.21 g/mol)</span></div>
+  </div>
+  <div class="answer-line">Limiting reagent: <span class="blank" style="min-width:80px;"></span> &nbsp;&nbsp; Grams MgCl<sub>2</sub>: <span class="blank"></span></div>
+</div>
+
+<!-- Q5: new page -->
+<div class="page-break"></div>
+<div class="question-block">
+  <div class="q-header">
+    <span class="q-number">5.</span>
+    <span class="q-skill">Comprehensive &mdash; All four 6.3 skills</span>
+  </div>
+  <div class="q-text"><strong>Full Problem:</strong> In a lab, you start with <strong>5.0 &times; 10<sup>23</sup> molecules of Fe<sub>2</sub>O<sub>3</sub></strong>.</div>
+  <div class="rxn">Fe<sub>2</sub>O<sub>3</sub>(s) + 3 CO(g) &rarr; 2 Fe(s) + 3 CO<sub>2</sub>(g)</div>
+  <div class="q-parts">
+    <div class="part"><strong>(a)</strong> <em>[6.3.1]</em> List ALL conversion factors needed to find <strong>grams of Fe</strong> produced. Write them in order as fractions.</div>
+    <div class="work-space short"><span class="ws-label">Chain: molecules Fe<sub>2</sub>O<sub>3</sub> &rarr; mol Fe<sub>2</sub>O<sub>3</sub> &rarr; mol Fe &rarr; g Fe</span></div>
+    <div class="part"><strong>(b)</strong> <em>[6.3.2]</em> Why did you choose the mole ratio you did? What does the balanced equation tell you about the relationship between Fe<sub>2</sub>O<sub>3</sub> and Fe?</div>
+    <div class="work-space short"><span class="ws-label">Explain the 1:2 ratio meaning</span></div>
+    <div class="part"><strong>(c)</strong> <em>[6.3.3]</em> Calculate the grams of Fe produced. Show all work. Cancel units.</div>
+    <div class="work-space tall"><span class="ws-label">Full calculation with units</span></div>
+    <div class="part"><strong>(d)</strong> <em>[6.3.4]</em> If you only had <strong>20.0 g of CO</strong> available, would that be enough to react with all the Fe<sub>2</sub>O<sub>3</sub>? Prove it with a calculation.</div>
+    <div class="work-space"><span class="ws-label">Calculate mol CO needed vs mol CO available (20.0 g &divide; 28.01 g/mol)</span></div>
+  </div>
+  <div class="answer-line">Grams of Fe produced: <span class="blank"></span> &nbsp;&nbsp; Enough CO? <span class="blank" style="min-width:70px;"></span></div>
+</div>
+
+</body>
+</html>
