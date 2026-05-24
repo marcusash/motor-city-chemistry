@@ -1,0 +1,27 @@
+{
+  "studentName": "Kai",
+  "testId": "chem-42-practice-v2",
+  "scannedAt": "2026-05-20T16:30:00Z",
+  "source": "sample-simulated-ocr",
+  "answers": {
+    "Q4a": "No",
+    "Q4b": "Yes",
+    "Q5_atoms_Ca": "1",
+    "Q5_atoms_N": "2",
+    "Q5_atoms_O": "3",
+    "Q6_row1": "NaCl",
+    "Q6_row2": "BaO",
+    "Q6_row3": "LiOH",
+    "Q6_row4": "CuCO3",
+    "Q7_row1": "potassium oxide",
+    "Q7_row2": "magnesium bromide",
+    "Q7_row3": "iron chloride",
+    "Q7_row4": "calcium hydroxide",
+    "Q7_row5": "ammonium phosphate",
+    "Q7_row6": "KNO3",
+    "Q7_row7": "CuSO4",
+    "Q7_row8": "AlCl3",
+    "Q7_row9": "Ba2(PO4)3"
+  },
+  "notes": "Simulated OCR output matching Kai's known error patterns: wrong O atom count in Q5, missing Roman numeral in Q7_row3, wrong subscripts in Q7_row9"
+}

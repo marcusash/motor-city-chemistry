@@ -1,0 +1,349 @@
+{
+  "version": "1.0.0",
+  "description": "Motor City Chemistry question bank for adaptive test generation",
+  "standards": {
+    "4.1": "Types of Bonds (ionic vs covalent)",
+    "4.2": "Ionic Compound Formulas and Naming",
+    "4.3": "Covalent Compounds (prefixes and naming)",
+    "5.1": "Lewis Dot Structures",
+    "5.2": "VSEPR and Molecular Geometry"
+  },
+  "questions": [
+    {
+      "id": "4.1-001", "standard": "4.1", "skill": "4.1.1",
+      "question": "What type of bond forms between Na and Cl?",
+      "answer": "ionic",
+      "acceptableAnswers": ["ionic", "ionic bond"],
+      "difficulty": 1,
+      "hint": "Na is a metal, Cl is a nonmetal. Metals transfer electrons to nonmetals."
+    },
+    {
+      "id": "4.1-002", "standard": "4.1", "skill": "4.1.1",
+      "question": "What type of bond forms between two oxygen atoms?",
+      "answer": "covalent",
+      "acceptableAnswers": ["covalent", "covalent bond"],
+      "difficulty": 1,
+      "hint": "Both atoms are nonmetals. Nonmetals share electrons."
+    },
+    {
+      "id": "4.1-003", "standard": "4.1", "skill": "4.1.1",
+      "question": "What type of bond forms between Ca and O?",
+      "answer": "ionic",
+      "acceptableAnswers": ["ionic", "ionic bond"],
+      "difficulty": 1,
+      "hint": "Ca is a metal (Group 2), O is a nonmetal (Group 16)."
+    },
+    {
+      "id": "4.1-004", "standard": "4.1", "skill": "4.1.2",
+      "question": "In an ionic bond, are electrons transferred or shared?",
+      "answer": "transferred",
+      "acceptableAnswers": ["transferred", "transfer"],
+      "difficulty": 1,
+      "hint": "Ionic bonds form when one atom gives electrons to another."
+    },
+    {
+      "id": "4.1-005", "standard": "4.1", "skill": "4.1.2",
+      "question": "In a covalent bond, are electrons transferred or shared?",
+      "answer": "shared",
+      "acceptableAnswers": ["shared", "sharing"],
+      "difficulty": 1,
+      "hint": "Covalent bonds form between nonmetals that share electron pairs."
+    },
+    {
+      "id": "4.1-006", "standard": "4.1", "skill": "4.1.1",
+      "question": "What type of bond forms between N and H?",
+      "answer": "covalent",
+      "acceptableAnswers": ["covalent", "covalent bond", "polar covalent"],
+      "difficulty": 2,
+      "hint": "Both are nonmetals, but they have different electronegativities."
+    },
+    {
+      "id": "4.2-001", "standard": "4.2", "skill": "4.2.1",
+      "question": "Is Al2O3 electrically neutral? Verify: Al is +3, O is -2.",
+      "answer": "Yes",
+      "acceptableAnswers": ["Yes", "yes", "neutral", "true"],
+      "difficulty": 2,
+      "hint": "Calculate: 2(+3) + 3(-2) = +6 + (-6) = 0"
+    },
+    {
+      "id": "4.2-002", "standard": "4.2", "skill": "4.2.1",
+      "question": "Is Na2O3 electrically neutral? Na is +1, O is -2.",
+      "answer": "No",
+      "acceptableAnswers": ["No", "no", "not neutral", "false"],
+      "difficulty": 2,
+      "hint": "Calculate: 2(+1) + 3(-2) = +2 + (-6) = -4. Not zero."
+    },
+    {
+      "id": "4.2-003", "standard": "4.2", "skill": "4.2.2",
+      "question": "How many total atoms are in Al2(SO4)3?",
+      "answer": "17",
+      "acceptableAnswers": ["17"],
+      "difficulty": 2,
+      "hint": "2 Al + 3 S + 12 O = 17. The subscript 3 multiplies everything in the parentheses."
+    },
+    {
+      "id": "4.2-004", "standard": "4.2", "skill": "4.2.2",
+      "question": "How many oxygen atoms are in Mg(NO3)2?",
+      "answer": "6",
+      "acceptableAnswers": ["6"],
+      "difficulty": 2,
+      "hint": "The subscript 2 multiplies everything inside: 3 O x 2 = 6 O."
+    },
+    {
+      "id": "4.2-005", "standard": "4.2", "skill": "4.2.3",
+      "question": "Write the formula for the ionic compound formed by Ca2+ and Cl-.",
+      "answer": "CaCl2",
+      "acceptableAnswers": ["CaCl2"],
+      "difficulty": 1,
+      "hint": "Ca is +2, Cl is -1. Need 2 Cl to balance: +2 + 2(-1) = 0."
+    },
+    {
+      "id": "4.2-006", "standard": "4.2", "skill": "4.2.3",
+      "question": "Write the formula for the ionic compound formed by Al3+ and O2-.",
+      "answer": "Al2O3",
+      "acceptableAnswers": ["Al2O3"],
+      "difficulty": 2,
+      "hint": "Cross the charges: Al needs subscript 2, O needs subscript 3. Check: 2(+3) + 3(-2) = 0."
+    },
+    {
+      "id": "4.2-007", "standard": "4.2", "skill": "4.2.3",
+      "question": "Write the formula for the ionic compound formed by Fe3+ and SO4 2-.",
+      "answer": "Fe2(SO4)3",
+      "acceptableAnswers": ["Fe2(SO4)3"],
+      "difficulty": 3,
+      "hint": "Cross charges: 2 Fe and 3 SO4. Parentheses around polyatomic ion when subscript > 1."
+    },
+    {
+      "id": "4.2-008", "standard": "4.2", "skill": "4.2.4",
+      "question": "Write the formula for the compound formed by NH4+ and Cl-.",
+      "answer": "NH4Cl",
+      "acceptableAnswers": ["NH4Cl"],
+      "difficulty": 2,
+      "hint": "Both charges are 1. 1:1 ratio. No parentheses needed."
+    },
+    {
+      "id": "4.2-009", "standard": "4.2", "skill": "4.2.4",
+      "question": "Write the formula for the compound formed by Ca2+ and PO4 3-.",
+      "answer": "Ca3(PO4)2",
+      "acceptableAnswers": ["Ca3(PO4)2"],
+      "difficulty": 3,
+      "hint": "Cross charges: 3 Ca and 2 PO4. Check: 3(+2) + 2(-3) = 0."
+    },
+    {
+      "id": "4.2-010", "standard": "4.2", "skill": "4.2.5",
+      "question": "In CuSO4, what is the charge on Cu?",
+      "answer": "+2",
+      "acceptableAnswers": ["+2", "2+", "positive 2"],
+      "difficulty": 2,
+      "hint": "SO4 is -2. For neutrality: Cu + (-2) = 0, so Cu = +2."
+    },
+    {
+      "id": "4.2-011", "standard": "4.2", "skill": "4.2.5",
+      "question": "In Fe2O3, what is the charge on Fe?",
+      "answer": "+3",
+      "acceptableAnswers": ["+3", "3+", "positive 3"],
+      "difficulty": 2,
+      "hint": "3 O at -2 = -6 total. 2 Fe must equal +6. Each Fe = +3."
+    },
+    {
+      "id": "4.2-012", "standard": "4.2", "skill": "4.2.6",
+      "question": "Name: CaF2",
+      "answer": "calcium fluoride",
+      "acceptableAnswers": ["calcium fluoride"],
+      "difficulty": 1,
+      "hint": "Ca is always +2 (no Roman numeral). F root + -ide = fluoride."
+    },
+    {
+      "id": "4.2-013", "standard": "4.2", "skill": "4.2.6",
+      "question": "Name: Na2S",
+      "answer": "sodium sulfide",
+      "acceptableAnswers": ["sodium sulfide"],
+      "difficulty": 1,
+      "hint": "Na is Group 1 (always +1). S root + -ide = sulfide."
+    },
+    {
+      "id": "4.2-014", "standard": "4.2", "skill": "4.2.7",
+      "question": "Name: CuCl2",
+      "answer": "copper(II) chloride",
+      "acceptableAnswers": ["copper(II) chloride", "copper (II) chloride", "copper(ii) chloride", "cupric chloride"],
+      "difficulty": 2,
+      "hint": "Cu is a transition metal. 2 Cl(-1) = -2, so Cu = +2. Must include (II)."
+    },
+    {
+      "id": "4.2-015", "standard": "4.2", "skill": "4.2.7",
+      "question": "Name: Pb(NO3)2",
+      "answer": "lead(II) nitrate",
+      "acceptableAnswers": ["lead(II) nitrate", "lead (II) nitrate", "lead(ii) nitrate"],
+      "difficulty": 2,
+      "hint": "Pb is a transition metal. 2 NO3(-1) = -2, so Pb = +2. NO3 = nitrate (polyatomic)."
+    },
+    {
+      "id": "4.2-016", "standard": "4.2", "skill": "4.2.8",
+      "question": "Formula: Magnesium nitrate",
+      "answer": "Mg(NO3)2",
+      "acceptableAnswers": ["Mg(NO3)2"],
+      "difficulty": 2,
+      "hint": "Mg is +2, NO3 is -1. Need 2 nitrates. Parentheses required."
+    },
+    {
+      "id": "4.2-017", "standard": "4.2", "skill": "4.2.8",
+      "question": "Formula: Iron(III) oxide",
+      "answer": "Fe2O3",
+      "acceptableAnswers": ["Fe2O3"],
+      "difficulty": 2,
+      "hint": "Fe is +3 (Roman numeral III), O is -2. Cross: 2 Fe, 3 O."
+    },
+    {
+      "id": "4.2-018", "standard": "4.2", "skill": "4.2.8",
+      "question": "Formula: Ammonium sulfate",
+      "answer": "(NH4)2SO4",
+      "acceptableAnswers": ["(NH4)2SO4"],
+      "difficulty": 3,
+      "hint": "NH4 is +1, SO4 is -2. Need 2 ammonium ions. Parentheses around NH4."
+    },
+    {
+      "id": "4.3-001", "standard": "4.3", "skill": "4.3.1",
+      "question": "Name: CO2",
+      "answer": "carbon dioxide",
+      "acceptableAnswers": ["carbon dioxide"],
+      "difficulty": 1,
+      "hint": "Covalent naming uses prefixes. C has no prefix (mono- is dropped for first element). O gets di- (2)."
+    },
+    {
+      "id": "4.3-002", "standard": "4.3", "skill": "4.3.1",
+      "question": "Name: N2O5",
+      "answer": "dinitrogen pentoxide",
+      "acceptableAnswers": ["dinitrogen pentoxide", "dinitrogen pentaoxide"],
+      "difficulty": 2,
+      "hint": "Both elements get prefixes: di- (2) for N, penta- (5) for O. O root + -ide."
+    },
+    {
+      "id": "4.3-003", "standard": "4.3", "skill": "4.3.1",
+      "question": "Name: PCl3",
+      "answer": "phosphorus trichloride",
+      "acceptableAnswers": ["phosphorus trichloride"],
+      "difficulty": 2,
+      "hint": "First element gets no prefix (just 1). Second element: tri- (3) + chlor + -ide."
+    },
+    {
+      "id": "4.3-004", "standard": "4.3", "skill": "4.3.2",
+      "question": "Formula: Sulfur hexafluoride",
+      "answer": "SF6",
+      "acceptableAnswers": ["SF6"],
+      "difficulty": 2,
+      "hint": "Sulfur = S (no prefix means 1). Hexa- = 6 fluorines."
+    },
+    {
+      "id": "4.3-005", "standard": "4.3", "skill": "4.3.2",
+      "question": "Formula: Dinitrogen monoxide",
+      "answer": "N2O",
+      "acceptableAnswers": ["N2O"],
+      "difficulty": 2,
+      "hint": "Di- = 2 nitrogen. Mono- = 1 oxygen."
+    },
+    {
+      "id": "4.3-006", "standard": "4.3", "skill": "4.3.1",
+      "question": "Name: SO3",
+      "answer": "sulfur trioxide",
+      "acceptableAnswers": ["sulfur trioxide"],
+      "difficulty": 2,
+      "hint": "First element no prefix. Second: tri- (3) + ox + -ide."
+    },
+    {
+      "id": "5.1-001", "standard": "5.1", "skill": "5.1.1",
+      "question": "How many valence electrons does oxygen have?",
+      "answer": "6",
+      "acceptableAnswers": ["6"],
+      "difficulty": 1,
+      "hint": "Oxygen is in Group 16. Group number minus 10 = valence electrons for p-block."
+    },
+    {
+      "id": "5.1-002", "standard": "5.1", "skill": "5.1.1",
+      "question": "How many valence electrons does nitrogen have?",
+      "answer": "5",
+      "acceptableAnswers": ["5"],
+      "difficulty": 1,
+      "hint": "Nitrogen is in Group 15. 15 - 10 = 5 valence electrons."
+    },
+    {
+      "id": "5.1-003", "standard": "5.1", "skill": "5.1.2",
+      "question": "How many total valence electrons are in H2O?",
+      "answer": "8",
+      "acceptableAnswers": ["8"],
+      "difficulty": 2,
+      "hint": "O has 6, each H has 1. Total: 6 + 1 + 1 = 8."
+    },
+    {
+      "id": "5.1-004", "standard": "5.1", "skill": "5.1.2",
+      "question": "How many total valence electrons are in CO2?",
+      "answer": "16",
+      "acceptableAnswers": ["16"],
+      "difficulty": 2,
+      "hint": "C has 4, each O has 6. Total: 4 + 6 + 6 = 16."
+    },
+    {
+      "id": "5.1-005", "standard": "5.1", "skill": "5.1.3",
+      "question": "How many lone pairs are on the central atom in H2O?",
+      "answer": "2",
+      "acceptableAnswers": ["2"],
+      "difficulty": 2,
+      "hint": "O has 6 valence e-. Uses 2 for bonds (2 H). Remaining 4 = 2 lone pairs."
+    },
+    {
+      "id": "5.1-006", "standard": "5.1", "skill": "5.1.3",
+      "question": "How many lone pairs are on the central atom in NH3?",
+      "answer": "1",
+      "acceptableAnswers": ["1"],
+      "difficulty": 2,
+      "hint": "N has 5 valence e-. Uses 3 for bonds (3 H). Remaining 2 = 1 lone pair."
+    },
+    {
+      "id": "5.2-001", "standard": "5.2", "skill": "5.2.1",
+      "question": "What is the molecular geometry of CH4?",
+      "answer": "tetrahedral",
+      "acceptableAnswers": ["tetrahedral"],
+      "difficulty": 1,
+      "hint": "4 bonding pairs, 0 lone pairs on C. Electron geometry = molecular geometry = tetrahedral."
+    },
+    {
+      "id": "5.2-002", "standard": "5.2", "skill": "5.2.1",
+      "question": "What is the molecular geometry of H2O?",
+      "answer": "bent",
+      "acceptableAnswers": ["bent", "angular", "v-shaped"],
+      "difficulty": 2,
+      "hint": "2 bonding pairs + 2 lone pairs on O. Lone pairs push bonds closer = bent shape."
+    },
+    {
+      "id": "5.2-003", "standard": "5.2", "skill": "5.2.1",
+      "question": "What is the molecular geometry of NH3?",
+      "answer": "trigonal pyramidal",
+      "acceptableAnswers": ["trigonal pyramidal", "pyramidal"],
+      "difficulty": 2,
+      "hint": "3 bonding pairs + 1 lone pair on N. Electron geometry is tetrahedral, molecular is pyramidal."
+    },
+    {
+      "id": "5.2-004", "standard": "5.2", "skill": "5.2.1",
+      "question": "What is the molecular geometry of CO2?",
+      "answer": "linear",
+      "acceptableAnswers": ["linear"],
+      "difficulty": 1,
+      "hint": "2 bonding regions, 0 lone pairs on C. Bonds spread 180 degrees apart."
+    },
+    {
+      "id": "5.2-005", "standard": "5.2", "skill": "5.2.2",
+      "question": "What is the bond angle in a tetrahedral molecule?",
+      "answer": "109.5",
+      "acceptableAnswers": ["109.5", "109.5 degrees", "about 109"],
+      "difficulty": 2,
+      "hint": "4 electron groups spread evenly in 3D space = 109.5 degree angles."
+    },
+    {
+      "id": "5.2-006", "standard": "5.2", "skill": "5.2.2",
+      "question": "Is H2O polar or nonpolar?",
+      "answer": "polar",
+      "acceptableAnswers": ["polar"],
+      "difficulty": 2,
+      "hint": "Bent shape means dipoles don't cancel. Asymmetric geometry = polar."
+    }
+  ]
+}

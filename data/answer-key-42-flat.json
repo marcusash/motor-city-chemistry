@@ -1,0 +1,25 @@
+{
+  "testId": "chem-42-practice-v2",
+  "standard": "4.2",
+  "title": "Standard 4.2: Ionic Compound Formulas",
+  "questions": [
+    { "id": "Q4a", "skill": "4.2.1", "question": "Is Mg(OH)3 electrically neutral?", "answer": "No", "acceptableAnswers": ["No", "no", "not neutral", "false"], "difficulty": 2 },
+    { "id": "Q4b", "skill": "4.2.1", "question": "Is K2SO4 electrically neutral?", "answer": "Yes", "acceptableAnswers": ["Yes", "yes", "neutral", "true"], "difficulty": 2 },
+    { "id": "Q5_atoms_Ca", "skill": "4.2.2", "question": "How many Ca atoms in Ca(NO3)2?", "answer": "1", "acceptableAnswers": ["1"], "difficulty": 2 },
+    { "id": "Q5_atoms_N", "skill": "4.2.2", "question": "How many N atoms in Ca(NO3)2?", "answer": "2", "acceptableAnswers": ["2"], "difficulty": 2 },
+    { "id": "Q5_atoms_O", "skill": "4.2.2", "question": "How many O atoms in Ca(NO3)2?", "answer": "6", "acceptableAnswers": ["6"], "difficulty": 2 },
+    { "id": "Q6_row1", "skill": "4.2.3", "question": "Write the formula for Na and Cl", "answer": "NaCl", "acceptableAnswers": ["NaCl"], "difficulty": 1 },
+    { "id": "Q6_row2", "skill": "4.2.3", "question": "Write the formula for Ba and O", "answer": "BaO", "acceptableAnswers": ["BaO"], "difficulty": 1 },
+    { "id": "Q6_row3", "skill": "4.2.4", "question": "Write the formula for Li+ and OH-", "answer": "LiOH", "acceptableAnswers": ["LiOH"], "difficulty": 2 },
+    { "id": "Q6_row4", "skill": "4.2.5", "question": "Write the formula for Cu2+ and CO3 2-", "answer": "CuCO3", "acceptableAnswers": ["CuCO3"], "difficulty": 2 },
+    { "id": "Q7_row1", "skill": "4.2.6", "question": "Name: K2O", "answer": "potassium oxide", "acceptableAnswers": ["potassium oxide"], "difficulty": 1 },
+    { "id": "Q7_row2", "skill": "4.2.6", "question": "Name: MgBr2", "answer": "magnesium bromide", "acceptableAnswers": ["magnesium bromide"], "difficulty": 1 },
+    { "id": "Q7_row3", "skill": "4.2.7", "question": "Name: FeCl2", "answer": "iron(II) chloride", "acceptableAnswers": ["iron(II) chloride", "iron (II) chloride", "iron(ii) chloride", "ferrous chloride"], "difficulty": 2 },
+    { "id": "Q7_row4", "skill": "4.2.7", "question": "Name: Ca(OH)2", "answer": "calcium hydroxide", "acceptableAnswers": ["calcium hydroxide"], "difficulty": 2 },
+    { "id": "Q7_row5", "skill": "4.2.7", "question": "Name: (NH4)3PO4", "answer": "ammonium phosphate", "acceptableAnswers": ["ammonium phosphate"], "difficulty": 2 },
+    { "id": "Q7_row6", "skill": "4.2.8", "question": "Formula: Potassium nitrate", "answer": "KNO3", "acceptableAnswers": ["KNO3"], "difficulty": 2 },
+    { "id": "Q7_row7", "skill": "4.2.8", "question": "Formula: Copper(II) sulfate", "answer": "CuSO4", "acceptableAnswers": ["CuSO4"], "difficulty": 2 },
+    { "id": "Q7_row8", "skill": "4.2.8", "question": "Formula: Aluminum chloride", "answer": "AlCl3", "acceptableAnswers": ["AlCl3"], "difficulty": 2 },
+    { "id": "Q7_row9", "skill": "4.2.8", "question": "Formula: Barium phosphate", "answer": "Ba3(PO4)2", "acceptableAnswers": ["Ba3(PO4)2"], "difficulty": 3 }
+  ]
+}
