@@ -119,14 +119,16 @@ body{background:var(--bg);color:var(--text);font-family:var(--font-body);font-si
 @media print{
   :root{--bg:#fff;--card:#f8f9fa;--border:#ddd;--text:#111;--dim:#666;--sub:#333;
     --accent:#111;--accent-dim:rgba(0,0,0,0.05)}
-  body{background:#fff;color:#111}
+  body{background:#fff;color:#111;font-size:12pt}
   .test-hero{background:#f5f5f5;border-color:#ccc}
   .test-hero::before{background:#111}
-  .test-hero h1{color:#111}
-  .q-card{border-left-color:#999;background:#fff}
+  .test-hero-glow{display:none}
+  .test-hero h1{color:#111;font-size:2rem}
+  .q-card{border-left-color:#999;background:#fff;break-inside:avoid}
   .q-num{color:#111}
-  .answer-area{min-height:44px;border-style:solid;border-color:#bbb}
-  .wrap{padding:12px 16px}
+  .answer-area{min-height:48px;border-style:solid;border-color:#bbb}
+  .wrap{max-width:100%;padding:12px 16px}
+  .test-footer{position:fixed;bottom:0;left:0;right:0;padding:8px;background:#fff}
 }
 </style>
 </head>
