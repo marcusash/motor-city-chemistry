@@ -65,9 +65,12 @@ function gradeBySkill(studentAnswers, answerKey) {
   const skillResults = {};
 
   for (const question of answerKey.questions || []) {
-    const skill = question.skill;
-    if (!skillResults[skill]) {
-      skillResults[skill] = { correct: 0, total: 0, questions: [] };
+    // Canonical field is `standard`; fall back to `skill` for MCC answer key
+    // backward compatibility. Remove the `skill` fallback once all answer keys
+    // are migrated to use `standard`.
+    const standard = question.standard ?? question.skill;
+    if (!skillResults[standard]) {
+      skillResults[standard] = { correct: 0, total: 0, questions: [] };
     }
 
     const studentAnswer = studentAnswers.answers?.[question.id];
@@ -77,9 +80,9 @@ function gradeBySkill(studentAnswers, answerKey) {
       question.acceptableAnswers || [question.answer]
     );
 
-    skillResults[skill].total++;
-    if (isCorrect) skillResults[skill].correct++;
-    skillResults[skill].questions.push({
+    skillResults[standard].total++;
+    if (isCorrect) skillResults[standard].correct++;
+    skillResults[standard].questions.push({
       id: question.id,
       studentAnswer: studentAnswer || '(blank)',
       correctAnswer: question.answer,
