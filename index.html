@@ -153,6 +153,12 @@ a.badge:hover { opacity: .85; }
 }
 .resource-card:hover { border-color: var(--accent); }
 
+/* WCAG 2.1 AA focus ring (FD-approved 2026-05-26) */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
 .resource-card-label {
   font-size: 10px; font-weight: 700; letter-spacing: .1em;
   text-transform: uppercase; color: var(--accent);
