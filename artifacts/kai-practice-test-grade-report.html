@@ -5,167 +5,136 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Kai's Practice Test Grade Report</title>
 <style>
+  /* MCC token system — matches hub index.html :root block exactly */
+  :root {
+    --bg:        #0d1117;
+    --surface:   #161b22;
+    --surface2:  #1c2128;
+    --border:    #30363d;
+    --border2:   #21262d;
+    --text:      #e6edf3;
+    --subtext:   #8b949e;
+    --muted:     #6e7681;
+    --accent:    #6d28d9;
+    --p-bg:      #14532d;
+    --p-text:    #4ade80;
+    --p-border:  #166534;
+    --np-bg:     #450a0a;
+    --np-text:   #f87171;
+    --np-border: #7f1d1d;
+    --green:     #22c55e;
+    --red:       #ef4444;
+    --amber:     #f59e0b;
+    --blue:      #3b82f6;
+  }
+
   * { box-sizing: border-box; margin: 0; padding: 0; }
+
   body {
     font-family: -apple-system, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
-    background: #111318;
-    color: #e2e8f0;
+    background: var(--bg);
+    color: var(--text);
     padding: 24px;
     line-height: 1.5;
   }
+
   .container { max-width: 900px; margin: 0 auto; }
 
-  .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    margin-bottom: 6px;
-  }
-  .header-left { font-size: 13px; color: #94a3b8; font-weight: 600; }
-  .header-right { font-size: 13px; color: #94a3b8; }
-  h1 { font-size: 22px; color: #f1f5f9; margin-bottom: 4px; }
-  .subtitle { font-size: 14px; color: #64748b; margin-bottom: 24px; }
+  .header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 6px; }
+  .header-left  { font-size: 13px; color: var(--subtext); font-weight: 600; }
+  .header-right { font-size: 13px; color: var(--subtext); }
+  h1       { font-size: 22px; color: var(--text); margin-bottom: 4px; }
+  .subtitle{ font-size: 14px; color: var(--muted); margin-bottom: 24px; }
 
   /* Summary cards */
-  .summary-row {
-    display: flex;
-    gap: 12px;
-    margin-bottom: 24px;
-    flex-wrap: wrap;
-  }
+  .summary-row { display: flex; gap: 12px; margin-bottom: 24px; flex-wrap: wrap; }
+
   .summary-card {
-    flex: 1;
-    min-width: 140px;
-    background: #1e2028;
-    border: 1px solid #2d3141;
+    flex: 1; min-width: 140px;
+    background: var(--surface);
+    border: 1px solid var(--border);
     border-radius: 8px;
     padding: 16px;
     text-align: center;
   }
-  .summary-card .label { font-size: 11px; color: #64748b; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px; }
-  .summary-card .value { font-size: 28px; font-weight: 700; }
-  .summary-card .detail { font-size: 12px; color: #94a3b8; margin-top: 4px; }
-  .val-p { color: #22c55e; }
-  .val-np { color: #ef4444; }
-  .val-skip { color: #64748b; }
-  .val-improved { color: #3b82f6; }
+
+  .summary-card .label  { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px; }
+  .summary-card .value  { font-size: 28px; font-weight: 700; }
+  .summary-card .detail { font-size: 12px; color: var(--subtext); margin-top: 4px; }
+
+  .val-p        { color: var(--p-text); }
+  .val-np       { color: var(--np-text); }
+  .val-skip     { color: var(--muted); }
+  .val-improved { color: var(--blue); }
 
   /* Skill table */
   .section-title {
-    font-size: 16px;
-    font-weight: 700;
-    color: #f1f5f9;
-    margin: 28px 0 10px 0;
+    font-size: 16px; font-weight: 700;
+    color: var(--text);
+    margin: 28px 0 10px;
     padding-bottom: 6px;
-    border-bottom: 1px solid #2d3141;
+    border-bottom: 1px solid var(--border);
   }
 
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    margin: 10px 0 20px 0;
-    font-size: 14px;
-  }
+  table { width: 100%; border-collapse: collapse; margin: 10px 0 20px; font-size: 14px; }
+
   th {
-    background: #1a1d24;
-    color: #94a3b8;
-    font-size: 11px;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    padding: 10px 12px;
-    text-align: left;
-    border-bottom: 1px solid #2d3141;
+    background: var(--surface2);
+    color: var(--subtext);
+    font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px;
+    padding: 10px 12px; text-align: left;
+    border-bottom: 1px solid var(--border);
   }
-  td {
-    padding: 10px 12px;
-    border-bottom: 1px solid #1e2028;
-    vertical-align: top;
-  }
-  tr:hover { background: #1a1d24; }
+
+  td { padding: 10px 12px; border-bottom: 1px solid var(--border2); vertical-align: top; }
+  tr:hover { background: var(--surface2); }
 
   .badge {
-    display: inline-block;
-    padding: 2px 10px;
-    border-radius: 4px;
-    font-size: 12px;
-    font-weight: 700;
-    text-align: center;
-    min-width: 32px;
+    display: inline-block; padding: 2px 10px;
+    border-radius: 4px; font-size: 12px; font-weight: 700;
+    text-align: center; min-width: 32px;
   }
-  .badge-p { background: #14532d; color: #22c55e; }
-  .badge-np { background: #450a0a; color: #ef4444; }
-  .badge-skip { background: #1e293b; color: #64748b; }
-  .badge-improved { background: #172554; color: #60a5fa; }
+
+  .badge-p        { background: var(--p-bg);  color: var(--p-text);  border: 1px solid var(--p-border); }
+  .badge-np       { background: var(--np-bg); color: var(--np-text); border: 1px solid var(--np-border); }
+  .badge-skip     { background: rgba(139,148,158,.08); color: var(--muted);  border: 1px solid var(--border); }
+  .badge-improved { background: rgba(59,130,246,0.12); color: var(--blue);   border: 1px solid rgba(59,130,246,0.25); }
 
   /* Question detail blocks */
-  .q-block {
-    background: #1a1d24;
-    border: 1px solid #2d3141;
-    border-radius: 8px;
-    padding: 14px 16px;
-    margin: 10px 0;
-  }
-  .q-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 8px;
-  }
-  .q-title { font-weight: 700; font-size: 15px; color: #e2e8f0; }
+  .q-block { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 14px 16px; margin: 10px 0; }
 
-  .q-row {
-    display: flex;
-    gap: 16px;
-    margin: 6px 0;
-    font-size: 14px;
-  }
-  .q-label-sm { color: #64748b; min-width: 100px; flex-shrink: 0; }
-  .q-val { color: #cbd5e1; }
-  .q-val-wrong { color: #fca5a5; }
-  .q-val-right { color: #86efac; }
+  .q-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+  .q-title  { font-weight: 700; font-size: 15px; color: var(--text); }
+
+  .q-row { display: flex; gap: 16px; margin: 6px 0; font-size: 14px; }
+  .q-label-sm { color: var(--muted); min-width: 100px; flex-shrink: 0; }
+  .q-val       { color: var(--text); }
+  .q-val-wrong { color: var(--np-text); }
+  .q-val-right { color: var(--p-text); }
 
   .error-box {
-    background: #1c1012;
-    border: 1px solid #7f1d1d;
-    border-radius: 6px;
-    padding: 10px 14px;
-    margin: 8px 0 0 0;
-    font-size: 13px;
-    color: #fca5a5;
+    background: var(--np-bg); border: 1px solid var(--np-border);
+    border-radius: 6px; padding: 10px 14px; margin: 8px 0 0;
+    font-size: 13px; color: var(--np-text);
   }
-  .error-box b { color: #ef4444; }
+  .error-box b { color: var(--red); }
 
   .improve-box {
-    background: #0c1a12;
-    border: 1px solid #14532d;
-    border-radius: 6px;
-    padding: 10px 14px;
-    margin: 8px 0 0 0;
-    font-size: 13px;
-    color: #86efac;
+    background: var(--p-bg); border: 1px solid var(--p-border);
+    border-radius: 6px; padding: 10px 14px; margin: 8px 0 0;
+    font-size: 13px; color: var(--p-text);
   }
 
-  .compare-arrow { color: #3b82f6; font-weight: 700; }
+  .compare-arrow { color: var(--blue); font-weight: 700; }
 
   /* Diagnosis */
-  .diagnosis {
-    background: #1a1d24;
-    border: 1px solid #2d3141;
-    border-radius: 8px;
-    padding: 18px 20px;
-    margin: 20px 0;
-  }
-  .diagnosis h3 { font-size: 16px; color: #f1f5f9; margin-bottom: 10px; }
+  .diagnosis { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 18px 20px; margin: 20px 0; }
+  .diagnosis h3 { font-size: 16px; color: var(--text); margin-bottom: 10px; }
   .diagnosis ol { padding-left: 20px; }
-  .diagnosis li { margin: 8px 0; font-size: 14px; color: #cbd5e1; }
-  .diagnosis li b { color: #f1f5f9; }
+  .diagnosis li { margin: 8px 0; font-size: 14px; color: var(--text); }
+  .diagnosis li b { color: var(--text); }
 
-  .footer {
-    text-align: center;
-    margin-top: 32px;
-    font-size: 12px;
-    color: #475569;
-  }
+  .footer { text-align: center; margin-top: 32px; font-size: 12px; color: var(--muted); }
 </style>
 </head>
 <body>

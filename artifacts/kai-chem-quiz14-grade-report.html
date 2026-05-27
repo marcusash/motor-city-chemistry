@@ -1,25 +1,35 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Chemistry 10 Quiz 14: Units 6.1, 6.2, 6.3 Grade Report</title>
 <style>
+  /* MCC token system  matches hub index.html :root block exactly */
   :root {
-    --bg: #fff;
-    --text: #1a1a2e;
-    --muted: #6b7280;
-    --border: #e5e7eb;
-    --green: #166534;
-    --green-bg: #dcfce7;
-    --green-border: #86efac;
-    --red: #991b1b;
-    --red-bg: #fee2e2;
-    --red-border: #fca5a5;
-    --gold: #92400e;
-    --gold-bg: #fef3c7;
-    --blue: #1e40af;
-    --blue-bg: #dbeafe;
+    --bg:        #0d1117;
+    --surface:   #161b22;
+    --surface2:  #1c2128;
+    --border:    #30363d;
+    --border2:   #21262d;
+    --text:      #e6edf3;
+    --subtext:   #8b949e;
+    --muted:     #6e7681;
+    --accent:    #6d28d9;
+    --p-bg:      #14532d;
+    --p-text:    #4ade80;
+    --p-border:  #166534;
+    --np-bg:     #450a0a;
+    --np-text:   #f87171;
+    --np-border: #7f1d1d;
+    --green:     #22c55e;
+    --red:       #ef4444;
+    --amber:     #f59e0b;
+    --blue:      #3b82f6;
+    --amber-bg:     rgba(245,158,11,0.1);
+    --amber-border: rgba(245,158,11,0.3);
+    --blue-bg:      rgba(59,130,246,0.1);
+    --blue-border:  rgba(59,130,246,0.3);
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body {
@@ -34,89 +44,59 @@
   h1 { font-size: 2rem; text-align: center; margin-bottom: 0.25rem; }
   .subtitle { text-align: center; color: var(--muted); margin-bottom: 2.5rem; font-size: 0.95rem; }
 
-  .score-row {
-    display: flex;
-    justify-content: center;
-    gap: 2rem;
-    margin-bottom: 2.5rem;
-    flex-wrap: wrap;
-  }
-  .score-card {
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 1.25rem 2rem;
-    text-align: center;
-    min-width: 160px;
-  }
+  .score-row { display: flex; justify-content: center; gap: 2rem; margin-bottom: 2.5rem; flex-wrap: wrap; }
+  .score-card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 1.25rem 2rem; text-align: center; min-width: 160px; }
   .score-card .label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted); margin-bottom: 0.5rem; }
   .score-card .value { font-size: 2.2rem; font-weight: 700; }
-  .score-card .value.pass { color: var(--green); }
-  .score-card .value.fail { color: var(--red); }
-  .score-card .detail { font-size: 0.8rem; color: var(--muted); margin-top: 0.25rem; }
+  .score-card .value.pass { color: var(--p-text); }
+  .score-card .value.fail { color: var(--np-text); }
+  .score-card .detail { font-size: 0.8rem; color: var(--subtext); margin-top: 0.25rem; }
 
-  .highlight-box {
-    border: 2px solid var(--red-border);
-    background: var(--red-bg);
-    border-radius: 12px;
-    padding: 1.5rem 2rem;
-    text-align: center;
-    margin-bottom: 2.5rem;
-  }
-  .highlight-box .tag { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--red); font-weight: 700; margin-bottom: 0.5rem; }
-  .highlight-box h2 { font-size: 1.4rem; margin-bottom: 0.5rem; }
-  .highlight-box p { color: var(--muted); font-size: 0.9rem; }
+  .highlight-box { border: 2px solid var(--np-border); background: var(--np-bg); border-radius: 12px; padding: 1.5rem 2rem; text-align: center; margin-bottom: 2.5rem; }
+  .highlight-box .tag { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--np-text); font-weight: 700; margin-bottom: 0.5rem; }
+  .highlight-box h2 { font-size: 1.4rem; margin-bottom: 0.5rem; color: var(--text); }
+  .highlight-box p { color: var(--subtext); font-size: 0.9rem; }
 
-  .sections-row {
-    display: flex;
-    gap: 1rem;
-    margin-bottom: 2.5rem;
-    flex-wrap: wrap;
-  }
-  .section-card {
-    flex: 1;
-    min-width: 200px;
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    padding: 1rem;
-  }
-  .section-card .name { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.04em; font-weight: 700; margin-bottom: 0.5rem; }
+  .sections-row { display: flex; gap: 1rem; margin-bottom: 2.5rem; flex-wrap: wrap; }
+  .section-card { flex: 1; min-width: 200px; background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 1rem; }
+  .section-card .name { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.04em; font-weight: 700; margin-bottom: 0.5rem; color: var(--subtext); }
   .section-card .score { font-size: 1.6rem; font-weight: 700; }
   .section-card .pct { font-size: 0.8rem; color: var(--muted); }
-  .section-card .bar { height: 6px; border-radius: 3px; background: #e5e7eb; margin-top: 0.5rem; overflow: hidden; }
+  .section-card .bar { height: 6px; border-radius: 3px; background: var(--border); margin-top: 0.5rem; overflow: hidden; }
   .section-card .bar-fill { height: 100%; border-radius: 3px; }
-  .bar-fill.perfect { background: var(--green); }
-  .bar-fill.good { background: #ca8a04; }
-  .bar-fill.needs-work { background: #dc2626; }
+  .bar-fill.perfect    { background: var(--green); }
+  .bar-fill.good       { background: var(--amber); }
+  .bar-fill.needs-work { background: var(--red); }
 
   .standards-table { width: 100%; border-collapse: collapse; margin-bottom: 2rem; font-size: 0.85rem; }
   .standards-table th { text-align: left; padding: 0.5rem; border-bottom: 2px solid var(--border); font-size: 0.7rem; text-transform: uppercase; color: var(--muted); }
-  .standards-table td { padding: 0.5rem; border-bottom: 1px solid var(--border); }
+  .standards-table td { padding: 0.5rem; border-bottom: 1px solid var(--border2); }
   .standards-table .badge { display: inline-block; padding: 0.15rem 0.5rem; border-radius: 4px; font-size: 0.7rem; font-weight: 700; }
-  .badge.p { background: var(--green-bg); color: var(--green); }
-  .badge.np { background: var(--red-bg); color: var(--red); }
+  .badge.p  { background: var(--p-bg);  color: var(--p-text);  border: 1px solid var(--p-border); }
+  .badge.np { background: var(--np-bg); color: var(--np-text); border: 1px solid var(--np-border); }
 
-  .errors-header { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--red); border-bottom: 1px solid var(--red-border); padding-bottom: 0.5rem; margin-bottom: 1.5rem; margin-top: 2rem; }
-  .error-item { border-left: 4px solid #dc2626; padding: 1rem 1.5rem; margin-bottom: 1.5rem; background: #fafafa; border-radius: 0 8px 8px 0; }
+  .errors-header { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--np-text); border-bottom: 1px solid var(--np-border); padding-bottom: 0.5rem; margin-bottom: 1.5rem; margin-top: 2rem; }
+  .error-item { border-left: 4px solid var(--np-border); padding: 1rem 1.5rem; margin-bottom: 1.5rem; background: var(--surface); border-radius: 0 8px 8px 0; }
   .error-item .q-header { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.75rem; flex-wrap: wrap; }
-  .error-item .q-num { font-weight: 700; font-size: 1.1rem; }
-  .error-item .tag { font-size: 0.7rem; padding: 0.15rem 0.5rem; border-radius: 4px; background: var(--blue-bg); color: var(--blue); }
-  .error-item .pts { margin-left: auto; font-weight: 700; color: #dc2626; }
+  .error-item .q-num { font-weight: 700; font-size: 1.1rem; color: var(--text); }
+  .error-item .tag { font-size: 0.7rem; padding: 0.15rem 0.5rem; border-radius: 4px; background: var(--blue-bg); color: var(--blue); border: 1px solid var(--blue-border); }
+  .error-item .pts { margin-left: auto; font-weight: 700; color: var(--np-text); }
   .error-item .comparison { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 0.75rem 0; }
   .error-item .answer-box { padding: 0.75rem; border-radius: 6px; font-size: 0.9rem; }
-  .error-item .answer-box.kai { background: var(--red-bg); }
-  .error-item .answer-box.correct { background: var(--green-bg); }
+  .error-item .answer-box.kai     { background: var(--np-bg); border: 1px solid var(--np-border); }
+  .error-item .answer-box.correct { background: var(--p-bg);  border: 1px solid var(--p-border); }
   .error-item .answer-box .label { font-size: 0.7rem; text-transform: uppercase; font-weight: 700; margin-bottom: 0.25rem; }
-  .error-item .answer-box.kai .label { color: var(--red); }
-  .error-item .answer-box.correct .label { color: var(--green); }
-  .error-item .analysis { margin-top: 0.75rem; padding: 0.75rem; background: var(--gold-bg); border-radius: 6px; font-size: 0.85rem; }
-  .error-item .analysis .label { color: var(--gold); font-size: 0.7rem; text-transform: uppercase; font-weight: 700; margin-bottom: 0.25rem; }
+  .error-item .answer-box.kai     .label { color: var(--np-text); }
+  .error-item .answer-box.correct .label { color: var(--p-text); }
+  .error-item .analysis { margin-top: 0.75rem; padding: 0.75rem; background: var(--amber-bg); border: 1px solid var(--amber-border); border-radius: 6px; font-size: 0.85rem; }
+  .error-item .analysis .label { color: var(--amber); font-size: 0.7rem; text-transform: uppercase; font-weight: 700; margin-bottom: 0.25rem; }
 
-  .strengths-header { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--green); border-bottom: 1px solid var(--green-border); padding-bottom: 0.5rem; margin-bottom: 1rem; margin-top: 2.5rem; }
-  .strength-item { padding: 0.5rem 0; font-size: 0.9rem; color: var(--muted); }
+  .strengths-header { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--p-text); border-bottom: 1px solid var(--p-border); padding-bottom: 0.5rem; margin-bottom: 1rem; margin-top: 2.5rem; }
+  .strength-item { padding: 0.5rem 0; font-size: 0.9rem; color: var(--subtext); }
   .strength-item strong { color: var(--text); }
 
   .plan-header { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--blue); border-bottom: 1px solid var(--border); padding-bottom: 0.5rem; margin-bottom: 1rem; margin-top: 2.5rem; }
-  .plan-item { padding: 0.6rem 0; font-size: 0.9rem; border-bottom: 1px solid var(--border); }
+  .plan-item { padding: 0.6rem 0; font-size: 0.9rem; border-bottom: 1px solid var(--border2); color: var(--text); }
   .plan-item:last-child { border-bottom: none; }
 </style>
 </head>
