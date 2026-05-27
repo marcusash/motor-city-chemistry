@@ -5,75 +5,429 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Motor City Chemistry</title>
 <style>
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-body{background:#0d1117;color:#e6edf3;font-family:'Segoe UI',system-ui,sans-serif;min-height:100vh;padding:32px 16px}
-.container{max-width:600px;margin:0 auto}
-header{margin-bottom:40px}
-.eyebrow{font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#6d28d9;margin-bottom:8px}
-h1{font-size:32px;font-weight:700;color:#f0f6fc;margin-bottom:6px}
-.subtitle{font-size:15px;color:#8b949e}
-section{margin-bottom:32px}
-h2{font-size:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#8b949e;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid #21262d}
-.card{display:block;background:#161b22;border:1px solid #30363d;border-radius:8px;padding:16px 20px;margin-bottom:10px;text-decoration:none;color:#e6edf3;min-height:44px;transition:border-color .15s}
-.card:hover{border-color:#6d28d9}
-.card-title{font-size:15px;font-weight:500;margin-bottom:2px}
-.card-sub{font-size:12px;color:#8b949e}
-footer{margin-top:48px;padding-top:16px;border-top:1px solid #21262d;font-size:12px;color:#8b949e;text-align:center}
+*,*::before,*::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg: #0d1117;
+  --surface: #161b22;
+  --border: #30363d;
+  --text: #e6edf3;
+  --subtext: #8b949e;
+  --accent: #6d28d9;
+  --p-bg: #14532d;
+  --p-text: #4ade80;
+  --p-border: #166534;
+  --np-bg: #450a0a;
+  --np-text: #f87171;
+  --np-border: #7f1d1d;
+  --na-text: #4b5563;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  min-height: 100vh;
+  padding: 32px 16px;
+}
+
+.container { max-width: 860px; margin: 0 auto; }
+
+/* —— Header —— */
+header { margin-bottom: 36px; }
+.eyebrow {
+  font-size: 11px; font-weight: 600; letter-spacing: .12em;
+  text-transform: uppercase; color: var(--accent); margin-bottom: 8px;
+}
+h1 { font-size: 28px; font-weight: 700; color: #f0f6fc; margin-bottom: 4px; }
+.subtitle { font-size: 14px; color: var(--subtext); }
+
+/* —— Section labels —— */
+.section-label {
+  font-size: 11px; font-weight: 600; letter-spacing: .08em;
+  text-transform: uppercase; color: var(--subtext);
+  margin: 0 0 14px; padding-bottom: 8px;
+  border-bottom: 1px solid var(--border);
+}
+
+/* —— Standard card (progress table container) —— */
+.standard-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  margin-bottom: 16px;
+  overflow: hidden;
+}
+
+.standard-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 18px;
+  border-bottom: 1px solid var(--border);
+}
+
+.std-id {
+  font-size: 13px; font-weight: 700;
+  color: var(--subtext); min-width: 30px;
+}
+.std-title {
+  font-size: 15px; font-weight: 600; flex: 1;
+}
+.std-status {
+  font-size: 11px; font-weight: 700; letter-spacing: .05em;
+  padding: 3px 10px; border-radius: 20px; text-transform: uppercase;
+}
+.std-status.p  { background: var(--p-bg);  color: var(--p-text);  border: 1px solid var(--p-border);  }
+.std-status.np { background: var(--np-bg); color: var(--np-text); border: 1px solid var(--np-border); }
+.std-status.ip { background: rgba(139,148,158,.08); color: var(--subtext); border: 1px solid var(--border); }
+
+/* —— Progress table —— */
+.progress-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.progress-table th {
+  padding: 9px 14px;
+  font-size: 11px; font-weight: 600; letter-spacing: .06em;
+  text-transform: uppercase; color: var(--subtext);
+  text-align: center; background: #0d1117;
+  border-bottom: 1px solid var(--border);
+}
+.progress-table th.col-sub { text-align: left; }
+.progress-table th.col-official { color: var(--subtext); background: #0d1117; border-left: 2px solid var(--border); }
+
+.progress-table td {
+  padding: 10px 14px;
+  border-bottom: 1px solid #21262d;
+  font-size: 13px;
+  text-align: center;
+  vertical-align: middle;
+}
+.progress-table tr:last-child td { border-bottom: none; }
+.progress-table td.col-sub { text-align: left; }
+
+.sub-id { font-weight: 600; color: var(--text); font-size: 12px; display: block; }
+.sub-desc { color: var(--subtext); font-size: 11px; display: block; margin-top: 1px; }
+
+/* —— Badges —— */
+.badge {
+  display: inline-block;
+  font-size: 11px; font-weight: 700; letter-spacing: .04em;
+  padding: 3px 9px; border-radius: 20px;
+  text-transform: uppercase; text-decoration: none;
+  white-space: nowrap;
+}
+.badge.p  { background: var(--p-bg);  color: var(--p-text);  border: 1px solid var(--p-border);  }
+.badge.np { background: var(--np-bg); color: var(--np-text); border: 1px solid var(--np-border); }
+.badge.na { color: var(--na-text); }
+
+a.badge:hover { opacity: .85; }
+
+/* —— Hover row highlight —— */
+.progress-table tbody tr:hover td { background: #1c2128; }
+
+/* —— Column widths —— */
+.col-sub { width: 44%; }
+.col-attempt { width: 14%; }
+
+/* —— Resource cards (grade reports, practice tests) —— */
+.resource-section { margin-top: 36px; }
+
+.resource-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 12px;
+}
+
+.resource-card {
+  display: block;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 18px 20px;
+  text-decoration: none;
+  color: var(--text);
+  transition: border-color .15s;
+}
+.resource-card:hover { border-color: var(--accent); }
+
+.resource-card-label {
+  font-size: 10px; font-weight: 700; letter-spacing: .1em;
+  text-transform: uppercase; color: var(--accent);
+  margin-bottom: 6px;
+}
+.resource-card-title {
+  font-size: 15px; font-weight: 600; margin-bottom: 3px;
+}
+.resource-card-sub {
+  font-size: 12px; color: var(--subtext);
+}
+
+footer {
+  margin-top: 48px; padding-top: 16px;
+  border-top: 1px solid var(--border);
+  font-size: 12px; color: var(--subtext); text-align: center;
+}
 </style>
 </head>
 <body>
 <div class="container">
+
   <header>
-    <div class="eyebrow">Standard 4.2 - Ionic and Covalent Naming</div>
+    <div class="eyebrow">Chem 10 &middot; Quiz 14 &middot; 18 Sub-Standards</div>
     <h1>Motor City Chemistry</h1>
-    <div class="subtitle">Kai's chemistry study materials</div>
+    <div class="subtitle">Kai&#8217;s standards progress tracker &middot; Teacher Test graded 2026-05-04</div>
   </header>
 
-  <section>
-    <h2>Practice Tests</h2>
-    <a class="card" href="artifacts/chem-42-practice-test.html">
-      <div class="card-title">Practice Test 1</div>
-      <div class="card-sub">Ionic and Covalent Naming</div>
-    </a>
-    <a class="card" href="artifacts/chem-42-practice-test-2.html">
-      <div class="card-title">Practice Test 2</div>
-      <div class="card-sub">Ionic and Covalent Naming</div>
-    </a>
-    <a class="card" href="artifacts/kai-chemistry-quiz12-practice.html">
-      <div class="card-title">Quiz 12 Practice Test</div>
-      <div class="card-sub">Molecular Shape, Polarity, and Intermolecular Forces</div>
-    </a>
-  </section>
+  <!-- ————————————————————————————————————————————
+       STANDARD 6.1 — Balancing Reactions
+  ————————————————————————————————————————————————— -->
+  <div class="standard-card">
+    <div class="standard-header">
+      <span class="std-id">6.1</span>
+      <span class="std-title">Balancing Reactions</span>
+      <span class="std-status ip">In Progress</span>
+    </div>
+    <table class="progress-table">
+      <thead>
+        <tr>
+          <th class="col-sub">Sub-standard</th>
+          <th class="col-attempt col-official">Teacher Test</th>
+          <th class="col-attempt">Practice 1</th>
+          <th class="col-attempt">Practice 2</th>
+          <th class="col-attempt col-official">Teacher Retake</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="col-sub"><span class="sub-id">6.1.1</span><span class="sub-desc">Count molecules of each type that react and are produced</span></td>
+          <td><a href="scans/quiz14-teacher-test.pdf" class="badge p">P</a></td>
+          <td><span class="badge na">&mdash;</span></td>
+          <td><span class="badge na">&mdash;</span></td>
+          <td><span class="badge na">&mdash;</span></td>
+        </tr>
+        <tr>
+          <td class="col-sub"><span class="sub-id">6.1.2</span><span class="sub-desc">Count atoms per molecule using subscripts and coefficients</span></td>
+          <td><a href="scans/quiz14-teacher-test.pdf" class="badge np">NP</a></td>
+          <td><span class="badge na">&mdash;</span></td>
+          <td><span class="badge na">&mdash;</span></td>
+          <td><span class="badge na">&mdash;</span></td>
+        </tr>
+        <tr>
+          <td class="col-sub"><span class="sub-id">6.1.3</span><span class="sub-desc">Explain why coefficients change but subscripts don&#8217;t when balancing</span></td>
+          <td><a href="scans/quiz14-teacher-test.pdf" class="badge np">NP</a></td>
+          <td><span class="badge na">&mdash;</span></td>
+          <td><span class="badge na">&mdash;</span></td>
+          <td><span class="badge na">&mdash;</span></td>
+        </tr>
+        <tr>
+          <td class="col-sub"><span class="sub-id">6.1.4</span><span class="sub-desc">Connect conservation of mass to balancing equations</span></td>
+          <td><a href="scans/quiz14-teacher-test.pdf" class="badge np">NP</a></td>
+          <td><span class="badge na">&mdash;</span></td>
+          <td><span class="badge na">&mdash;</span></td>
+          <td><span class="badge na">&mdash;</span></td>
+        </tr>
+        <tr>
+          <td class="col-sub"><span class="sub-id">6.1.5</span><span class="sub-desc">Balance equations with three or more elements</span></td>
+          <td><a href="scans/quiz14-teacher-test.pdf" class="badge np">NP</a></td>
+          <td><span class="badge na">&mdash;</span></td>
+          <td><span class="badge na">&mdash;</span></td>
+          <td><span class="badge na">&mdash;</span></td>
+        </tr>
+        <tr>
+          <td class="col-sub"><span class="sub-id">6.1.6</span><span class="sub-desc">Balance combustion reactions</span></td>
+          <td><a href="scans/quiz14-teacher-test.pdf" class="badge np">NP</a></td>
+          <td><span class="badge na">&mdash;</span></td>
+          <td><span class="badge na">&mdash;</span></td>
+          <td><span class="badge na">&mdash;</span></td>
+        </tr>
+        <tr>
+          <td class="col-sub"><span class="sub-id">6.1.7</span><span class="sub-desc">Balance equations with polyatomic ions</span></td>
+          <td><a href="scans/quiz14-teacher-test.pdf" class="badge np">NP</a></td>
+          <td><span class="badge na">&mdash;</span></td>
+          <td><span class="badge na">&mdash;</span></td>
+          <td><span class="badge na">&mdash;</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 
-  <section>
-    <h2>Answer Keys</h2>
-    <a class="card" href="artifacts/chem-42-answer-key.html">
-      <div class="card-title">Answer Key 1</div>
-      <div class="card-sub">Practice Test 1</div>
-    </a>
-    <a class="card" href="artifacts/chem-42-answer-key-2.html">
-      <div class="card-title">Answer Key 2</div>
-      <div class="card-sub">Practice Test 2</div>
-    </a>
-    <a class="card" href="artifacts/kai-chemistry-quiz12-answer-key.html">
-      <div class="card-title">Quiz 12 Answer Key</div>
-      <div class="card-sub">Parent guide and worked answers</div>
-    </a>
-  </section>
+  <!-- ————————————————————————————————————————————
+       STANDARD 6.2 — Conversion of Chemical Units
+  ————————————————————————————————————————————————— -->
+  <div class="standard-card">
+    <div class="standard-header">
+      <span class="std-id">6.2</span>
+      <span class="std-title">Conversion of Chemical Units</span>
+      <span class="std-status np">NP</span>
+    </div>
+    <table class="progress-table">
+      <thead>
+        <tr>
+          <th class="col-sub">Sub-standard</th>
+          <th class="col-attempt col-official">Teacher Test</th>
+          <th class="col-attempt">Practice 1</th>
+          <th class="col-attempt">Practice 2</th>
+          <th class="col-attempt col-official">Teacher Retake</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="col-sub"><span class="sub-id">6.2.1</span><span class="sub-desc">Solve multi-step conversions: moles, atoms, grams, and other units</span></td>
+          <td><a href="scans/quiz14-teacher-test.pdf" class="badge np">NP</a></td>
+          <td><span class="badge na">&mdash;</span></td>
+          <td><span class="badge na">&mdash;</span></td>
+          <td><span class="badge na">&mdash;</span></td>
+        </tr>
+        <tr>
+          <td class="col-sub"><span class="sub-id">6.2.2</span><span class="sub-desc">Define what a mole is and why it&#8217;s needed in chemistry</span></td>
+          <td><a href="scans/quiz14-teacher-test.pdf" class="badge np">NP</a></td>
+          <td><span class="badge na">&mdash;</span></td>
+          <td><span class="badge na">&mdash;</span></td>
+          <td><span class="badge na">&mdash;</span></td>
+        </tr>
+        <tr>
+          <td class="col-sub"><span class="sub-id">6.2.3</span><span class="sub-desc">Use Avogadro&#8217;s Number: atoms/molecules &#8596; moles</span></td>
+          <td><a href="scans/quiz14-teacher-test.pdf" class="badge np">NP</a></td>
+          <td><span class="badge na">&mdash;</span></td>
+          <td><span class="badge na">&mdash;</span></td>
+          <td><span class="badge na">&mdash;</span></td>
+        </tr>
+        <tr>
+          <td class="col-sub"><span class="sub-id">6.2.4</span><span class="sub-desc">Calculate molar mass from a chemical formula</span></td>
+          <td><a href="scans/quiz14-teacher-test.pdf" class="badge np">NP</a></td>
+          <td><span class="badge na">&mdash;</span></td>
+          <td><span class="badge na">&mdash;</span></td>
+          <td><span class="badge na">&mdash;</span></td>
+        </tr>
+        <tr>
+          <td class="col-sub"><span class="sub-id">6.2.5</span><span class="sub-desc">Use molar mass to convert between moles and grams</span></td>
+          <td><a href="scans/quiz14-teacher-test.pdf" class="badge np">NP</a></td>
+          <td><span class="badge na">&mdash;</span></td>
+          <td><span class="badge na">&mdash;</span></td>
+          <td><span class="badge na">&mdash;</span></td>
+        </tr>
+        <tr>
+          <td class="col-sub"><span class="sub-id">6.2.6</span><span class="sub-desc">Use mole ratio to find moles of B given moles of A</span></td>
+          <td><a href="scans/quiz14-teacher-test.pdf" class="badge np">NP</a></td>
+          <td><span class="badge na">&mdash;</span></td>
+          <td><span class="badge na">&mdash;</span></td>
+          <td><span class="badge na">&mdash;</span></td>
+        </tr>
+        <tr>
+          <td class="col-sub"><span class="sub-id">6.2.7</span><span class="sub-desc">Convert liters &#8596; moles using Molarity or 22.4 L at STP</span></td>
+          <td><a href="scans/quiz14-teacher-test.pdf" class="badge np">NP</a></td>
+          <td><span class="badge na">&mdash;</span></td>
+          <td><span class="badge na">&mdash;</span></td>
+          <td><span class="badge na">&mdash;</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 
-  <section>
-    <h2>Grade Reports</h2>
-    <a class="card" href="artifacts/kai-chem-grade-report.html">
-      <div class="card-title">Grade Report</div>
-      <div class="card-sub">Chemistry 4.2</div>
-    </a>
-    <a class="card" href="artifacts/kai-practice-test-grade-report.html">
-      <div class="card-title">Practice Test Grade Report</div>
-      <div class="card-sub">Chemistry 4.2</div>
-    </a>
-  </section>
+  <!-- ————————————————————————————————————————————
+       STANDARD 6.3 — Multi-Step Stoichiometry
+  ————————————————————————————————————————————————— -->
+  <div class="standard-card">
+    <div class="standard-header">
+      <span class="std-id">6.3</span>
+      <span class="std-title">Multi-Step Stoichiometry</span>
+      <span class="std-status ip">Practice Only</span>
+    </div>
+    <table class="progress-table">
+      <thead>
+        <tr>
+          <th class="col-sub">Sub-standard</th>
+          <th class="col-attempt col-official">Teacher Test</th>
+          <th class="col-attempt">Practice 1</th>
+          <th class="col-attempt">Practice 2</th>
+          <th class="col-attempt col-official">Teacher Retake</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="col-sub"><span class="sub-id">6.3.1</span><span class="sub-desc">Pick the right conversion factor for a word-based problem</span></td>
+          <td><span class="badge na">&mdash;</span></td>
+          <td><span class="badge na">&mdash;</span></td>
+          <td><span class="badge na">&mdash;</span></td>
+          <td><span class="badge na">&mdash;</span></td>
+        </tr>
+        <tr>
+          <td class="col-sub"><span class="sub-id">6.3.2</span><span class="sub-desc">Solve multi-step stoichiometry with 2+ conversion factors</span></td>
+          <td><span class="badge na">&mdash;</span></td>
+          <td><span class="badge na">&mdash;</span></td>
+          <td><span class="badge na">&mdash;</span></td>
+          <td><span class="badge na">&mdash;</span></td>
+        </tr>
+        <tr>
+          <td class="col-sub"><span class="sub-id">6.3.3</span><span class="sub-desc">Show work: reasoning, units, and chemicals for all steps</span></td>
+          <td><span class="badge na">&mdash;</span></td>
+          <td><span class="badge na">&mdash;</span></td>
+          <td><span class="badge na">&mdash;</span></td>
+          <td><span class="badge na">&mdash;</span></td>
+        </tr>
+        <tr>
+          <td class="col-sub"><span class="sub-id">6.3.4</span><span class="sub-desc">Apply multi-step stoichiometry in a lab-based setting</span></td>
+          <td><span class="badge na">&mdash;</span></td>
+          <td><span class="badge na">&mdash;</span></td>
+          <td><span class="badge na">&mdash;</span></td>
+          <td><span class="badge na">&mdash;</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 
-  <footer>Built for Kai by Motor City Chemistry</footer>
+  <!-- ————————————————————————————————————————————
+       GRADE REPORTS
+  ————————————————————————————————————————————————— -->
+  <div class="resource-section">
+    <p class="section-label">Grade Reports</p>
+    <div class="resource-grid">
+      <a class="resource-card" href="artifacts/kai-chem-quiz14-grade-report.html">
+        <div class="resource-card-label">Quiz 14</div>
+        <div class="resource-card-title">Quiz 14 Grade Report</div>
+        <div class="resource-card-sub">Standards 6.2 &amp; 6.3 &middot; Graded by FR</div>
+      </a>
+      <a class="resource-card" href="artifacts/kai-chem-grade-report.html">
+        <div class="resource-card-label">Quiz 9</div>
+        <div class="resource-card-title">Quiz 9 Grade Report</div>
+        <div class="resource-card-sub">Chemistry 4.2 &middot; Prior term</div>
+      </a>
+    </div>
+  </div>
+
+  <!-- ————————————————————————————————————————————
+       PRACTICE TESTS
+  ————————————————————————————————————————————————— -->
+  <div class="resource-section">
+    <p class="section-label">Practice Tests</p>
+    <div class="resource-grid">
+      <a class="resource-card" href="artifacts/chem-quiz14-practice-test-A.html">
+        <div class="resource-card-label">Quiz 14 Practice</div>
+        <div class="resource-card-title">Practice Test A</div>
+        <div class="resource-card-sub">Standards 6.1 &middot; 6.2 &middot; 6.3</div>
+      </a>
+      <a class="resource-card" href="artifacts/chem-quiz14-practice-test-A-KEY.html">
+        <div class="resource-card-label">Quiz 14 Practice</div>
+        <div class="resource-card-title">Practice Test A &mdash; Answer Key</div>
+        <div class="resource-card-sub">Worked solutions</div>
+      </a>
+      <a class="resource-card" href="artifacts/chem-quiz14-answer-key.html">
+        <div class="resource-card-label">Quiz 14</div>
+        <div class="resource-card-title">Teacher Test Answer Key</div>
+        <div class="resource-card-sub">Standards 6.1 &middot; 6.2 &middot; 6.3</div>
+      </a>
+      <a class="resource-card" href="artifacts/chem-quiz14-comparison.html">
+        <div class="resource-card-label">Quiz 14</div>
+        <div class="resource-card-title">Answer Comparison</div>
+        <div class="resource-card-sub">Kai&#8217;s answers vs. teacher key</div>
+      </a>
+    </div>
+  </div>
+
+  <footer>Motor City Chemistry &middot; Built for Kai</footer>
 </div>
 </body>
 </html>

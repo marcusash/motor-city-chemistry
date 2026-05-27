@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chemistry 10 Quiz 14: Units 6.1, 6.2, 6.3 Grade Report</title>
+<style>
+  :root {
+    --bg: #fff;
+    --text: #1a1a2e;
+    --muted: #6b7280;
+    --border: #e5e7eb;
+    --green: #166534;
+    --green-bg: #dcfce7;
+    --green-border: #86efac;
+    --red: #991b1b;
+    --red-bg: #fee2e2;
+    --red-border: #fca5a5;
+    --gold: #92400e;
+    --gold-bg: #fef3c7;
+    --blue: #1e40af;
+    --blue-bg: #dbeafe;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 2rem;
+    line-height: 1.5;
+  }
+  h1 { font-size: 2rem; text-align: center; margin-bottom: 0.25rem; }
+  .subtitle { text-align: center; color: var(--muted); margin-bottom: 2.5rem; font-size: 0.95rem; }
+
+  .score-row {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-bottom: 2.5rem;
+    flex-wrap: wrap;
+  }
+  .score-card {
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.25rem 2rem;
+    text-align: center;
+    min-width: 160px;
+  }
+  .score-card .label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted); margin-bottom: 0.5rem; }
+  .score-card .value { font-size: 2.2rem; font-weight: 700; }
+  .score-card .value.pass { color: var(--green); }
+  .score-card .value.fail { color: var(--red); }
+  .score-card .detail { font-size: 0.8rem; color: var(--muted); margin-top: 0.25rem; }
+
+  .highlight-box {
+    border: 2px solid var(--red-border);
+    background: var(--red-bg);
+    border-radius: 12px;
+    padding: 1.5rem 2rem;
+    text-align: center;
+    margin-bottom: 2.5rem;
+  }
+  .highlight-box .tag { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--red); font-weight: 700; margin-bottom: 0.5rem; }
+  .highlight-box h2 { font-size: 1.4rem; margin-bottom: 0.5rem; }
+  .highlight-box p { color: var(--muted); font-size: 0.9rem; }
+
+  .sections-row {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2.5rem;
+    flex-wrap: wrap;
+  }
+  .section-card {
+    flex: 1;
+    min-width: 200px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1rem;
+  }
+  .section-card .name { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.04em; font-weight: 700; margin-bottom: 0.5rem; }
+  .section-card .score { font-size: 1.6rem; font-weight: 700; }
+  .section-card .pct { font-size: 0.8rem; color: var(--muted); }
+  .section-card .bar { height: 6px; border-radius: 3px; background: #e5e7eb; margin-top: 0.5rem; overflow: hidden; }
+  .section-card .bar-fill { height: 100%; border-radius: 3px; }
+  .bar-fill.perfect { background: var(--green); }
+  .bar-fill.good { background: #ca8a04; }
+  .bar-fill.needs-work { background: #dc2626; }
+
+  .standards-table { width: 100%; border-collapse: collapse; margin-bottom: 2rem; font-size: 0.85rem; }
+  .standards-table th { text-align: left; padding: 0.5rem; border-bottom: 2px solid var(--border); font-size: 0.7rem; text-transform: uppercase; color: var(--muted); }
+  .standards-table td { padding: 0.5rem; border-bottom: 1px solid var(--border); }
+  .standards-table .badge { display: inline-block; padding: 0.15rem 0.5rem; border-radius: 4px; font-size: 0.7rem; font-weight: 700; }
+  .badge.p { background: var(--green-bg); color: var(--green); }
+  .badge.np { background: var(--red-bg); color: var(--red); }
+
+  .errors-header { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--red); border-bottom: 1px solid var(--red-border); padding-bottom: 0.5rem; margin-bottom: 1.5rem; margin-top: 2rem; }
+  .error-item { border-left: 4px solid #dc2626; padding: 1rem 1.5rem; margin-bottom: 1.5rem; background: #fafafa; border-radius: 0 8px 8px 0; }
+  .error-item .q-header { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.75rem; flex-wrap: wrap; }
+  .error-item .q-num { font-weight: 700; font-size: 1.1rem; }
+  .error-item .tag { font-size: 0.7rem; padding: 0.15rem 0.5rem; border-radius: 4px; background: var(--blue-bg); color: var(--blue); }
+  .error-item .pts { margin-left: auto; font-weight: 700; color: #dc2626; }
+  .error-item .comparison { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 0.75rem 0; }
+  .error-item .answer-box { padding: 0.75rem; border-radius: 6px; font-size: 0.9rem; }
+  .error-item .answer-box.kai { background: var(--red-bg); }
+  .error-item .answer-box.correct { background: var(--green-bg); }
+  .error-item .answer-box .label { font-size: 0.7rem; text-transform: uppercase; font-weight: 700; margin-bottom: 0.25rem; }
+  .error-item .answer-box.kai .label { color: var(--red); }
+  .error-item .answer-box.correct .label { color: var(--green); }
+  .error-item .analysis { margin-top: 0.75rem; padding: 0.75rem; background: var(--gold-bg); border-radius: 6px; font-size: 0.85rem; }
+  .error-item .analysis .label { color: var(--gold); font-size: 0.7rem; text-transform: uppercase; font-weight: 700; margin-bottom: 0.25rem; }
+
+  .strengths-header { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--green); border-bottom: 1px solid var(--green-border); padding-bottom: 0.5rem; margin-bottom: 1rem; margin-top: 2.5rem; }
+  .strength-item { padding: 0.5rem 0; font-size: 0.9rem; color: var(--muted); }
+  .strength-item strong { color: var(--text); }
+
+  .plan-header { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--blue); border-bottom: 1px solid var(--border); padding-bottom: 0.5rem; margin-bottom: 1rem; margin-top: 2.5rem; }
+  .plan-item { padding: 0.6rem 0; font-size: 0.9rem; border-bottom: 1px solid var(--border); }
+  .plan-item:last-child { border-bottom: none; }
+</style>
+</head>
+<body>
+
+<h1>Chemistry 10 Quiz 14</h1>
+<p class="subtitle">Kai Ash &bull; Units 6.1, 6.2, 6.3 &bull; 2026-05-04 &bull; Martin, Block 6</p>
+
+<div class="score-row">
+  <div class="score-card">
+    <div class="label">Standards Passed</div>
+    <div class="value fail">1 / 18</div>
+    <div class="detail">5.6%</div>
+  </div>
+  <div class="score-card">
+    <div class="label">6.1 Balancing</div>
+    <div class="value fail">1 / 7</div>
+    <div class="detail">Only atom counting</div>
+  </div>
+  <div class="score-card">
+    <div class="label">6.2 Conversions</div>
+    <div class="value fail">0 / 7</div>
+    <div class="detail">All NP</div>
+  </div>
+  <div class="score-card">
+    <div class="label">6.3 Stoichiometry</div>
+    <div class="value fail">0 / 4</div>
+    <div class="detail">Left blank</div>
+  </div>
+</div>
+
+<div class="highlight-box">
+  <div class="tag">NEEDS SIGNIFICANT PRACTICE</div>
+  <h2>Kai passed 1 of 18 standards. Entire unit 6.3 left blank.</h2>
+  <p>Core issues: balancing equations (especially 3+ elements, combustion, split elements), molar mass calculation errors cascading into conversion problems, and no attempt at multi-step stoichiometry. The mole concept understanding is partial but needs strengthening.</p>
+</div>
+
+<!-- Standards breakdown table -->
+<h3 style="font-size:1rem; margin-bottom:1rem;">Standards Proficiency</h3>
+<table class="standards-table">
+  <thead>
+    <tr><th>Standard</th><th>Description</th><th>Result</th><th>Notes</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>6.1.1</td><td>Determine number of molecules/atoms from formula</td><td><span class="badge p">P</span></td><td>Atom counting table correct</td></tr>
+    <tr><td>6.1.2</td><td>Identify parts based on subscripts and coefficients</td><td><span class="badge np">NP</span></td><td>Answer incomplete/unclear</td></tr>
+    <tr><td>6.1.3</td><td>Explain why coefficient can change but not subscript</td><td><span class="badge np">NP</span></td><td>Did not clearly distinguish</td></tr>
+    <tr><td>6.1.4</td><td>Conservation of mass / missing compound</td><td><span class="badge np">NP</span></td><td>Wrong formula for missing product</td></tr>
+    <tr><td>6.1.5</td><td>Balance equations with 3+ elements</td><td><span class="badge np">NP</span></td><td>MgCO3 + H3PO4 wrong coefficients</td></tr>
+    <tr><td>6.1.6</td><td>Balance combustion equations</td><td><span class="badge np">NP</span></td><td>C6H14 combustion incomplete</td></tr>
+    <tr><td>6.1.7</td><td>Balance with split elements</td><td><span class="badge np">NP</span></td><td>SCl2/NaF wrong coefficients</td></tr>
+    <tr><td>6.2.1</td><td>Multi-step unit conversion</td><td><span class="badge np">NP</span></td><td>50.5g to kg: got 0.505 (should be 0.0505)</td></tr>
+    <tr><td>6.2.2</td><td>Define mole and its purpose</td><td><span class="badge np">NP</span></td><td>Confused "count" with "weight"</td></tr>
+    <tr><td>6.2.3</td><td>Use Avogadro's number for conversions</td><td><span class="badge np">NP</span></td><td>Answer was correct numerically but setup/notation insufficient</td></tr>
+    <tr><td>6.2.4</td><td>Calculate molar mass from formula</td><td><span class="badge np">NP</span></td><td>Fe3O4: got 159.75 (correct: 231.53)</td></tr>
+    <tr><td>6.2.5</td><td>Convert grams to moles</td><td><span class="badge np">NP</span></td><td>Used wrong molar mass (cascading error)</td></tr>
+    <tr><td>6.2.6</td><td>Use mole ratios</td><td><span class="badge np">NP</span></td><td>Numerically correct (3.43) but notation issues</td></tr>
+    <tr><td>6.2.7</td><td>Identify when to use molar volume</td><td><span class="badge np">NP</span></td><td>Answer correct ("all solids") but too brief</td></tr>
+    <tr><td>6.3.1</td><td>Multi-step stoichiometry calculation</td><td><span class="badge np">NP</span></td><td>Left blank</td></tr>
+    <tr><td>6.3.2</td><td>Show correct work with units</td><td><span class="badge np">NP</span></td><td>Left blank</td></tr>
+    <tr><td>6.3.3</td><td>Explain conversion factors used</td><td><span class="badge np">NP</span></td><td>Left blank</td></tr>
+    <tr><td>6.3.4</td><td>Limiting reagent / excess reagent</td><td><span class="badge np">NP</span></td><td>Left blank</td></tr>
+  </tbody>
+</table>
+
+<div class="sections-row">
+  <div class="section-card">
+    <div class="name">6.1 Balancing Reactions</div>
+    <div class="score" style="color:var(--red);">1 / 7</div>
+    <div class="pct">14%</div>
+    <div class="bar"><div class="bar-fill needs-work" style="width:14%"></div></div>
+  </div>
+  <div class="section-card">
+    <div class="name">6.2 Unit Conversions</div>
+    <div class="score" style="color:var(--red);">0 / 7</div>
+    <div class="pct">0%</div>
+    <div class="bar"><div class="bar-fill needs-work" style="width:0%"></div></div>
+  </div>
+  <div class="section-card">
+    <div class="name">6.3 Stoichiometry</div>
+    <div class="score" style="color:var(--red);">0 / 4</div>
+    <div class="pct">0% (all blank)</div>
+    <div class="bar"><div class="bar-fill needs-work" style="width:0%"></div></div>
+  </div>
+</div>
+
+<div class="errors-header">KEY ERRORS &mdash; DETAILED ANALYSIS</div>
+
+<div class="error-item">
+  <div class="q-header">
+    <span class="q-num">6.1.4 Missing Compound</span>
+    <span class="tag">conservation of mass</span>
+    <span class="pts">NP</span>
+  </div>
+  <p style="font-size:0.9rem;margin-bottom:0.75rem;">2 Cu<sub>2</sub>O + 3 Cu<sub>2</sub>S &rarr; 6 Cu + 1 ___</p>
+  <div class="comparison">
+    <div class="answer-box kai">
+      <div class="label">Kai's Answer</div>
+      SO (or S<sub>2</sub>O)
+    </div>
+    <div class="answer-box correct">
+      <div class="label">Correct Answer</div>
+      SO<sub>2</sub> &mdash; Count: O=2 from 2Cu<sub>2</sub>O, S=3 from 3Cu<sub>2</sub>S. Need 3 SO<sub>2</sub> (or balance differently). Actually: the missing piece needs S and O atoms to balance.
+    </div>
+  </div>
+  <div class="analysis">
+    <div class="label">Root Cause</div>
+    Kai doesn't reliably count atoms across both sides to determine what's missing. Needs practice with atom inventory method.
+  </div>
+</div>
+
+<div class="error-item">
+  <div class="q-header">
+    <span class="q-num">6.1.5 Balancing 3+ Elements</span>
+    <span class="tag">balancing</span>
+    <span class="pts">NP</span>
+  </div>
+  <p style="font-size:0.9rem;margin-bottom:0.75rem;">_MgCO<sub>3</sub> + _H<sub>3</sub>PO<sub>4</sub> &rarr; _Mg<sub>3</sub>(PO<sub>4</sub>)<sub>2</sub> + _H<sub>2</sub>CO<sub>3</sub></p>
+  <div class="comparison">
+    <div class="answer-box kai">
+      <div class="label">Kai's Answer</div>
+      2, 3, 1, ? (incorrect coefficients)
+    </div>
+    <div class="answer-box correct">
+      <div class="label">Correct Answer</div>
+      3 MgCO<sub>3</sub> + 2 H<sub>3</sub>PO<sub>4</sub> &rarr; 1 Mg<sub>3</sub>(PO<sub>4</sub>)<sub>2</sub> + 3 H<sub>2</sub>CO<sub>3</sub>
+    </div>
+  </div>
+  <div class="analysis">
+    <div class="label">Root Cause</div>
+    Strategy: start with Mg (need 3 on left to match Mg<sub>3</sub>), then P (need 2 H<sub>3</sub>PO<sub>4</sub> to match (PO<sub>4</sub>)<sub>2</sub>), then verify H and C. Kai likely started with the wrong element.
+  </div>
+</div>
+
+<div class="error-item">
+  <div class="q-header">
+    <span class="q-num">6.1.6 Combustion</span>
+    <span class="tag">combustion balancing</span>
+    <span class="pts">NP</span>
+  </div>
+  <p style="font-size:0.9rem;margin-bottom:0.75rem;">_C<sub>6</sub>H<sub>14</sub> + _O<sub>2</sub> &rarr; _CO<sub>2</sub> + _H<sub>2</sub>O</p>
+  <div class="comparison">
+    <div class="answer-box kai">
+      <div class="label">Kai's Answer</div>
+      Incomplete (2, 12, ?, ?)
+    </div>
+    <div class="answer-box correct">
+      <div class="label">Correct Answer</div>
+      2 C<sub>6</sub>H<sub>14</sub> + 19 O<sub>2</sub> &rarr; 12 CO<sub>2</sub> + 14 H<sub>2</sub>O
+    </div>
+  </div>
+  <div class="analysis">
+    <div class="label">Root Cause</div>
+    Combustion algorithm: C first (6&rarr;6CO<sub>2</sub>), H second (14&rarr;7H<sub>2</sub>O), O last (12+7=19&rarr;19/2 O<sub>2</sub>, multiply all by 2). Kai got C right but couldn't complete O balancing.
+  </div>
+</div>
+
+<div class="error-item">
+  <div class="q-header">
+    <span class="q-num">6.2.4 Molar Mass of Fe<sub>3</sub>O<sub>4</sub></span>
+    <span class="tag">molar mass</span>
+    <span class="tag">cascading error</span>
+    <span class="pts">NP</span>
+  </div>
+  <p style="font-size:0.9rem;margin-bottom:0.75rem;">Calculate molar mass of Fe<sub>3</sub>O<sub>4</sub></p>
+  <div class="comparison">
+    <div class="answer-box kai">
+      <div class="label">Kai's Answer</div>
+      159.75 g/mol
+    </div>
+    <div class="answer-box correct">
+      <div class="label">Correct Answer</div>
+      3(55.85) + 4(16.00) = 167.55 + 64.00 = 231.53 g/mol
+    </div>
+  </div>
+  <div class="analysis">
+    <div class="label">Root Cause</div>
+    Kai likely calculated Fe<sub>1</sub>O<sub>4</sub> or Fe<sub>2</sub>O<sub>4</sub> instead of Fe<sub>3</sub>O<sub>4</sub>. The value 159.75 = 55.85 + 4(16) + 39.9(?) doesn't map cleanly, suggesting subscript confusion. This error cascaded into Q2 (6.2.5) where he got 0.0412 mol instead of 0.0284 mol.
+  </div>
+</div>
+
+<div class="error-item">
+  <div class="q-header">
+    <span class="q-num">6.3 Multi-Step Stoichiometry (ENTIRE SECTION)</span>
+    <span class="tag">stoichiometry</span>
+    <span class="tag">left blank</span>
+    <span class="pts">NP &times; 4</span>
+  </div>
+  <p style="font-size:0.9rem;margin-bottom:0.75rem;">All four 6.3 problems left completely blank (limiting reagent, multi-step conversions, explaining conversion factors)</p>
+  <div class="analysis">
+    <div class="label">Root Cause</div>
+    Kai has not yet learned or practiced multi-step stoichiometry. This is the most complex section requiring chaining: grams &rarr; moles &rarr; mole ratio &rarr; moles &rarr; grams (or volume). He needs guided practice starting from simpler 2-step chains before attempting full stoichiometry with limiting reagents.
+  </div>
+</div>
+
+<div class="strengths-header">WHAT KAI DID RIGHT</div>
+<div class="strength-item"><strong>6.1.1 Atom Counting:</strong> Correctly counted all atoms in 4 substances including polyatomic ions and coefficients.</div>
+<div class="strength-item"><strong>6.2.3 Avogadro's Concept:</strong> Correctly identified Avogadro's number for molecules-to-moles and got the right numerical answer (0.00581 mol).</div>
+<div class="strength-item"><strong>6.2.6 Mole Ratio:</strong> Correctly identified mole ratio as the right tool and calculated 3.43 mol Al<sub>2</sub>O<sub>3</sub>.</div>
+<div class="strength-item"><strong>6.2.7 Gas vs Solid:</strong> Correctly identified that molar volume doesn't apply because all substances are solids.</div>
+<div class="strength-item"><strong>Molar Mass (partial):</strong> Got Al<sub>2</sub>O<sub>3</sub> (101.96), Fe (55.85), and Al (26.98) correct. Only Fe<sub>3</sub>O<sub>4</sub> was wrong.</div>
+
+<div class="plan-header">PRACTICE PLAN</div>
+<div class="plan-item"><strong>Priority 1: Balancing Equations</strong> &mdash; Practice the combustion algorithm (C, H, O order) and the polyatomic-ion trick. 10+ problems of increasing complexity.</div>
+<div class="plan-item"><strong>Priority 2: Molar Mass Calculation</strong> &mdash; Drill: always multiply atomic mass by subscript, then sum. Do 10 compounds including Fe<sub>3</sub>O<sub>4</sub>, Ca<sub>3</sub>(PO<sub>4</sub>)<sub>2</sub>, Al<sub>2</sub>(SO<sub>4</sub>)<sub>3</sub>.</div>
+<div class="plan-item"><strong>Priority 3: Unit Conversions (single-step)</strong> &mdash; Practice the "road map": grams &harr; moles (molar mass), particles &harr; moles (Avogadro's), volume &harr; moles (22.4 L at STP).</div>
+<div class="plan-item"><strong>Priority 4: Multi-Step Stoichiometry</strong> &mdash; Build up from 2-step (g&rarr;mol&rarr;mol) to 3-step (g&rarr;mol&rarr;mol&rarr;g) to full limiting reagent problems.</div>
+<div class="plan-item"><strong>Note Sheet:</strong> After 2-3 practice exams, build a one-page reference sheet covering: balancing algorithm, molar mass method, conversion road map, stoichiometry chain template, limiting reagent procedure.</div>
+
+</body>
+</html>
