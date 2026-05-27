@@ -4,7 +4,7 @@
   "description": "Adaptive chemistry study tool — standards-based grading for Kai",
   "private": true,
   "scripts": {
-    "test": "node --test tests/",
+    "test": "node --test tests/formula-normalizer.test.cjs tests/name-normalizer.test.cjs tests/grading.test.cjs tests/charge-balance.test.cjs",
     "grade": "node scripts/grade.cjs",
     "generate": "node scripts/generate-test.cjs",
     "render": "node scripts/render-test.cjs",

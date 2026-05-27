@@ -62,8 +62,11 @@ function normalizeName(name) {
   n = n.replace(/\s+/g, ' ');
 
   // Normalize Roman numeral spacing: "iron (II)" or "iron( II )" → "iron(ii)"
-  n = n.replace(/\s*\(\s*/g, '(');
-  n = n.replace(/\s*\)\s*/g, ')');
+  // Only remove spaces BEFORE ( and spaces INSIDE parens — not the space AFTER )
+  // e.g. "iron (ii) chloride" → "iron(ii) chloride" (space after ) is preserved)
+  n = n.replace(/\s+\(/g, '(');   // remove space before opening paren
+  n = n.replace(/\(\s+/g, '(');   // remove space after opening paren
+  n = n.replace(/\s+\)/g, ')');   // remove space before closing paren
 
   return n;
 }
