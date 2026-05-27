@@ -165,6 +165,49 @@ a.badge:hover { opacity: .85; }
   font-size: 12px; color: var(--subtext);
 }
 
+/* —— Archive (collapsible prior-term) —— */
+.archive {
+  margin-top: 36px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+}
+.archive > summary {
+  list-style: none;
+  cursor: pointer;
+  padding: 14px 18px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: .04em;
+  color: var(--text);
+  user-select: none;
+}
+.archive > summary::-webkit-details-marker { display: none; }
+.archive > summary::before {
+  content: '▸';
+  font-size: 11px;
+  color: var(--accent);
+  transition: transform .15s;
+  display: inline-block;
+  width: 12px;
+}
+.archive[open] > summary::before { transform: rotate(90deg); }
+.archive > summary .archive-tag {
+  font-size: 10px; font-weight: 700; letter-spacing: .1em;
+  text-transform: uppercase; color: var(--accent);
+  margin-left: auto;
+}
+.archive-body {
+  padding: 4px 18px 18px;
+  border-top: 1px solid var(--border);
+}
+.archive-body .section-label { margin-top: 18px; }
+.archive-body .section-label:first-child { margin-top: 8px; }
+
 footer {
   margin-top: 48px; padding-top: 16px;
   border-top: 1px solid var(--border);
@@ -390,11 +433,6 @@ footer {
         <div class="resource-card-title">Quiz 14 Grade Report</div>
         <div class="resource-card-sub">Standards 6.2 &amp; 6.3 &middot; Graded by FR</div>
       </a>
-      <a class="resource-card" href="artifacts/kai-chem-grade-report.html">
-        <div class="resource-card-label">Quiz 9</div>
-        <div class="resource-card-title">Quiz 9 Grade Report</div>
-        <div class="resource-card-sub">Chemistry 4.2 &middot; Prior term</div>
-      </a>
     </div>
   </div>
 
@@ -426,6 +464,55 @@ footer {
       </a>
     </div>
   </div>
+
+  <!-- ————————————————————————————————————————————
+       ARCHIVE — STANDARD 4.2 (Prior Term)
+  ————————————————————————————————————————————————— -->
+  <details class="archive">
+    <summary>
+      Archive &mdash; Standard 4.2 (Ionic Compound Formulas)
+      <span class="archive-tag">Prior Term</span>
+    </summary>
+    <div class="archive-body">
+      <p class="section-label">Grade Reports</p>
+      <div class="resource-grid">
+        <a class="resource-card" href="artifacts/kai-chem-grade-report.html">
+          <div class="resource-card-label">Quiz 9</div>
+          <div class="resource-card-title">Quiz 9 Grade Report</div>
+          <div class="resource-card-sub">Chemistry 4.2 &middot; Teacher-graded 2026-02-26</div>
+        </a>
+        <a class="resource-card" href="artifacts/kai-practice-test-grade-report.html">
+          <div class="resource-card-label">Practice 1</div>
+          <div class="resource-card-title">Practice Test 1 Grade Report</div>
+          <div class="resource-card-sub">Chemistry 4.2 &middot; FR-graded</div>
+        </a>
+      </div>
+
+      <p class="section-label">Practice Tests &amp; Answer Keys</p>
+      <div class="resource-grid">
+        <a class="resource-card" href="artifacts/chem-42-practice-test.html">
+          <div class="resource-card-label">Practice 1</div>
+          <div class="resource-card-title">Practice Test #1</div>
+          <div class="resource-card-sub">Matches Quiz 9 format</div>
+        </a>
+        <a class="resource-card" href="artifacts/chem-42-answer-key.html">
+          <div class="resource-card-label">Practice 1</div>
+          <div class="resource-card-title">Answer Key #1</div>
+          <div class="resource-card-sub">Hints &amp; worked solutions</div>
+        </a>
+        <a class="resource-card" href="artifacts/chem-42-practice-test-2.html">
+          <div class="resource-card-label">Practice 2</div>
+          <div class="resource-card-title">Practice Test #2</div>
+          <div class="resource-card-sub">Targeted at remaining gaps</div>
+        </a>
+        <a class="resource-card" href="artifacts/chem-42-answer-key-2.html">
+          <div class="resource-card-label">Practice 2</div>
+          <div class="resource-card-title">Answer Key #2</div>
+          <div class="resource-card-sub">Hints &amp; worked solutions</div>
+        </a>
+      </div>
+    </div>
+  </details>
 
   <footer>Motor City Chemistry &middot; Built for Kai</footer>
 </div>
