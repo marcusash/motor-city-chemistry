@@ -4,14 +4,37 @@
 <meta charset="UTF-8">
 <title>Kai's Chem 10 Quiz 9 — Grade Report + Autograder Design</title>
 <style>
+  /* MCC token system — matches hub index.html :root block exactly */
+  :root {
+    --bg:        #0d1117;
+    --surface:   #161b22;
+    --surface2:  #1c2128;
+    --border:    #30363d;
+    --border2:   #21262d;
+    --text:      #e6edf3;
+    --subtext:   #8b949e;
+    --muted:     #6e7681;
+    --accent:    #6d28d9;
+    --p-bg:      #14532d;
+    --p-text:    #4ade80;
+    --p-border:  #166534;
+    --np-bg:     #450a0a;
+    --np-text:   #f87171;
+    --np-border: #7f1d1d;
+    --green:     #22c55e;
+    --red:       #ef4444;
+    --amber:     #f59e0b;
+    --blue:      #3b82f6;
+  }
+
   * { box-sizing: border-box; margin: 0; padding: 0; }
 
   body {
     font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
     font-size: 14px;
     line-height: 1.5;
-    color: #1a1a1a;
-    background: #0f1117;
+    color: var(--text);
+    background: var(--bg);
     padding: 32px;
   }
 
@@ -22,7 +45,7 @@
 
   /* ---- HEADER ---- */
   .report-header {
-    background: #1a1d23;
+    background: var(--surface);
     border-radius: 12px;
     padding: 28px 32px;
     margin-bottom: 24px;
@@ -32,13 +55,13 @@
   }
 
   .report-header h1 {
-    color: #fff;
+    color: var(--text);
     font-size: 22px;
     font-weight: 700;
   }
 
   .report-header .meta {
-    color: #94a3b8;
+    color: var(--subtext);
     font-size: 13px;
     text-align: right;
     line-height: 1.7;
@@ -53,14 +76,14 @@
   }
 
   .summary-card {
-    background: #1a1d23;
+    background: var(--surface);
     border-radius: 10px;
     padding: 20px 24px;
     text-align: center;
   }
 
   .summary-card .label {
-    color: #94a3b8;
+    color: var(--subtext);
     font-size: 11px;
     text-transform: uppercase;
     letter-spacing: 1px;
@@ -73,20 +96,20 @@
   }
 
   .summary-card .sub {
-    color: #94a3b8;
+    color: var(--subtext);
     font-size: 12px;
     margin-top: 4px;
   }
 
-  .color-green { color: #22c55e; }
-  .color-red { color: #ef4444; }
-  .color-amber { color: #f59e0b; }
-  .color-blue { color: #3b82f6; }
-  .color-white { color: #fff; }
+  .color-green { color: var(--green); }
+  .color-red   { color: var(--red); }
+  .color-amber { color: var(--amber); }
+  .color-blue  { color: var(--blue); }
+  .color-white { color: var(--text); }
 
   /* ---- STANDARD SECTIONS ---- */
   .standard-section {
-    background: #1a1d23;
+    background: var(--surface);
     border-radius: 10px;
     padding: 24px 28px;
     margin-bottom: 20px;
@@ -98,11 +121,11 @@
     align-items: center;
     margin-bottom: 16px;
     padding-bottom: 12px;
-    border-bottom: 1px solid #2a2d35;
+    border-bottom: 1px solid var(--border);
   }
 
   .standard-header h2 {
-    color: #fff;
+    color: var(--text);
     font-size: 16px;
     font-weight: 700;
   }
@@ -114,43 +137,38 @@
     border-radius: 20px;
   }
 
-  .badge-p { background: #166534; color: #22c55e; }
-  .badge-np { background: #7f1d1d; color: #ef4444; }
-  .badge-mixed { background: #78350f; color: #f59e0b; }
-  .badge-practice { background: #1e3a5f; color: #60a5fa; }
+  .badge-p       { background: var(--p-bg);  color: var(--p-text);  border: 1px solid var(--p-border); }
+  .badge-np      { background: var(--np-bg); color: var(--np-text); border: 1px solid var(--np-border); }
+  .badge-mixed   { background: rgba(245,158,11,0.12); color: var(--amber); border: 1px solid rgba(245,158,11,0.25); }
+  .badge-practice{ background: rgba(59,130,246,0.12);  color: var(--blue);  border: 1px solid rgba(59,130,246,0.25); }
 
   /* ---- SKILL TABLE ---- */
-  .skill-table {
-    width: 100%;
-    border-collapse: collapse;
-  }
+  .skill-table { width: 100%; border-collapse: collapse; }
 
   .skill-table th {
     text-align: left;
-    color: #64748b;
+    color: var(--muted);
     font-size: 11px;
     text-transform: uppercase;
     letter-spacing: 0.5px;
     padding: 6px 12px;
-    border-bottom: 1px solid #2a2d35;
+    border-bottom: 1px solid var(--border);
   }
 
   .skill-table td {
     padding: 10px 12px;
-    color: #e2e8f0;
+    color: var(--text);
     font-size: 13px;
-    border-bottom: 1px solid #1e2028;
+    border-bottom: 1px solid var(--border2);
   }
 
-  .skill-table tr:last-child td {
-    border-bottom: none;
-  }
+  .skill-table tr:last-child td { border-bottom: none; }
 
   .skill-code {
     font-family: 'Cascadia Code', 'Fira Code', monospace;
     font-size: 12px;
-    color: #94a3b8;
-    background: #252830;
+    color: var(--subtext);
+    background: var(--surface2);
     padding: 2px 8px;
     border-radius: 4px;
   }
@@ -165,229 +183,153 @@
     text-align: center;
   }
 
-  .pill-p { background: #166534; color: #4ade80; }
-  .pill-np { background: #7f1d1d; color: #f87171; }
+  .pill-p  { background: var(--p-bg);  color: var(--p-text);  border: 1px solid var(--p-border); }
+  .pill-np { background: var(--np-bg); color: var(--np-text); border: 1px solid var(--np-border); }
 
   .kai-answer {
-    color: #94a3b8;
+    color: var(--subtext);
     font-size: 12px;
     font-style: italic;
     margin-top: 4px;
   }
 
-  .error-note {
-    color: #f87171;
-    font-size: 11px;
-    margin-top: 2px;
-  }
+  .error-note { color: var(--np-text); font-size: 11px; margin-top: 2px; }
 
   /* ---- QUESTION DETAIL ---- */
   .question-detail {
-    background: #252830;
+    background: var(--surface2);
     border-radius: 8px;
     padding: 14px 18px;
     margin: 8px 0;
   }
 
-  .question-detail .q-label {
-    color: #60a5fa;
-    font-size: 12px;
-    font-weight: 600;
-    margin-bottom: 4px;
-  }
-
-  .question-detail .q-answer {
-    color: #e2e8f0;
-    font-size: 13px;
-  }
-
+  .question-detail .q-label { color: var(--blue); font-size: 12px; font-weight: 600; margin-bottom: 4px; }
+  .question-detail .q-answer { color: var(--text); font-size: 13px; }
   .question-detail .q-error {
-    color: #f87171;
+    color: var(--np-text);
     font-size: 12px;
     margin-top: 6px;
     padding-left: 12px;
-    border-left: 2px solid #7f1d1d;
+    border-left: 2px solid var(--np-border);
   }
 
   /* ---- DIAGNOSIS ---- */
   .diagnosis-section {
-    background: #1a1d23;
+    background: var(--surface);
     border-radius: 10px;
     padding: 24px 28px;
     margin-bottom: 20px;
-    border-left: 4px solid #f59e0b;
+    border-left: 4px solid var(--amber);
   }
 
-  .diagnosis-section h2 {
-    color: #f59e0b;
-    font-size: 16px;
-    font-weight: 700;
-    margin-bottom: 12px;
-  }
-
-  .diagnosis-list {
-    list-style: none;
-    padding: 0;
-  }
+  .diagnosis-section h2 { color: var(--amber); font-size: 16px; font-weight: 700; margin-bottom: 12px; }
+  .diagnosis-list { list-style: none; padding: 0; }
 
   .diagnosis-list li {
-    color: #e2e8f0;
+    color: var(--text);
     font-size: 13px;
-    padding: 6px 0;
-    padding-left: 20px;
+    padding: 6px 0 6px 20px;
     position: relative;
   }
 
   .diagnosis-list li::before {
     content: '';
     position: absolute;
-    left: 0;
-    top: 12px;
-    width: 8px;
-    height: 8px;
+    left: 0; top: 12px;
+    width: 8px; height: 8px;
     border-radius: 50%;
   }
 
-  .diagnosis-list li.critical::before { background: #ef4444; }
-  .diagnosis-list li.moderate::before { background: #f59e0b; }
-  .diagnosis-list li.ok::before { background: #22c55e; }
+  .diagnosis-list li.critical::before { background: var(--red); }
+  .diagnosis-list li.moderate::before { background: var(--amber); }
+  .diagnosis-list li.ok::before       { background: var(--green); }
 
   /* ---- AUTOGRADER SECTION ---- */
   .autograder-section {
-    background: #1a1d23;
+    background: var(--surface);
     border-radius: 10px;
     padding: 28px 32px;
     margin-top: 32px;
-    border-top: 3px solid #3b82f6;
+    border-top: 3px solid var(--blue);
   }
 
-  .autograder-section h2 {
-    color: #3b82f6;
-    font-size: 18px;
-    font-weight: 700;
-    margin-bottom: 20px;
-  }
+  .autograder-section h2 { color: var(--blue); font-size: 18px; font-weight: 700; margin-bottom: 20px; }
 
-  .flow-steps {
-    display: flex;
-    gap: 0;
-    margin: 20px 0 28px 0;
-    align-items: stretch;
-  }
+  .flow-steps { display: flex; gap: 0; margin: 20px 0 28px 0; align-items: stretch; }
 
   .flow-step {
     flex: 1;
-    background: #252830;
+    background: var(--surface2);
     padding: 16px 14px;
     text-align: center;
     position: relative;
   }
 
   .flow-step:first-child { border-radius: 8px 0 0 8px; }
-  .flow-step:last-child { border-radius: 0 8px 8px 0; }
+  .flow-step:last-child  { border-radius: 0 8px 8px 0; }
 
   .flow-step .step-num {
     display: inline-block;
-    width: 24px;
-    height: 24px;
-    line-height: 24px;
+    width: 24px; height: 24px; line-height: 24px;
     border-radius: 50%;
-    background: #3b82f6;
-    color: #fff;
-    font-size: 12px;
-    font-weight: 700;
+    background: var(--blue);
+    color: var(--bg);
+    font-size: 12px; font-weight: 700;
     margin-bottom: 6px;
   }
 
-  .flow-step .step-title {
-    color: #fff;
-    font-size: 12px;
-    font-weight: 600;
-    display: block;
-    margin-bottom: 4px;
-  }
-
-  .flow-step .step-desc {
-    color: #94a3b8;
-    font-size: 11px;
-    line-height: 1.4;
-  }
+  .flow-step .step-title { color: var(--text); font-size: 12px; font-weight: 600; display: block; margin-bottom: 4px; }
+  .flow-step .step-desc  { color: var(--subtext); font-size: 11px; line-height: 1.4; }
 
   .flow-arrow {
     width: 24px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #3b82f6;
-    font-size: 18px;
-    background: #1a1d23;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--blue); font-size: 18px;
+    background: var(--surface);
   }
 
   /* ---- GRADING RULES ---- */
-  .grading-rules {
-    margin: 16px 0;
-  }
+  .grading-rules { margin: 16px 0; }
 
   .rule-block {
-    background: #252830;
+    background: var(--surface2);
     border-radius: 8px;
     padding: 16px 20px;
     margin: 10px 0;
   }
 
-  .rule-block h4 {
-    color: #e2e8f0;
-    font-size: 13px;
-    font-weight: 600;
-    margin-bottom: 8px;
-  }
+  .rule-block h4    { color: var(--text); font-size: 13px; font-weight: 600; margin-bottom: 8px; }
+  .rule-block p     { color: var(--subtext); font-size: 12px; margin: 4px 0; line-height: 1.6; }
 
   .rule-block code {
     font-family: 'Cascadia Code', 'Fira Code', monospace;
     font-size: 12px;
-    color: #93c5fd;
-    background: #1a1d23;
+    color: var(--blue);
+    background: var(--surface);
     padding: 2px 6px;
     border-radius: 3px;
-  }
-
-  .rule-block p {
-    color: #94a3b8;
-    font-size: 12px;
-    margin: 4px 0;
-    line-height: 1.6;
   }
 
   .rule-block .example {
     margin: 6px 0;
     padding: 8px 12px;
-    background: #1a1d23;
+    background: var(--surface);
     border-radius: 4px;
     font-family: 'Cascadia Code', 'Fira Code', monospace;
     font-size: 12px;
-    color: #a5b4fc;
+    color: var(--blue);
   }
 
   .tech-note {
-    background: #1e293b;
-    border: 1px solid #334155;
+    background: rgba(59,130,246,0.06);
+    border: 1px solid rgba(59,130,246,0.2);
     border-radius: 8px;
     padding: 14px 18px;
     margin: 12px 0;
   }
 
-  .tech-note h4 {
-    color: #60a5fa;
-    font-size: 12px;
-    font-weight: 600;
-    margin-bottom: 6px;
-  }
-
-  .tech-note p {
-    color: #94a3b8;
-    font-size: 12px;
-    line-height: 1.6;
-  }
+  .tech-note h4 { color: var(--blue); font-size: 12px; font-weight: 600; margin-bottom: 6px; }
+  .tech-note p  { color: var(--subtext); font-size: 12px; line-height: 1.6; }
 </style>
 </head>
 <body>
@@ -397,7 +339,7 @@
 <div class="report-header">
   <div>
     <h1>Kai's Chemistry Grade Report</h1>
-    <div style="color: #94a3b8; font-size: 13px; margin-top: 4px;">Chem 10 Quiz 9, Standards 4.1 / 4.2 / 4.3</div>
+    <div style="color: var(--subtext); font-size: 13px; margin-top: 4px;">Chem 10 Quiz 9, Standards 4.1 / 4.2 / 4.3</div>
   </div>
   <div class="meta">
     Teacher: Martin<br>
