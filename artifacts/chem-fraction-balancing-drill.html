@@ -5,242 +5,101 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Chemistry 10 &mdash; Fraction Balancing Drill</title>
 <style>
-  :root {
-    --bg:        #0d1117;
-    --surface:   #161b22;
-    --border:    #30363d;
-    --text:      #e6edf3;
-    --muted:     #7d8590;
-    --subtext:   #8b949e;
-    --amber:     #f0a500;
-    --amber-bg:  #2a1f00;
-    --green:     #3fb950;
-    --blue:      #58a6ff;
-  }
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-    font-size: 15px;
-    line-height: 1.6;
-    padding: 2rem 1rem;
-  }
-  .page { max-width: 700px; margin: 0 auto; }
-  .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    border-bottom: 1px solid var(--border);
-    padding-bottom: 0.75rem;
-    margin-bottom: 2rem;
-  }
-  .header-left, .header-right { font-size: 0.8rem; color: var(--muted); }
-  h1 { font-size: 1.4rem; font-weight: 700; margin-bottom: 0.25rem; }
-  .subtitle { font-size: 0.85rem; color: var(--subtext); margin-bottom: 2rem; }
-  .section-label {
-    font-size: 0.7rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    color: var(--amber);
-    margin-bottom: 1rem;
-    margin-top: 2rem;
-  }
-  .example-card {
-    background: var(--amber-bg);
-    border: 1px solid var(--amber);
-    border-radius: 10px;
-    padding: 1.25rem 1.5rem;
-    margin-bottom: 2rem;
-  }
-  .example-label {
-    font-size: 0.7rem;
-    font-weight: 700;
-    color: var(--amber);
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    margin-bottom: 0.75rem;
-  }
-  .example-eq {
-    font-family: "Courier New", monospace;
-    color: var(--blue);
-    font-size: 1rem;
-    margin: 0.4rem 0 0.8rem 0;
-    padding-left: 1rem;
-  }
-  .step {
-    margin-top: 0.55rem;
-    font-size: 0.92rem;
-    color: var(--text);
-  }
-  .step strong { color: var(--amber); }
-  .step .eq {
-    font-family: "Courier New", monospace;
-    color: var(--blue);
-    display: block;
-    margin: 0.3rem 0 0 1.4rem;
-  }
-  .check {
-    margin-top: 0.7rem;
-    font-family: "Courier New", monospace;
-    font-size: 0.88rem;
-    color: var(--green);
-  }
-  .problem-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 1.5rem 1.75rem;
-    margin-bottom: 1.5rem;
-  }
-  .problem-number {
-    font-size: 0.75rem;
-    font-weight: 600;
-    color: var(--muted);
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-    margin-bottom: 0.25rem;
-  }
-  .problem-tag {
-    font-size: 0.72rem;
-    color: var(--amber);
-    margin-bottom: 0.75rem;
-  }
-  .problem-text {
-    font-size: 1rem;
-    color: var(--text);
-    margin-bottom: 1rem;
-  }
-  .equation-given {
-    font-family: "Courier New", monospace;
-    font-size: 1rem;
-    background: var(--bg);
-    border: 1px solid var(--border);
-    border-radius: 6px;
-    padding: 0.6rem 1rem;
-    margin-bottom: 1rem;
-    color: var(--blue);
-    letter-spacing: 0.04em;
-  }
-  .work-area {
-    border: 1px dashed var(--border);
-    border-radius: 6px;
-    height: 160px;
-    margin-top: 0.75rem;
-    display: flex;
-    align-items: flex-end;
-    padding: 0.5rem 0.75rem;
-  }
-  .work-area-label { font-size: 0.7rem; color: var(--muted); }
-  .answer-line {
-    border-top: 1px solid var(--border);
-    margin-top: 0.9rem;
-    padding-top: 0.7rem;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-  }
-  .answer-label { font-size: 0.8rem; color: var(--muted); min-width: 90px; }
-  .answer-blank { flex: 1; border-bottom: 1px solid var(--subtext); height: 24px; }
-  .footer {
-    border-top: 1px solid var(--border);
-    margin-top: 3rem;
-    padding-top: 0.75rem;
-    font-size: 0.75rem;
-    color: var(--muted);
-    text-align: center;
-  }
-  @media print {
-    body { background: #fff; color: #000; padding: 0.4in; font-size: 12pt; }
-    .page { max-width: none; }
-    .problem-card, .example-card { border: 1px solid #555; background: #fff; page-break-inside: avoid; }
-    .example-card { border: 2px solid #000; }
-    .example-label, .section-label, .problem-tag { color: #000; }
-    .equation-given, .example-eq, .step .eq { color: #000; background: #fff; border-color: #888; }
-    .check { color: #000; }
-    .work-area { border-color: #888; height: 170px; }
-    .answer-blank { border-color: #000; }
-    .header, .footer { border-color: #000; color: #000; }
-    .header-left, .header-right, .subtitle, .problem-number, .work-area-label, .answer-label { color: #000; }
-  }
+:root {
+  --ink: #000;
+  --bg: #fff;
+  --rule: #000;
+  --soft: #333;
+  font-size: 15px;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; color: var(--ink); }
+body { font-family: 'Georgia', serif; background: var(--bg); padding: 20px; }
+.sheet { background: var(--bg); max-width: 900px; margin: 0 auto; padding: 40px; }
+h1 { font-size: 1.8rem; }
+.subtitle { font-size: 1.05rem; margin-top: 4px; }
+.name-block { display: flex; gap: 40px; margin: 18px 0 4px; flex-wrap: wrap; }
+.name-block label { flex: 1; border-bottom: 1px solid var(--rule); padding-bottom: 2px; font-size: .95rem; min-width: 200px; }
+.note-flag { border: 1px solid var(--rule); padding: 8px 12px; margin: 10px 0 18px; font-size: .9rem; }
+.example-box { border: 2px solid var(--rule); padding: 14px 18px; margin: 18px 0 22px; }
+.example-box h3 { font-size: .95rem; letter-spacing: .04em; margin-bottom: 8px; text-transform: uppercase; }
+.example-box .lead { font-size: .92rem; margin-bottom: 10px; line-height: 1.55; }
+.eq { font-family: 'Courier New', monospace; font-size: 1rem; margin: 6px 0 6px 18px; letter-spacing: .03em; }
+.step { font-size: .95rem; margin-top: 8px; line-height: 1.55; }
+.step strong { font-weight: bold; }
+.check { font-family: 'Courier New', monospace; font-size: .92rem; margin-top: 10px; }
+hr.section { border: none; border-top: 1.5px solid var(--rule); margin: 26px 0 16px; }
+.section-title { font-size: 1.1rem; font-weight: bold; margin-bottom: 14px; }
+.prob-block { margin-bottom: 24px; page-break-inside: avoid; }
+.prob-num { font-weight: bold; margin-bottom: 4px; font-size: .95rem; }
+.prob-q { margin-bottom: 6px; line-height: 1.6; font-size: .95rem; }
+.fill { display: inline-block; border-bottom: 1px solid #555; min-width: 120px; }
+.work-box { border: 1px dashed #555; min-height: 140px; margin-top: 8px; padding: 6px 10px; }
+.points { float: right; font-size: .82rem; font-weight: normal; color: var(--soft); }
+.answer-line { margin-top: 10px; font-size: .92rem; }
+@media print {
+  body { padding: 0; }
+  .sheet { padding: 18px; max-width: 100%; }
+  .work-box { min-height: 130px; }
+  .prob-block { page-break-inside: avoid; }
+}
 </style>
 </head>
 <body>
-<div class="page">
+<div class="sheet">
 
-  <div class="header">
-    <span class="header-left">Motor City Chemistry</span>
-    <span class="header-right">Fraction Balancing Drill &middot; 6.1</span>
-  </div>
+<h1>Chemistry &mdash; Fraction Balancing Drill</h1>
+<p class="subtitle">Unit 6.1 &middot; Combustion equations with odd O counts</p>
 
-  <h1>Kai Ash</h1>
-  <div class="subtitle">~20 minutes &middot; Show all work</div>
+<div class="name-block">
+  <label>Name: ____________________________________________</label>
+  <label>Block: __________</label>
+  <label>Date: __________</label>
+</div>
 
-  <!-- WORKED EXAMPLE -->
-  <div class="example-card">
-    <div class="example-label">Worked Example &mdash; The Fraction Move</div>
-    <p style="font-size:0.92rem; color:var(--subtext); margin-bottom:0.6rem;">
-      Balance combustion equations by saving O<sub>2</sub> for last. If you need an odd number of O atoms, write a fractional O<sub>2</sub> coefficient, then multiply every coefficient by the denominator to clear the fraction.
-    </p>
-    <div class="example-eq">H&#8322; + O&#8322; &rarr; H&#8322;O</div>
+<div class="note-flag">
+  <strong>~20 minutes.</strong> Show all work. Balance one element at a time and save O<sub>2</sub> for last.
+</div>
 
-    <div class="step">
-      <strong>Step 1.</strong> Balance H &rarr; 1 H<sub>2</sub>O gives 2 H &check;
-    </div>
-    <div class="step">
-      <strong>Step 2.</strong> Balance O &rarr; right side has 1 O, but O<sub>2</sub> supplies 2 &rarr; write &frac12; O<sub>2</sub>:
-      <span class="eq">H&#8322; + &frac12; O&#8322; &rarr; H&#8322;O</span>
-    </div>
-    <div class="step">
-      <strong>Step 3.</strong> Multiply every coefficient &times; 2 to remove the fraction:
-      <span class="eq">2H&#8322; + O&#8322; &rarr; 2H&#8322;O</span>
-    </div>
-    <div class="check">Check: H = 4 = 4 &check;   O = 2 = 2 &check;</div>
-  </div>
+<div class="example-box">
+  <h3>Worked Example &mdash; The Fraction Move</h3>
+  <p class="lead">When balancing combustion, save O<sub>2</sub> for last. If you need an odd number of O atoms, write a fractional O<sub>2</sub> coefficient (like &frac12; or 5/2), then multiply every coefficient by the denominator to clear the fraction.</p>
 
-  <div class="section-label">Your Turn</div>
+  <div class="eq">H<sub>2</sub> + O<sub>2</sub> &rarr; H<sub>2</sub>O</div>
 
-  <!-- Problem 1 -->
-  <div class="problem-card">
-    <div class="problem-number">Problem 1</div>
-    <div class="problem-tag">Practice &mdash; same move</div>
-    <p class="problem-text">Balance the equation below using the fraction-then-multiply technique.</p>
-    <div class="equation-given">___ S + ___ O&#8322; &rarr; ___ SO&#8323;</div>
-    <div class="work-area"><span class="work-area-label">work</span></div>
-    <div class="answer-line">
-      <span class="answer-label">Balanced:</span>
-      <div class="answer-blank"></div>
-    </div>
-  </div>
+  <p class="step"><strong>Step 1.</strong> Balance H &rarr; 1 H<sub>2</sub>O gives 2 H &check;</p>
+  <p class="step"><strong>Step 2.</strong> Balance O &rarr; right side has 1 O, but O<sub>2</sub> supplies 2 &rarr; write &frac12; O<sub>2</sub>:</p>
+  <div class="eq">H<sub>2</sub> + &frac12; O<sub>2</sub> &rarr; H<sub>2</sub>O</div>
+  <p class="step"><strong>Step 3.</strong> Multiply every coefficient &times; 2 to clear the fraction:</p>
+  <div class="eq">2H<sub>2</sub> + O<sub>2</sub> &rarr; 2H<sub>2</sub>O</div>
+  <p class="check">Check: H = 4 = 4 &check;   O = 2 = 2 &check;</p>
+</div>
 
-  <!-- Problem 2 -->
-  <div class="problem-card">
-    <div class="problem-number">Problem 2</div>
-    <div class="problem-tag">Build up</div>
-    <p class="problem-text">Balance the combustion of acetylene. Save O<sub>2</sub> for last.</p>
-    <div class="equation-given">___ C&#8322;H&#8322; + ___ O&#8322; &rarr; ___ CO&#8322; + ___ H&#8322;O</div>
-    <div class="work-area"><span class="work-area-label">work</span></div>
-    <div class="answer-line">
-      <span class="answer-label">Balanced:</span>
-      <div class="answer-blank"></div>
-    </div>
-  </div>
+<hr class="section">
+<p class="section-title">Your Turn</p>
 
-  <!-- Problem 3 -->
-  <div class="problem-card">
-    <div class="problem-number">Problem 3</div>
-    <div class="problem-tag">Full combustion</div>
-    <p class="problem-text">Balance the combustion of ethane. Save O<sub>2</sub> for last.</p>
-    <div class="equation-given">___ C&#8322;H&#8326; + ___ O&#8322; &rarr; ___ CO&#8322; + ___ H&#8322;O</div>
-    <div class="work-area"><span class="work-area-label">work</span></div>
-    <div class="answer-line">
-      <span class="answer-label">Balanced:</span>
-      <div class="answer-blank"></div>
-    </div>
-  </div>
+<div class="prob-block">
+  <p class="prob-num">Q1. Practice &mdash; same move <span class="points">5 pts</span></p>
+  <p class="prob-q">Balance the equation below using the fraction-then-multiply technique.</p>
+  <div class="eq">___ S + ___ O<sub>2</sub> &rarr; ___ SO<sub>3</sub></div>
+  <div class="work-box"></div>
+  <p class="answer-line">Balanced equation: <span class="fill" style="min-width:320px;">&nbsp;</span></p>
+</div>
 
-  <div class="footer">Motor City Chemistry &middot; Fraction Balancing Drill &middot; 6.1</div>
+<div class="prob-block">
+  <p class="prob-num">Q2. Build up <span class="points">7 pts</span></p>
+  <p class="prob-q">Balance the combustion of acetylene. Save O<sub>2</sub> for last.</p>
+  <div class="eq">___ C<sub>2</sub>H<sub>2</sub> + ___ O<sub>2</sub> &rarr; ___ CO<sub>2</sub> + ___ H<sub>2</sub>O</div>
+  <div class="work-box"></div>
+  <p class="answer-line">Balanced equation: <span class="fill" style="min-width:320px;">&nbsp;</span></p>
+</div>
+
+<div class="prob-block">
+  <p class="prob-num">Q3. Full combustion <span class="points">8 pts</span></p>
+  <p class="prob-q">Balance the combustion of ethane. Save O<sub>2</sub> for last.</p>
+  <div class="eq">___ C<sub>2</sub>H<sub>6</sub> + ___ O<sub>2</sub> &rarr; ___ CO<sub>2</sub> + ___ H<sub>2</sub>O</div>
+  <div class="work-box"></div>
+  <p class="answer-line">Balanced equation: <span class="fill" style="min-width:320px;">&nbsp;</span></p>
+</div>
 
 </div>
 </body>
