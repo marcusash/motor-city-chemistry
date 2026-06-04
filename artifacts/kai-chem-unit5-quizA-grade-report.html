@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chemistry Unit 5 Quiz A Grade Report — Kai Ash</title>
+<style>
+  /* MCC token system — matches hub index.html :root block exactly */
+  :root {
+    --bg:        #0d1117;
+    --surface:   #161b22;
+    --surface2:  #1c2128;
+    --border:    #30363d;
+    --border2:   #21262d;
+    --text:      #e6edf3;
+    --subtext:   #8b949e;
+    --muted:     #6e7681;
+    --accent:    #6d28d9;
+    --p-bg:      #14532d;
+    --p-text:    #4ade80;
+    --p-border:  #166534;
+    --np-bg:     #450a0a;
+    --np-text:   #f87171;
+    --np-border: #7f1d1d;
+    --green:     #22c55e;
+    --red:       #ef4444;
+    --amber:     #f59e0b;
+    --blue:      #3b82f6;
+    --amber-bg:     rgba(245,158,11,0.1);
+    --amber-border: rgba(245,158,11,0.3);
+    --blue-bg:      rgba(59,130,246,0.1);
+    --blue-border:  rgba(59,130,246,0.3);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 2rem;
+    line-height: 1.5;
+  }
+  h1 { font-size: 2rem; text-align: center; margin-bottom: 0.25rem; }
+  .subtitle { text-align: center; color: var(--muted); margin-bottom: 2.5rem; font-size: 0.95rem; }
+
+  .score-row { display: flex; justify-content: center; gap: 2rem; margin-bottom: 2.5rem; flex-wrap: wrap; }
+  .score-card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 1.25rem 2rem; text-align: center; min-width: 160px; }
+  .score-card .label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted); margin-bottom: 0.5rem; }
+  .score-card .value { font-size: 2.2rem; font-weight: 700; }
+  .score-card .value.pass { color: var(--p-text); }
+  .score-card .value.fail { color: var(--np-text); }
+  .score-card .value.warn { color: var(--amber); }
+  .score-card .detail { font-size: 0.8rem; color: var(--subtext); margin-top: 0.25rem; }
+
+  .highlight-box { border: 2px solid var(--p-border); background: var(--p-bg); border-radius: 12px; padding: 1.5rem 2rem; text-align: center; margin-bottom: 2.5rem; }
+  .highlight-box.warn { border-color: var(--amber-border); background: var(--amber-bg); }
+  .highlight-box .tag { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--p-text); font-weight: 700; margin-bottom: 0.5rem; }
+  .highlight-box.warn .tag { color: var(--amber); }
+  .highlight-box h2 { font-size: 1.4rem; margin-bottom: 0.5rem; color: var(--text); }
+  .highlight-box p { color: var(--subtext); font-size: 0.9rem; }
+
+  .sections-row { display: flex; gap: 1rem; margin-bottom: 2.5rem; flex-wrap: wrap; }
+  .section-card { flex: 1; min-width: 200px; background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 1rem; }
+  .section-card .name { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.04em; font-weight: 700; margin-bottom: 0.5rem; color: var(--subtext); }
+  .section-card .score { font-size: 1.6rem; font-weight: 700; }
+  .section-card .pct { font-size: 0.8rem; color: var(--muted); }
+  .section-card .bar { height: 6px; border-radius: 3px; background: var(--border); margin-top: 0.5rem; overflow: hidden; }
+  .section-card .bar-fill { height: 100%; border-radius: 3px; }
+  .bar-fill.perfect    { background: var(--green); }
+  .bar-fill.good       { background: var(--amber); }
+  .bar-fill.needs-work { background: var(--red); }
+
+  .standards-table { width: 100%; border-collapse: collapse; margin-bottom: 2rem; font-size: 0.85rem; }
+  .standards-table th { text-align: left; padding: 0.5rem; border-bottom: 2px solid var(--border); font-size: 0.7rem; text-transform: uppercase; color: var(--muted); }
+  .standards-table td { padding: 0.5rem; border-bottom: 1px solid var(--border2); }
+  .standards-table .badge { display: inline-block; padding: 0.15rem 0.5rem; border-radius: 4px; font-size: 0.7rem; font-weight: 700; }
+  .badge.p  { background: var(--p-bg);  color: var(--p-text);  border: 1px solid var(--p-border); }
+  .badge.np { background: var(--np-bg); color: var(--np-text); border: 1px solid var(--np-border); }
+  .badge.m  { background: var(--amber-bg); color: var(--amber); border: 1px solid var(--amber-border); }
+
+  .errors-header { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--np-text); border-bottom: 1px solid var(--np-border); padding-bottom: 0.5rem; margin-bottom: 1.5rem; margin-top: 2rem; }
+  .error-item { border-left: 4px solid var(--np-border); padding: 1rem 1.5rem; margin-bottom: 1.5rem; background: var(--surface); border-radius: 0 8px 8px 0; }
+  .error-item .q-header { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.75rem; flex-wrap: wrap; }
+  .error-item .q-num { font-weight: 700; font-size: 1.1rem; color: var(--text); }
+  .error-item .tag { font-size: 0.7rem; padding: 0.15rem 0.5rem; border-radius: 4px; background: var(--blue-bg); color: var(--blue); border: 1px solid var(--blue-border); }
+  .error-item .pts { margin-left: auto; font-weight: 700; color: var(--np-text); }
+  .error-item .comparison { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 0.75rem 0; }
+  .error-item .answer-box { padding: 0.75rem; border-radius: 6px; font-size: 0.9rem; }
+  .error-item .answer-box.kai     { background: var(--np-bg); border: 1px solid var(--np-border); }
+  .error-item .answer-box.correct { background: var(--p-bg);  border: 1px solid var(--p-border); }
+  .error-item .answer-box .label { font-size: 0.7rem; text-transform: uppercase; font-weight: 700; margin-bottom: 0.25rem; }
+  .error-item .answer-box.kai     .label { color: var(--np-text); }
+  .error-item .answer-box.correct .label { color: var(--p-text); }
+  .error-item .analysis { margin-top: 0.75rem; padding: 0.75rem; background: var(--amber-bg); border: 1px solid var(--amber-border); border-radius: 6px; font-size: 0.85rem; }
+  .error-item .analysis .label { color: var(--amber); font-size: 0.7rem; text-transform: uppercase; font-weight: 700; margin-bottom: 0.25rem; }
+
+  .strengths-header { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--p-text); border-bottom: 1px solid var(--p-border); padding-bottom: 0.5rem; margin-bottom: 1rem; margin-top: 2.5rem; }
+  .strength-item { padding: 0.5rem 0; font-size: 0.9rem; color: var(--subtext); }
+  .strength-item strong { color: var(--text); }
+
+  .plan-header { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--blue); border-bottom: 1px solid var(--border); padding-bottom: 0.5rem; margin-bottom: 1rem; margin-top: 2.5rem; }
+  .plan-item { padding: 0.6rem 0; font-size: 0.9rem; border-bottom: 1px solid var(--border2); color: var(--text); }
+  .plan-item:last-child { border-bottom: none; }
+</style>
+</head>
+<body>
+
+<h1>Chemistry Unit 5 Quiz A</h1>
+<p class="subtitle">Kai Ash &bull; VSEPR Theory: 5.1.1 &bull; 5.1.2 &bull; 5.1.3 &bull; 2026-06-03</p>
+
+<div class="score-row">
+  <div class="score-card">
+    <div class="label">Overall Score</div>
+    <div class="value pass">82%</div>
+    <div class="detail">41 / 50 pts</div>
+  </div>
+  <div class="score-card">
+    <div class="label">5.1.1 Bonding / Lone Pairs</div>
+    <div class="value pass">87.5%</div>
+    <div class="detail">14 / 16 pts</div>
+  </div>
+  <div class="score-card">
+    <div class="label">5.1.2 Shape Names</div>
+    <div class="value warn">68.75%</div>
+    <div class="detail">11 / 16 pts</div>
+  </div>
+  <div class="score-card">
+    <div class="label">5.1.3 3-D Drawing</div>
+    <div class="value pass">88.9%</div>
+    <div class="detail">16 / 18 pts</div>
+  </div>
+</div>
+
+<div class="highlight-box warn">
+  <div class="tag">GOOD WORK — ONE STANDARD NOT YET MASTERED</div>
+  <h2>2 of 3 standards passed. Shape naming needs focused drilling.</h2>
+  <p>Kai demonstrated strong mastery of bonding sites/lone pairs and 3-D drawing. The gap is in shape naming under pressure: two errors (Q5a and Q6-H<sub>2</sub>O) cost 4 points and pushed 5.1.2 below the mastery threshold. One of those errors was almost certainly careless — Kai correctly named NH<sub>3</sub> as Trigonal Pyramidal in the very next question. Once H<sub>2</sub>O's shape is locked in, this standard clears easily.</p>
+</div>
+
+<!-- Standards breakdown -->
+<h3 style="font-size:1rem; margin-bottom:1rem;">Standards Proficiency</h3>
+<table class="standards-table">
+  <thead>
+    <tr><th>Standard</th><th>Description</th><th>Questions</th><th>Score</th><th>Status</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>5.1.1</td>
+      <td>Count bonding sites and lone pairs from a Lewis structure</td>
+      <td>Q1, Q2, Q3a–b</td>
+      <td>14 / 16</td>
+      <td><span class="badge p">Pass</span></td>
+    </tr>
+    <tr>
+      <td>5.1.2</td>
+      <td>Name molecular shape and predict bond angles from electron domains</td>
+      <td>Q3c, Q4, Q5, Q6</td>
+      <td>11 / 16</td>
+      <td><span class="badge m">Not Yet</span></td>
+    </tr>
+    <tr>
+      <td>5.1.3</td>
+      <td>Draw 3-D molecular structures using wedge/dash/regular bonds</td>
+      <td>Q7, Q8</td>
+      <td>16 / 18</td>
+      <td><span class="badge p">Pass</span></td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="sections-row">
+  <div class="section-card">
+    <div class="name">5.1.1 Bonding Sites &amp; Lone Pairs</div>
+    <div class="score" style="color:var(--green);">14 / 16</div>
+    <div class="pct">87.5% &mdash; Pass</div>
+    <div class="bar"><div class="bar-fill perfect" style="width:87.5%"></div></div>
+  </div>
+  <div class="section-card">
+    <div class="name">5.1.2 Shape Names &amp; Angles</div>
+    <div class="score" style="color:var(--amber);">11 / 16</div>
+    <div class="pct">68.75% &mdash; Not Yet</div>
+    <div class="bar"><div class="bar-fill good" style="width:68.75%"></div></div>
+  </div>
+  <div class="section-card">
+    <div class="name">5.1.3 3-D Drawing</div>
+    <div class="score" style="color:var(--green);">16 / 18</div>
+    <div class="pct">88.9% &mdash; Pass</div>
+    <div class="bar"><div class="bar-fill perfect" style="width:88.9%"></div></div>
+  </div>
+</div>
+
+<div class="errors-header">KEY ERRORS &mdash; DETAILED ANALYSIS</div>
+
+<!-- Error 1: Q6 H2O shape -->
+<div class="error-item">
+  <div class="q-header">
+    <span class="q-num">Q6 &mdash; H<sub>2</sub>O Shape (Table)</span>
+    <span class="tag">5.1.2 shape names</span>
+    <span class="tag">conceptual gap</span>
+    <span class="pts">&minus;2 pts</span>
+  </div>
+  <p style="font-size:0.9rem;margin-bottom:0.75rem;">Q6 table row: H<sub>2</sub>O has 2 bonding sites and 2 lone pairs. Name the molecular shape.</p>
+  <div class="comparison">
+    <div class="answer-box kai">
+      <div class="label">Kai's Answer</div>
+      Linear
+    </div>
+    <div class="answer-box correct">
+      <div class="label">Correct Answer</div>
+      Tetrahedral Bent (or Bent)
+    </div>
+  </div>
+  <div class="analysis">
+    <div class="label">Root Cause</div>
+    Linear is the shape for 2 bonding sites with <em>zero</em> lone pairs. H<sub>2</sub>O has 2 lone pairs that push the two H atoms into a bent geometry. The lone pairs compress the angle to ~104.5°. This is distinct from "linear" (180°) because the electron domain geometry is tetrahedral, not linear. The shape name "Tetrahedral Bent" or simply "Bent" comes from counting only the atom positions, not the lone pairs. This is the most important conceptual fix before Quiz B.
+  </div>
+</div>
+
+<!-- Error 2: Q5a shape name -->
+<div class="error-item">
+  <div class="q-header">
+    <span class="q-num">Q5a &mdash; 3 Bonds + 1 Lone Pair Shape</span>
+    <span class="tag">5.1.2 shape names</span>
+    <span class="tag">likely careless</span>
+    <span class="pts">&minus;2 pts</span>
+  </div>
+  <p style="font-size:0.9rem;margin-bottom:0.75rem;">Q5a: A central atom with 3 bonding sites and 1 lone pair — name the molecular shape.</p>
+  <div class="comparison">
+    <div class="answer-box kai">
+      <div class="label">Kai's Answer</div>
+      Trigonal Planar
+    </div>
+    <div class="answer-box correct">
+      <div class="label">Correct Answer</div>
+      Trigonal Pyramidal
+    </div>
+  </div>
+  <div class="analysis">
+    <div class="label">Root Cause</div>
+    Likely a careless read: Kai answered "Trigonal Planar" here but correctly wrote "Trigonal Pyramidal" for NH<sub>3</sub> in Q6 two questions later — NH<sub>3</sub> is exactly this molecule. Trigonal Planar is 3 bonds + 0 lone pairs (BF<sub>3</sub>, SO<sub>3</sub>). The lone pair in Trigonal Pyramidal pushes the three bonding pairs down, making the molecule look like a triangular base with the central atom sitting above it — like a pyramid. This is not flat (planar).
+  </div>
+</div>
+
+<!-- Error 3: Q3c incomplete SO2/SO3 comparison -->
+<div class="error-item">
+  <div class="q-header">
+    <span class="q-num">Q3c &mdash; SO<sub>2</sub> vs SO<sub>3</sub> Explanation</span>
+    <span class="tag">5.1.1 explanation</span>
+    <span class="tag">incomplete</span>
+    <span class="pts">&minus;2 pts</span>
+  </div>
+  <p style="font-size:0.9rem;margin-bottom:0.75rem;">Q3c: How does SO<sub>2</sub>'s electron domain geometry make it different from SO<sub>3</sub>?</p>
+  <div class="comparison">
+    <div class="answer-box kai">
+      <div class="label">Kai's Answer</div>
+      "SO<sub>2</sub> only has 2 bonding sites"
+    </div>
+    <div class="answer-box correct">
+      <div class="label">Full Answer</div>
+      SO<sub>2</sub> has 2 bonding sites + 1 lone pair &rarr; Trigonal Planar Bent (~119°). SO<sub>3</sub> has 3 bonding sites + 0 lone pairs &rarr; Trigonal Planar (120°). The lone pair in SO<sub>2</sub> changes the shape and compresses the angle.
+    </div>
+  </div>
+  <div class="analysis">
+    <div class="label">Root Cause</div>
+    Kai identified the bonding-site difference but didn't connect it to the shape consequence. The full answer must name: (1) that S in SO<sub>2</sub> has a lone pair, (2) the different molecular shapes ("Trigonal Planar Bent" vs. "Trigonal Planar"), and (3) the angle difference (&lt;120° vs. 120°). The rule: same number of electron domains can give different shapes depending on how many are lone pairs vs. bonds.
+  </div>
+</div>
+
+<!-- Error 4: Q4b angle -->
+<div class="error-item">
+  <div class="q-header">
+    <span class="q-num">Q4b &mdash; Tetrahedral Bond Angle</span>
+    <span class="tag">5.1.2 bond angles</span>
+    <span class="pts">&minus;1 pt</span>
+  </div>
+  <p style="font-size:0.9rem;margin-bottom:0.75rem;">Q4b fill-in: 4 bonding sites, 0 lone pairs &rarr; shape and bond angle.</p>
+  <div class="comparison">
+    <div class="answer-box kai">
+      <div class="label">Kai's Answer</div>
+      Tetrahedral, 107°
+    </div>
+    <div class="answer-box correct">
+      <div class="label">Correct Answer</div>
+      Tetrahedral, 109.5°
+    </div>
+  </div>
+  <div class="analysis">
+    <div class="label">Root Cause</div>
+    107° is the bond angle for <em>Trigonal Pyramidal</em> (4 electron domains, but 1 is a lone pair). The ideal <em>Tetrahedral</em> angle is 109.5°. Memorizing the two different angles and why they differ is key: 109.5° (perfect tetrahedral, no LP compression) vs. ~107° (LP pushes bonds slightly closer). Shape name is correct — shape and angle are one package to memorize together.
+  </div>
+</div>
+
+<!-- Error 5: Q8 explanation incomplete -->
+<div class="error-item">
+  <div class="q-header">
+    <span class="q-num">Q8 &mdash; NH<sub>3</sub> 3-D Drawing &amp; Explanation</span>
+    <span class="tag">5.1.3 drawing + explanation</span>
+    <span class="pts">&minus;2 pts</span>
+  </div>
+  <p style="font-size:0.9rem;margin-bottom:0.75rem;">Q8: Draw NH<sub>3</sub> in 3-D with wedge/dash/regular bonds. Explain why the shape is pyramidal and not tetrahedral.</p>
+  <div class="comparison">
+    <div class="answer-box kai">
+      <div class="label">Kai's Explanation</div>
+      "NH<sub>3</sub> is pyramidal instead of tetrahedral bc the lone pair on nitrogen pushes the three bonding pairs down, changing the shape"
+    </div>
+    <div class="answer-box correct">
+      <div class="label">Full Rubric Answer</div>
+      (1) Lone pair is present on N &mdash; ✓<br>
+      (2) Shape is named by <em>atom positions only</em> (3 H atoms = pyramid base) &mdash; missing<br>
+      (3) Shape name stated (trigonal pyramidal) &mdash; ✓
+    </div>
+  </div>
+  <div class="analysis">
+    <div class="label">Root Cause</div>
+    Kai earned 2 of 3 explanation points. The missing claim is the concept that molecular shape is determined by where the <em>atoms</em> are, not where the lone pairs are. The lone pair occupies space but is invisible in the shape name. Kai described the lone pair's mechanical effect ("pushes bonds down") which is correct — but the rubric also requires making explicit that we name the shape only from the three H atom positions, which form a triangular pyramid base.
+  </div>
+</div>
+
+<div class="strengths-header">WHAT KAI DID RIGHT</div>
+<div class="strength-item"><strong>Bonding Sites &amp; Lone Pairs (Q1, Q2, Q3a–b):</strong> Perfect 14/14 on the core counting questions. BF<sub>3</sub>, H<sub>2</sub>O, and SO<sub>2</sub> all correct — including SO<sub>2</sub>'s lone pair on S, which trips up many students.</div>
+<div class="strength-item"><strong>Q5b–c &mdash; Trigonal Pyramidal Angle &amp; Explanation:</strong> Got the angle (107°) right and gave an accurate, complete explanation of lone-pair repulsion — even after incorrectly naming the shape in Q5a. Shows the concept is there.</div>
+<div class="strength-item"><strong>Q6 CH<sub>4</sub> and NH<sub>3</sub>:</strong> Both rows of the table correct, including correctly naming NH<sub>3</sub> as Trigonal Pyramidal — the same shape Kai missed in Q5a. Strong conceptual understanding; Q5a was almost certainly a careless read.</div>
+<div class="strength-item"><strong>Q7 CH<sub>4</sub> 3-D Drawing:</strong> Perfect 8/8. All bond types (wedge, dash, regular) placed correctly; H atoms at each end. This is the hardest drawing question and Kai nailed it.</div>
+<div class="strength-item"><strong>Q8 NH<sub>3</sub> Drawing:</strong> Solid pyramidal structure with bond types distinguished and lone pair shown. The explanation was 2/3 — loses a point on one concept but the chemistry thinking is clearly there.</div>
+
+<div class="plan-header">PRACTICE PLAN — BEFORE QUIZ B</div>
+<div class="plan-item"><strong>Priority 1: H<sub>2</sub>O is BENT, not Linear.</strong> &mdash; 2 bonds + 2 lone pairs = Tetrahedral Bent (~104.5°). Make this a flashcard. The rule: "if it has lone pairs, the shape is not what the electron domains suggest." Drill this molecule until it's automatic.</div>
+<div class="plan-item"><strong>Priority 2: Tetrahedral angle = 109.5°, Trig Pyramidal = ~107°.</strong> &mdash; Memorize as a pair. 109.5° is the "ideal" 4-domain angle with no lone pair pushing. 107° is what you get when 1 lone pair compresses it. Both shapes have 4 electron domains; only the name and angle differ because of the lone pair count.</div>
+<div class="plan-item"><strong>Priority 3: Shape explanation must state "atom positions only."</strong> &mdash; When asked to explain why a shape is named a certain way, always say: "Molecular shape is named by where the atoms are, not where the lone pairs are." Then explain the lone pair's mechanical effect. Both pieces must be present.</div>
+<div class="plan-item"><strong>Priority 4: SO<sub>2</sub> vs SO<sub>3</sub> &mdash; connect bonding sites to shape consequence.</strong> &mdash; Different lone pair count → different shapes AND different angles. When the question asks "how is X different from Y," always include: bonding sites, lone pairs, shape name, and angle.</div>
+<div class="plan-item"><strong>Quiz B prep note:</strong> Quiz B covers the same 3 standards using CF<sub>4</sub>, H<sub>2</sub>S, and NH<sub>3</sub>. H<sub>2</sub>S is analogous to H<sub>2</sub>O: 2 bonds + 2 lone pairs = Bent (~92° real value, ~104.5° VSEPR table). Locking in the H<sub>2</sub>O/H<sub>2</sub>S pattern clears the main risk.</div>
+
+</body>
+</html>
