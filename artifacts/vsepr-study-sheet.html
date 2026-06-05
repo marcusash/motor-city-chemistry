@@ -228,12 +228,12 @@
       <table>
         <tr><td class="sym"><svg viewBox="0 0 40 10" width="36" height="10"><line x1="2" y1="5" x2="38" y2="5" stroke="#000" stroke-width="1.4"/></svg></td><td>Straight line &mdash; bond in the page</td></tr>
         <tr><td class="sym"><svg viewBox="0 0 40 14" width="36" height="14"><polygon points="4,7 38,2 38,12" fill="#000"/></svg></td><td>Filled wedge &mdash; bond toward you</td></tr>
-        <tr><td class="sym"><svg viewBox="0 0 40 14" width="36" height="14"><polygon points="4,2 4,12 38,7" fill="#000"/></svg></td><td>Filled reverse wedge &mdash; bond behind page</td></tr>
+        <tr><td class="sym"><svg viewBox="0 0 40 14" width="36" height="14"><g transform="translate(4,7) rotate(0)"><line x1="6" y1="-1" x2="6" y2="1" stroke="#000" stroke-width="1.2"/><line x1="12" y1="-1.7" x2="12" y2="1.7" stroke="#000" stroke-width="1.2"/><line x1="18" y1="-2.4" x2="18" y2="2.4" stroke="#000" stroke-width="1.2"/><line x1="24" y1="-3.1" x2="24" y2="3.1" stroke="#000" stroke-width="1.2"/><line x1="30" y1="-3.8" x2="30" y2="3.8" stroke="#000" stroke-width="1.2"/><line x1="34" y1="-4.3" x2="34" y2="4.3" stroke="#000" stroke-width="1.2"/></g></svg></td><td>Hashed (shaded) wedge &mdash; bond behind page</td></tr>
         <tr><td class="sym"><svg viewBox="0 0 40 10" width="36" height="10"><line x1="2" y1="3" x2="38" y2="3" stroke="#000" stroke-width="1.2"/><line x1="2" y1="7" x2="38" y2="7" stroke="#000" stroke-width="1.2"/></svg></td><td>Two parallel lines &mdash; double bond</td></tr>
         <tr><td class="sym"><svg viewBox="0 0 40 12" width="36" height="12"><line x1="2" y1="2" x2="38" y2="2" stroke="#000" stroke-width="1.1"/><line x1="2" y1="6" x2="38" y2="6" stroke="#000" stroke-width="1.1"/><line x1="2" y1="10" x2="38" y2="10" stroke="#000" stroke-width="1.1"/></svg></td><td>Three parallel lines &mdash; triple bond</td></tr>
         <tr><td class="sym"><svg viewBox="0 0 40 10" width="36" height="10"><circle cx="16" cy="5" r="1.8" fill="#000"/><circle cx="24" cy="5" r="1.8" fill="#000"/></svg></td><td>Pair of dots &mdash; lone pair</td></tr>
       </table>
-      <div class="note">For this class: use a reversed solid wedge for &ldquo;behind,&rdquo; not a dashed wedge.</div>
+      <div class="note">For this class: bond going behind the page is drawn as a hashed (shaded) wedge &mdash; parallel bars perpendicular to the bond, wider at the outer atom.</div>
     </div>
   </section>
 
@@ -312,8 +312,15 @@
         <line x1="100" y1="55" x2="138" y2="22" stroke="#000" stroke-width="1.4"/>
         <!-- wedge toward viewer: down-right (filled wedge, narrow at C wide at H) -->
         <polygon points="100,55 152,88 144,94" fill="#000"/>
-        <!-- reverse wedge behind: down-left (wide at C, narrow at H) -->
-        <polygon points="94,49 106,61 56,90" fill="#000"/>
+        <!-- hashed wedge behind: down-left toward (52,92), angle ~142.4 deg -->
+        <g transform="translate(100,55) rotate(142.4)">
+          <line x1="12" y1="-1.0" x2="12" y2="1.0" stroke="#000" stroke-width="1.1"/>
+          <line x1="21" y1="-1.75" x2="21" y2="1.75" stroke="#000" stroke-width="1.1"/>
+          <line x1="30" y1="-2.5" x2="30" y2="2.5" stroke="#000" stroke-width="1.1"/>
+          <line x1="39" y1="-3.25" x2="39" y2="3.25" stroke="#000" stroke-width="1.1"/>
+          <line x1="48" y1="-4.0" x2="48" y2="4.0" stroke="#000" stroke-width="1.1"/>
+          <line x1="55" y1="-4.6" x2="55" y2="4.6" stroke="#000" stroke-width="1.1"/>
+        </g>
         <!-- C center -->
         <circle cx="100" cy="55" r="11" fill="#fff" stroke="#000" stroke-width="1.2"/>
         <text x="100" y="59" text-anchor="middle" font-size="13" font-weight="700">C</text>
@@ -352,8 +359,15 @@
         <line x1="100" y1="55" x2="100" y2="86" stroke="#000" stroke-width="1.4"/>
         <!-- wedge toward viewer: down-right -->
         <polygon points="100,55 152,82 144,88" fill="#000"/>
-        <!-- reverse wedge behind: down-left -->
-        <polygon points="94,49 106,61 56,84" fill="#000"/>
+        <!-- hashed wedge behind: down-left toward (56,84), angle ~146.6 deg -->
+        <g transform="translate(100,55) rotate(146.6)">
+          <line x1="11" y1="-0.9" x2="11" y2="0.9" stroke="#000" stroke-width="1.1"/>
+          <line x1="19" y1="-1.6" x2="19" y2="1.6" stroke="#000" stroke-width="1.1"/>
+          <line x1="27" y1="-2.3" x2="27" y2="2.3" stroke="#000" stroke-width="1.1"/>
+          <line x1="34" y1="-3.0" x2="34" y2="3.0" stroke="#000" stroke-width="1.1"/>
+          <line x1="41" y1="-3.6" x2="41" y2="3.6" stroke="#000" stroke-width="1.1"/>
+          <line x1="48" y1="-4.2" x2="48" y2="4.2" stroke="#000" stroke-width="1.1"/>
+        </g>
         <!-- N center -->
         <circle cx="100" cy="55" r="11" fill="#fff" stroke="#000" stroke-width="1.2"/>
         <text x="100" y="59" text-anchor="middle" font-size="13" font-weight="700">N</text>
@@ -459,7 +473,14 @@
             <line x1="50" y1="32" x2="22" y2="12" stroke="#000" stroke-width="1.2"/>
             <line x1="50" y1="32" x2="78" y2="12" stroke="#000" stroke-width="1.2"/>
             <polygon points="50,32 86,52 80,56" fill="#000"/>
-            <polygon points="46,28 54,36 20,54" fill="#000"/>
+            <g transform="translate(50,32) rotate(143.7)">
+              <line x1="7" y1="-0.6" x2="7" y2="0.6" stroke="#000" stroke-width="0.9"/>
+              <line x1="13" y1="-1.1" x2="13" y2="1.1" stroke="#000" stroke-width="0.9"/>
+              <line x1="19" y1="-1.6" x2="19" y2="1.6" stroke="#000" stroke-width="0.9"/>
+              <line x1="25" y1="-2.1" x2="25" y2="2.1" stroke="#000" stroke-width="0.9"/>
+              <line x1="31" y1="-2.6" x2="31" y2="2.6" stroke="#000" stroke-width="0.9"/>
+              <line x1="35" y1="-2.95" x2="35" y2="2.95" stroke="#000" stroke-width="0.9"/>
+            </g>
             <circle cx="50" cy="32" r="7" fill="#fff" stroke="#000" stroke-width="1"/>
             <text x="50" y="35" text-anchor="middle" font-size="8" font-weight="700">C</text>
           </svg>
@@ -472,7 +493,14 @@
             <circle cx="54" cy="6" r="1.5" fill="#000"/>
             <line x1="50" y1="32" x2="50" y2="54" stroke="#000" stroke-width="1.2"/>
             <polygon points="50,32 84,48 78,52" fill="#000"/>
-            <polygon points="46,28 54,36 22,50" fill="#000"/>
+            <g transform="translate(50,32) rotate(147.3)">
+              <line x1="6" y1="-0.5" x2="6" y2="0.5" stroke="#000" stroke-width="0.9"/>
+              <line x1="12" y1="-1.0" x2="12" y2="1.0" stroke="#000" stroke-width="0.9"/>
+              <line x1="17" y1="-1.4" x2="17" y2="1.4" stroke="#000" stroke-width="0.9"/>
+              <line x1="22" y1="-1.9" x2="22" y2="1.9" stroke="#000" stroke-width="0.9"/>
+              <line x1="27" y1="-2.3" x2="27" y2="2.3" stroke="#000" stroke-width="0.9"/>
+              <line x1="31" y1="-2.6" x2="31" y2="2.6" stroke="#000" stroke-width="0.9"/>
+            </g>
             <circle cx="50" cy="32" r="7" fill="#fff" stroke="#000" stroke-width="1"/>
             <text x="50" y="35" text-anchor="middle" font-size="8" font-weight="700">N</text>
           </svg>
