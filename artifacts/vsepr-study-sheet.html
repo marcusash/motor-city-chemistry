@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>VSEPR Study Sheet</title>
+<style>
+  @page { size: letter landscape; margin: 0.35in; }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    color: #000;
+    background: #fff;
+    font-size: 9.5pt;
+    line-height: 1.25;
+  }
+  .page {
+    width: 10.3in;
+    height: 7.8in;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    gap: 8px;
+  }
+
+  /* ===== TOP ROW ===== */
+  .top {
+    display: grid;
+    grid-template-columns: 1.4fr 2fr 1.6fr;
+    gap: 10px;
+    align-items: stretch;
+  }
+  .title-block {
+    border: 2px solid #000;
+    padding: 8px 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .title-block h1 {
+    font-size: 18pt;
+    line-height: 1;
+    letter-spacing: 0.5px;
+  }
+  .title-block .sub {
+    font-size: 8.5pt;
+    margin-top: 4px;
+    color: #333;
+  }
+  .panel {
+    border: 1px solid #000;
+    padding: 6px 9px;
+  }
+  .panel h2 {
+    font-size: 9pt;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    border-bottom: 1px solid #000;
+    padding-bottom: 2px;
+    margin-bottom: 4px;
+  }
+  .rules ol {
+    margin-left: 14px;
+    font-size: 8.4pt;
+    line-height: 1.3;
+  }
+  .legend table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 8.3pt;
+  }
+  .legend td {
+    padding: 1px 4px;
+    vertical-align: middle;
+    border-bottom: 1px dotted #aaa;
+  }
+  .legend td.sym {
+    width: 38px;
+    text-align: center;
+  }
+  .legend .note {
+    margin-top: 4px;
+    font-size: 7.8pt;
+    font-style: italic;
+    color: #222;
+  }
+
+  /* ===== MIDDLE ROW (6 cards) ===== */
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 6px;
+  }
+  .card {
+    border: 1px solid #000;
+    padding: 5px 6px 4px;
+    display: flex;
+    flex-direction: column;
+  }
+  .card h3 {
+    font-size: 9.5pt;
+    line-height: 1.05;
+  }
+  .card .ex {
+    font-size: 8.5pt;
+    color: #222;
+    margin-bottom: 2px;
+  }
+  .card svg {
+    width: 100%;
+    height: 85px;
+    display: block;
+    margin: 2px 0;
+  }
+  .card .angle {
+    text-align: center;
+    font-weight: 700;
+    font-size: 11pt;
+    margin: 2px 0 3px;
+  }
+  .card dl {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 0 6px;
+    font-size: 7.8pt;
+    line-height: 1.25;
+  }
+  .card dt { color: #444; }
+  .card dd { font-weight: 600; }
+  .card .ann {
+    font-size: 7.6pt;
+    font-style: italic;
+    color: #222;
+    margin-top: 3px;
+    border-top: 1px dotted #999;
+    padding-top: 2px;
+  }
+
+  /* ===== BOTTOM ROW ===== */
+  .bottom {
+    display: grid;
+    grid-template-columns: 2.1fr 1fr;
+    gap: 10px;
+  }
+  .compress {
+    border: 2px solid #000;
+    padding: 6px 10px 8px;
+  }
+  .compress h2 {
+    font-size: 10pt;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+  }
+  .compress-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    align-items: center;
+    text-align: center;
+    margin-top: 4px;
+  }
+  .compress-row .mini {
+    font-size: 8.5pt;
+  }
+  .compress-row .mini .deg {
+    font-weight: 700;
+    font-size: 14pt;
+    display: block;
+    margin-top: 2px;
+  }
+  .arrow {
+    position: relative;
+    text-align: center;
+    margin-top: 4px;
+    font-size: 8pt;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .arrow svg { display: block; width: 100%; height: 18px; }
+  .compress .caption {
+    text-align: center;
+    margin-top: 4px;
+    font-size: 8.5pt;
+    font-style: italic;
+  }
+  .regions h2 {
+    font-size: 9pt;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    border-bottom: 1px solid #000;
+    padding-bottom: 2px;
+    margin-bottom: 4px;
+  }
+  .regions ul {
+    list-style: none;
+    font-size: 8.2pt;
+    line-height: 1.35;
+  }
+  .regions li::before {
+    content: "▸ ";
+    color: #000;
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- ===== TOP ROW ===== -->
+  <section class="top">
+    <div class="title-block">
+      <h1>VSEPR Geometry</h1>
+      <div class="sub">Shapes, lone pairs, and bond angles &mdash; one-page reference</div>
+      <div class="sub" style="margin-top:6px;font-size:7.8pt;">Motor City Chemistry &middot; Exam Prep</div>
+    </div>
+
+    <div class="panel rules">
+      <h2>Core VSEPR Rules</h2>
+      <ol>
+        <li>Electron groups repel and spread as far apart as possible.</li>
+        <li>Single, double, and triple bonds each count as one electron region.</li>
+        <li>Lone pairs only affect geometry when they sit on the central atom.</li>
+        <li>Lone pairs repel more strongly than bonding pairs.</li>
+        <li>More lone pairs &rarr; more compression &rarr; smaller bond angles.</li>
+        <li>Electron geometry counts bonds <em>and</em> lone pairs.</li>
+        <li>Molecular geometry is the visible arrangement of atoms only.</li>
+      </ol>
+    </div>
+
+    <div class="panel legend">
+      <h2>Bond Notation Legend</h2>
+      <table>
+        <tr><td class="sym"><svg viewBox="0 0 40 10" width="36" height="10"><line x1="2" y1="5" x2="38" y2="5" stroke="#000" stroke-width="1.4"/></svg></td><td>Straight line &mdash; bond in the page</td></tr>
+        <tr><td class="sym"><svg viewBox="0 0 40 14" width="36" height="14"><polygon points="4,7 38,2 38,12" fill="#000"/></svg></td><td>Filled wedge &mdash; bond toward you</td></tr>
+        <tr><td class="sym"><svg viewBox="0 0 40 14" width="36" height="14"><polygon points="4,2 4,12 38,7" fill="#000"/></svg></td><td>Filled reverse wedge &mdash; bond behind page</td></tr>
+        <tr><td class="sym"><svg viewBox="0 0 40 10" width="36" height="10"><line x1="2" y1="3" x2="38" y2="3" stroke="#000" stroke-width="1.2"/><line x1="2" y1="7" x2="38" y2="7" stroke="#000" stroke-width="1.2"/></svg></td><td>Two parallel lines &mdash; double bond</td></tr>
+        <tr><td class="sym"><svg viewBox="0 0 40 12" width="36" height="12"><line x1="2" y1="2" x2="38" y2="2" stroke="#000" stroke-width="1.1"/><line x1="2" y1="6" x2="38" y2="6" stroke="#000" stroke-width="1.1"/><line x1="2" y1="10" x2="38" y2="10" stroke="#000" stroke-width="1.1"/></svg></td><td>Three parallel lines &mdash; triple bond</td></tr>
+        <tr><td class="sym"><svg viewBox="0 0 40 10" width="36" height="10"><circle cx="16" cy="5" r="1.8" fill="#000"/><circle cx="24" cy="5" r="1.8" fill="#000"/></svg></td><td>Pair of dots &mdash; lone pair</td></tr>
+      </table>
+      <div class="note">For this class: use a reversed solid wedge for &ldquo;behind,&rdquo; not a dashed wedge.</div>
+    </div>
+  </section>
+
+  <!-- ===== MIDDLE ROW: 6 MOLECULES ===== -->
+  <section class="cards">
+
+    <!-- CO2 LINEAR -->
+    <div class="card">
+      <h3>Linear</h3>
+      <div class="ex">Example: CO<sub>2</sub></div>
+      <svg viewBox="0 0 200 100" preserveAspectRatio="xMidYMid meet">
+        <!-- left O=C -->
+        <line x1="35" y1="46" x2="90" y2="46" stroke="#000" stroke-width="1.6"/>
+        <line x1="35" y1="54" x2="90" y2="54" stroke="#000" stroke-width="1.6"/>
+        <!-- right C=O -->
+        <line x1="110" y1="46" x2="165" y2="46" stroke="#000" stroke-width="1.6"/>
+        <line x1="110" y1="54" x2="165" y2="54" stroke="#000" stroke-width="1.6"/>
+        <!-- atoms -->
+        <circle cx="25" cy="50" r="11" fill="#fff" stroke="#000" stroke-width="1.2"/>
+        <text x="25" y="54" text-anchor="middle" font-size="13" font-weight="700">O</text>
+        <circle cx="100" cy="50" r="11" fill="#fff" stroke="#000" stroke-width="1.2"/>
+        <text x="100" y="54" text-anchor="middle" font-size="13" font-weight="700">C</text>
+        <circle cx="175" cy="50" r="11" fill="#fff" stroke="#000" stroke-width="1.2"/>
+        <text x="175" y="54" text-anchor="middle" font-size="13" font-weight="700">O</text>
+      </svg>
+      <div class="angle">180&deg;</div>
+      <dl>
+        <dt>Sites</dt><dd>2</dd>
+        <dt>LP (center)</dt><dd>0</dd>
+        <dt>e&minus; regions</dt><dd>2</dd>
+        <dt>e&minus; geom</dt><dd>Linear</dd>
+        <dt>Mol. geom</dt><dd>Linear</dd>
+      </dl>
+      <div class="ann">Two electron regions around C spread opposite each other.</div>
+    </div>
+
+    <!-- BF3 TRIGONAL PLANAR -->
+    <div class="card">
+      <h3>Trigonal Planar</h3>
+      <div class="ex">Example: BF<sub>3</sub></div>
+      <svg viewBox="0 0 200 100" preserveAspectRatio="xMidYMid meet">
+        <!-- three bonds from center (100,55): up, down-left, down-right -->
+        <line x1="100" y1="55" x2="100" y2="18" stroke="#000" stroke-width="1.4"/>
+        <line x1="100" y1="55" x2="62" y2="80" stroke="#000" stroke-width="1.4"/>
+        <line x1="100" y1="55" x2="138" y2="80" stroke="#000" stroke-width="1.4"/>
+        <!-- B center -->
+        <circle cx="100" cy="55" r="11" fill="#fff" stroke="#000" stroke-width="1.2"/>
+        <text x="100" y="59" text-anchor="middle" font-size="13" font-weight="700">B</text>
+        <!-- F atoms -->
+        <circle cx="100" cy="14" r="11" fill="#fff" stroke="#000" stroke-width="1.2"/>
+        <text x="100" y="18" text-anchor="middle" font-size="13" font-weight="700">F</text>
+        <circle cx="58" cy="84" r="11" fill="#fff" stroke="#000" stroke-width="1.2"/>
+        <text x="58" y="88" text-anchor="middle" font-size="13" font-weight="700">F</text>
+        <circle cx="142" cy="84" r="11" fill="#fff" stroke="#000" stroke-width="1.2"/>
+        <text x="142" y="88" text-anchor="middle" font-size="13" font-weight="700">F</text>
+      </svg>
+      <div class="angle">120&deg;</div>
+      <dl>
+        <dt>Sites</dt><dd>3</dd>
+        <dt>LP (center)</dt><dd>0</dd>
+        <dt>e&minus; regions</dt><dd>3</dd>
+        <dt>e&minus; geom</dt><dd>Trig. planar</dd>
+        <dt>Mol. geom</dt><dd>Trig. planar</dd>
+      </dl>
+      <div class="ann">Three bonding regions spread evenly in one plane.</div>
+    </div>
+
+    <!-- CH4 TETRAHEDRAL -->
+    <div class="card">
+      <h3>Tetrahedral</h3>
+      <div class="ex">Example: CH<sub>4</sub></div>
+      <svg viewBox="0 0 200 100" preserveAspectRatio="xMidYMid meet">
+        <!-- center C at (100,55) -->
+        <!-- in-plane: up-left and up-right -->
+        <line x1="100" y1="55" x2="62" y2="22" stroke="#000" stroke-width="1.4"/>
+        <line x1="100" y1="55" x2="138" y2="22" stroke="#000" stroke-width="1.4"/>
+        <!-- wedge toward viewer: down-right (filled wedge, narrow at C wide at H) -->
+        <polygon points="100,55 152,88 144,94" fill="#000"/>
+        <!-- reverse wedge behind: down-left (wide at C, narrow at H) -->
+        <polygon points="94,49 106,61 56,90" fill="#000"/>
+        <!-- C center -->
+        <circle cx="100" cy="55" r="11" fill="#fff" stroke="#000" stroke-width="1.2"/>
+        <text x="100" y="59" text-anchor="middle" font-size="13" font-weight="700">C</text>
+        <!-- H atoms -->
+        <circle cx="58" cy="18" r="10" fill="#fff" stroke="#000" stroke-width="1.2"/>
+        <text x="58" y="22" text-anchor="middle" font-size="12" font-weight="700">H</text>
+        <circle cx="142" cy="18" r="10" fill="#fff" stroke="#000" stroke-width="1.2"/>
+        <text x="142" y="22" text-anchor="middle" font-size="12" font-weight="700">H</text>
+        <circle cx="156" cy="92" r="10" fill="#fff" stroke="#000" stroke-width="1.2"/>
+        <text x="156" y="96" text-anchor="middle" font-size="12" font-weight="700">H</text>
+        <circle cx="52" cy="92" r="10" fill="#fff" stroke="#000" stroke-width="1.2"/>
+        <text x="52" y="96" text-anchor="middle" font-size="12" font-weight="700">H</text>
+      </svg>
+      <div class="angle">109.5&deg;</div>
+      <dl>
+        <dt>Sites</dt><dd>4</dd>
+        <dt>LP (center)</dt><dd>0</dd>
+        <dt>e&minus; regions</dt><dd>4</dd>
+        <dt>e&minus; geom</dt><dd>Tetrahedral</dd>
+        <dt>Mol. geom</dt><dd>Tetrahedral</dd>
+      </dl>
+      <div class="ann">Four bonding regions maximize separation in 3D.</div>
+    </div>
+
+    <!-- NH3 TRIGONAL PYRAMIDAL -->
+    <div class="card">
+      <h3>Trig. Pyramidal</h3>
+      <div class="ex">Example: NH<sub>3</sub></div>
+      <svg viewBox="0 0 200 100" preserveAspectRatio="xMidYMid meet">
+        <!-- N center at (100,55) -->
+        <!-- lone pair above N -->
+        <circle cx="94" cy="22" r="2.2" fill="#000"/>
+        <circle cx="106" cy="22" r="2.2" fill="#000"/>
+        <line x1="100" y1="55" x2="100" y2="30" stroke="#000" stroke-width="0.7" stroke-dasharray="0"/>
+        <!-- in-plane bond down -->
+        <line x1="100" y1="55" x2="100" y2="86" stroke="#000" stroke-width="1.4"/>
+        <!-- wedge toward viewer: down-right -->
+        <polygon points="100,55 152,82 144,88" fill="#000"/>
+        <!-- reverse wedge behind: down-left -->
+        <polygon points="94,49 106,61 56,84" fill="#000"/>
+        <!-- N center -->
+        <circle cx="100" cy="55" r="11" fill="#fff" stroke="#000" stroke-width="1.2"/>
+        <text x="100" y="59" text-anchor="middle" font-size="13" font-weight="700">N</text>
+        <!-- H atoms -->
+        <circle cx="100" cy="90" r="10" fill="#fff" stroke="#000" stroke-width="1.2"/>
+        <text x="100" y="94" text-anchor="middle" font-size="12" font-weight="700">H</text>
+        <circle cx="156" cy="86" r="10" fill="#fff" stroke="#000" stroke-width="1.2"/>
+        <text x="156" y="90" text-anchor="middle" font-size="12" font-weight="700">H</text>
+        <circle cx="52" cy="86" r="10" fill="#fff" stroke="#000" stroke-width="1.2"/>
+        <text x="52" y="90" text-anchor="middle" font-size="12" font-weight="700">H</text>
+        <text x="100" y="12" text-anchor="middle" font-size="7.5" fill="#333">lone pair</text>
+      </svg>
+      <div class="angle">107&deg;</div>
+      <dl>
+        <dt>Sites</dt><dd>3</dd>
+        <dt>LP (center)</dt><dd>1</dd>
+        <dt>e&minus; regions</dt><dd>4</dd>
+        <dt>e&minus; geom</dt><dd>Tetrahedral</dd>
+        <dt>Mol. geom</dt><dd>Trig. pyramidal</dd>
+      </dl>
+      <div class="ann">One lone pair takes a tetrahedral spot and compresses the H&ndash;N&ndash;H angle.</div>
+    </div>
+
+    <!-- H2O BENT (tet family) -->
+    <div class="card">
+      <h3>Bent (tet)</h3>
+      <div class="ex">Example: H<sub>2</sub>O</div>
+      <svg viewBox="0 0 200 100" preserveAspectRatio="xMidYMid meet">
+        <!-- O center at (100,40) -->
+        <!-- two lone pairs above O -->
+        <circle cx="82" cy="14" r="2.2" fill="#000"/>
+        <circle cx="92" cy="14" r="2.2" fill="#000"/>
+        <circle cx="108" cy="14" r="2.2" fill="#000"/>
+        <circle cx="118" cy="14" r="2.2" fill="#000"/>
+        <text x="100" y="6" text-anchor="middle" font-size="7.5" fill="#333">2 lone pairs</text>
+        <!-- two bonds in V shape downward, ~104.5 deg -->
+        <line x1="100" y1="40" x2="58" y2="84" stroke="#000" stroke-width="1.4"/>
+        <line x1="100" y1="40" x2="142" y2="84" stroke="#000" stroke-width="1.4"/>
+        <!-- O atom -->
+        <circle cx="100" cy="40" r="12" fill="#fff" stroke="#000" stroke-width="1.2"/>
+        <text x="100" y="44" text-anchor="middle" font-size="13" font-weight="700">O</text>
+        <!-- H atoms -->
+        <circle cx="54" cy="88" r="10" fill="#fff" stroke="#000" stroke-width="1.2"/>
+        <text x="54" y="92" text-anchor="middle" font-size="12" font-weight="700">H</text>
+        <circle cx="146" cy="88" r="10" fill="#fff" stroke="#000" stroke-width="1.2"/>
+        <text x="146" y="92" text-anchor="middle" font-size="12" font-weight="700">H</text>
+      </svg>
+      <div class="angle">104.5&deg;</div>
+      <dl>
+        <dt>Sites</dt><dd>2</dd>
+        <dt>LP (center)</dt><dd>2</dd>
+        <dt>e&minus; regions</dt><dd>4</dd>
+        <dt>e&minus; geom</dt><dd>Tetrahedral</dd>
+        <dt>Mol. geom</dt><dd>Bent</dd>
+      </dl>
+      <div class="ann">Two lone pairs strongly compress the H&ndash;O&ndash;H angle.</div>
+    </div>
+
+    <!-- SO2 BENT (trig planar family) -->
+    <div class="card">
+      <h3>Bent (trig)</h3>
+      <div class="ex">Example: SO<sub>2</sub></div>
+      <svg viewBox="0 0 200 100" preserveAspectRatio="xMidYMid meet">
+        <!-- S center at (100,48), wider angle than H2O (~119 deg) -->
+        <!-- lone pair on S (one pair, above) -->
+        <circle cx="94" cy="22" r="2.2" fill="#000"/>
+        <circle cx="106" cy="22" r="2.2" fill="#000"/>
+        <text x="100" y="13" text-anchor="middle" font-size="7.5" fill="#333">lone pair</text>
+        <!-- left S=O double bond (two parallel lines) angled down-left -->
+        <!-- direction: from S(100,48) to O(40,84). offset perpendicular ~3.5 -->
+        <line x1="96.5" y1="42" x2="36.5" y2="78" stroke="#000" stroke-width="1.4"/>
+        <line x1="103.5" y1="54" x2="43.5" y2="90" stroke="#000" stroke-width="1.4"/>
+        <!-- right S-O single bond (resonance simplified) -->
+        <line x1="100" y1="48" x2="160" y2="84" stroke="#000" stroke-width="1.4"/>
+        <!-- S atom -->
+        <circle cx="100" cy="48" r="12" fill="#fff" stroke="#000" stroke-width="1.2"/>
+        <text x="100" y="52" text-anchor="middle" font-size="13" font-weight="700">S</text>
+        <!-- O atoms -->
+        <circle cx="36" cy="86" r="11" fill="#fff" stroke="#000" stroke-width="1.2"/>
+        <text x="36" y="90" text-anchor="middle" font-size="12" font-weight="700">O</text>
+        <circle cx="164" cy="86" r="11" fill="#fff" stroke="#000" stroke-width="1.2"/>
+        <text x="164" y="90" text-anchor="middle" font-size="12" font-weight="700">O</text>
+      </svg>
+      <div class="angle">&lt;120&deg;</div>
+      <dl>
+        <dt>Sites</dt><dd>2</dd>
+        <dt>LP (center)</dt><dd>1</dd>
+        <dt>e&minus; regions</dt><dd>3</dd>
+        <dt>e&minus; geom</dt><dd>Trig. planar</dd>
+        <dt>Mol. geom</dt><dd>Bent</dd>
+      </dl>
+      <div class="ann">One lone pair compresses trigonal planar geometry into a bent shape.</div>
+    </div>
+  </section>
+
+  <!-- ===== BOTTOM ROW ===== -->
+  <section class="bottom">
+    <div class="compress">
+      <h2>Lone Pair Compression Trend</h2>
+      <div class="compress-row">
+        <div class="mini">
+          <svg viewBox="0 0 100 60" width="80" height="48">
+            <line x1="50" y1="32" x2="22" y2="12" stroke="#000" stroke-width="1.2"/>
+            <line x1="50" y1="32" x2="78" y2="12" stroke="#000" stroke-width="1.2"/>
+            <polygon points="50,32 86,52 80,56" fill="#000"/>
+            <polygon points="46,28 54,36 20,54" fill="#000"/>
+            <circle cx="50" cy="32" r="7" fill="#fff" stroke="#000" stroke-width="1"/>
+            <text x="50" y="35" text-anchor="middle" font-size="8" font-weight="700">C</text>
+          </svg>
+          <div>CH<sub>4</sub> &middot; 0 LP</div>
+          <span class="deg">109.5&deg;</span>
+        </div>
+        <div class="mini">
+          <svg viewBox="0 0 100 60" width="80" height="48">
+            <circle cx="46" cy="6" r="1.5" fill="#000"/>
+            <circle cx="54" cy="6" r="1.5" fill="#000"/>
+            <line x1="50" y1="32" x2="50" y2="54" stroke="#000" stroke-width="1.2"/>
+            <polygon points="50,32 84,48 78,52" fill="#000"/>
+            <polygon points="46,28 54,36 22,50" fill="#000"/>
+            <circle cx="50" cy="32" r="7" fill="#fff" stroke="#000" stroke-width="1"/>
+            <text x="50" y="35" text-anchor="middle" font-size="8" font-weight="700">N</text>
+          </svg>
+          <div>NH<sub>3</sub> &middot; 1 LP</div>
+          <span class="deg">107&deg;</span>
+        </div>
+        <div class="mini">
+          <svg viewBox="0 0 100 60" width="80" height="48">
+            <circle cx="42" cy="6" r="1.5" fill="#000"/>
+            <circle cx="48" cy="6" r="1.5" fill="#000"/>
+            <circle cx="54" cy="6" r="1.5" fill="#000"/>
+            <circle cx="60" cy="6" r="1.5" fill="#000"/>
+            <line x1="50" y1="26" x2="22" y2="52" stroke="#000" stroke-width="1.2"/>
+            <line x1="50" y1="26" x2="78" y2="52" stroke="#000" stroke-width="1.2"/>
+            <circle cx="50" cy="26" r="7" fill="#fff" stroke="#000" stroke-width="1"/>
+            <text x="50" y="29" text-anchor="middle" font-size="8" font-weight="700">O</text>
+          </svg>
+          <div>H<sub>2</sub>O &middot; 2 LP</div>
+          <span class="deg">104.5&deg;</span>
+        </div>
+      </div>
+      <div class="arrow">
+        <svg viewBox="0 0 600 18" preserveAspectRatio="none">
+          <line x1="10" y1="9" x2="590" y2="9" stroke="#000" stroke-width="1.5"/>
+          <polygon points="590,9 580,4 580,14" fill="#000"/>
+        </svg>
+        Increasing lone pairs
+      </div>
+      <div class="caption">More lone pairs &rarr; stronger repulsion &rarr; smaller bond angles.</div>
+    </div>
+
+    <div class="panel regions">
+      <h2>Electron Region Reminders</h2>
+      <ul>
+        <li>Count every bond (single, double, triple) as <strong>one</strong> region.</li>
+        <li>Count every lone pair on the central atom as one region.</li>
+        <li>2 regions &rarr; linear (180&deg;).</li>
+        <li>3 regions &rarr; trigonal planar (120&deg;) or bent if 1 LP.</li>
+        <li>4 regions &rarr; tetrahedral (109.5&deg;), pyramidal (1 LP), or bent (2 LP).</li>
+        <li>Lone pairs on outer atoms (e.g., O in CO<sub>2</sub>) do <em>not</em> bend the molecule.</li>
+      </ul>
+    </div>
+  </section>
+
+</div>
+</body>
+</html>
