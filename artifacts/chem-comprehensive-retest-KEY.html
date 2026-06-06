@@ -24,17 +24,22 @@ body { font-family: 'EB Garamond', Georgia, serif; font-size: 11pt; line-height:
 .vsepr-table { border-collapse: collapse; width: 100%; margin: 8px 0; font-size: 9.5pt; table-layout: fixed; }
 .vsepr-table th { border: 1px solid #555; padding: 4px 4px; background: #f0f0f0; text-align: center; font-weight: bold; font-size: 9pt; vertical-align: middle; }
 .vsepr-table th .std-badge { display: inline-block; background: #f4a8a8; color: #6b1d1d; font-size: 7.5pt; padding: 1px 5px; border-radius: 2px; margin-top: 2px; font-weight: bold; }
-.vsepr-table td { border: 1px solid #555; padding: 6px 4px; text-align: center; vertical-align: middle; }
-.vsepr-table .lewis-cell { min-height: 110px; font-size: 10.5pt; }
+.vsepr-table td { border: 1px solid #555; padding: 2px 3px; text-align: center; vertical-align: middle; }
+.vsepr-table tr { page-break-inside: avoid; }
+.vsepr-table tbody { page-break-inside: avoid; }
+.vsepr-table thead { display: table-header-group; }
+.vsepr-table .lewis-cell { min-height: 78px; font-size: 10pt; }
+.vsepr-table td.rubric { padding: 3px 8px; font-size: 8.5pt; line-height: 1.3; }
+.vsepr-table .rubric { margin: 2px 0; line-height: 1.25; }
 .imf-table { border-collapse: collapse; width: 100%; margin: 8px 0; font-size: 10.5pt; }
 .imf-table th { border: 1px solid #555; padding: 5px 8px; background: #f0f0f0; text-align: center; font-weight: bold; font-size: 10pt; }
 .imf-table td { border: 1px solid #555; padding: 6px 8px; text-align: center; }
-.work-box { border: 1px solid #999; min-height: 60px; margin: 6px 0; padding: 8px; font-family: 'Consolas', 'Courier New', monospace; font-size: 9.5pt; line-height: 1.5; }
+.work-box { border: 1px solid #999; min-height: 60px; margin: 6px 0; padding: 8px; font-family: 'Consolas', 'Courier New', monospace; font-size: 9.5pt; line-height: 1.5; page-break-inside: avoid; }
 .subq { margin: 6px 0 6px 12px; }
-.lewis-display { text-align: center; margin: 8px 0; font-size: 14pt; letter-spacing: 1px; }
+.lewis-display { text-align: center; margin: 3px 0; font-size: 12pt; letter-spacing: 1px; }
 .lp { color: #1a5276; font-weight: bold; letter-spacing: -1px; }
 .section-pts { float: right; font-size: 10pt; color: #555; font-weight: normal; }
-.molecule-name { font-weight: bold; font-size: 11pt; margin-bottom: 4px; }
+.molecule-name { font-weight: bold; font-size: 10.5pt; margin-bottom: 1px; }
 .molecule-block { margin: 10px 0 14px 0; page-break-inside: avoid; }
 /* answer styling */
 .ans-red { color: #c0392b; font-weight: bold; }
@@ -43,15 +48,12 @@ body { font-family: 'EB Garamond', Georgia, serif; font-size: 11pt; line-height:
 .pt-badge { display: inline-block; background: #fef3e2; color: #92400e; font-size: 8pt; padding: 1px 5px; border-radius: 2px; font-weight: bold; margin-left: 4px; }
 .delta-mark { display: inline-block; padding: 1px 4px; border: 1px solid #c0392b; border-radius: 3px; color: #c0392b; font-weight: bold; margin: 0 2px; }
 @media print { body { padding: 0.5in 0.7in; } }
+@page { margin: 0.5in 0.7in 0.7in 0.7in; }
 </style>
 </head>
 <body>
 
-<!-- =================== PAGE 1 =================== -->
-<div class="page-header">
-  <span>Chemistry 10 &mdash; Comprehensive Re-Test &mdash; ANSWER KEY</span>
-  <span>Page 1</span>
-</div>
+<!-- =================== PAGE 1 (header removed) -->
 
 <div class="title-block">
   <div class="eyebrow">ANSWER KEY &middot; FOR TEACHER USE ONLY &middot; 100 points</div>
@@ -99,6 +101,8 @@ body { font-family: 'EB Garamond', Georgia, serif; font-size: 11pt; line-height:
       </td>
     </tr>
 
+    </tbody>
+    <tbody>
     <!-- Row 2: SO3 -->
     <tr>
       <td class="lewis-cell">
@@ -126,6 +130,8 @@ body { font-family: 'EB Garamond', Georgia, serif; font-size: 11pt; line-height:
       </td>
     </tr>
 
+    </tbody>
+    <tbody>
     <!-- Row 3: CCl4 -->
     <tr>
       <td class="lewis-cell">
@@ -157,6 +163,8 @@ body { font-family: 'EB Garamond', Georgia, serif; font-size: 11pt; line-height:
       </td>
     </tr>
 
+    </tbody>
+    <tbody>
     <!-- Row 4: PCl3 -->
     <tr>
       <td class="lewis-cell">
@@ -187,6 +195,8 @@ body { font-family: 'EB Garamond', Georgia, serif; font-size: 11pt; line-height:
       </td>
     </tr>
 
+    </tbody>
+    <tbody>
     <!-- Row 5: OF2 -->
     <tr>
       <td class="lewis-cell">
@@ -221,12 +231,7 @@ body { font-family: 'EB Garamond', Georgia, serif; font-size: 11pt; line-height:
 
 <div class="rubric" style="text-align:right;font-weight:bold;font-style:normal;color:#1a5276;font-size:10pt;margin-top:6px;">Section 1 Total: 30 pts</div>
 
-<!-- =================== PAGE 2: SECTION 2 KEY =================== -->
-<div class="page-break"></div>
-<div class="page-header">
-  <span>Chemistry 10 &mdash; Comprehensive Re-Test &mdash; ANSWER KEY</span>
-  <span>Page 2</span>
-</div>
+<!-- Section 2 KEY (page-break removed) -->
 
 <div class="section-head">Section 2: Bond Polarity and Molecular Polarity <span class="std-badge">5.1.6</span> <span class="section-pts">(16 pts)</span></div>
 
@@ -272,12 +277,7 @@ body { font-family: 'EB Garamond', Georgia, serif; font-size: 11pt; line-height:
 
 <div class="rubric" style="text-align:right;font-weight:bold;font-style:normal;color:#1a5276;font-size:10pt;margin-top:6px;">Section 2 Total: 16 pts</div>
 
-<!-- =================== PAGE 3: SECTION 3 KEY =================== -->
-<div class="page-break"></div>
-<div class="page-header">
-  <span>Chemistry 10 &mdash; Comprehensive Re-Test &mdash; ANSWER KEY</span>
-  <span>Page 3</span>
-</div>
+<!-- Section 3 KEY (page-break removed) -->
 
 <div class="section-head">Section 3: Intermolecular Forces <span class="section-pts">(20 pts)</span></div>
 
@@ -335,12 +335,7 @@ body { font-family: 'EB Garamond', Georgia, serif; font-size: 11pt; line-height:
 
 <div class="rubric" style="text-align:right;font-weight:bold;font-style:normal;color:#1a5276;font-size:10pt;margin-top:6px;">Section 3 Total: 20 pts</div>
 
-<!-- =================== PAGE 4: SECTION 4 KEY =================== -->
-<div class="page-break"></div>
-<div class="page-header">
-  <span>Chemistry 10 &mdash; Comprehensive Re-Test &mdash; ANSWER KEY</span>
-  <span>Page 4</span>
-</div>
+<!-- Section 4 KEY (page-break removed) -->
 
 <div class="section-head">Section 4: Multi-Step Stoichiometry <span class="section-pts">(24 pts)</span></div>
 
@@ -393,12 +388,7 @@ CO remaining = 28.0 &minus; 21.05 = <strong>6.95 g CO</strong> (accept 6.9 &ndas
 
 <div class="rubric" style="text-align:right;font-weight:bold;font-style:normal;color:#1a5276;font-size:10pt;margin-top:6px;">Section 4 Total: 24 pts</div>
 
-<!-- =================== PAGE 5: SECTION 5 KEY + Grading Notes =================== -->
-<div class="page-break"></div>
-<div class="page-header">
-  <span>Chemistry 10 &mdash; Comprehensive Re-Test &mdash; ANSWER KEY</span>
-  <span>Page 5</span>
-</div>
+<!-- Section 5 KEY + Grading Notes (page-break removed) -->
 
 <div class="section-head">Section 5: Molarity and Concentration <span class="std-badge">7.1.4</span> <span class="section-pts">(10 pts)</span></div>
 
