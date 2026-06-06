@@ -11,9 +11,9 @@ body { font-family: 'EB Garamond', Georgia, serif; font-size: 11pt; line-height:
 .title-block { text-align: center; margin-bottom: 8px; }
 .title-block h1 { font-size: 15pt; font-weight: bold; margin-bottom: 2px; }
 .title-block .eyebrow { font-size: 9.5pt; color: #1a5276; letter-spacing: 0.5px; text-transform: uppercase; margin-bottom: 4px; }
-.name-line { margin-bottom: 14px; font-size: 10pt; }
+.name-line { margin-bottom: 14px; font-size: 10pt; white-space: nowrap; }
 .name-line span { display: inline-block; border-bottom: 1px solid #000; }
-.section-head { color: #1a5276; font-size: 12pt; font-weight: bold; border-bottom: 0.5pt solid #1a5276; padding-bottom: 2px; margin: 14px 0 8px 0; }
+.section-head { color: #1a5276; font-size: 12pt; font-weight: bold; border-bottom: 0.5pt solid #1a5276; padding-bottom: 2px; margin: 14px 0 8px 0; clear: both; }
 .section-head .std-badge, .part-head .std-badge { display: inline-block; background: #f4a8a8; color: #6b1d1d; font-size: 8pt; padding: 1px 6px; border-radius: 3px; font-weight: bold; vertical-align: middle; margin-left: 6px; }
 .instruction { font-size: 10pt; font-style: italic; margin: 4px 0 8px 0; color: #333; }
 .problem { margin-bottom: 12px; page-break-inside: avoid; break-inside: avoid; }
@@ -61,16 +61,16 @@ removed page-header (replaced by playwright footer) -->
   <h1>Comprehensive Re-Test</h1>
 </div>
 
+<div class="score-box">_____ / 100</div>
 <div class="name-line">
-  Name:<span style="width:220px;"></span> &nbsp;&nbsp;
-  Block:<span style="width:60px;"></span> &nbsp;&nbsp;
-  Date:<span style="width:120px;"></span>
-  <span class="score-box">_____ / 100</span>
+  Name:<span style="width:160px;"></span> &nbsp;&nbsp;
+  Block:<span style="width:50px;"></span> &nbsp;&nbsp;
+  Date:<span style="width:100px;"></span>
 </div>
 
 <!-- =================== SECTION 1 =================== -->
 <div class="section-head">Section 1: Molecular Shape and Structure <span class="section-pts">(30 pts)</span></div>
-<p class="instruction">For each molecule, complete the table using the Lewis structure provided. In the last column, sketch the 3-D shape using wedge (solid triangle) and dash (dashed line) bonds where the geometry requires it.</p>
+<p class="instruction">For each molecule, complete the table using the Lewis structure provided. In the last column, sketch the 3-D shape: use a straight line (&mdash;) for bonds in the plane of the page, a filled wedge (&blacktriangleright;) for bonds coming toward you, and a hashed wedge (striped triangle, wider at the outer atom) for bonds going behind the page.</p>
 
 <table class="vsepr-table">
   <colgroup>
