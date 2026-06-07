@@ -45,9 +45,10 @@ body { font-family: 'EB Garamond', Georgia, serif; font-size: 11pt; line-height:
 </head>
 <body>
 
-<div class="title-block">
-  <div class="eyebrow">Practice Series &middot; Standards 5.1 &middot; 6.3 &middot; 7.1 &middot; 60 minutes &middot; 80 points</div>
-  <h1>Practice Test 2</h1>
+<div style="display:flex;justify-content:space-between;align-items:baseline;border-bottom:1px solid #000;padding-bottom:4px;margin-bottom:10px;">
+  <div style="font-weight:bold;font-size:11pt;">CHEM 10</div>
+  <div style="font-weight:bold;font-size:14pt;letter-spacing:1px;">Practice Test 2</div>
+  <div style="font-style:italic;font-size:11pt;">Practice Series</div>
 </div>
 
 <div class="score-box">_____ / 80</div>
@@ -55,62 +56,60 @@ body { font-family: 'EB Garamond', Georgia, serif; font-size: 11pt; line-height:
   Name:<span style="width:160px;"></span> &nbsp;&nbsp;
   Block:<span style="width:50px;"></span> &nbsp;&nbsp;
   Date:<span style="width:100px;"></span>
+  &nbsp;&nbsp;<span style="font-size:9pt;color:#555;">60 minutes &middot; 80 points</span>
 </div>
 
 <!-- =================== SECTION 1 =================== -->
 <div class="section-head">Section 1: Molecular Shape and Structure <span class="section-pts">(30 pts)</span></div>
-<p class="instruction">For each molecule, complete the table using the Lewis structure provided. In the last column, sketch the 3-D shape: use a straight line (&mdash;) for bonds in the plane of the page, a filled wedge (&blacktriangleright;) for bonds coming toward you, and a hashed wedge (striped triangle, wider at the outer atom) for bonds going behind the page.</p>
+<p class="instruction">Note the bonding region, lone pair, shape name, and central bond angle for each of the below molecules.</p>
 
 <table class="vsepr-table">
   <colgroup>
-    <col style="width:25%">
-    <col style="width:11%">
-    <col style="width:11%">
-    <col style="width:17%">
+    <col style="width:22%">
     <col style="width:9%">
-    <col style="width:27%">
+    <col style="width:9%">
+    <col style="width:10%">
+    <col style="width:16%">
+    <col style="width:8%">
+    <col style="width:26%">
   </colgroup>
   <thead>
     <tr>
-      <th>Lewis Structure</th>
-      <th># Bonding<br>Directions<br><span class="std-badge">5.1.1</span></th>
-      <th># Lone<br>Pairs<br><span class="std-badge">5.1.1</span></th>
-      <th>Shape Name<br><span class="std-badge">5.1.2</span></th>
-      <th>Bond<br>Angle<br><span class="std-badge">5.1.7</span></th>
-      <th>Redraw in 3-D<br><span class="std-badge">5.1.3</span></th>
+      <th>Structure</th>
+      <th># Central Atom<br>Bonding<br>Directions<br><span class="std-badge">5.1.1 / NP</span></th>
+      <th># Central Atom<br>Lone<br>Pairs<br><span class="std-badge">5.1.1 / NP</span></th>
+      <th>Total #<br>Central Atom<br>Neg. Charge<br>Centers</th>
+      <th>Shape<br>Name<br><span class="std-badge">5.1.2 / NP</span></th>
+      <th>Bond<br>Angle<br><span class="std-badge">5.1.7 / NP</span></th>
+      <th>Redraw in 3-D<br><span class="std-badge">5.1.3 / NP</span></th>
     </tr>
   </thead>
   <tbody>
     <!-- Row 1: CS2 -->
     <tr>
       <td class="lewis-cell">
-        <div class="molecule-name">CS<sub>2</sub></div>
         <div class="lewis-display" style="font-size:13pt;">
           <span class="lp">:</span>S<span class="lp">:</span> = C = <span class="lp">:</span>S<span class="lp">:</span>
         </div>
-        <div style="font-size:8.5pt;color:#555;font-style:italic;">(2 double bonds to C)</div>
       </td>
-      <td></td><td></td><td></td><td></td>
+      <td></td><td></td><td></td><td></td><td></td>
       <td class="draw-cell"></td>
     </tr>
     <!-- Row 2: BF3 -->
     <tr>
       <td class="lewis-cell">
-        <div class="molecule-name">BF<sub>3</sub></div>
         <div class="lewis-display" style="font-size:12pt;line-height:1.1;">
           <span class="lp">:</span>F<span class="lp">:</span><br>
           |<br>
           <span class="lp">:</span>F &mdash; B &mdash; F<span class="lp">:</span>
         </div>
-        <div style="font-size:8.5pt;color:#555;font-style:italic;">(3 bonds, no lone pairs on B)</div>
       </td>
-      <td></td><td></td><td></td><td></td>
+      <td></td><td></td><td></td><td></td><td></td>
       <td class="draw-cell"></td>
     </tr>
     <!-- Row 3: CH4 -->
     <tr>
       <td class="lewis-cell">
-        <div class="molecule-name">CH<sub>4</sub></div>
         <div class="lewis-display" style="font-size:13pt;line-height:1.1;">
           H<br>
           |<br>
@@ -118,38 +117,33 @@ body { font-family: 'EB Garamond', Georgia, serif; font-size: 11pt; line-height:
           |<br>
           H
         </div>
-        <div style="font-size:8.5pt;color:#555;font-style:italic;">(4 bonds, no lone pairs on C)</div>
       </td>
-      <td></td><td></td><td></td><td></td>
+      <td></td><td></td><td></td><td></td><td></td>
       <td class="draw-cell"></td>
     </tr>
     <!-- Row 4: NF3 -->
     <tr>
       <td class="lewis-cell">
-        <div class="molecule-name">NF<sub>3</sub></div>
         <div class="lewis-display" style="font-size:13pt;line-height:1.1;">
           <span class="lp" style="font-size:10pt;">··</span><br>
           <span class="lp">:</span>F &mdash; N &mdash; F<span class="lp">:</span><br>
           |<br>
           <span class="lp">:</span>F<span class="lp">:</span>
         </div>
-        <div style="font-size:8.5pt;color:#555;font-style:italic;">(3 bonds + 1 lone pair on N)</div>
       </td>
-      <td></td><td></td><td></td><td></td>
+      <td></td><td></td><td></td><td></td><td></td>
       <td class="draw-cell"></td>
     </tr>
     <!-- Row 5: H2O -->
     <tr>
       <td class="lewis-cell">
-        <div class="molecule-name">H<sub>2</sub>O</div>
         <div class="lewis-display" style="font-size:13pt;line-height:1.1;">
           <span class="lp" style="font-size:10pt;">··</span><br>
           H &mdash; O &mdash; H<br>
           <span class="lp" style="font-size:10pt;">··</span>
         </div>
-        <div style="font-size:8.5pt;color:#555;font-style:italic;">(2 bonds + 2 lone pairs on O)</div>
       </td>
-      <td></td><td></td><td></td><td></td>
+      <td></td><td></td><td></td><td></td><td></td>
       <td class="draw-cell"></td>
     </tr>
   </tbody>
