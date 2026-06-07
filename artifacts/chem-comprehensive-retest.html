@@ -45,7 +45,7 @@ body { font-family: 'EB Garamond', Georgia, serif; font-size: 11pt; line-height:
 .section-pts { float: right; font-size: 10pt; color: #555; font-weight: normal; }
 .molecule-block { margin: 10px 0 14px 0; page-break-inside: avoid; }
 .molecule-name { font-weight: bold; font-size: 10.5pt; margin-bottom: 1px; }
-.lewis-display { text-align: center; margin: 3px 0; font-size: 12pt; letter-spacing: 1px; }
+.lewis-display { text-align: center; margin: 3px 0; font-size: 12pt; letter-spacing: 1px; white-space: nowrap; }
 .score-box { border: 1px solid #000; padding: 3px 6px; font-size: 9pt; float: right; }
 @media print { body { padding: 0.5in 0.7in; } }
 @page { margin: 0.5in 0.7in 0.7in 0.7in; }
@@ -74,12 +74,12 @@ removed page-header (replaced by playwright footer) -->
 
 <table class="vsepr-table">
   <colgroup>
-    <col style="width:22%">
+    <col style="width:25%">
     <col style="width:11%">
     <col style="width:11%">
-    <col style="width:18%">
-    <col style="width:10%">
-    <col style="width:28%">
+    <col style="width:17%">
+    <col style="width:9%">
+    <col style="width:27%">
   </colgroup>
   <thead>
     <tr>
@@ -96,7 +96,7 @@ removed page-header (replaced by playwright footer) -->
     <tr>
       <td class="lewis-cell">
         <div class="molecule-name">CO<sub>2</sub></div>
-        <div class="lewis-display" style="font-size:16pt;">
+        <div class="lewis-display" style="font-size:13pt;">
           <span class="lp">:</span>O<span class="lp">:</span> = C = <span class="lp">:</span>O<span class="lp">:</span>
         </div>
         <div style="font-size:8.5pt;color:#555;font-style:italic;">(2 double bonds to C)</div>
@@ -108,7 +108,7 @@ removed page-header (replaced by playwright footer) -->
     <tr>
       <td class="lewis-cell">
         <div class="molecule-name">SO<sub>3</sub></div>
-        <div class="lewis-display" style="font-size:14pt;line-height:1.1;">
+        <div class="lewis-display" style="font-size:12pt;line-height:1.1;">
           O<br>
           <span style="font-size:9pt;">‖</span><br>
           O = S &mdash; O
