@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Comprehensive Re-Test — Annotated Answer Key — Kai Ash</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,700;1,400&display=swap');
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: 'EB Garamond', Georgia, serif;
+  font-size: 11pt;
+  line-height: 1.5;
+  padding: 0.5in 0.75in;
+  color: #1a1a1a;
+  background: #fff;
+  max-width: 8.5in;
+}
+
+/* ── Page header ── */
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 0.5pt solid #000;
+  padding-bottom: 3px;
+  margin-bottom: 10px;
+  font-size: 9pt;
+  color: #555;
+}
+
+/* ── Title block ── */
+.title-block { text-align: center; margin-bottom: 10px; }
+.title-block h1 { font-size: 15pt; font-weight: bold; margin-bottom: 2px; }
+.title-block .eyebrow {
+  font-size: 9.5pt; color: #c0392b; letter-spacing: 0.5px;
+  text-transform: uppercase; margin-bottom: 4px; font-weight: bold;
+}
+.student-meta {
+  font-size: 10pt; margin-bottom: 14px;
+  display: flex; gap: 2rem; justify-content: center; flex-wrap: wrap;
+}
+.student-meta span { color: #333; }
+.student-meta strong { color: #1a1a1a; }
+
+/* ── Score banner ── */
+.score-banner {
+  display: flex; gap: 1rem; flex-wrap: wrap;
+  background: #f7f9fb; border: 1px solid #c5cdd6;
+  border-radius: 6px; padding: 8px 14px;
+  margin-bottom: 16px; align-items: center;
+}
+.score-banner .total {
+  font-size: 17pt; font-weight: bold; color: #166534;
+  font-family: -apple-system, sans-serif;
+}
+.score-banner .pct {
+  font-size: 12pt; font-weight: bold; color: #166534;
+  font-family: -apple-system, sans-serif;
+}
+.score-banner .detail {
+  font-size: 9pt; color: #555;
+  font-family: -apple-system, sans-serif;
+  line-height: 1.4;
+}
+.sec-mini {
+  display: flex; gap: 0.5rem; flex-wrap: wrap; margin-left: auto;
+  align-items: center;
+}
+.sec-chip {
+  font-size: 8.5pt; padding: 2px 7px; border-radius: 3px;
+  font-family: -apple-system, sans-serif; font-weight: 600;
+}
+.sec-chip.full { background: #dcfce7; color: #166534; border: 1px solid #86efac; }
+.sec-chip.part { background: #fef9c3; color: #854d0e; border: 1px solid #fde047; }
+
+/* ── Section headers ── */
+.section-head {
+  color: #1a5276; font-size: 12pt; font-weight: bold;
+  border-bottom: 0.5pt solid #1a5276; padding-bottom: 2px;
+  margin: 16px 0 8px 0; clear: both;
+}
+.section-head .section-pts {
+  float: right; font-size: 10pt; color: #555; font-weight: normal;
+}
+.std-badge {
+  display: inline-block; background: #f4a8a8; color: #6b1d1d;
+  font-size: 8pt; padding: 1px 6px; border-radius: 3px;
+  font-weight: bold; vertical-align: middle; margin-left: 5px;
+}
+
+/* ── VSEPR table ── */
+.vsepr-table { border-collapse: collapse; width: 100%; margin: 8px 0; font-size: 9.5pt; table-layout: fixed; }
+.vsepr-table th {
+  border: 1px solid #555; padding: 4px 4px; background: #f0f0f0;
+  text-align: center; font-weight: bold; font-size: 9pt; vertical-align: middle;
+}
+.vsepr-table td {
+  border: 1px solid #555; padding: 3px 4px; text-align: center; vertical-align: middle;
+}
+.vsepr-table .mol-cell { font-weight: bold; font-size: 10.5pt; text-align: left; padding-left: 6px; }
+.vsepr-table .lewis-cell { min-height: 72px; font-size: 9.5pt; }
+
+/* ── Answer cells ── */
+.kai { color: #1a5276; font-weight: bold; }
+.correct { color: #166534; font-style: italic; font-size: 8.5pt; }
+.wrong { color: #991b1b; font-weight: bold; }
+.correction {
+  display: block; color: #166534; font-style: italic;
+  font-size: 8.5pt; margin-top: 2px;
+}
+.check { color: #166534; font-size: 9pt; }
+.cross { color: #991b1b; font-size: 9pt; }
+
+/* ── Answer cells with correction boxes ── */
+.ans-cell { position: relative; }
+.ans-correct { /* nothing extra */ }
+.ans-wrong .kai { color: #991b1b; }
+.ans-wrong .correction { color: #166534; }
+
+/* ── Rubric rows ── */
+.rubric-row td {
+  background: #fafafa; font-size: 8.5pt; font-style: italic;
+  color: #555; text-align: left; padding: 3px 8px;
+}
+.rubric-row .score-cell {
+  text-align: right; font-style: normal; font-weight: bold; color: #1a5276;
+  white-space: nowrap;
+}
+
+/* ── IMF table ── */
+.imf-table { border-collapse: collapse; width: 100%; margin: 8px 0; font-size: 10pt; }
+.imf-table th { border: 1px solid #555; padding: 4px 8px; background: #f0f0f0; text-align: center; font-weight: bold; }
+.imf-table td { border: 1px solid #555; padding: 4px 8px; }
+
+/* ── Work block ── */
+.part-head { font-weight: bold; font-size: 11pt; margin: 10px 0 4px 0; }
+.subq { margin: 5px 0 3px 14px; font-size: 10.5pt; }
+.ref-box {
+  border: 1px solid #999; background: #f7f9fb; padding: 5px 10px;
+  margin: 6px 0; font-size: 10pt;
+}
+.eq-box {
+  border: 1px solid #1a5276; background: #ebf5fb; padding: 7px 12px;
+  margin: 6px 0; text-align: center; font-size: 12pt; font-weight: bold;
+}
+.work-row {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin: 4px 0;
+}
+.work-box-kai {
+  border: 1px solid #93c5fd; background: #eff6ff;
+  padding: 6px 10px; font-size: 9.5pt; min-height: 48px;
+  border-radius: 4px;
+}
+.work-box-correct {
+  border: 1px solid #86efac; background: #f0fdf4;
+  padding: 6px 10px; font-size: 9.5pt; min-height: 48px;
+  border-radius: 4px;
+}
+.box-label {
+  font-size: 7.5pt; text-transform: uppercase; font-weight: bold;
+  margin-bottom: 2px; font-family: -apple-system, sans-serif;
+  letter-spacing: 0.04em;
+}
+.work-box-kai .box-label { color: #1d4ed8; }
+.work-box-correct .box-label { color: #166534; }
+.work-box-single {
+  border: 1px solid #86efac; background: #f0fdf4;
+  padding: 6px 10px; font-size: 9.5pt; min-height: 36px;
+  border-radius: 4px; margin: 4px 0;
+}
+.work-box-single .box-label { color: #166534; }
+
+/* error work box */
+.work-box-kai.error { border-color: #fca5a5; background: #fff1f2; }
+.work-box-kai.error .box-label { color: #991b1b; }
+
+/* ── Correction callout ── */
+.correction-callout {
+  border-left: 3px solid #fca5a5; background: #fff1f2;
+  padding: 6px 10px; margin: 4px 0 8px 0; font-size: 9pt;
+  border-radius: 0 4px 4px 0;
+}
+.correction-callout .c-label {
+  font-size: 7.5pt; text-transform: uppercase; font-weight: bold;
+  color: #991b1b; margin-bottom: 2px; font-family: -apple-system, sans-serif;
+}
+
+/* ── Section score line ── */
+.section-score {
+  text-align: right; font-weight: bold; color: #1a5276;
+  font-size: 10pt; margin-top: 6px;
+}
+
+.lp { color: #1a5276; font-weight: bold; letter-spacing: -1px; }
+.delta-mark {
+  display: inline-block; padding: 1px 3px; border: 1px solid #c0392b;
+  border-radius: 3px; color: #c0392b; font-weight: bold; margin: 0 1px;
+  font-size: 9.5pt;
+}
+.pts { font-size: 9pt; font-weight: normal; color: #555; }
+.note { font-size: 8.5pt; font-style: italic; color: #555; margin: 2px 0; }
+
+/* ── Final grading note ── */
+.final-note {
+  margin-top: 10px; padding: 10px 14px;
+  background: #ebf5fb; border: 1px solid #1a5276;
+  border-radius: 4px; font-size: 10pt;
+  page-break-inside: avoid; break-inside: avoid;
+  page-break-before: avoid; break-before: avoid;
+}
+
+/* ── Print ── */
+@media print { body { padding: 0.5in 0.75in; } }
+@page { margin: 0.5in 0.75in 0.7in 0.75in; }
+.no-break { page-break-inside: avoid; break-inside: avoid; }
+.vsepr-table tr { page-break-inside: avoid; break-inside: avoid; }
+.vsepr-table tbody { page-break-inside: avoid; break-inside: avoid; }
+</style>
+</head>
+<body>
+
+<div class="page-header">
+  <span>Motor City Chemistry 10 — Comprehensive Re-Test</span>
+  <span>ANNOTATED ANSWER KEY — GRADER COPY</span>
+  <span>Kai Ash · 2026-06-07</span>
+</div>
+
+<div class="title-block">
+  <div class="eyebrow">ANNOTATED ANSWER KEY · All Questions · Kai's Answers · Corrections</div>
+  <h1>Comprehensive Re-Test — Graded</h1>
+</div>
+
+<div class="student-meta">
+  <span><strong>Student:</strong> Kai Ash</span>
+  <span><strong>Date:</strong> 2026-06-07</span>
+  <span><strong>Standards:</strong> 12 (5.1.1–5.1.7, 5.2.2–5.2.3, 6.3.1–6.3.4, 7.1.4)</span>
+  <span><strong>Time:</strong> 75 min</span>
+</div>
+
+<!-- Score banner -->
+<div class="score-banner">
+  <div>
+    <div class="total">97 / 100</div>
+    <div class="pct">97%</div>
+  </div>
+  <div class="detail">
+    10 of 12 standards passed<br>
+    2 not-yet: 5.1.7 (−1 pt) · 6.3.4 partial (−2 pts, arithmetic)
+  </div>
+  <div class="sec-mini">
+    <span class="sec-chip full">S1 29/30</span>
+    <span class="sec-chip full">S2 16/16</span>
+    <span class="sec-chip full">S3 20/20</span>
+    <span class="sec-chip part">S4 22/24</span>
+    <span class="sec-chip full">S5 10/10</span>
+  </div>
+</div>
+
+<!-- ======================== SECTION 1 ======================== -->
+<div class="section-head">
+  Section 1: Molecular Shape and Structure
+  <span class="std-badge">5.1.1</span>
+  <span class="std-badge">5.1.2</span>
+  <span class="std-badge">5.1.3</span>
+  <span class="std-badge">5.1.7</span>
+  <span class="section-pts">(30 pts — Kai: 29/30)</span>
+</div>
+
+<table class="vsepr-table">
+  <colgroup>
+    <col style="width:13%">
+    <col style="width:10%">
+    <col style="width:10%">
+    <col style="width:18%">
+    <col style="width:13%">
+    <col style="width:36%">
+  </colgroup>
+  <thead>
+    <tr>
+      <th>Molecule</th>
+      <th># Bonding<br>Directions<br><span class="std-badge">5.1.1</span></th>
+      <th># Lone<br>Pairs<br><span class="std-badge">5.1.1</span></th>
+      <th>Shape Name<br><span class="std-badge">5.1.2</span></th>
+      <th>Bond Angle<br><span class="std-badge">5.1.7</span></th>
+      <th>3-D Drawing &amp; Notes<br><span class="std-badge">5.1.3</span></th>
+    </tr>
+  </thead>
+
+  <!-- CO2 -->
+  <tbody>
+  <tr class="no-break">
+    <td class="mol-cell">CO<sub>2</sub></td>
+    <td><span class="kai">2</span> <span class="check">✓</span></td>
+    <td><span class="kai">0</span> <span class="check">✓</span></td>
+    <td><span class="kai">Linear</span> <span class="check">✓</span></td>
+    <td><span class="kai">180°</span> <span class="check">✓</span></td>
+    <td style="text-align:left;padding:4px 6px;">
+      <span class="kai">Straight-line O=C=O</span> <span class="check">✓</span><br>
+      <span class="note">No wedges needed — all in-plane. Correct.</span>
+    </td>
+  </tr>
+  <tr class="rubric-row">
+    <td colspan="5">5.1.1: 1+1 pt ✓ · 5.1.2: 2 pt ✓ · 5.1.7: 1 pt ✓ · 5.1.3: 1 pt ✓</td>
+    <td class="score-cell">6 / 6 ✓</td>
+  </tr>
+  </tbody>
+
+  <!-- SO3 -->
+  <tbody>
+  <tr class="no-break">
+    <td class="mol-cell">SO<sub>3</sub></td>
+    <td><span class="kai">3</span> <span class="check">✓</span></td>
+    <td><span class="kai">0</span> <span class="check">✓</span></td>
+    <td><span class="kai">Trigonal Planar</span> <span class="check">✓</span></td>
+    <td><span class="kai">120°</span> <span class="check">✓</span></td>
+    <td style="text-align:left;padding:4px 6px;">
+      <span class="kai">Flat Y-shape, all bonds in one plane</span> <span class="check">✓</span><br>
+      <span class="note">No wedges needed. Correct.</span>
+    </td>
+  </tr>
+  <tr class="rubric-row">
+    <td colspan="5">5.1.1: 1+1 pt ✓ · 5.1.2: 2 pt ✓ · 5.1.7: 1 pt ✓ · 5.1.3: 1 pt ✓</td>
+    <td class="score-cell">6 / 6 ✓</td>
+  </tr>
+  </tbody>
+
+  <!-- CCl4 -->
+  <tbody>
+  <tr class="no-break">
+    <td class="mol-cell">CCl<sub>4</sub></td>
+    <td><span class="kai">4</span> <span class="check">✓</span></td>
+    <td><span class="kai">0</span> <span class="check">✓</span></td>
+    <td><span class="kai">Tetrahedral</span> <span class="check">✓</span></td>
+    <td><span class="kai">109.5°</span> <span class="check">✓</span></td>
+    <td style="text-align:left;padding:4px 6px;">
+      <span class="kai">Filled wedge + hashed wedge (2 in-plane bonds)</span> <span class="check">✓</span><br>
+      <span class="note">Correct convention (class standard: filled = toward viewer, hashed = behind page).</span>
+    </td>
+  </tr>
+  <tr class="rubric-row">
+    <td colspan="5">5.1.1: 1+1 pt ✓ · 5.1.2: 2 pt ✓ · 5.1.7: 1 pt ✓ · 5.1.3: 1 pt ✓</td>
+    <td class="score-cell">6 / 6 ✓</td>
+  </tr>
+  </tbody>
+
+  <!-- PCl3 -->
+  <tbody>
+  <tr class="no-break">
+    <td class="mol-cell">PCl<sub>3</sub></td>
+    <td><span class="kai">3</span> <span class="check">✓</span></td>
+    <td><span class="kai">1</span> <span class="check">✓</span></td>
+    <td><span class="kai">Trigonal Pyramidal</span> <span class="check">✓</span></td>
+    <td><span class="kai">~107°</span> <span class="check">✓</span></td>
+    <td style="text-align:left;padding:4px 6px;">
+      <span class="kai">Filled wedge + hashed wedge, lone pair shown on P</span> <span class="check">✓</span><br>
+      <span class="note">107° accepted (range ~100°–107°). Wedge notation correct.</span>
+    </td>
+  </tr>
+  <tr class="rubric-row">
+    <td colspan="5">5.1.1: 1+1 pt ✓ · 5.1.2: 2 pt ✓ · 5.1.7: 1 pt ✓ · 5.1.3: 1 pt ✓</td>
+    <td class="score-cell">6 / 6 ✓</td>
+  </tr>
+  </tbody>
+
+  <!-- OF2 -->
+  <tbody>
+  <tr class="no-break">
+    <td class="mol-cell">OF<sub>2</sub></td>
+    <td><span class="kai">2</span> <span class="check">✓</span></td>
+    <td><span class="kai">2</span> <span class="check">✓</span></td>
+    <td><span class="kai">Bent</span> <span class="check">✓</span></td>
+    <td class="ans-wrong">
+      <span class="wrong">&lt;120°</span> <span class="cross">✗</span>
+      <span class="correction">Correct: ~103°</span>
+    </td>
+    <td style="text-align:left;padding:4px 6px;">
+      <span class="kai">V-shape, 2 lone pairs on O shown</span> <span class="check">✓</span><br>
+      <span class="note">3-D drawing correct. Angle error only.</span>
+    </td>
+  </tr>
+  <tr class="rubric-row">
+    <td colspan="5">
+      5.1.1: 1+1 pt ✓ · 5.1.2: 2 pt ✓ · <strong style="color:#991b1b;">5.1.7: 0/1 pt ✗ (&lt;120° → wrong baseline; correct ~103°)</strong> · 5.1.3: 1 pt ✓
+    </td>
+    <td class="score-cell" style="color:#991b1b;">5 / 6</td>
+  </tr>
+  </tbody>
+</table>
+
+<div class="section-score">Section 1 Total: 29 / 30</div>
+
+<!-- ======================== SECTION 2 ======================== -->
+<div class="section-head">
+  Section 2: Bond Polarity and Molecular Polarity
+  <span class="std-badge">5.1.6</span>
+  <span class="section-pts">(16 pts — Kai: 16/16 ✓)</span>
+</div>
+
+<div class="ref-box">
+  <strong>Electronegativity (EN) values:</strong>
+  H = 2.1 &nbsp;|&nbsp; C = 2.5 &nbsp;|&nbsp; N = 3.0 &nbsp;|&nbsp; O = 3.5 &nbsp;|&nbsp; F = 4.0 &nbsp;|&nbsp; Cl = 3.0 &nbsp;|&nbsp; S = 2.5 &nbsp;|&nbsp; P = 2.1
+</div>
+
+<!-- HCl -->
+<div class="no-break" style="margin-bottom:12px;">
+  <div class="part-head">Molecule A: HCl <span class="pts">(8 pts)</span></div>
+
+  <div class="subq">
+    (a) <strong>ΔEN and bond type:</strong>
+    <span class="kai">ΔEN = 3.0 − 2.1 = 0.9 → Polar Bond</span> <span class="check">✓</span>
+    <span class="pts">[2 pts]</span>
+  </div>
+
+  <div class="subq">
+    (b) <strong>δ labels:</strong>
+    <span class="kai"><span class="delta-mark">δ+</span> H — Cl <span class="delta-mark">δ−</span></span> <span class="check">✓</span>
+    <span class="pts">[2 pts]</span>
+  </div>
+
+  <div class="subq">
+    (c) <strong>Molecular polarity:</strong>
+    <span class="kai">Polar — HCl is linear with one polar bond; no second bond to cancel it.</span> <span class="check">✓</span>
+    <span class="pts">[4 pts]</span>
+  </div>
+</div>
+
+<!-- CO2 -->
+<div class="no-break" style="margin-bottom:12px;">
+  <div class="part-head">Molecule B: CO<sub>2</sub> <span class="pts">(8 pts)</span></div>
+
+  <div class="subq">
+    (a) <strong>ΔEN and bond type:</strong>
+    <span class="kai">ΔEN = 3.5 − 2.5 = 1.0 → Polar Bonds</span> <span class="check">✓</span>
+    <span class="pts">[2 pts]</span>
+  </div>
+
+  <div class="subq">
+    (b) <strong>δ labels:</strong>
+    <span class="kai"><span class="delta-mark">δ−</span> O = <span class="delta-mark">δ+</span> C = O <span class="delta-mark">δ−</span></span> <span class="check">✓</span>
+    <span class="pts">[2 pts]</span>
+  </div>
+
+  <div class="subq">
+    (c) <strong>Molecular polarity:</strong>
+    <span class="kai">Nonpolar — CO<sub>2</sub> is linear and symmetric; the two equal polar bonds point in opposite directions and cancel each other out.</span> <span class="check">✓</span>
+    <span class="pts">[4 pts]</span><br>
+    <span class="note">Correct reason (symmetry / cancellation). Full credit.</span>
+  </div>
+</div>
+
+<div class="section-score">Section 2 Total: 16 / 16</div>
+
+<!-- ======================== SECTION 3 ======================== -->
+<div class="section-head">
+  Section 3: Intermolecular Forces
+  <span class="std-badge">5.2.2</span>
+  <span class="std-badge">5.2.3</span>
+  <span class="section-pts">(20 pts — Kai: 20/20 ✓)</span>
+</div>
+
+<div class="ref-box">
+  <strong>IMF Types:</strong>
+  LDF = London Dispersion Forces (all molecules) &nbsp;|&nbsp;
+  DD = Dipole-Dipole (polar molecules) &nbsp;|&nbsp;
+  HB = Hydrogen Bonding (H bonded directly to N, O, or F only)
+</div>
+
+<div class="part-head" style="margin-top:8px;">Part A — Identify IMF Types <span class="std-badge">5.2.2</span> <span class="pts">(10 pts)</span></div>
+
+<table class="imf-table">
+  <thead>
+    <tr>
+      <th style="width:8%">Mol.</th>
+      <th style="width:10%">Formula</th>
+      <th style="width:20%">Polar / Nonpolar</th>
+      <th style="width:30%">Kai's IMF Types</th>
+      <th style="width:10%">Score</th>
+      <th style="width:22%">Note</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>A</td><td>N<sub>2</sub></td>
+      <td><span class="kai">Nonpolar</span> <span class="check">✓</span></td>
+      <td><span class="kai">LDF only</span> <span class="check">✓</span></td>
+      <td style="text-align:center;color:#166534;font-weight:bold;">2/2</td>
+      <td style="font-size:8.5pt;">Diatomic N≡N, no ΔEN</td>
+    </tr>
+    <tr>
+      <td>B</td><td>HF</td>
+      <td><span class="kai">Polar</span> <span class="check">✓</span></td>
+      <td><span class="kai">LDF + DD + HB</span> <span class="check">✓</span></td>
+      <td style="text-align:center;color:#166534;font-weight:bold;">2/2</td>
+      <td style="font-size:8.5pt;">H bonded to F → HB ✓</td>
+    </tr>
+    <tr>
+      <td>C</td><td>CH<sub>4</sub></td>
+      <td><span class="kai">Nonpolar</span> <span class="check">✓</span></td>
+      <td><span class="kai">LDF only</span> <span class="check">✓</span></td>
+      <td style="text-align:center;color:#166534;font-weight:bold;">2/2</td>
+      <td style="font-size:8.5pt;">Tetrahedral, symmetric</td>
+    </tr>
+    <tr>
+      <td>D</td><td>H<sub>2</sub>O</td>
+      <td><span class="kai">Polar</span> <span class="check">✓</span></td>
+      <td><span class="kai">LDF + DD + HB</span> <span class="check">✓</span></td>
+      <td style="text-align:center;color:#166534;font-weight:bold;">2/2</td>
+      <td style="font-size:8.5pt;">H bonded to O → HB ✓</td>
+    </tr>
+    <tr>
+      <td>E</td><td>HCl</td>
+      <td><span class="kai">Polar</span> <span class="check">✓</span></td>
+      <td><span class="kai">LDF + DD</span> <span class="check">✓</span></td>
+      <td style="text-align:center;color:#166534;font-weight:bold;">2/2</td>
+      <td style="font-size:8.5pt;">Cl NOT in HB list (N/O/F only) ✓</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="part-head" style="margin-top:12px;">Part B — Rank Boiling Points <span class="std-badge">5.2.3</span> <span class="pts">(10 pts)</span></div>
+
+<div class="no-break">
+  <div class="subq" style="font-size:13pt;margin:6px 0;">
+    <span class="kai">D &gt; B &gt; E &gt; C &gt; A</span>
+    &nbsp; <span class="check">✓</span> &nbsp;
+    <span style="font-size:10pt;color:#333;">(H<sub>2</sub>O &gt; HF &gt; HCl &gt; CH<sub>4</sub> &gt; N<sub>2</sub>)</span>
+  </div>
+  <div class="subq" style="font-size:10pt;">
+    <strong>Justification:</strong>
+    <span class="kai">H<sub>2</sub>O has the strongest IMFs — hydrogen bonding with 2 H atoms — so it requires the most energy to break apart.</span> <span class="check">✓</span>
+    <span class="pts">[2 pts]</span>
+  </div>
+  <div class="note" style="margin-left:14px;">Full ranking + correct justification. CH<sub>4</sub> &gt; N<sub>2</sub> order confirmed correct.</div>
+</div>
+
+<div class="section-score">Section 3 Total: 20 / 20</div>
+
+<!-- ======================== SECTION 4 ======================== -->
+<div class="section-head">
+  Section 4: Multi-Step Stoichiometry
+  <span class="std-badge">6.3.1</span>
+  <span class="std-badge">6.3.2</span>
+  <span class="std-badge">6.3.3</span>
+  <span class="std-badge">6.3.4</span>
+  <span class="section-pts">(24 pts — Kai: 22/24)</span>
+</div>
+
+<div class="eq-box">
+  Fe<sub>2</sub>O<sub>3</sub>(s) + 3 CO(g) → 2 Fe(s) + 3 CO<sub>2</sub>(g)
+</div>
+<div class="ref-box">
+  <strong>Given:</strong> 40.0 g Fe<sub>2</sub>O<sub>3</sub> and 28.0 g CO &nbsp;|&nbsp;
+  <strong>Molar Masses:</strong> Fe<sub>2</sub>O<sub>3</sub> = 159.69 · CO = 28.01 · Fe = 55.85 · CO<sub>2</sub> = 44.01 g/mol
+</div>
+
+<!-- Part (a) -->
+<div class="part-head">Part (a) — Full Stoichiometry Calculation <span class="pts">[12 pts · 6.3.1, 6.3.2]</span></div>
+
+<div class="no-break" style="margin-bottom:8px;">
+  <div style="font-size:10pt;font-weight:bold;margin:6px 0 3px 0;">Path 1: Starting from Fe<sub>2</sub>O<sub>3</sub> <span class="pts">(6 pts)</span></div>
+  <div class="work-box-single">
+    <div class="box-label">Kai's Work ✓</div>
+    40.0 g Fe<sub>2</sub>O<sub>3</sub> × (1 mol Fe<sub>2</sub>O<sub>3</sub> / 159.69 g) × (2 mol Fe / 1 mol Fe<sub>2</sub>O<sub>3</sub>) × (55.85 g Fe / 1 mol Fe)
+    = <strong>27.97 g Fe</strong> ✓
+  </div>
+  <div class="note" style="margin-left:4px;">Correct setup and answer. [6/6 pts]</div>
+</div>
+
+<div class="no-break" style="margin-bottom:8px;">
+  <div style="font-size:10pt;font-weight:bold;margin:6px 0 3px 0;">Path 2: Starting from CO <span class="pts">(6 pts)</span></div>
+  <div class="work-box-single">
+    <div class="box-label">Kai's Work ✓</div>
+    28.0 g CO × (1 mol CO / 28.01 g) × (2 mol Fe / 3 mol CO) × (55.85 g Fe / 1 mol Fe)
+    = <strong>37.22 g Fe</strong> ✓
+  </div>
+  <div class="note" style="margin-left:4px;">Correct setup and answer. [6/6 pts]</div>
+</div>
+
+<!-- Part (b) -->
+<div class="part-head">Part (b) — Name the Conversion Factors <span class="pts">[6 pts · 6.3.3]</span></div>
+
+<div class="no-break" style="margin-bottom:8px;">
+  <div class="subq">
+    <strong>Factor 1</strong> (g Fe<sub>2</sub>O<sub>3</sub> → mol Fe<sub>2</sub>O<sub>3</sub>):
+    <span class="kai">"mol A to mol B" (mol-to-mol ratio)</span> <span class="check">✓</span>
+    <span class="pts">[2 pts]</span><br>
+    <span class="note">Teacher's terminology accepted: "mol A to mol B" describes the mole-ratio conversion.</span>
+  </div>
+  <div class="subq" style="margin-top:3px;">
+    <strong>Factor 2</strong> (mol Fe<sub>2</sub>O<sub>3</sub> → mol Fe):
+    <span class="kai">Mole Ratio</span> <span class="check">✓</span>
+    <span class="pts">[2 pts]</span>
+  </div>
+  <div class="subq" style="margin-top:3px;">
+    <strong>Factor 3</strong> (mol Fe → g Fe):
+    <span class="kai">Molar Mass</span> <span class="check">✓</span>
+    <span class="pts">[2 pts]</span>
+  </div>
+</div>
+
+<!-- Part (c) -->
+<div class="part-head">Part (c) — Limiting Reagent <span class="pts">[6 pts · 6.3.4]</span></div>
+
+<div class="no-break">
+  <div class="subq">
+    (i) <strong>Identify LR and excess:</strong>
+    <span class="kai">LR = Fe<sub>2</sub>O<sub>3</sub> (produces 27.97 g Fe &lt; 37.22 g) · Excess = CO</span> <span class="check">✓</span>
+    <span class="pts">[2/2 pts]</span>
+  </div>
+
+  <div class="subq" style="margin-top:6px;">(ii) <strong>Mass of excess CO remaining:</strong> <span class="pts">[4 pts]</span></div>
+
+  <div class="work-row">
+    <div class="work-box-kai error">
+      <div class="box-label">Kai's Work — method ✓, arithmetic ✗</div>
+      27.95g Fe × (1 mol Fe / 55.855g) × (3 mol CO / 2 mol Fe) × (28.01g / 1 mol CO)<br>
+      = 20.988g consumed (arithmetic slip — should be 21.02g)<br>
+      28.0 − 20.988 = <strong style="color:#991b1b;">7.0812g CO remaining</strong>
+    </div>
+    <div class="work-box-correct">
+      <div class="box-label">Correct Work</div>
+      40.0 g Fe<sub>2</sub>O<sub>3</sub> × (1 mol / 159.69 g) × (3 mol CO / 1 mol Fe<sub>2</sub>O<sub>3</sub>) × (28.01 g / 1 mol CO)<br>
+      = 21.05 g CO consumed<br>
+      28.0 − 21.05 = <strong>6.95 g CO remaining</strong>
+    </div>
+  </div>
+
+  <div class="correction-callout">
+    <div class="c-label">Error Analysis — Arithmetic Slip Only</div>
+    Kai's method is valid: using the 3 mol CO / 2 mol Fe stoichiometric ratio from the balanced equation to back-calculate CO consumed from the Fe produced is correct chemistry. Running his numbers correctly: 27.95g Fe ÷ 55.855 × (3/2) × 28.01 = <strong>21.02g consumed → 6.98g CO remaining</strong> (accepted range 6.9–7.0g ✓). He wrote 20.988 for the consumed mass — a multiplication slip in the final step (0.7506 × 28.01). If he redoes that one multiplication he lands at 6.98g for full credit. Score: 2/2 setup ✓ · 0/2 answer (arithmetic error pushed answer to 7.08, just outside range).
+  </div>
+</div>
+
+<div class="section-score">Section 4 Total: 22 / 24</div>
+
+<!-- ======================== SECTION 5 ======================== -->
+<div class="section-head">
+  Section 5: Molarity and Concentration
+  <span class="std-badge">7.1.4</span>
+  <span class="section-pts">(10 pts — Kai: 10/10 ✓)</span>
+</div>
+
+<!-- Problem 1 -->
+<div class="no-break" style="margin-bottom:10px;">
+  <div class="part-head">Problem 1 <span class="pts">(5 pts)</span></div>
+  <div style="font-size:10pt;margin:3px 0 4px 0;">
+    Given: 36.0 g MgSO<sub>4</sub> dissolved in 2.00 L of solution. Molar mass MgSO<sub>4</sub> = 120.37 g/mol. Find molarity.
+  </div>
+  <div class="work-box-single">
+    <div class="box-label">Kai's Work ✓</div>
+    36.0 g ÷ 120.37 g/mol = 0.2992 mol MgSO<sub>4</sub><br>
+    M = 0.2992 mol ÷ 2.00 L = <strong>0.1495 M</strong> ✓
+    <span style="font-size:8.5pt;color:#555;margin-left:6px;">(accepted range 0.149–0.150 M)</span>
+  </div>
+  <div class="note" style="margin-left:4px;">Correct mole conversion, correct M = mol/L, correct answer. [5/5 pts]</div>
+</div>
+
+<!-- Problem 2 -->
+<div class="no-break" style="margin-bottom:10px;">
+  <div class="part-head">Problem 2 <span class="pts">(5 pts)</span></div>
+  <div style="font-size:10pt;margin:3px 0 4px 0;">
+    Given: 500. mL of 0.400 M NaOH. Molar mass NaOH = 40.00 g/mol. Find grams of NaOH needed.
+  </div>
+  <div class="work-box-single">
+    <div class="box-label">Kai's Work ✓</div>
+    mol NaOH = 0.400 mol/L × 0.500 L = 0.200 mol<br>
+    g NaOH = 0.200 mol × 40.00 g/mol = <strong>8.00 g NaOH</strong> ✓
+  </div>
+  <div class="note" style="margin-left:4px;">
+    Correct mL→L conversion (500 mL = 0.500 L ✓). Correct mol = M×V. Correct g = mol×MM. [5/5 pts]<br>
+    Used molar mass 40.00 g/mol correctly. Marcus noted molarity setup was a concern — Kai executed both directions cleanly.
+  </div>
+</div>
+
+<div class="section-score">Section 5 Total: 10 / 10</div>
+
+<!-- Final tally -->
+<div class="final-note">
+  <strong>Final Score: 97 / 100 (97%)</strong> &nbsp;·&nbsp;
+  S1 29/30 &nbsp;·&nbsp; S2 16/16 &nbsp;·&nbsp; S3 20/20 &nbsp;·&nbsp; S4 22/24 &nbsp;·&nbsp; S5 10/10<br>
+  <strong>Standards:</strong> 10 of 12 PASS &nbsp;·&nbsp;
+  <span style="color:#991b1b;"><strong>NOT YET:</strong> 5.1.7 (OF<sub>2</sub> angle: &lt;120° → correct ~103°) · 6.3.4 (arithmetic slip on final multiply: 20.988 → correct 21.02 → 6.98g CO remaining; method valid)</span><br>
+  <strong>Recommendation:</strong> One 45-min targeted session (5.1.7 angle drill + 6.3.4 arithmetic-checking habit), then proceed to teacher test.
+</div>
+
+</body>
+</html>
