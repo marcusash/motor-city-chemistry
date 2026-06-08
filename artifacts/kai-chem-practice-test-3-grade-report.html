@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Practice Test 3 — Grade Report — Kai Ash</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,700;1,400&display=swap');
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: 'EB Garamond', Georgia, serif;
+  font-size: 11pt;
+  line-height: 1.5;
+  padding: 0.5in 0.75in;
+  color: #1a1a1a;
+  background: #fff;
+  max-width: 8.5in;
+}
+
+.page-header {
+  display: flex; justify-content: space-between;
+  border-bottom: 0.5pt solid #000; padding-bottom: 3px;
+  margin-bottom: 10px; font-size: 9pt; color: #555;
+}
+
+.title-block { text-align: center; margin-bottom: 10px; }
+.title-block h1 { font-size: 15pt; font-weight: bold; margin-bottom: 2px; }
+.title-block .eyebrow {
+  font-size: 9.5pt; color: #c0392b; letter-spacing: 0.5px;
+  text-transform: uppercase; margin-bottom: 4px; font-weight: bold;
+}
+.student-meta {
+  font-size: 10pt; margin-bottom: 14px;
+  display: flex; gap: 2rem; justify-content: center; flex-wrap: wrap;
+}
+
+.score-banner {
+  display: flex; gap: 1rem; flex-wrap: wrap;
+  background: #f0fdf4; border: 1px solid #86efac;
+  border-radius: 6px; padding: 8px 14px;
+  margin-bottom: 16px; align-items: center;
+}
+.score-banner .total { font-size: 17pt; font-weight: bold; color: #166534; font-family: -apple-system, sans-serif; }
+.score-banner .pct { font-size: 12pt; font-weight: bold; color: #166534; font-family: -apple-system, sans-serif; }
+.score-banner .detail { font-size: 9pt; color: #555; font-family: -apple-system, sans-serif; line-height: 1.5; }
+.sec-mini { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-left: auto; align-items: center; }
+.sec-chip { font-size: 8.5pt; padding: 2px 7px; border-radius: 3px; font-family: -apple-system, sans-serif; font-weight: 600; }
+.sec-chip.full { background: #dcfce7; color: #166534; border: 1px solid #86efac; }
+
+.section-head {
+  color: #1a5276; font-size: 12pt; font-weight: bold;
+  border-bottom: 0.5pt solid #1a5276; padding-bottom: 2px;
+  margin: 16px 0 8px 0; clear: both;
+}
+.section-head .section-pts { float: right; font-size: 10pt; color: #555; font-weight: normal; }
+.std-badge {
+  display: inline-block; background: #f4a8a8; color: #6b1d1d;
+  font-size: 8pt; padding: 1px 6px; border-radius: 3px;
+  font-weight: bold; vertical-align: middle; margin-left: 5px;
+}
+
+.eq-box { border: 1px solid #1a5276; background: #ebf5fb; padding: 7px 12px; margin: 6px 0; text-align: center; font-size: 12pt; font-weight: bold; }
+.ref-box { border: 1px solid #999; background: #f7f9fb; padding: 5px 10px; margin: 6px 0; font-size: 10pt; }
+.part-head { font-weight: bold; font-size: 11pt; margin: 10px 0 4px 0; }
+
+.work-row { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin: 4px 0; }
+.work-box-kai {
+  border: 1px solid #93c5fd; background: #eff6ff;
+  padding: 6px 10px; font-size: 9.5pt; min-height: 48px; border-radius: 4px;
+}
+.work-box-correct {
+  border: 1px solid #86efac; background: #f0fdf4;
+  padding: 6px 10px; font-size: 9.5pt; min-height: 48px; border-radius: 4px;
+}
+.box-label {
+  font-size: 7.5pt; text-transform: uppercase; font-weight: bold;
+  margin-bottom: 2px; font-family: -apple-system, sans-serif; letter-spacing: 0.04em;
+}
+.work-box-kai .box-label { color: #1d4ed8; }
+.work-box-correct .box-label { color: #166534; }
+
+.success-callout {
+  border-left: 3px solid #16a34a; background: #f0fdf4;
+  padding: 6px 10px; margin: 4px 0 8px 0; font-size: 9pt; border-radius: 0 4px 4px 0;
+}
+.success-callout .s-label {
+  font-size: 7.5pt; text-transform: uppercase; font-weight: bold;
+  color: #16a34a; margin-bottom: 2px; font-family: -apple-system, sans-serif;
+}
+
+.kai { color: #1a5276; font-weight: bold; }
+.check { color: #166534; }
+.section-score { text-align: right; font-weight: bold; color: #1a5276; font-size: 10pt; margin-top: 6px; }
+
+.standards-table { border-collapse: collapse; width: 100%; margin: 10px 0; font-size: 10pt; }
+.standards-table th { border: 1px solid #555; padding: 5px 8px; background: #f0f0f0; text-align: center; font-weight: bold; }
+.standards-table td { border: 1px solid #555; padding: 4px 8px; }
+.pass-cell { text-align: center; font-weight: bold; color: #166534; background: #f0fdf4; }
+
+.final-note {
+  border: 2px solid #86efac; border-radius: 6px; background: #f0fdf4;
+  padding: 10px 14px; margin-top: 16px; font-size: 10pt;
+}
+.final-note h3 { font-size: 11pt; color: #166534; margin-bottom: 6px; }
+
+@media print {
+  body { padding: 0.4in 0.6in; }
+}
+</style>
+</head>
+<body>
+
+<div class="page-header">
+  <span>Motor City Chemistry &mdash; Practice Test 3 Grade Report</span>
+  <span>FR &mdash; 2026-06-07</span>
+</div>
+
+<div class="title-block">
+  <div class="eyebrow">Grade Report &middot; Practice Series &middot; FR-graded 2026-06-07</div>
+  <h1>Practice Test 3 &mdash; Annotated Grade Report</h1>
+</div>
+
+<div class="student-meta">
+  <span><strong>Student:</strong> Kai Ash</span>
+  <span><strong>Course:</strong> SAAS Chem 10 &middot; Teacher Martin &middot; Block 6</span>
+  <span><strong>Test:</strong> Practice Test 3 &middot; Final Prep</span>
+</div>
+
+<!-- Score banner -->
+<div class="score-banner">
+  <div class="total">50 / 50</div>
+  <div class="pct">100%&nbsp;&nbsp;A</div>
+  <div class="detail">
+    S4 40/40 &middot; S5 10/10<br>
+    4 of 4 standards demonstrated &middot; 6.3.4 ✓ &middot; 7.1.4 ✓ &mdash; all NP standards cleared
+  </div>
+  <div class="sec-mini">
+    <span class="sec-chip full">S4 40/40</span>
+    <span class="sec-chip full">S5 10/10</span>
+  </div>
+</div>
+
+<!-- ===================== SECTION 4 ===================== -->
+<div class="section-head">
+  Section 4: Stoichiometry &mdash; Limiting and Excess Reagents
+  <span class="section-pts">Kai: 40 / 40</span>
+</div>
+
+<!-- Problem 1 -->
+<div class="part-head">Problem 1 &mdash; Iron Oxide Formation <span style="float:right;font-weight:normal;font-size:10pt;color:#555;">20 / 20 pts</span></div>
+
+<div class="eq-box">4 Fe(s) &nbsp;+&nbsp; 3 O<sub>2</sub>(g) &nbsp;&rarr;&nbsp; 2 Fe<sub>2</sub>O<sub>3</sub>(s)</div>
+<div class="ref-box"><strong>Given:</strong> 50.0 g Fe and 40.0 g O<sub>2</sub> &nbsp;|&nbsp; Molar masses from periodic table (no hints on exam)</div>
+
+<div style="font-size:10pt;font-weight:bold;margin-top:8px;">Limiting Reagent Paths <span style="float:right;font-weight:normal;color:#555;font-size:9pt;">[12 pts &middot; 6.3.1, 6.3.2]</span></div>
+
+<div class="work-row">
+  <div class="work-box-kai">
+    <div class="box-label">Kai &mdash; Path Fe ✓</div>
+    50.0 g Fe &times; (1 mol Fe / 55.85 g) &times; (2 mol Fe<sub>2</sub>O<sub>3</sub> / 4 mol Fe) &times; (159.70 g / 1 mol Fe<sub>2</sub>O<sub>3</sub>)<br>
+    = <strong>71.48 g Fe<sub>2</sub>O<sub>3</sub></strong> ✓
+  </div>
+  <div class="work-box-correct">
+    <div class="box-label">Key &mdash; Path Fe ✓</div>
+    = <strong>71.49 g Fe<sub>2</sub>O<sub>3</sub></strong> (accept 70.5–72.0 g)<br>
+    <em>Kai: 71.48 g &mdash; rounding difference only &mdash; 6/6 pts</em>
+  </div>
+</div>
+
+<div class="work-row">
+  <div class="work-box-kai">
+    <div class="box-label">Kai &mdash; Path O<sub>2</sub> ✓</div>
+    40.0 g O<sub>2</sub> &times; (1 mol O<sub>2</sub> / 32.00 g) &times; (2 mol Fe<sub>2</sub>O<sub>3</sub> / 3 mol O<sub>2</sub>) &times; (159.70 g / 1 mol Fe<sub>2</sub>O<sub>3</sub>)<br>
+    = <strong>133.07 g Fe<sub>2</sub>O<sub>3</sub></strong> ✓
+  </div>
+  <div class="work-box-correct">
+    <div class="box-label">Key &mdash; Path O<sub>2</sub> ✓</div>
+    = <strong>133.1 g Fe<sub>2</sub>O<sub>3</sub></strong> (accept 132.0–134.0 g)<br>
+    <em>Kai: 133.07 g &mdash; rounding difference only &mdash; 6/6 pts</em>
+  </div>
+</div>
+
+<div style="font-size:10pt;font-weight:bold;margin-top:8px;">Limiting / Excess Identification <span style="float:right;font-weight:normal;color:#555;font-size:9pt;">[2 pts &middot; 6.3.4]</span></div>
+<div style="margin:4px 0;font-size:10pt;">
+  <strong>Limiting Reagent:</strong> <span class="kai">Fe</span> <span class="check">✓</span>
+  &nbsp;&nbsp;
+  <strong>Excess Reagent:</strong> <span class="kai">O<sub>2</sub></span> <span class="check">✓</span>
+  <span style="font-size:8.5pt;color:#555;font-style:italic;margin-left:8px;">[2/2 pts &mdash; 71.48 &lt; 133.07 correctly identified Fe as LR]</span>
+</div>
+
+<div style="font-size:10pt;font-weight:bold;margin-top:8px;">Remaining Excess Reagent <span style="float:right;font-weight:normal;color:#555;font-size:9pt;">[6 pts &middot; 6.3.4]</span></div>
+<div class="work-row">
+  <div class="work-box-kai">
+    <div class="box-label">Kai &mdash; Remaining O<sub>2</sub> ✓</div>
+    <em style="font-size:8.5pt;color:#1d4ed8;">[DA chain in remaining box:]</em><br>
+    71.48 g Fe<sub>2</sub>O<sub>3</sub> &times; (1 mol / 159.70 g) &times; (3 mol O<sub>2</sub> / 2 mol Fe<sub>2</sub>O<sub>3</sub>) &times; (32.00 g / 1 mol O<sub>2</sub>) = 21.49 g O<sub>2</sub> consumed<br>
+    <em style="font-size:8.5pt;color:#1d4ed8;">[subtraction written in main work area:]</em><br>
+    40.0 &minus; 21.49 = <strong>18.51 g O<sub>2</sub> remaining</strong> ✓
+  </div>
+  <div class="work-box-correct">
+    <div class="box-label">Key ✓</div>
+    <strong>18.51 g O<sub>2</sub></strong> (accept 18.3–18.7 g)<br>
+    <em>Work split across boxes but complete and correct &mdash; 4/4 DA + 2/2 subtraction = 6/6 pts</em>
+  </div>
+</div>
+
+<div class="success-callout">
+  <div class="s-label">Molar Masses — Self-Sourced from Periodic Table</div>
+  No molar masses given on the exam. Kai looked up Fe = 55.85, O = 16.00 (O<sub>2</sub> = 32.00), and Fe<sub>2</sub>O<sub>3</sub> = 159.70 g/mol independently. All values correct.
+</div>
+
+<div style="text-align:right;font-size:9.5pt;color:#1a5276;font-weight:bold;margin-top:6px;">Problem 1: 6+6 (paths) + 2 (LR) + 4+2 (remaining) = <strong>20 / 20</strong></div>
+
+<!-- Problem 2 -->
+<div class="part-head" style="margin-top:16px;">Problem 2 &mdash; Sodium Chloride Synthesis <span style="float:right;font-weight:normal;font-size:10pt;color:#555;">20 / 20 pts</span></div>
+
+<div class="eq-box">2 Na(s) &nbsp;+&nbsp; Cl<sub>2</sub>(g) &nbsp;&rarr;&nbsp; 2 NaCl(s)</div>
+<div class="ref-box"><strong>Given:</strong> 35.0 g Na and 85.0 g Cl<sub>2</sub> &nbsp;|&nbsp; Molar masses from periodic table (no hints on exam)</div>
+
+<div style="font-size:10pt;font-weight:bold;margin-top:8px;">Limiting Reagent Paths <span style="float:right;font-weight:normal;color:#555;font-size:9pt;">[12 pts &middot; 6.3.1, 6.3.2]</span></div>
+
+<div class="work-row">
+  <div class="work-box-kai">
+    <div class="box-label">Kai &mdash; Path Na ✓</div>
+    35.0 g Na &times; (1 mol Na / 22.99 g) &times; (2 mol NaCl / 2 mol Na) &times; (58.44 g / 1 mol NaCl)<br>
+    = <strong>88.99 g NaCl</strong> ✓
+  </div>
+  <div class="work-box-correct">
+    <div class="box-label">Key &mdash; Path Na ✓</div>
+    = <strong>88.97 g NaCl</strong> (accept 88.0–90.0 g)<br>
+    <em>6/6 pts</em>
+  </div>
+</div>
+
+<div class="work-row">
+  <div class="work-box-kai">
+    <div class="box-label">Kai &mdash; Path Cl<sub>2</sub> ✓</div>
+    85.0 g Cl<sub>2</sub> &times; (1 mol Cl<sub>2</sub> / 70.90 g) &times; (2 mol NaCl / 1 mol Cl<sub>2</sub>) &times; (58.44 g / 1 mol NaCl)<br>
+    = <strong>140.1 g NaCl</strong> ✓
+  </div>
+  <div class="work-box-correct">
+    <div class="box-label">Key &mdash; Path Cl<sub>2</sub> ✓</div>
+    = <strong>140.1 g NaCl</strong> (accept 139.0–141.0 g)<br>
+    <em>6/6 pts</em>
+  </div>
+</div>
+
+<div style="font-size:10pt;font-weight:bold;margin-top:8px;">Limiting / Excess Identification <span style="float:right;font-weight:normal;color:#555;font-size:9pt;">[2 pts &middot; 6.3.4]</span></div>
+<div style="margin:4px 0;font-size:10pt;">
+  <strong>Limiting Reagent:</strong> <span class="kai">Na</span> <span class="check">✓</span>
+  &nbsp;&nbsp;
+  <strong>Excess Reagent:</strong> <span class="kai">Cl<sub>2</sub></span> <span class="check">✓</span>
+  <span style="font-size:8.5pt;color:#555;font-style:italic;margin-left:8px;">[2/2 pts &mdash; 88.99 &lt; 140.1 correctly identified Na as LR]</span>
+</div>
+
+<div style="font-size:10pt;font-weight:bold;margin-top:8px;">Remaining Excess Reagent <span style="float:right;font-weight:normal;color:#555;font-size:9pt;">[6 pts &middot; 6.3.4]</span></div>
+<div class="work-row">
+  <div class="work-box-kai">
+    <div class="box-label">Kai &mdash; Remaining Cl<sub>2</sub> ✓</div>
+    88.99 g NaCl &times; (1 mol / 58.44 g) &times; (1 mol Cl<sub>2</sub> / 2 mol NaCl) &times; (70.90 g / 1 mol Cl<sub>2</sub>)<br>
+    = 53.96 g Cl<sub>2</sub> consumed<br>
+    85.0 &minus; 53.96 = <strong>31.04 g Cl<sub>2</sub> remaining</strong> ✓
+  </div>
+  <div class="work-box-correct">
+    <div class="box-label">Key ✓</div>
+    <strong>31.03 g Cl<sub>2</sub></strong> (accept 30.5–31.5 g)<br>
+    <em>4/4 DA + 2/2 subtraction = 6/6 pts</em>
+  </div>
+</div>
+
+<div class="success-callout">
+  <div class="s-label">Correct Molar Mass for Cl&#x2082; — Diatomic Recognized</div>
+  Kai correctly used Cl<sub>2</sub> = 70.90 g/mol (not 35.45) for the diatomic molecule. No hint on exam — he looked it up correctly.
+</div>
+
+<div style="text-align:right;font-size:9.5pt;color:#1a5276;font-weight:bold;margin-top:6px;">Problem 2: 6+6 (paths) + 2 (LR) + 4+2 (remaining) = <strong>20 / 20</strong></div>
+
+<div class="section-score">Section 4 Total: 40 / 40</div>
+
+
+<!-- ===================== SECTION 5 ===================== -->
+<div class="section-head">
+  Section 5: Molarity and Concentration
+  <span class="std-badge">7.1.4</span>
+  <span class="section-pts">Kai: 10 / 10</span>
+</div>
+
+<div class="success-callout" style="margin-bottom:10px;">
+  <div class="s-label">Independent — No Assistance</div>
+  Both problems solved independently. 7.1.4 was marked NP on Practice Test 2 due to parent assistance. Both problems here are Kai's own work — standard clears.
+</div>
+
+<!-- S5 P1 -->
+<div class="part-head">Problem 1 &mdash; NaCl Molarity <span style="float:right;font-weight:normal;font-size:10pt;color:#555;">5 / 5 pts</span></div>
+<div style="font-size:10.5pt;margin:5px 0;">29.2 g of NaCl dissolved in 400. mL of solution. Find molarity.</div>
+
+<div class="work-row">
+  <div class="work-box-kai">
+    <div class="box-label">Kai ✓</div>
+    MM NaCl: Na (22.99) + Cl (35.45) = 58.44 g/mol<br>
+    mol NaCl = 29.2 g &divide; 58.44 g/mol = 0.499 mol<br>
+    M = 0.499 mol &divide; 0.400 L = <strong>1.25 M</strong> ✓
+  </div>
+  <div class="work-box-correct">
+    <div class="box-label">Key ✓</div>
+    = <strong>1.25 M</strong> (accept 1.24–1.26 M)<br>
+    <em>1 pt MM &middot; 2 pts mol &middot; 2 pts M = 5/5</em>
+  </div>
+</div>
+
+<div style="text-align:right;font-size:9.5pt;color:#1a5276;font-weight:bold;margin-top:4px;">Problem 1: <strong>5 / 5</strong></div>
+
+<!-- S5 P2 -->
+<div class="part-head" style="margin-top:12px;">Problem 2 &mdash; BaCl<sub>2</sub> Mass from Molarity <span style="float:right;font-weight:normal;font-size:10pt;color:#555;">5 / 5 pts</span></div>
+<div style="font-size:10.5pt;margin:5px 0;">Prepare 350. mL of 0.250 M BaCl<sub>2</sub> solution. Find mass of BaCl<sub>2</sub> needed.</div>
+
+<div class="work-row">
+  <div class="work-box-kai">
+    <div class="box-label">Kai ✓</div>
+    MM BaCl<sub>2</sub>: Ba (137.33) + 2 &times; Cl (35.45) = 208.23 g/mol<br>
+    mol BaCl<sub>2</sub> = 0.350 L &times; 0.250 mol/L = 0.0875 mol<br>
+    mass = 0.0875 mol &times; 208.23 g/mol = <strong>18.22 g BaCl<sub>2</sub></strong> ✓
+  </div>
+  <div class="work-box-correct">
+    <div class="box-label">Key ✓</div>
+    = <strong>18.22 g BaCl<sub>2</sub></strong> (accept 18.0–18.5 g)<br>
+    <em>1 pt MM &middot; 2 pts mol &middot; 2 pts mass = 5/5</em>
+  </div>
+</div>
+
+<div class="success-callout" style="margin-top:6px;">
+  <div class="s-label">BaCl&#x2082; Molar Mass — Correctly Counted Both Chlorines</div>
+  Kai correctly calculated MM = 137.33 + 2(35.45) = 208.23 g/mol. On PT2 this problem was assisted; here it's clean independent work.
+</div>
+
+<div style="text-align:right;font-size:9.5pt;color:#1a5276;font-weight:bold;margin-top:4px;">Problem 2: <strong>5 / 5</strong></div>
+
+<div class="section-score">Section 5 Total: 10 / 10</div>
+
+
+<!-- ===================== STANDARDS TABLE ===================== -->
+<div class="section-head" style="margin-top:20px;">Standards Assessment</div>
+
+<table class="standards-table">
+  <thead>
+    <tr>
+      <th>Standard</th>
+      <th>Description</th>
+      <th>Result</th>
+      <th>Notes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>6.3.1</strong></td>
+      <td>Select correct conversion factors for stoichiometry</td>
+      <td class="pass-cell">P</td>
+      <td>All 4 DA chains set up correctly; no hints provided — molar masses sourced independently</td>
+    </tr>
+    <tr>
+      <td><strong>6.3.2</strong></td>
+      <td>Solve multi-step stoichiometry (2+ conversion factors)</td>
+      <td class="pass-cell">P</td>
+      <td>All 4 paths numerically correct within rounding; Fe path 71.48 g (KEY 71.49), O₂ path 133.07 g (KEY 133.1)</td>
+    </tr>
+    <tr>
+      <td><strong>6.3.4</strong></td>
+      <td>Identify limiting reagent and calculate excess remaining</td>
+      <td class="pass-cell">P</td>
+      <td>Both problems: correct LR identification, correct remaining calculation — 2/2 (100%). Previously NP on PT2.</td>
+    </tr>
+    <tr>
+      <td><strong>7.1.4</strong></td>
+      <td>Calculate molarity; solve for mass or volume</td>
+      <td class="pass-cell">P</td>
+      <td>Both problems solved independently with correct setup and answers. Previously NP (assisted) on PT2.</td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- Final note -->
+<div class="final-note">
+  <h3>50 / 50 (100%) &middot; A &middot; All 4 standards demonstrated &middot; 0 not-yet</h3>
+
+  <p style="margin-top:6px;">
+    Kai cleared both remaining NP standards on Practice Test 3. This completes the Practice Series for SAAS Chem 10 Unit 5–7.
+  </p>
+
+  <p style="margin-top:10px;"><strong>What changed from Practice Test 2:</strong></p>
+  <p style="margin: 3px 0 3px 12px; color: #166534;">
+    6.3.4: On PT2, an arithmetic error on the H₂ path cascaded to the wrong LR. Here, both paths computed correctly — Kai identified Fe and Na as limiting reagents from his own math with no errors.
+  </p>
+  <p style="margin: 3px 0 3px 12px; color: #166534;">
+    7.1.4: On PT2, molarity was completed with parent assistance (scored NP). Here, both problems — including the harder back-solve for mass — were done independently and correctly.
+  </p>
+  <p style="margin: 3px 0 3px 12px; color: #166534;">
+    Periodic table use: No molar masses were provided on the exam. Kai sourced all values independently, including BaCl<sub>2</sub> = 208.23 g/mol (correctly counting both Cl atoms).
+  </p>
+
+  <p style="margin-top:10px;font-size:9.5pt;color:#555;font-style:italic;">
+    Practice Series complete. Standards covered: 5.1.1, 5.1.2, 5.1.3, 5.1.6, 5.1.7, 6.3.1, 6.3.2, 6.3.3, 6.3.4, 7.1.4 — all demonstrated across PT1, PT2, and PT3. Ready for teacher retake.
+  </p>
+</div>
+
+</body>
+</html>
