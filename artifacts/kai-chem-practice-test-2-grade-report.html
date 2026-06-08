@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Practice Test 2 — Grade Report — Kai Ash</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,700;1,400&display=swap');
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: 'EB Garamond', Georgia, serif;
+  font-size: 11pt;
+  line-height: 1.5;
+  padding: 0.5in 0.75in;
+  color: #1a1a1a;
+  background: #fff;
+  max-width: 8.5in;
+}
+
+.page-header {
+  display: flex; justify-content: space-between;
+  border-bottom: 0.5pt solid #000; padding-bottom: 3px;
+  margin-bottom: 10px; font-size: 9pt; color: #555;
+}
+
+.title-block { text-align: center; margin-bottom: 10px; }
+.title-block h1 { font-size: 15pt; font-weight: bold; margin-bottom: 2px; }
+.title-block .eyebrow {
+  font-size: 9.5pt; color: #c0392b; letter-spacing: 0.5px;
+  text-transform: uppercase; margin-bottom: 4px; font-weight: bold;
+}
+.student-meta {
+  font-size: 10pt; margin-bottom: 14px;
+  display: flex; gap: 2rem; justify-content: center; flex-wrap: wrap;
+}
+
+.score-banner {
+  display: flex; gap: 1rem; flex-wrap: wrap;
+  background: #f7f9fb; border: 1px solid #c5cdd6;
+  border-radius: 6px; padding: 8px 14px;
+  margin-bottom: 16px; align-items: center;
+}
+.score-banner .total { font-size: 17pt; font-weight: bold; color: #854d0e; font-family: -apple-system, sans-serif; }
+.score-banner .pct { font-size: 12pt; font-weight: bold; color: #854d0e; font-family: -apple-system, sans-serif; }
+.score-banner .detail { font-size: 9pt; color: #555; font-family: -apple-system, sans-serif; line-height: 1.5; }
+.sec-mini { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-left: auto; align-items: center; }
+.sec-chip { font-size: 8.5pt; padding: 2px 7px; border-radius: 3px; font-family: -apple-system, sans-serif; font-weight: 600; }
+.sec-chip.full { background: #dcfce7; color: #166534; border: 1px solid #86efac; }
+.sec-chip.part { background: #fef9c3; color: #854d0e; border: 1px solid #fde047; }
+.sec-chip.fail { background: #fee2e2; color: #991b1b; border: 1px solid #fca5a5; }
+
+.section-head {
+  color: #1a5276; font-size: 12pt; font-weight: bold;
+  border-bottom: 0.5pt solid #1a5276; padding-bottom: 2px;
+  margin: 16px 0 8px 0; clear: both;
+}
+.section-head .section-pts { float: right; font-size: 10pt; color: #555; font-weight: normal; }
+
+.std-badge {
+  display: inline-block; background: #f4a8a8; color: #6b1d1d;
+  font-size: 8pt; padding: 1px 6px; border-radius: 3px;
+  font-weight: bold; vertical-align: middle; margin-left: 5px;
+}
+
+.vsepr-table { border-collapse: collapse; width: 100%; margin: 8px 0; font-size: 9.5pt; table-layout: fixed; }
+.vsepr-table th {
+  border: 1px solid #555; padding: 4px; background: #f0f0f0;
+  text-align: center; font-weight: bold; font-size: 9pt; vertical-align: middle;
+}
+.vsepr-table td { border: 1px solid #555; padding: 3px 4px; text-align: center; vertical-align: middle; }
+.vsepr-table .lewis-cell { font-size: 9pt; padding: 4px; }
+.lp { color: #1a5276; font-weight: bold; }
+
+.kai { color: #1a5276; font-weight: bold; }
+.check { color: #166534; }
+.cross { color: #991b1b; }
+.correction { display: block; color: #166534; font-style: italic; font-size: 8.5pt; margin-top: 2px; }
+.ans-wrong .kai { color: #991b1b; }
+
+.rubric-row td {
+  background: #fafafa; font-size: 8.5pt; font-style: italic;
+  color: #555; text-align: left; padding: 3px 8px;
+}
+.rubric-row .score-cell {
+  text-align: right; font-style: normal; font-weight: bold;
+  color: #1a5276; white-space: nowrap;
+}
+
+.part-head { font-weight: bold; font-size: 11pt; margin: 10px 0 4px 0; }
+.ref-box { border: 1px solid #999; background: #f7f9fb; padding: 5px 10px; margin: 6px 0; font-size: 10pt; }
+.eq-box { border: 1px solid #1a5276; background: #ebf5fb; padding: 7px 12px; margin: 6px 0; text-align: center; font-size: 12pt; font-weight: bold; }
+
+.work-row { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin: 4px 0; }
+.work-box-kai {
+  border: 1px solid #93c5fd; background: #eff6ff;
+  padding: 6px 10px; font-size: 9.5pt; min-height: 48px; border-radius: 4px;
+}
+.work-box-correct {
+  border: 1px solid #86efac; background: #f0fdf4;
+  padding: 6px 10px; font-size: 9.5pt; min-height: 48px; border-radius: 4px;
+}
+.work-box-kai.error { border-color: #fca5a5; background: #fff1f2; }
+.box-label {
+  font-size: 7.5pt; text-transform: uppercase; font-weight: bold;
+  margin-bottom: 2px; font-family: -apple-system, sans-serif; letter-spacing: 0.04em;
+}
+.work-box-kai .box-label { color: #1d4ed8; }
+.work-box-kai.error .box-label { color: #991b1b; }
+.work-box-correct .box-label { color: #166534; }
+
+.correction-callout {
+  border-left: 3px solid #fca5a5; background: #fff1f2;
+  padding: 6px 10px; margin: 4px 0 8px 0; font-size: 9pt; border-radius: 0 4px 4px 0;
+}
+.correction-callout .c-label {
+  font-size: 7.5pt; text-transform: uppercase; font-weight: bold;
+  color: #991b1b; margin-bottom: 2px; font-family: -apple-system, sans-serif;
+}
+.success-callout {
+  border-left: 3px solid #16a34a; background: #f0fdf4;
+  padding: 6px 10px; margin: 4px 0 8px 0; font-size: 9pt; border-radius: 0 4px 4px 0;
+}
+.success-callout .s-label {
+  font-size: 7.5pt; text-transform: uppercase; font-weight: bold;
+  color: #16a34a; margin-bottom: 2px; font-family: -apple-system, sans-serif;
+}
+.assisted-callout {
+  border-left: 3px solid #9333ea; background: #faf5ff;
+  padding: 6px 10px; margin: 4px 0 8px 0; font-size: 9pt; border-radius: 0 4px 4px 0;
+}
+.assisted-callout .a-label {
+  font-size: 7.5pt; text-transform: uppercase; font-weight: bold;
+  color: #7e22ce; margin-bottom: 2px; font-family: -apple-system, sans-serif;
+}
+
+.section-score { text-align: right; font-weight: bold; color: #1a5276; font-size: 10pt; margin-top: 6px; }
+
+/* Standards table */
+.standards-table { border-collapse: collapse; width: 100%; margin: 10px 0; font-size: 10pt; }
+.standards-table th { border: 1px solid #555; padding: 5px 8px; background: #f0f0f0; text-align: center; font-weight: bold; }
+.standards-table td { border: 1px solid #555; padding: 4px 8px; }
+.pass-cell { text-align: center; font-weight: bold; color: #166534; background: #f0fdf4; }
+.np-cell { text-align: center; font-weight: bold; color: #991b1b; background: #fff1f2; }
+
+/* Final note */
+.final-note {
+  border: 1px solid #c5cdd6; border-radius: 6px; background: #f7f9fb;
+  padding: 10px 14px; margin-top: 16px; font-size: 10pt;
+}
+.final-note h3 { font-size: 11pt; color: #1a5276; margin-bottom: 6px; }
+.np-item { color: #991b1b; margin: 3px 0 3px 12px; }
+.drill-item { color: #1a5276; margin: 3px 0 3px 12px; }
+
+@media print {
+  body { padding: 0.4in 0.6in; }
+  .page-header { position: running(header); }
+}
+</style>
+</head>
+<body>
+
+<div class="page-header">
+  <span>Motor City Chemistry &mdash; Practice Test 2 Grade Report</span>
+  <span>FR &mdash; 2026-06-07</span>
+</div>
+
+<div class="title-block">
+  <div class="eyebrow">Grade Report &middot; Practice Series &middot; FR-graded 2026-06-07</div>
+  <h1>Practice Test 2 &mdash; Annotated Grade Report</h1>
+</div>
+
+<div class="student-meta">
+  <span><strong>Student:</strong> Kai Ash</span>
+  <span><strong>Course:</strong> SAAS Chem 10 &middot; Teacher Martin &middot; Block 6</span>
+  <span><strong>Test:</strong> Practice Test 2 &middot; Final Prep</span>
+</div>
+
+<!-- Score banner -->
+<div class="score-banner">
+  <div class="total">61 / 80</div>
+  <div class="pct">76%</div>
+  <div class="detail">
+    S1 29/30 &middot; S4 32/40 &middot; S5 0/10 (assisted)<br>
+    7 of 9 standards demonstrated &middot; 2 not-yet: 6.3.4 &middot; 7.1.4
+  </div>
+  <div class="sec-mini">
+    <span class="sec-chip full">S1 29/30</span>
+    <span class="sec-chip part">S4 32/40</span>
+    <span class="sec-chip fail">S5 0/10 assisted</span>
+  </div>
+</div>
+
+<!-- ===================== SECTION 1 ===================== -->
+<div class="section-head">Section 1: Molecular Shape and Structure <span class="section-pts">Kai: 29 / 30</span></div>
+
+<table class="vsepr-table">
+  <colgroup>
+    <col style="width:19%"><col style="width:9%"><col style="width:9%"><col style="width:9%"><col style="width:16%"><col style="width:9%"><col style="width:29%">
+  </colgroup>
+  <thead>
+    <tr>
+      <th>Structure</th>
+      <th># BD<br><span class="std-badge">5.1.1</span></th>
+      <th># LP<br><span class="std-badge">5.1.1</span></th>
+      <th>Total<br>NCC</th>
+      <th>Shape Name<br><span class="std-badge">5.1.2</span></th>
+      <th>Bond Angle<br><span class="std-badge">5.1.7</span></th>
+      <th>3-D Drawing<br><span class="std-badge">5.1.3</span></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="lewis-cell"><div class="lp">:</div>S = C = S<div class="lp">:</div><br><small>CS<sub>2</sub></small></td>
+      <td><span class="kai">2</span> <span class="check">✓</span></td>
+      <td><span class="kai">0</span> <span class="check">✓</span></td>
+      <td><span class="kai">2</span> <span class="check">✓</span></td>
+      <td><span class="kai">Linear</span> <span class="check">✓</span></td>
+      <td><span class="kai">180°</span> <span class="check">✓</span></td>
+      <td><span class="check">✓</span> Straight line — correct</td>
+    </tr>
+    <tr class="rubric-row">
+      <td colspan="6">All correct. Linear, no wedge needed. BD + LP = 2 + 0 = 2 NCC.</td>
+      <td class="score-cell">6 / 6</td>
+    </tr>
+  </tbody>
+  <tbody>
+    <tr>
+      <td class="lewis-cell"><div class="lp">:</div>F<br>|<br><div class="lp">:</div>F &mdash; B &mdash; F<div class="lp">:</div><br><small>BF<sub>3</sub></small></td>
+      <td><span class="kai">3</span> <span class="check">✓</span></td>
+      <td><span class="kai">0</span> <span class="check">✓</span></td>
+      <td><span class="kai">3</span> <span class="check">✓</span></td>
+      <td><span class="kai">Trigonal Planar</span> <span class="check">✓</span></td>
+      <td class="ans-wrong"><span class="kai">128°</span> <span class="cross">✗</span><span class="correction">correct: 120°</span></td>
+      <td><span class="check">✓</span> Flat Y-shape — correct</td>
+    </tr>
+    <tr class="rubric-row">
+      <td colspan="6">Bond angle error: 128° ≠ 120°. Trigonal planar has no LP compression — angle is exactly 120°. All other columns correct.</td>
+      <td class="score-cell">5 / 6</td>
+    </tr>
+  </tbody>
+  <tbody>
+    <tr>
+      <td class="lewis-cell">H<br>|<br>H &mdash; C &mdash; H<br>|<br>H<br><small>CH<sub>4</sub></small></td>
+      <td><span class="kai">4</span> <span class="check">✓</span></td>
+      <td><span class="kai">0</span> <span class="check">✓</span></td>
+      <td><span class="kai">4</span> <span class="check">✓</span></td>
+      <td><span class="kai">Tetrahedral</span> <span class="check">✓</span></td>
+      <td><span class="kai">109.5°</span> <span class="check">✓</span></td>
+      <td><span class="check">✓</span> Filled + hashed wedges present</td>
+    </tr>
+    <tr class="rubric-row">
+      <td colspan="6">All correct. 3-D drawing shows distinguishable filled wedge and hashed wedge — full credit.</td>
+      <td class="score-cell">6 / 6</td>
+    </tr>
+  </tbody>
+  <tbody>
+    <tr>
+      <td class="lewis-cell"><span style="font-size:9pt;">··</span><br><div class="lp">:</div>F &mdash; N &mdash; F<div class="lp">:</div><br>|<br><div class="lp">:</div>F<div class="lp">:</div><br><small>NF<sub>3</sub></small></td>
+      <td><span class="kai">3</span> <span class="check">✓</span></td>
+      <td><span class="kai">1</span> <span class="check">✓</span></td>
+      <td><span class="kai">4</span> <span class="check">✓</span></td>
+      <td><span class="kai">Pyramidal Tetrahedral</span> <span class="check">✓</span></td>
+      <td><span class="kai">107°</span> <span class="check">✓</span></td>
+      <td><span class="check">✓</span> Pyramidal with wedge — correct</td>
+    </tr>
+    <tr class="rubric-row">
+      <td colspan="6">"Pyramidal Tetrahedral" accepted as equivalent to Trigonal Pyramidal — full credit. 107° accepted (range ~102°–107°).</td>
+      <td class="score-cell">6 / 6</td>
+    </tr>
+  </tbody>
+  <tbody>
+    <tr>
+      <td class="lewis-cell"><span style="font-size:9pt;">··</span><br>H &mdash; O &mdash; H<br><span style="font-size:9pt;">··</span><br><small>H<sub>2</sub>O</small></td>
+      <td><span class="kai">2</span> <span class="check">✓</span></td>
+      <td><span class="kai">2</span> <span class="check">✓</span></td>
+      <td><span class="kai">4</span> <span class="check">✓</span></td>
+      <td><span class="kai">Tetrahedral Bent</span> <span class="check">✓</span></td>
+      <td><span class="kai">&lt;120°</span> <span class="check">✓</span></td>
+      <td><span class="check">✓</span> V-shape with lone pairs — correct</td>
+    </tr>
+    <tr class="rubric-row">
+      <td colspan="6">"Tetrahedral Bent" — full credit. "&lt;120°" accepted per teacher standard (indicates compression below base angle).</td>
+      <td class="score-cell">6 / 6</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="section-score">Section 1 Total: 29 / 30</div>
+
+<!-- ===================== SECTION 4 ===================== -->
+<div class="section-head">Section 4: Multi-Step Stoichiometry <span class="section-pts">Kai: 32 / 40</span></div>
+
+<!-- Problem 1 -->
+<div class="part-head">Problem 1 &mdash; Haber Process <span style="float:right;font-weight:normal;font-size:10pt;color:#555;">12 / 20 pts</span></div>
+
+<div class="eq-box">N<sub>2</sub>(g) + 3 H<sub>2</sub>(g) &rarr; 2 NH<sub>3</sub>(g)</div>
+<div class="ref-box"><strong>Given:</strong> 56.0 g N<sub>2</sub> and 18.0 g H<sub>2</sub> &nbsp;|&nbsp; N<sub>2</sub> = 28.02 &middot; H<sub>2</sub> = 2.016 &middot; NH<sub>3</sub> = 17.03 g/mol</div>
+
+<div style="font-size:10pt;font-weight:bold;margin-top:8px;">Part (a) Calculations <span style="float:right;font-weight:normal;color:#555;font-size:9pt;">[12 pts &middot; 6.3.1, 6.3.2]</span></div>
+
+<div class="work-row">
+  <div class="work-box-kai">
+    <div class="box-label">Kai &mdash; Path 1: N<sub>2</sub> ✓</div>
+    56.0 g N<sub>2</sub> &times; (1 mol N<sub>2</sub> / 28.02 g) &times; (2 mol NH<sub>3</sub> / 1 mol N<sub>2</sub>) &times; (17.03 g / 1 mol NH<sub>3</sub>)<br>
+    = <strong>68.07 g NH<sub>3</sub></strong> ✓
+  </div>
+  <div class="work-box-correct">
+    <div class="box-label">Key &mdash; Path 1 ✓</div>
+    = <strong>68.07 g NH<sub>3</sub></strong> (accept 67.9–68.2 g)<br>
+    <em>3 pts setup + 3 pts answer = 6/6</em>
+  </div>
+</div>
+
+<div class="work-row">
+  <div class="work-box-kai error">
+    <div class="box-label">Kai &mdash; Path 2: H<sub>2</sub> ✗ arithmetic error</div>
+    18.0 g H<sub>2</sub> &times; (1 mol H<sub>2</sub> / 2.016 g) &times; (2 mol NH<sub>3</sub> / 3 mol H<sub>2</sub>) &times; (17.03 g / 1 mol NH<sub>3</sub>)<br>
+    = <strong style="color:#991b1b;">~16.76 g NH<sub>3</sub></strong> ✗
+  </div>
+  <div class="work-box-correct">
+    <div class="box-label">Key &mdash; Path 2</div>
+    = <strong>101.37 g NH<sub>3</sub></strong> (accept 101.0–101.6 g)<br>
+    <em>Kai's setup correct: 3/3 pts. Answer wrong: 0/3 pts = 3/6</em>
+  </div>
+</div>
+
+<div class="correction-callout">
+  <div class="c-label">Arithmetic Error — Cascade</div>
+  Kai's conversion factors on Path 2 are all correct. The error is in the arithmetic — he computed ~16.76 g instead of 101.37 g. This is a <strong>pure calculator/keying error</strong>, not a conceptual error. However, it cascaded: since 16.76 &lt; 68.07, he concluded H<sub>2</sub> gives less product → called H<sub>2</sub> the limiting reagent. That identification is wrong (H<sub>2</sub> actually gives <em>more</em> product and is the excess). This cost him all of Part (c).
+</div>
+
+<div style="font-size:10pt;font-weight:bold;margin-top:8px;">Part (b) Limiting Reagent <span style="float:right;font-weight:normal;color:#555;font-size:9pt;">[5 pts &middot; 6.3.4]</span></div>
+<div style="margin: 4px 0 4px 0; font-size: 10pt;">
+  <span class="ans-wrong"><strong>Limiting Reagent: </strong><span class="kai">H<sub>2</sub></span> <span class="cross">✗</span><span class="correction">correct: N<sub>2</sub> (N<sub>2</sub> path produces less NH<sub>3</sub>)</span></span>
+  &nbsp;&nbsp;
+  <span class="ans-wrong"><strong>Excess Reagent: </strong><span class="kai">N<sub>2</sub></span> <span class="cross">✗</span><span class="correction">correct: H<sub>2</sub></span></span>
+  <span style="font-size:8.5pt;color:#555;font-style:italic;margin-left:8px;">[0/2 pts]</span>
+</div>
+<div style="margin: 4px 0; font-size: 10pt;">
+  <span class="ans-wrong"><strong>Remaining: </strong><span class="kai">42.21 g N<sub>2</sub></span> <span class="cross">✗</span><span class="correction">correct: 5.91 g H<sub>2</sub> remaining</span></span>
+  <span style="font-size:8.5pt;color:#555;font-style:italic;margin-left:8px;">[setup from wrong LR premise: 0/3 pts]</span>
+</div>
+
+<div style="text-align:right;font-size:9.5pt;color:#1a5276;font-weight:bold;margin-top:6px;">Problem 1: 3+3 (Path N₂) + 3+0 (Path H₂) + 0 (LR) = <strong>12 / 20</strong></div>
+
+<!-- Problem 2 -->
+<div class="part-head" style="margin-top:16px;">Problem 2 &mdash; Aluminum Chloride Synthesis <span style="float:right;font-weight:normal;font-size:10pt;color:#555;">20 / 20 pts</span></div>
+
+<div class="eq-box">2 Al(s) + 3 Cl<sub>2</sub>(g) &rarr; 2 AlCl<sub>3</sub>(s)</div>
+<div class="ref-box"><strong>Given:</strong> 27.0 g Al and 85.0 g Cl<sub>2</sub> &nbsp;|&nbsp; Al = 26.98 &middot; Cl<sub>2</sub> = 70.90 &middot; AlCl<sub>3</sub> = 133.33 g/mol</div>
+
+<div style="font-size:10pt;font-weight:bold;margin-top:8px;">Part (a) Calculations <span style="float:right;font-weight:normal;color:#555;font-size:9pt;">[12 pts &middot; 6.3.1, 6.3.2]</span></div>
+
+<div class="work-row">
+  <div class="work-box-kai">
+    <div class="box-label">Kai &mdash; Path 1: Al ✓</div>
+    27.0 g Al &times; (1 mol Al / 26.98 g) &times; (2 mol AlCl<sub>3</sub> / 2 mol Al) &times; (133.33 g / 1 mol AlCl<sub>3</sub>)<br>
+    = <strong>133.43 g AlCl<sub>3</sub></strong> ✓
+  </div>
+  <div class="work-box-correct">
+    <div class="box-label">Key &mdash; Path 1 ✓</div>
+    = <strong>133.4 g AlCl<sub>3</sub></strong> (accept 133.0–133.6 g)<br>
+    <em>6/6 pts</em>
+  </div>
+</div>
+
+<div class="work-row">
+  <div class="work-box-kai">
+    <div class="box-label">Kai &mdash; Path 2: Cl<sub>2</sub> ✓</div>
+    85.0 g Cl<sub>2</sub> &times; (1 mol Cl<sub>2</sub> / 70.90 g) &times; (2 mol AlCl<sub>3</sub> / 3 mol Cl<sub>2</sub>) &times; (133.33 g / 1 mol AlCl<sub>3</sub>)<br>
+    = <strong>~106.6 g AlCl<sub>3</sub></strong> ✓
+  </div>
+  <div class="work-box-correct">
+    <div class="box-label">Key &mdash; Path 2 ✓</div>
+    = <strong>106.6 g AlCl<sub>3</sub></strong> (accept 106.2–107.0 g)<br>
+    <em>6/6 pts</em>
+  </div>
+</div>
+
+<div class="success-callout">
+  <div class="s-label">Intentional Trap — Solved Correctly</div>
+  Cl<sub>2</sub> is listed <em>second</em> in the equation — a common student error is assuming the first-listed reagent is always LR. Kai correctly identified Cl<sub>2</sub> as LR from the math (106.6 &lt; 133.4).
+</div>
+
+<div style="font-size:10pt;font-weight:bold;margin-top:8px;">Part (b) Limiting Reagent <span style="float:right;font-weight:normal;color:#555;font-size:9pt;">[5 pts &middot; 6.3.4]</span></div>
+<div style="margin: 4px 0; font-size: 10pt;">
+  <strong>Limiting Reagent: </strong><span class="kai">Cl<sub>2</sub></span> <span class="check">✓</span>
+  &nbsp;&nbsp;
+  <strong>Excess Reagent: </strong><span class="kai">Al</span> <span class="check">✓</span>
+  <span style="font-size:8.5pt;color:#555;font-style:italic;margin-left:8px;">[2/2 pts]</span>
+</div>
+<div style="margin: 4px 0; font-size: 10pt;">
+  <strong>Remaining: </strong><span class="kai">5.46 g Al</span> <span class="check">✓</span>
+  <span style="font-size:8.5pt;color:#555;font-style:italic;margin-left:8px;">KEY: 5.44 g (accept 5.3–5.6 g) &mdash; [3/3 pts]</span>
+</div>
+
+<div style="text-align:right;font-size:9.5pt;color:#1a5276;font-weight:bold;margin-top:6px;">Problem 2: 6+6 (paths) + 2 (LR) + 3 (remaining) = <strong>20 / 20</strong></div>
+
+<div class="section-score">Section 4 Total: 32 / 40</div>
+
+<!-- ===================== SECTION 5 ===================== -->
+<div class="section-head">Section 5: Molarity and Concentration <span class="std-badge">7.1.4</span> <span class="section-pts">Kai: 0 / 10 (assisted)</span></div>
+
+<div class="assisted-callout">
+  <div class="a-label">Parent Assistance — Standard Not Independently Demonstrated</div>
+  Marcus assisted Kai with both molarity problems. The written answers are correct (P1: 0.8407 M &asymp; 0.841 M ✓; P2: 16.647 g &asymp; 16.65 g ✓) and the dimensional analysis setups are present and valid. However, since the work was completed with help, <strong>7.1.4 is marked NP</strong> — Kai has not demonstrated he can solve these independently. Two additional independent practice problems required to clear this standard.
+</div>
+
+<div style="font-size:10pt;margin-top:8px;">
+  <strong>Problem 1:</strong> <span class="kai">0.8407 M KNO<sub>3</sub></span> &mdash; answer correct but assisted<br>
+  <strong>Problem 2:</strong> <span class="kai">16.647 g CaCl<sub>2</sub></span> &mdash; answer correct but assisted
+</div>
+
+<div class="section-score">Section 5 Total: 0 / 10 (not independently demonstrated)</div>
+
+<!-- ===================== STANDARDS TABLE ===================== -->
+<div class="section-head" style="margin-top:20px;">Standards Assessment</div>
+
+<table class="standards-table">
+  <thead>
+    <tr>
+      <th>Standard</th>
+      <th>Description</th>
+      <th>Result</th>
+      <th>Notes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>5.1.1</strong></td>
+      <td>Bonding directions and lone pairs on central atom</td>
+      <td class="pass-cell">P</td>
+      <td>All 5 molecules correct — 10/10</td>
+    </tr>
+    <tr>
+      <td><strong>5.1.2</strong></td>
+      <td>Name molecular shape</td>
+      <td class="pass-cell">P</td>
+      <td>All 5 correct; "Pyramidal Tetrahedral" accepted for NF₃</td>
+    </tr>
+    <tr>
+      <td><strong>5.1.3</strong></td>
+      <td>Draw molecule in 3-D (wedge notation)</td>
+      <td class="pass-cell">P</td>
+      <td>All 5 drawings correct; wedge notation present for CH₄, NF₃</td>
+    </tr>
+    <tr>
+      <td><strong>5.1.7</strong></td>
+      <td>Predict bond angle</td>
+      <td class="pass-cell">P</td>
+      <td>4/5 correct (80%); BF₃ wrote 128° — correct is 120°</td>
+    </tr>
+    <tr>
+      <td><strong>6.3.1</strong></td>
+      <td>Select correct conversion factors for stoichiometry</td>
+      <td class="pass-cell">P</td>
+      <td>All 4 paths have correct factor chains set up</td>
+    </tr>
+    <tr>
+      <td><strong>6.3.2</strong></td>
+      <td>Solve multi-step stoichiometry (2+ factors)</td>
+      <td class="pass-cell">P</td>
+      <td>3 of 4 paths numerically correct; P1 H₂ path arithmetic error</td>
+    </tr>
+    <tr>
+      <td><strong>6.3.3</strong></td>
+      <td>Show work: units and chemicals for all steps</td>
+      <td class="pass-cell">P</td>
+      <td>Dimensional analysis shown throughout; factor names not written explicitly (partial)</td>
+    </tr>
+    <tr>
+      <td><strong>6.3.4</strong></td>
+      <td>Identify limiting reagent and calculate excess remaining</td>
+      <td class="np-cell">NP</td>
+      <td>P1 LR wrong (arithmetic cascade); P2 LR correct &rarr; 50% &rarr; NP</td>
+    </tr>
+    <tr>
+      <td><strong>7.1.4</strong></td>
+      <td>Calculate molarity; solve for mass or volume</td>
+      <td class="np-cell">NP</td>
+      <td>Assisted by parent &mdash; not independently demonstrated</td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- Final note -->
+<div class="final-note">
+  <h3>57 / 80 (71%) &middot; 7 of 9 standards P &middot; 2 not-yet</h3>
+
+  <p style="margin-top:6px;"><strong>Not-yet standards:</strong></p>
+  <p class="np-item">6.3.4 (Limiting Reagent) &mdash; arithmetic error on H₂ path gave wrong answer, which cascaded to wrong LR identification. The process is understood; the failure mode is not catching a suspicious intermediate answer (16.76 g NH₃ from 18.0 g H₂ should be a red flag).</p>
+  <p class="np-item">7.1.4 (Molarity) &mdash; correct setup and answers when assisted, not yet demonstrated independently.</p>
+
+  <p style="margin-top:8px;"><strong>Recommended next practice:</strong></p>
+  <p class="drill-item">6.3.4: 2 additional limiting-reagent problems varying which reactant is LR. Include a sanity-check step: after computing both paths, verify the smaller answer is reasonable before selecting LR.</p>
+  <p class="drill-item">7.1.4: 2 independent molarity problems (no parent help) &mdash; one M = mol/V, one solve for mass. If both correct independently, standard clears.</p>
+  <p class="drill-item">5.1.7 (minor): BF₃ bond angle is exactly 120° &mdash; trigonal planar has no lone pair compression. Quick review.</p>
+
+  <p style="margin-top:8px; font-size: 9.5pt; color: #555; font-style:italic;">Section 1 (VSEPR) is solid. Problem 2 stoichiometry was clean &mdash; Kai correctly navigated the intentional Cl₂-listed-second trap. Good sign for the teacher exam. The two gaps are addressable with a short targeted drill before the test.</p>
+</div>
+
+</body>
+</html>
