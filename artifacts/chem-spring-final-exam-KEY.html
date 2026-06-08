@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Chemistry 10 — Spring Cumulative Exam — Answer Key</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,700;1,400&display=swap');
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'EB Garamond', Georgia, serif; font-size: 11pt; line-height: 1.5; padding: 0.5in 0.7in; color: #1a1a1a; background: #fff; }
+.page-header { display: flex; justify-content: space-between; border-bottom: 0.5pt solid #000; padding-bottom: 3px; margin-bottom: 12px; font-size: 9.5pt; }
+.title-block { text-align: center; margin-bottom: 8px; }
+.title-block h1 { font-size: 15pt; font-weight: bold; margin-bottom: 2px; }
+.title-block .eyebrow { font-size: 9.5pt; color: #1a5276; letter-spacing: 0.5px; text-transform: uppercase; margin-bottom: 4px; }
+.name-line { margin-bottom: 14px; font-size: 10pt; white-space: nowrap; }
+.name-line span { display: inline-block; border-bottom: 1px solid #000; }
+.section-head { color: #1a5276; font-size: 12pt; font-weight: bold; border-bottom: 0.5pt solid #1a5276; padding-bottom: 2px; margin: 14px 0 8px 0; clear: both; page-break-after: avoid; }
+.section-head .std-badge, .part-head .std-badge { display: inline-block; background: #f4a8a8; color: #6b1d1d; font-size: 8pt; padding: 1px 6px; border-radius: 3px; font-weight: bold; vertical-align: middle; margin-left: 6px; }
+.instruction { font-size: 10pt; font-style: italic; margin: 4px 0 8px 0; color: #333; page-break-after: avoid; }
+.problem { margin-bottom: 12px; page-break-inside: avoid; break-inside: avoid; }
+.pts { font-size: 9pt; font-weight: normal; color: #555; }
+.blank { display: inline-block; border-bottom: 1px solid #000; }
+.note { font-size: 9.5pt; font-style: italic; margin: 4px 0; color: #333; }
+.page-break { page-break-before: always; break-before: page; }
+.ref-box { border: 1px solid #999; background: #f7f9fb; padding: 6px 10px; margin: 8px 0; font-size: 10pt; }
+.eq-box { border: 1px solid #1a5276; background: #ebf5fb; padding: 8px 12px; margin: 8px 0; text-align: center; font-size: 12pt; font-weight: bold; }
+.vsepr-table { border-collapse: collapse; width: 100%; margin: 8px 0; font-size: 10pt; table-layout: fixed; }
+.vsepr-table th { border: 1px solid #555; padding: 4px 4px; background: #f0f0f0; text-align: center; font-weight: bold; font-size: 9pt; vertical-align: middle; }
+.vsepr-table th .std-badge { display: inline-block; background: #f4a8a8; color: #6b1d1d; font-size: 7.5pt; padding: 1px 5px; border-radius: 2px; margin-top: 2px; font-weight: bold; }
+.vsepr-table td { border: 1px solid #555; padding: 3px 3px; text-align: center; vertical-align: middle; }
+.vsepr-table tr { page-break-inside: avoid; page-break-after: auto; }
+.vsepr-table thead { display: table-header-group; }
+.vsepr-table .lewis-cell { min-height: 62px; height: 62px; font-size: 10pt; }
+.vsepr-table .draw-cell { height: 62px; }
+.imf-table { border-collapse: collapse; width: 100%; margin: 8px 0; font-size: 10.5pt; }
+.imf-table th { border: 1px solid #555; padding: 5px 8px; background: #f0f0f0; text-align: center; font-weight: bold; font-size: 10pt; }
+.imf-table td { border: 1px solid #555; padding: 8px; text-align: center; height: 32px; }
+.work-box { border: 1px solid #999; min-height: 90px; margin: 6px 0; padding: 6px; page-break-inside: avoid; }
+.work-box-sm { border: 1px solid #999; min-height: 100px; margin: 6px 0; padding: 6px; page-break-inside: avoid; }
+.work-box-lg { border: 1px solid #999; min-height: 180px; margin: 6px 0; padding: 6px; page-break-inside: avoid; }
+.rank-boxes { font-size: 13pt; margin: 10px 0; text-align: center; letter-spacing: 4px; }
+.rank-boxes .rb { display: inline-block; border: 1px solid #000; width: 40px; height: 32px; vertical-align: middle; }
+.subq { margin: 6px 0 6px 12px; }
+.lewis { font-family: 'EB Garamond', Georgia, serif; line-height: 1.3; }
+.lewis .lp { color: #1a5276; font-weight: bold; letter-spacing: -1px; }
+.section-pts { float: right; font-size: 10pt; color: #555; font-weight: normal; }
+.molecule-block { margin: 10px 0 14px 0; page-break-inside: avoid; }
+.molecule-name { font-weight: bold; font-size: 10.5pt; margin-bottom: 1px; }
+.lewis-display { text-align: center; margin: 3px 0; font-size: 12pt; letter-spacing: 1px; white-space: nowrap; }
+.score-box { border: 1px solid #000; padding: 3px 6px; font-size: 9pt; float: right; }
+.prob-block { margin-bottom: 12px; page-break-inside: avoid; break-inside: avoid; }
+.question-stem { font-weight: bold; margin-bottom: 4px; }
+.choices { margin-left: 1.2em; }
+.choice { display: block; margin-left: 1em; text-indent: -1em; }
+.note-flag { border: 1px solid #1a5276; background: #ebf5fb; padding: 6px 10px; margin: 8px 0 10px 0; font-size: 10pt; text-align: center; }
+.answer-sheet { margin-top: 16px; page-break-inside: avoid; break-inside: avoid; }
+.answer-grid { display: grid; grid-template-columns: repeat(10, 1fr); gap: 8px 8px; margin-top: 8px; }
+.answer-cell { border: 0.5pt solid #999; padding: 4px 5px; min-height: 34px; }
+.answer-num { display: inline-flex; align-items: center; justify-content: center; width: 16px; height: 16px; border: 1px solid #000; border-radius: 50%; font-size: 7.4pt; font-weight: bold; margin-right: 4px; }
+.choice-bubbles { display: inline-flex; gap: 4px; flex-wrap: nowrap; vertical-align: middle; }
+.mini-choice { display: inline-flex; align-items: center; gap: 1px; font-size: 6.8pt; }
+.mini-circle { display: inline-block; width: 9px; height: 9px; border: 1px solid #000; border-radius: 50%; }
+.answer-sheet-note { font-size: 9pt; color: #333; font-style: italic; margin-top: 4px; }
+.key-banner { color: #c0392b; font-weight: bold; text-align: center; margin-bottom: 4px; font-size: 10pt; letter-spacing: 0.5px; }
+.answer-line { margin-top: 3px; color: #c0392b; font-weight: bold; }
+.answer-line .std-badge { margin-left: 4px; margin-right: 4px; }
+.rationale { font-style: italic; color: #555; font-weight: normal; }
+.summary-grid { display: grid; grid-template-columns: repeat(10, 1fr); gap: 4px 6px; margin: 8px 0 12px 0; font-size: 9.5pt; }
+.summary-item { border: 0.5pt solid #bbb; padding: 3px 4px; text-align: center; }
+.key-eyebrow { color: #c0392b !important; font-weight: bold; }
+@media print { body { padding: 0.5in 0.7in; } }
+@page { margin: 0.5in 0.7in 0.7in 0.7in; }
+</style>
+</head>
+<body>
+<div class="page-header"><span>SAAS &middot; Chemistry 10 &middot; Martin &middot; Spring 2026</span><span>Teacher Copy</span></div>
+<div class="title-block"><div class="eyebrow key-eyebrow">ANSWER KEY &mdash; TEACHER USE ONLY</div><h1>Spring Cumulative Exam &mdash; Key</h1><div>SAAS &middot; Teacher Martin &middot; Spring 2026</div></div>
+<div class="key-banner">ANSWER KEY &mdash; TEACHER USE ONLY</div>
+<div class="ref-box"><strong>Answer Summary</strong><div class="summary-grid"><div class="summary-item">1. <strong>C</strong></div><div class="summary-item">2. <strong>C</strong></div><div class="summary-item">3. <strong>B</strong></div><div class="summary-item">4. <strong>C</strong></div><div class="summary-item">5. <strong>D</strong></div><div class="summary-item">6. <strong>B</strong></div><div class="summary-item">7. <strong>B</strong></div><div class="summary-item">8. <strong>D</strong></div><div class="summary-item">9. <strong>C</strong></div><div class="summary-item">10. <strong>C</strong></div><div class="summary-item">11. <strong>B</strong></div><div class="summary-item">12. <strong>C</strong></div><div class="summary-item">13. <strong>B</strong></div><div class="summary-item">14. <strong>B</strong></div><div class="summary-item">15. <strong>B</strong></div><div class="summary-item">16. <strong>C</strong></div><div class="summary-item">17. <strong>B</strong></div><div class="summary-item">18. <strong>B</strong></div><div class="summary-item">19. <strong>C</strong></div><div class="summary-item">20. <strong>B</strong></div><div class="summary-item">21. <strong>B</strong></div><div class="summary-item">22. <strong>D</strong></div><div class="summary-item">23. <strong>A</strong></div><div class="summary-item">24. <strong>B</strong></div><div class="summary-item">25. <strong>B</strong></div><div class="summary-item">26. <strong>B</strong></div><div class="summary-item">27. <strong>C</strong></div><div class="summary-item">28. <strong>B</strong></div><div class="summary-item">29. <strong>B</strong></div><div class="summary-item">30. <strong>C</strong></div><div class="summary-item">31. <strong>C</strong></div><div class="summary-item">32. <strong>C</strong></div><div class="summary-item">33. <strong>B</strong></div><div class="summary-item">34. <strong>C</strong></div><div class="summary-item">35. <strong>B</strong></div><div class="summary-item">36. <strong>B</strong></div><div class="summary-item">37. <strong>B</strong></div><div class="summary-item">38. <strong>C</strong></div><div class="summary-item">39. <strong>B</strong></div><div class="summary-item">40. <strong>B</strong></div><div class="summary-item">41. <strong>C</strong></div><div class="summary-item">42. <strong>B</strong></div><div class="summary-item">43. <strong>B</strong></div><div class="summary-item">44. <strong>B</strong></div><div class="summary-item">45. <strong>B</strong></div><div class="summary-item">46. <strong>B</strong></div><div class="summary-item">47. <strong>B</strong></div><div class="summary-item">48. <strong>B</strong></div><div class="summary-item">49. <strong>C</strong></div><div class="summary-item">50. <strong>C</strong></div><div class="summary-item">51. <strong>B</strong></div><div class="summary-item">52. <strong>C</strong></div><div class="summary-item">53. <strong>B</strong></div><div class="summary-item">54. <strong>C</strong></div><div class="summary-item">55. <strong>B</strong></div><div class="summary-item">56. <strong>B</strong></div><div class="summary-item">57. <strong>C</strong></div><div class="summary-item">58. <strong>C</strong></div><div class="summary-item">59. <strong>D</strong></div><div class="summary-item">60. <strong>C</strong></div></div></div>
+<div class="section-head">Section 1: Molecular Shape</div>
+<p class="instruction">Correct answers are shown in red with the sub-standard tag and a one-line rationale.</p>
+<div class="prob-block">
+  <div class="question-stem">1. The central atom in water (H₂O) has 2 bonding pairs and 2 lone pairs. What is the total number of negative charge centers on the central oxygen?</div>
+  <div class="choices">
+    <span class="choice">A) 2</span>
+    <span class="choice">B) 3</span>
+    <span class="choice">C) 4</span>
+    <span class="choice">D) 6</span>
+  </div>
+  <div class="answer-line">✓ <span style="font-weight:bold;">C</span> <span class="std-badge">[5.1.1]</span> <span class="rationale">— 2 bonding pairs + 2 lone pairs = 4 total charge centers around oxygen.</span></div>
+</div>
+<div class="prob-block">
+  <div class="question-stem">2. Based on 4 charge centers with 2 lone pairs, what is the molecular shape of H₂O?</div>
+  <div class="choices">
+    <span class="choice">A) Tetrahedral</span>
+    <span class="choice">B) Trigonal pyramidal</span>
+    <span class="choice">C) Bent</span>
+    <span class="choice">D) Linear</span>
+  </div>
+  <div class="answer-line">✓ <span style="font-weight:bold;">C</span> <span class="std-badge">[5.1.2]</span> <span class="rationale">— Four electron domains with two lone pairs gives a bent molecular shape.</span></div>
+</div>
+<div class="prob-block">
+  <div class="question-stem">3. What is the approximate bond angle in a bent molecule like H₂O?</div>
+  <div class="choices">
+    <span class="choice">A) 90°</span>
+    <span class="choice">B) ~104.5°</span>
+    <span class="choice">C) 120°</span>
+    <span class="choice">D) 180°</span>
+  </div>
+  <div class="answer-line">✓ <span style="font-weight:bold;">B</span> <span class="std-badge">[5.1.3]</span> <span class="rationale">— Water is bent with two lone pairs, so its bond angle is about 104.5°.</span></div>
+</div>
+<div class="prob-block">
+  <div class="question-stem">4. Carbon dioxide (CO₂) has 2 double bonds and 0 lone pairs on carbon. Its molecular shape is:</div>
+  <div class="choices">
+    <span class="choice">A) Bent</span>
+    <span class="choice">B) Trigonal planar</span>
+    <span class="choice">C) Linear</span>
+    <span class="choice">D) Tetrahedral</span>
+  </div>
+  <div class="answer-line">✓ <span style="font-weight:bold;">C</span> <span class="std-badge">[5.1.2]</span> <span class="rationale">— Two bonding regions and no lone pairs on carbon produce a linear molecule.</span></div>
+</div>
+<div class="prob-block">
+  <div class="question-stem">5. What is the bond angle in CO₂?</div>
+  <div class="choices">
+    <span class="choice">A) 90°</span>
+    <span class="choice">B) 109.5°</span>
+    <span class="choice">C) 120°</span>
+    <span class="choice">D) 180°</span>
+  </div>
+  <div class="answer-line">✓ <span style="font-weight:bold;">D</span> <span class="std-badge">[5.1.3]</span> <span class="rationale">— A linear molecule has a 180° bond angle.</span></div>
+</div>
+<div class="prob-block">
+  <div class="question-stem">6. NH₃ has 3 bonding pairs and 1 lone pair on nitrogen. Its molecular shape is:</div>
+  <div class="choices">
+    <span class="choice">A) Trigonal planar</span>
+    <span class="choice">B) Trigonal pyramidal</span>
+    <span class="choice">C) Tetrahedral</span>
+    <span class="choice">D) Bent</span>
+  </div>
+  <div class="answer-line">✓ <span style="font-weight:bold;">B</span> <span class="std-badge">[5.1.2]</span> <span class="rationale">— Three bonds and one lone pair around N gives trigonal pyramidal geometry.</span></div>
+</div>
+<div class="prob-block">
+  <div class="question-stem">7. The bond angle in NH₃ is ~107°, slightly less than the ideal 109.5°. Why?</div>
+  <div class="choices">
+    <span class="choice">A) The N–H bonds are longer than normal</span>
+    <span class="choice">B) The lone pair occupies more space than a bonding pair, compressing the bond angles</span>
+    <span class="choice">C) The nitrogen atom is too small to hold 4 pairs</span>
+    <span class="choice">D) The bonds are ionic</span>
+  </div>
+  <div class="answer-line">✓ <span style="font-weight:bold;">B</span> <span class="std-badge">[5.1.7]</span> <span class="rationale">— Lone pairs repel more strongly than bonding pairs and squeeze the N–H bonds closer together.</span></div>
+</div>
+<div class="prob-block">
+  <div class="question-stem">8. BeCl₂ has 2 bonding pairs and 0 lone pairs on beryllium. Its shape is:</div>
+  <div class="choices">
+    <span class="choice">A) Bent</span>
+    <span class="choice">B) Trigonal planar</span>
+    <span class="choice">C) Tetrahedral</span>
+    <span class="choice">D) Linear</span>
+  </div>
+  <div class="answer-line">✓ <span style="font-weight:bold;">D</span> <span class="std-badge">[5.1.2]</span> <span class="rationale">— Two bonding groups and no lone pairs around the central atom gives a linear shape.</span></div>
+</div>
+<div class="prob-block">
+  <div class="question-stem">9. A central atom with 4 bonding pairs and 0 lone pairs has which geometry?</div>
+  <div class="choices">
+    <span class="choice">A) Bent</span>
+    <span class="choice">B) Trigonal pyramidal</span>
+    <span class="choice">C) Tetrahedral</span>
+    <span class="choice">D) Trigonal planar</span>
+  </div>
+  <div class="answer-line">✓ <span style="font-weight:bold;">C</span> <span class="std-badge">[5.1.1/5.1.2]</span> <span class="rationale">— Four bonding directions with no lone pairs is tetrahedral.</span></div>
+</div>
+<div class="prob-block">
+  <div class="question-stem">10. What bond angle is associated with trigonal planar geometry?</div>
+  <div class="choices">
+    <span class="choice">A) 90°</span>
+    <span class="choice">B) 109.5°</span>
+    <span class="choice">C) 120°</span>
+    <span class="choice">D) 180°</span>
+  </div>
+  <div class="answer-line">✓ <span style="font-weight:bold;">C</span> <span class="std-badge">[5.1.3]</span> <span class="rationale">— Trigonal planar electron geometry has ideal 120° bond angles.</span></div>
+</div>
+<div class="section-head">Section 2: Polarity & Intermolecular Forces</div>
+<p class="instruction">Correct answers are shown in red with the sub-standard tag and a one-line rationale.</p>
+<div class="prob-block">
+  <div class="question-stem">11. The electronegativity of N = 3.0 and H = 2.1. The N–H bond is:</div>
+  <div class="choices">
+    <span class="choice">A) Nonpolar covalent (ΔEN = 0)</span>
+    <span class="choice">B) Polar covalent (ΔEN = 0.9)</span>
+    <span class="choice">C) Ionic (ΔEN > 1.7)</span>
+    <span class="choice">D) Metallic</span>
+  </div>
+  <div class="answer-line">✓ <span style="font-weight:bold;">B</span> <span class="std-badge">[5.1.4]</span> <span class="rationale">— The difference in electronegativity is 0.9, so the bond is polar covalent.</span></div>
+</div>
+<div class="prob-block">
+  <div class="question-stem">12. The C–C bond has ΔEN = 0. It is:</div>
+  <div class="choices">
+    <span class="choice">A) Ionic</span>
+    <span class="choice">B) Polar covalent</span>
+    <span class="choice">C) Nonpolar covalent</span>
+    <span class="choice">D) A hydrogen bond</span>
+  </div>
+  <div class="answer-line">✓ <span style="font-weight:bold;">C</span> <span class="std-badge">[5.1.5]</span> <span class="rationale">— Atoms with the same electronegativity share electrons equally, making the bond nonpolar covalent.</span></div>
+</div>
+<div class="prob-block">
+  <div class="question-stem">13. In the C–O bond, oxygen is more electronegative (EN = 3.5 vs. C = 2.5). The polarity arrow points:</div>
+  <div class="choices">
+    <span class="choice">A) From O to C (toward the less electronegative atom)</span>
+    <span class="choice">B) From C to O (toward the more electronegative atom)</span>
+    <span class="choice">C) There is no polarity arrow — the bond is nonpolar</span>
+    <span class="choice">D) In both directions simultaneously</span>
+  </div>
+  <div class="answer-line">✓ <span style="font-weight:bold;">B</span> <span class="std-badge">[5.1.6]</span> <span class="rationale">— Bond dipole arrows point toward the more electronegative atom, which is oxygen.</span></div>
+</div>
+<div class="prob-block">
+  <div class="question-stem">14. CO₂ has 2 polar C=O bonds arranged in a straight line (180°). The molecule is:</div>
+  <div class="choices">
+    <span class="choice">A) Polar — it has polar bonds</span>
+    <span class="choice">B) Nonpolar — the symmetric arrangement cancels the dipoles</span>
+    <span class="choice">C) Ionic — large electronegativity difference</span>
+    <span class="choice">D) Unable to interact with other molecules</span>
+  </div>
+  <div class="answer-line">✓ <span style="font-weight:bold;">B</span> <span class="std-badge">[5.1.5]</span> <span class="rationale">— The two equal C=O dipoles point in opposite directions and cancel in linear CO₂.</span></div>
+</div>
+<div class="prob-block">
+  <div class="question-stem">15. H₂O is polar even though both O–H bonds are identical. This is because:</div>
+  <div class="choices">
+    <span class="choice">A) The bonds are ionic</span>
+    <span class="choice">B) The bent shape + lone pairs create an asymmetric charge distribution — net dipole remains</span>
+    <span class="choice">C) Oxygen is too large to be symmetric</span>
+    <span class="choice">D) The bond angles are exactly 180°</span>
+  </div>
+  <div class="answer-line">✓ <span style="font-weight:bold;">B</span> <span class="std-badge">[5.1.7]</span> <span class="rationale">— Water is bent, so the two polar O–H bonds do not cancel and a net dipole remains.</span></div>
+</div>
+<div class="prob-block">
+  <div class="question-stem">16. Which intermolecular force is present in ALL molecular substances regardless of polarity?</div>
+  <div class="choices">
+    <span class="choice">A) Hydrogen bonding</span>
+    <span class="choice">B) Dipole-dipole forces</span>
+    <span class="choice">C) London dispersion forces</span>
+    <span class="choice">D) Covalent bonds</span>
+  </div>
+  <div class="answer-line">✓ <span style="font-weight:bold;">C</span> <span class="std-badge">[5.2.1]</span> <span class="rationale">— All molecules experience London dispersion forces because electrons are always moving.</span></div>
+</div>
+<div class="prob-block">
+  <div class="question-stem">17. For hydrogen bonding to occur, hydrogen must be covalently bonded directly to:</div>
+  <div class="choices">
+    <span class="choice">A) Carbon or Sulfur</span>
+    <span class="choice">B) N, O, or F</span>
+    <span class="choice">C) Any atom that has lone pairs</span>
+    <span class="choice">D) A metal atom</span>
+  </div>
+  <div class="answer-line">✓ <span style="font-weight:bold;">B</span> <span class="std-badge">[5.2.3]</span> <span class="rationale">— Hydrogen bonding requires H to be directly attached to N, O, or F.</span></div>
+</div>
+<div class="prob-block">
+  <div class="question-stem">18. Which molecule experiences the strongest intermolecular forces?</div>
+  <div class="choices">
+    <span class="choice">A) CH₄</span>
+    <span class="choice">B) HF</span>
+    <span class="choice">C) Cl₂</span>
+    <span class="choice">D) N₂</span>
+  </div>
+  <div class="answer-line">✓ <span style="font-weight:bold;">B</span> <span class="std-badge">[5.2.2]</span> <span class="rationale">— HF can form hydrogen bonds, which are stronger here than the IMFs in the other molecules.</span></div>
+</div>
+<div class="prob-block">
+  <div class="question-stem">19. Arrange by INCREASING boiling point: CH₄ (LDF only), HCl (dipole-dipole), H₂O (H-bonding)</div>
+  <div class="choices">
+    <span class="choice">A) H₂O < HCl < CH₄</span>
+    <span class="choice">B) HCl < CH₄ < H₂O</span>
+    <span class="choice">C) CH₄ < HCl < H₂O</span>
+    <span class="choice">D) CH₄ < H₂O < HCl</span>
+  </div>
+  <div class="answer-line">✓ <span style="font-weight:bold;">C</span> <span class="std-badge">[5.2.2]</span> <span class="rationale">— Stronger intermolecular forces raise boiling point: LDF only < dipole-dipole < hydrogen bonding.</span></div>
+</div>
+<div class="prob-block">
+  <div class="question-stem">20. HF has a much higher boiling point than HCl, even though HCl has a greater molar mass. The best explanation is:</div>
+  <div class="choices">
+    <span class="choice">A) HF has stronger London dispersion forces</span>
+    <span class="choice">B) HF molecules can form hydrogen bonds with each other; HCl cannot</span>
+    <span class="choice">C) HCl is an ionic compound</span>
+    <span class="choice">D) HF molecules are smaller and move more slowly</span>
+  </div>
+  <div class="answer-line">✓ <span style="font-weight:bold;">B</span> <span class="std-badge">[5.2.4]</span> <span class="rationale">— Hydrogen bonding in HF is much stronger than the dipole-dipole forces in HCl.</span></div>
+</div>
+<div class="prob-block">
+  <div class="question-stem">21. "Like dissolves like" means:</div>
+  <div class="choices">
+    <span class="choice">A) Substances with similar molar masses always mix</span>
+    <span class="choice">B) Polar solutes dissolve in polar solvents; nonpolar solutes dissolve in nonpolar solvents</span>
+    <span class="choice">C) Ionic compounds only dissolve in ionic solvents</span>
+    <span class="choice">D) All molecular compounds dissolve in water</span>
+  </div>
+  <div class="answer-line">✓ <span style="font-weight:bold;">B</span> <span class="std-badge">[5.2.5]</span> <span class="rationale">— Solubility is greatest when solute and solvent have similar polarity.</span></div>
+</div>
+<div class="prob-block">
+  <div class="question-stem">22. Which substance would dissolve most readily in a nonpolar solvent like hexane?</div>
+  <div class="choices">
+    <span class="choice">A) NaCl (ionic)</span>
+    <span class="choice">B) HF (polar, H-bonding)</span>
+    <span class="choice">C) H₂O (polar, H-bonding)</span>
+    <span class="choice">D) I₂ (nonpolar)</span>
+  </div>
+  <div class="answer-line">✓ <span style="font-weight:bold;">D</span> <span class="std-badge">[5.2.6]</span> <span class="rationale">— Nonpolar iodine dissolves best in a nonpolar solvent such as hexane.</span></div>
+</div>
+<div class="page-break"></div>
+<div class="section-head">Section 3: Chemical Equations</div>
+<p class="instruction">Correct answers are shown in red with the sub-standard tag and a one-line rationale.</p>
+<div class="prob-block">
+  <div class="question-stem">23. What coefficients correctly balance: ___ N₂ + ___ H₂ → ___ NH₃?</div>
+  <div class="choices">
+    <span class="choice">A) 1, 3, 2</span>
+    <span class="choice">B) 1, 2, 2</span>
+    <span class="choice">C) 2, 3, 4</span>
+    <span class="choice">D) 2, 6, 4</span>
+  </div>
+  <div class="answer-line">✓ <span style="font-weight:bold;">A</span> <span class="std-badge">[6.1]</span> <span class="rationale">— 1 N₂ + 3 H₂ → 2 NH₃ balances nitrogen and hydrogen atoms.</span></div>
+</div>
+<div class="prob-block">
+  <div class="question-stem">24. What coefficients correctly balance: ___ Fe + ___ O₂ → ___ Fe₂O₃?</div>
+  <div class="choices">
+    <span class="choice">A) 2, 1, 1</span>
+    <span class="choice">B) 4, 3, 2</span>
+    <span class="choice">C) 2, 3, 1</span>
+    <span class="choice">D) 1, 2, 2</span>
+  </div>
+  <div class="answer-line">✓ <span style="font-weight:bold;">B</span> <span class="std-badge">[6.1]</span> <span class="rationale">— 4Fe + 3O₂ → 2Fe₂O₃ is the balanced equation.</span></div>
+</div>
+<div class="prob-block">
+  <div class="question-stem">25. Which equation is correctly balanced?</div>
+  <div class="choices">
+    <span class="choice">A) H₂ + O₂ → H₂O</span>
+    <span class="choice">B) 2H₂ + O₂ → 2H₂O</span>
+    <span class="choice">C) H₂ + 2O₂ → 2H₂O</span>
+    <span class="choice">D) 2H₂ + 2O₂ → H₂O</span>
+  </div>
+  <div class="answer-line">✓ <span style="font-weight:bold;">B</span> <span class="std-badge">[6.1]</span> <span class="rationale">— Only 2H₂ + O₂ → 2H₂O has equal numbers of each atom on both sides.</span></div>
+</div>
+<div class="prob-block">
+  <div class="question-stem">26. What coefficients correctly balance: ___ Al + ___ Cl₂ → ___ AlCl₃?</div>
+  <div class="choices">
+    <span class="choice">A) 1, 1, 1</span>
+    <span class="choice">B) 2, 3, 2</span>
+    <span class="choice">C) 3, 1, 2</span>
+    <span class="choice">D) 1, 2, 2</span>
+  </div>
+  <div class="answer-line">✓ <span style="font-weight:bold;">B</span> <span class="std-badge">[6.1]</span> <span class="rationale">— 2Al + 3Cl₂ → 2AlCl₃ balances both aluminum and chlorine atoms.</span></div>
+</div>
+<div class="prob-block">
+  <div class="question-stem">27. In the balanced equation 2Al + 3Cl₂ → 2AlCl₃, the mole ratio of Al to AlCl₃ is:</div>
+  <div class="choices">
+    <span class="choice">A) 3:2</span>
+    <span class="choice">B) 2:3</span>
+    <span class="choice">C) 1:1</span>
+    <span class="choice">D) 2:1</span>
+  </div>
+  <div class="answer-line">✓ <span style="font-weight:bold;">C</span> <span class="std-badge">[6.1]</span> <span class="rationale">— The coefficients show 2 mol Al produce 2 mol AlCl₃, which simplifies to 1:1.</span></div>
+</div>
+<div class="prob-block">
+  <div class="question-stem">28. In N₂ + 3H₂ → 2NH₃, how many moles of NH₃ are produced from 6 mol H₂?</div>
+  <div class="choices">
+    <span class="choice">A) 2 mol</span>
+    <span class="choice">B) 4 mol</span>
+    <span class="choice">C) 6 mol</span>
+    <span class="choice">D) 12 mol</span>
+  </div>
+  <div class="answer-line">✓ <span style="font-weight:bold;">B</span> <span class="std-badge">[6.1]</span> <span class="rationale">— Using the 3:2 ratio, 6 mol H₂ produces 4 mol NH₃.</span></div>
+</div>
+<div class="prob-block">
+  <div class="question-stem">29. In 2Na + Cl₂ → 2NaCl, how many moles of NaCl form from 4 mol Na?</div>
+  <div class="choices">
+    <span class="choice">A) 2 mol</span>
+    <span class="choice">B) 4 mol</span>
+    <span class="choice">C) 8 mol</span>
+    <span class="choice">D) 1 mol</span>
+  </div>
+  <div class="answer-line">✓ <span style="font-weight:bold;">B</span> <span class="std-badge">[6.1]</span> <span class="rationale">— The Na to NaCl ratio is 1:1, so 4 mol Na forms 4 mol NaCl.</span></div>
+</div>
+<div class="prob-block">
+  <div class="question-stem">30. In CH₄ + 2O₂ → CO₂ + 2H₂O, the mole ratio of O₂ to H₂O is:</div>
+  <div class="choices">
+    <span class="choice">A) 2:1</span>
+    <span class="choice">B) 1:2</span>
+    <span class="choice">C) 1:1</span>
+    <span class="choice">D) 4:1</span>
+  </div>
+  <div class="answer-line">✓ <span style="font-weight:bold;">C</span> <span class="std-badge">[6.1]</span> <span class="rationale">— The coefficients are both 2, so O₂ to H₂O is 1:1.</span></div>
+</div>
+<div class="section-head">Section 4: The Mole & Unit Conversion</div>
+<p class="instruction">Correct answers are shown in red with the sub-standard tag and a one-line rationale.</p>
+<div class="prob-block">
+  <div class="question-stem">31. What is the molar mass of H₂O? (H = 1.0 g/mol, O = 16.0 g/mol)</div>
+  <div class="choices">
+    <span class="choice">A) 16.0 g/mol</span>
+    <span class="choice">B) 17.0 g/mol</span>
+    <span class="choice">C) 18.0 g/mol</span>
+    <span class="choice">D) 20.0 g/mol</span>
+  </div>
+  <div class="answer-line">✓ <span style="font-weight:bold;">C</span> <span class="std-badge">[6.2]</span> <span class="rationale">— 2(1.0) + 16.0 = 18.0 g/mol.</span></div>
+</div>
+<div class="prob-block">
+  <div class="question-stem">32. What is the molar mass of CO₂? (C = 12.0, O = 16.0)</div>
+  <div class="choices">
+    <span class="choice">A) 28.0 g/mol</span>
+    <span class="choice">B) 40.0 g/mol</span>
+    <span class="choice">C) 44.0 g/mol</span>
+    <span class="choice">D) 56.0 g/mol</span>
+  </div>
+  <div class="answer-line">✓ <span style="font-weight:bold;">C</span> <span class="std-badge">[6.2]</span> <span class="rationale">— 12.0 + 2(16.0) = 44.0 g/mol.</span></div>
+</div>
+<div class="prob-block">
+  <div class="question-stem">33. How many moles are in 46.0 g of NO₂? (Molar mass of NO₂ = 46.0 g/mol)</div>
+  <div class="choices">
+    <span class="choice">A) 0.50 mol</span>
+    <span class="choice">B) 1.0 mol</span>
+    <span class="choice">C) 2.0 mol</span>
+    <span class="choice">D) 92 mol</span>
+  </div>
+  <div class="answer-line">✓ <span style="font-weight:bold;">B</span> <span class="std-badge">[6.2]</span> <span class="rationale">— Moles = mass ÷ molar mass = 46.0 ÷ 46.0 = 1.0 mol.</span></div>
+</div>
+<div class="prob-block">
+  <div class="question-stem">34. What is the mass of 3.0 mol of CO₂? (MM = 44.0 g/mol)</div>
+  <div class="choices">
+    <span class="choice">A) 44 g</span>
+    <span class="choice">B) 88 g</span>
+    <span class="choice">C) 132 g</span>
+    <span class="choice">D) 176 g</span>
+  </div>
+  <div class="answer-line">✓ <span style="font-weight:bold;">C</span> <span class="std-badge">[6.2]</span> <span class="rationale">— Mass = moles × molar mass = 3.0 × 44.0 = 132 g.</span></div>
+</div>
+<div class="prob-block">
+  <div class="question-stem">35. How many molecules are in 2.0 mol of H₂O?</div>
+  <div class="choices">
+    <span class="choice">A) 6.02 × 10²³</span>
+    <span class="choice">B) 1.20 × 10²⁴</span>
+    <span class="choice">C) 3.01 × 10²³</span>
+    <span class="choice">D) 2.41 × 10²⁴</span>
+  </div>
+  <div class="answer-line">✓ <span style="font-weight:bold;">B</span> <span class="std-badge">[6.2]</span> <span class="rationale">— 2.0 mol × 6.02 × 10²³ molecules/mol = 1.20 × 10²⁴ molecules.</span></div>
+</div>
+<div class="prob-block">
+  <div class="question-stem">36. The molar mass of CaCl₂ is: (Ca = 40.1, Cl = 35.5)</div>
+  <div class="choices">
+    <span class="choice">A) 75.6 g/mol</span>
+    <span class="choice">B) 111.1 g/mol</span>
+    <span class="choice">C) 76.0 g/mol</span>
+    <span class="choice">D) 147.0 g/mol</span>
+  </div>
+  <div class="answer-line">✓ <span style="font-weight:bold;">B</span> <span class="std-badge">[6.2]</span> <span class="rationale">— 40.1 + 2(35.5) = 111.1 g/mol.</span></div>
+</div>
+<div class="prob-block">
+  <div class="question-stem">37. A student has 0.50 mol of NaCl (MM = 58.5 g/mol). What is the mass?</div>
+  <div class="choices">
+    <span class="choice">A) 14.6 g</span>
+    <span class="choice">B) 29.3 g</span>
+    <span class="choice">C) 58.5 g</span>
+    <span class="choice">D) 117 g</span>
+  </div>
+  <div class="answer-line">✓ <span style="font-weight:bold;">B</span> <span class="std-badge">[6.2]</span> <span class="rationale">— 0.50 mol × 58.5 g/mol = 29.25 g, which rounds to 29.3 g.</span></div>
+</div>
+<div class="prob-block">
+  <div class="question-stem">38. 1.204 × 10²⁴ molecules of O₂ equals how many moles? (Avogadro's # = 6.02 × 10²³)</div>
+  <div class="choices">
+    <span class="choice">A) 0.50 mol</span>
+    <span class="choice">B) 1.0 mol</span>
+    <span class="choice">C) 2.0 mol</span>
+    <span class="choice">D) 4.0 mol</span>
+  </div>
+  <div class="answer-line">✓ <span style="font-weight:bold;">C</span> <span class="std-badge">[6.2]</span> <span class="rationale">— 1.204 × 10²⁴ ÷ 6.02 × 10²³ = 2.0 mol.</span></div>
+</div>
+<div class="page-break"></div>
+<div class="section-head">Section 5: Stoichiometry</div>
+<p class="instruction">Correct answers are shown in red with the sub-standard tag and a one-line rationale.</p>
+<div class="prob-block">
+  <div class="question-stem">39. In the balanced equation 4Fe + 3O₂ → 2Fe₂O₃, which conversion factor correctly converts mol Fe to mol Fe₂O₃?</div>
+  <div class="choices">
+    <span class="choice">A) (3 mol O₂)/(4 mol Fe)</span>
+    <span class="choice">B) (2 mol Fe₂O₃)/(4 mol Fe)</span>
+    <span class="choice">C) (4 mol Fe)/(2 mol Fe₂O₃)</span>
+    <span class="choice">D) (1 mol Fe₂O₃)/(2 mol Fe)</span>
+  </div>
+  <div class="answer-line">✓ <span style="font-weight:bold;">B</span> <span class="std-badge">[6.3.1]</span> <span class="rationale">— Use the mole ratio with product on top and starting substance on bottom: 2 mol Fe₂O₃ / 4 mol Fe.</span></div>
+</div>
+<div class="prob-block">
+  <div class="question-stem">40. In 2H₂ + O₂ → 2H₂O: if 4.0 mol H₂ reacts completely, how many moles of H₂O form?</div>
+  <div class="choices">
+    <span class="choice">A) 2.0 mol</span>
+    <span class="choice">B) 4.0 mol</span>
+    <span class="choice">C) 8.0 mol</span>
+    <span class="choice">D) 1.0 mol</span>
+  </div>
+  <div class="answer-line">✓ <span style="font-weight:bold;">B</span> <span class="std-badge">[6.3.2]</span> <span class="rationale">— The H₂ to H₂O ratio is 1:1, so 4.0 mol H₂ forms 4.0 mol H₂O.</span></div>
+</div>
+<div class="prob-block">
+  <div class="question-stem">41. In CH₄ + 2O₂ → CO₂ + 2H₂O: what mass of H₂O (MM = 18.0 g/mol) is produced from 1.0 mol CH₄?</div>
+  <div class="choices">
+    <span class="choice">A) 9.0 g</span>
+    <span class="choice">B) 18.0 g</span>
+    <span class="choice">C) 36.0 g</span>
+    <span class="choice">D) 72.0 g</span>
+  </div>
+  <div class="answer-line">✓ <span style="font-weight:bold;">C</span> <span class="std-badge">[6.3.3]</span> <span class="rationale">— 1.0 mol CH₄ forms 2.0 mol H₂O, and 2.0 × 18.0 = 36.0 g.</span></div>
+</div>
+<div class="prob-block">
+  <div class="question-stem">42. How many grams of CO₂ (MM = 44.0 g/mol) are produced when 2.0 mol CH₄ completely reacts? (CH₄ + 2O₂ → CO₂ + 2H₂O)</div>
+  <div class="choices">
+    <span class="choice">A) 44 g</span>
+    <span class="choice">B) 88 g</span>
+    <span class="choice">C) 22 g</span>
+    <span class="choice">D) 176 g</span>
+  </div>
+  <div class="answer-line">✓ <span style="font-weight:bold;">B</span> <span class="std-badge">[6.3.3]</span> <span class="rationale">— 2.0 mol CH₄ forms 2.0 mol CO₂, and 2.0 × 44.0 = 88 g.</span></div>
+</div>
+<div class="prob-block">
+  <div class="question-stem">43. In N₂ + 3H₂ → 2NH₃: 6 mol N₂ and 6 mol H₂ are mixed. Which is the limiting reagent?</div>
+  <div class="choices">
+    <span class="choice">A) N₂</span>
+    <span class="choice">B) H₂</span>
+    <span class="choice">C) NH₃</span>
+    <span class="choice">D) Neither — they are in exact stoichiometric ratio</span>
+  </div>
+  <div class="answer-line">✓ <span style="font-weight:bold;">B</span> <span class="std-badge">[6.3.4]</span> <span class="rationale">— 6 mol N₂ would need 18 mol H₂, so H₂ runs out first and is limiting.</span></div>
+</div>
+<div class="prob-block">
+  <div class="question-stem">44. Using Q43, how many moles of NH₃ are produced?</div>
+  <div class="choices">
+    <span class="choice">A) 2 mol</span>
+    <span class="choice">B) 4 mol</span>
+    <span class="choice">C) 6 mol</span>
+    <span class="choice">D) 12 mol</span>
+  </div>
+  <div class="answer-line">✓ <span style="font-weight:bold;">B</span> <span class="std-badge">[6.3.4]</span> <span class="rationale">— 6 mol H₂ × (2 mol NH₃ / 3 mol H₂) = 4 mol NH₃.</span></div>
+</div>
+<div class="prob-block">
+  <div class="question-stem">45. In 2Na + Cl₂ → 2NaCl: 4 mol Na and 3 mol Cl₂ are available. The EXCESS reagent is:</div>
+  <div class="choices">
+    <span class="choice">A) Na</span>
+    <span class="choice">B) Cl₂</span>
+    <span class="choice">C) NaCl</span>
+    <span class="choice">D) There is no excess reagent</span>
+  </div>
+  <div class="answer-line">✓ <span style="font-weight:bold;">B</span> <span class="std-badge">[6.3.4]</span> <span class="rationale">— 4 mol Na needs only 2 mol Cl₂, so Cl₂ is left over and is excess.</span></div>
+</div>
+<div class="prob-block">
+  <div class="question-stem">46. Using Q45, how many moles of Cl₂ remain unreacted after the reaction is complete?</div>
+  <div class="choices">
+    <span class="choice">A) 0 mol</span>
+    <span class="choice">B) 1 mol</span>
+    <span class="choice">C) 2 mol</span>
+    <span class="choice">D) 3 mol</span>
+  </div>
+  <div class="answer-line">✓ <span style="font-weight:bold;">B</span> <span class="std-badge">[6.3.4]</span> <span class="rationale">— Starting with 3 mol Cl₂ and using 2 mol leaves 1 mol Cl₂ unreacted.</span></div>
+</div>
+<div class="prob-block">
+  <div class="question-stem">47. The theoretical yield of a reaction is 50.0 g. The actual yield obtained is 40.0 g. The percent yield is:</div>
+  <div class="choices">
+    <span class="choice">A) 50%</span>
+    <span class="choice">B) 80%</span>
+    <span class="choice">C) 125%</span>
+    <span class="choice">D) 20%</span>
+  </div>
+  <div class="answer-line">✓ <span style="font-weight:bold;">B</span> <span class="std-badge">[6.3.4]</span> <span class="rationale">— Percent yield = actual ÷ theoretical × 100 = 40.0 ÷ 50.0 × 100 = 80%.</span></div>
+</div>
+<div class="prob-block">
+  <div class="question-stem">48. A student calculates a theoretical yield of 25.0 g. If the percent yield is 80%, what is the actual yield?</div>
+  <div class="choices">
+    <span class="choice">A) 5.0 g</span>
+    <span class="choice">B) 20.0 g</span>
+    <span class="choice">C) 31.3 g</span>
+    <span class="choice">D) 25.0 g</span>
+  </div>
+  <div class="answer-line">✓ <span style="font-weight:bold;">B</span> <span class="std-badge">[6.3.4]</span> <span class="rationale">— Actual yield = 0.80 × 25.0 g = 20.0 g.</span></div>
+</div>
+<div class="prob-block">
+  <div class="question-stem">49. In 4Fe + 3O₂ → 2Fe₂O₃: what mass of Fe₂O₃ (MM = 160 g/mol) forms from 4 mol Fe?</div>
+  <div class="choices">
+    <span class="choice">A) 80 g</span>
+    <span class="choice">B) 160 g</span>
+    <span class="choice">C) 320 g</span>
+    <span class="choice">D) 640 g</span>
+  </div>
+  <div class="answer-line">✓ <span style="font-weight:bold;">C</span> <span class="std-badge">[6.3.3]</span> <span class="rationale">— 4 mol Fe forms 2 mol Fe₂O₃, and 2 × 160 g/mol = 320 g.</span></div>
+</div>
+<div class="prob-block">
+  <div class="question-stem">50. In 2Al + 3Cl₂ → 2AlCl₃: how many moles of AlCl₃ form from 3.0 mol Al?</div>
+  <div class="choices">
+    <span class="choice">A) 1.5 mol</span>
+    <span class="choice">B) 2.0 mol</span>
+    <span class="choice">C) 3.0 mol</span>
+    <span class="choice">D) 4.5 mol</span>
+  </div>
+  <div class="answer-line">✓ <span style="font-weight:bold;">C</span> <span class="std-badge">[6.3.2]</span> <span class="rationale">— The Al to AlCl₃ ratio is 1:1, so 3.0 mol Al forms 3.0 mol AlCl₃.</span></div>
+</div>
+<div class="section-head">Section 6: Solutions & Molarity</div>
+<p class="instruction">Correct answers are shown in red with the sub-standard tag and a one-line rationale.</p>
+<div class="prob-block">
+  <div class="question-stem">51. Molarity (M) is defined as:</div>
+  <div class="choices">
+    <span class="choice">A) Grams of solute per liter of solution</span>
+    <span class="choice">B) Moles of solute per liter of solution</span>
+    <span class="choice">C) Moles of solute per gram of solvent</span>
+    <span class="choice">D) Grams of solute per mL of solvent</span>
+  </div>
+  <div class="answer-line">✓ <span style="font-weight:bold;">B</span> <span class="std-badge">[7.1.1]</span> <span class="rationale">— Molarity is moles of solute divided by liters of solution.</span></div>
+</div>
+<div class="prob-block">
+  <div class="question-stem">52. In a solution of NaCl dissolved in water, the SOLUTE is:</div>
+  <div class="choices">
+    <span class="choice">A) Water</span>
+    <span class="choice">B) The solution</span>
+    <span class="choice">C) NaCl</span>
+    <span class="choice">D) The container</span>
+  </div>
+  <div class="answer-line">✓ <span style="font-weight:bold;">C</span> <span class="std-badge">[7.1.2]</span> <span class="rationale">— The solute is the substance being dissolved, which is NaCl.</span></div>
+</div>
+<div class="prob-block">
+  <div class="question-stem">53. What is the molarity of a solution with 2.0 mol NaCl dissolved in 4.0 L of solution?</div>
+  <div class="choices">
+    <span class="choice">A) 0.25 M</span>
+    <span class="choice">B) 0.50 M</span>
+    <span class="choice">C) 2.0 M</span>
+    <span class="choice">D) 8.0 M</span>
+  </div>
+  <div class="answer-line">✓ <span style="font-weight:bold;">B</span> <span class="std-badge">[7.1.3]</span> <span class="rationale">— M = mol/L = 2.0 ÷ 4.0 = 0.50 M.</span></div>
+</div>
+<div class="prob-block">
+  <div class="question-stem">54. How many moles of KOH are in 2.0 L of a 3.0 M KOH solution?</div>
+  <div class="choices">
+    <span class="choice">A) 1.5 mol</span>
+    <span class="choice">B) 3.0 mol</span>
+    <span class="choice">C) 6.0 mol</span>
+    <span class="choice">D) 0.67 mol</span>
+  </div>
+  <div class="answer-line">✓ <span style="font-weight:bold;">C</span> <span class="std-badge">[7.1.4]</span> <span class="rationale">— Moles = M × L = 3.0 × 2.0 = 6.0 mol.</span></div>
+</div>
+<div class="prob-block">
+  <div class="question-stem">55. A chemist needs to prepare 1.0 L of 0.25 M HCl. How many moles of HCl are required?</div>
+  <div class="choices">
+    <span class="choice">A) 0.10 mol</span>
+    <span class="choice">B) 0.25 mol</span>
+    <span class="choice">C) 0.50 mol</span>
+    <span class="choice">D) 1.0 mol</span>
+  </div>
+  <div class="answer-line">✓ <span style="font-weight:bold;">B</span> <span class="std-badge">[7.1.3]</span> <span class="rationale">— Moles = M × L = 0.25 × 1.0 = 0.25 mol.</span></div>
+</div>
+<div class="prob-block">
+  <div class="question-stem">56. What volume (in liters) of a 2.0 M NaOH solution contains 1.0 mol of NaOH?</div>
+  <div class="choices">
+    <span class="choice">A) 0.25 L</span>
+    <span class="choice">B) 0.50 L</span>
+    <span class="choice">C) 1.0 L</span>
+    <span class="choice">D) 2.0 L</span>
+  </div>
+  <div class="answer-line">✓ <span style="font-weight:bold;">B</span> <span class="std-badge">[7.1.4]</span> <span class="rationale">— Volume = moles ÷ molarity = 1.0 ÷ 2.0 = 0.50 L.</span></div>
+</div>
+<div class="prob-block">
+  <div class="question-stem">57. 58.5 g of NaCl (MM = 58.5 g/mol) is dissolved to make 500 mL of solution. What is the molarity?</div>
+  <div class="choices">
+    <span class="choice">A) 0.50 M</span>
+    <span class="choice">B) 1.0 M</span>
+    <span class="choice">C) 2.0 M</span>
+    <span class="choice">D) 4.0 M</span>
+  </div>
+  <div class="answer-line">✓ <span style="font-weight:bold;">C</span> <span class="std-badge">[7.1.5]</span> <span class="rationale">— 58.5 g is 1.0 mol, and 500 mL = 0.500 L, so M = 1.0 ÷ 0.500 = 2.0 M.</span></div>
+</div>
+<div class="prob-block">
+  <div class="question-stem">58. How many grams of NaOH (MM = 40.0 g/mol) are needed to make 0.50 L of a 2.0 M solution?</div>
+  <div class="choices">
+    <span class="choice">A) 10 g</span>
+    <span class="choice">B) 20 g</span>
+    <span class="choice">C) 40 g</span>
+    <span class="choice">D) 80 g</span>
+  </div>
+  <div class="answer-line">✓ <span style="font-weight:bold;">C</span> <span class="std-badge">[7.1.5]</span> <span class="rationale">— Needed moles = 2.0 × 0.50 = 1.0 mol, and 1.0 mol × 40.0 g/mol = 40 g.</span></div>
+</div>
+<div class="prob-block">
+  <div class="question-stem">59. Four cups (A, B, C, D) contain the same volume of solution. Cup A is very lightly shaded (few dissolved particles); Cup D is very dark (many particles). Which cup has the HIGHEST concentration?</div>
+  <div class="choices">
+    <span class="choice">A) Cup A</span>
+    <span class="choice">B) Cup B</span>
+    <span class="choice">C) Cup C</span>
+    <span class="choice">D) Cup D</span>
+  </div>
+  <div class="answer-line">✓ <span style="font-weight:bold;">D</span> <span class="std-badge">[7.1.6]</span> <span class="rationale">— With equal volumes, the cup containing the most dissolved particles has the highest concentration.</span></div>
+</div>
+<div class="prob-block">
+  <div class="question-stem">60. A chemist adds more solvent to a 2.0 M solution without changing the amount of solute. The new concentration will be:</div>
+  <div class="choices">
+    <span class="choice">A) Greater than 2.0 M</span>
+    <span class="choice">B) Equal to 2.0 M</span>
+    <span class="choice">C) Less than 2.0 M</span>
+    <span class="choice">D) The molarity depends only on the solute</span>
+  </div>
+  <div class="answer-line">✓ <span style="font-weight:bold;">C</span> <span class="std-badge">[7.1.6]</span> <span class="rationale">— Adding solvent increases volume while moles stay constant, so molarity decreases.</span></div>
+</div>
+</body>
+</html>
