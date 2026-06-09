@@ -3,938 +3,241 @@
 <head>
 <meta charset="UTF-8">
 <title>Chemistry 10 — Spring Cumulative Exam</title>
+<script>
+MathJax = { tex: { inlineMath: [['\\(','\\)'],['$','$']] }, options: { skipHtmlTags: ['script','noscript','style','textarea'] } };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" async></script>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,700;1,400&display=swap');
-* { margin: 0; padding: 0; box-sizing: border-box; }
-body { font-family: 'EB Garamond', Georgia, serif; font-size: 11pt; line-height: 1.5; padding: 0.5in 0.7in; color: #1a1a1a; background: #fff; }
-.page-header { display: flex; justify-content: space-between; border-bottom: 0.5pt solid #000; padding-bottom: 3px; margin-bottom: 12px; font-size: 9.5pt; }
-.title-block { text-align: center; margin-bottom: 8px; }
-.title-block h1 { font-size: 15pt; font-weight: bold; margin-bottom: 2px; }
-.title-block .eyebrow { font-size: 9.5pt; color: #1a5276; letter-spacing: 0.5px; text-transform: uppercase; margin-bottom: 4px; }
-.name-line { margin-bottom: 14px; font-size: 10pt; white-space: nowrap; }
-.name-line span { display: inline-block; border-bottom: 1px solid #000; }
-.section-head { color: #1a5276; font-size: 12pt; font-weight: bold; border-bottom: 0.5pt solid #1a5276; padding-bottom: 2px; margin: 14px 0 8px 0; clear: both; page-break-after: avoid; }
-.section-head .std-badge, .part-head .std-badge { display: inline-block; background: #f4a8a8; color: #6b1d1d; font-size: 8pt; padding: 1px 6px; border-radius: 3px; font-weight: bold; vertical-align: middle; margin-left: 6px; }
-.instruction { font-size: 10pt; font-style: italic; margin: 4px 0 8px 0; color: #333; page-break-after: avoid; }
-.problem { margin-bottom: 12px; page-break-inside: avoid; break-inside: avoid; }
-.pts { font-size: 9pt; font-weight: normal; color: #555; }
-.blank { display: inline-block; border-bottom: 1px solid #000; }
-.note { font-size: 9.5pt; font-style: italic; margin: 4px 0; color: #333; }
-.page-break { page-break-before: always; break-before: page; }
-.ref-box { border: 1px solid #999; background: #f7f9fb; padding: 6px 10px; margin: 8px 0; font-size: 10pt; }
-.eq-box { border: 1px solid #1a5276; background: #ebf5fb; padding: 8px 12px; margin: 8px 0; text-align: center; font-size: 12pt; font-weight: bold; }
-.vsepr-table { border-collapse: collapse; width: 100%; margin: 8px 0; font-size: 10pt; table-layout: fixed; }
-.vsepr-table th { border: 1px solid #555; padding: 4px 4px; background: #f0f0f0; text-align: center; font-weight: bold; font-size: 9pt; vertical-align: middle; }
-.vsepr-table th .std-badge { display: inline-block; background: #f4a8a8; color: #6b1d1d; font-size: 7.5pt; padding: 1px 5px; border-radius: 2px; margin-top: 2px; font-weight: bold; }
-.vsepr-table td { border: 1px solid #555; padding: 3px 3px; text-align: center; vertical-align: middle; }
-.vsepr-table tr { page-break-inside: avoid; page-break-after: auto; }
-.vsepr-table thead { display: table-header-group; }
-.vsepr-table .lewis-cell { min-height: 62px; height: 62px; font-size: 10pt; }
-.vsepr-table .draw-cell { height: 62px; }
-.imf-table { border-collapse: collapse; width: 100%; margin: 8px 0; font-size: 10.5pt; }
-.imf-table th { border: 1px solid #555; padding: 5px 8px; background: #f0f0f0; text-align: center; font-weight: bold; font-size: 10pt; }
-.imf-table td { border: 1px solid #555; padding: 8px; text-align: center; height: 32px; }
-.work-box { border: 1px solid #999; min-height: 90px; margin: 6px 0; padding: 6px; page-break-inside: avoid; }
-.work-box-sm { border: 1px solid #999; min-height: 100px; margin: 6px 0; padding: 6px; page-break-inside: avoid; }
-.work-box-lg { border: 1px solid #999; min-height: 180px; margin: 6px 0; padding: 6px; page-break-inside: avoid; }
-.rank-boxes { font-size: 13pt; margin: 10px 0; text-align: center; letter-spacing: 4px; }
-.rank-boxes .rb { display: inline-block; border: 1px solid #000; width: 40px; height: 32px; vertical-align: middle; }
-.subq { margin: 6px 0 6px 12px; }
-.lewis { font-family: 'EB Garamond', Georgia, serif; line-height: 1.3; }
-.lewis .lp { color: #1a5276; font-weight: bold; letter-spacing: -1px; }
-.section-pts { float: right; font-size: 10pt; color: #555; font-weight: normal; }
-.molecule-block { margin: 10px 0 14px 0; page-break-inside: avoid; }
-.molecule-name { font-weight: bold; font-size: 10.5pt; margin-bottom: 1px; }
-.lewis-display { text-align: center; margin: 3px 0; font-size: 12pt; letter-spacing: 1px; white-space: nowrap; }
-.score-box { border: 1px solid #000; padding: 3px 6px; font-size: 9pt; float: right; }
-.prob-block { margin-bottom: 12px; page-break-inside: avoid; break-inside: avoid; }
-.question-stem { font-weight: bold; margin-bottom: 4px; }
-.choices { margin-left: 1.2em; }
-.choice { display: block; margin-left: 1em; text-indent: -1em; }
-.note-flag { border: 1px solid #1a5276; background: #ebf5fb; padding: 6px 10px; margin: 8px 0 10px 0; font-size: 10pt; text-align: center; }
-.answer-sheet { margin-top: 16px; page-break-inside: avoid; break-inside: avoid; }
-.answer-grid { display: grid; grid-template-columns: repeat(10, 1fr); gap: 8px 8px; margin-top: 8px; }
-.answer-cell { border: 0.5pt solid #999; padding: 4px 5px; min-height: 34px; }
-.answer-num { display: inline-flex; align-items: center; justify-content: center; width: 16px; height: 16px; border: 1px solid #000; border-radius: 50%; font-size: 7.4pt; font-weight: bold; margin-right: 4px; }
-.choice-bubbles { display: inline-flex; gap: 4px; flex-wrap: nowrap; vertical-align: middle; }
-.mini-choice { display: inline-flex; align-items: center; gap: 1px; font-size: 6.8pt; }
-.mini-circle { display: inline-block; width: 9px; height: 9px; border: 1px solid #000; border-radius: 50%; }
-.answer-sheet-note { font-size: 9pt; color: #333; font-style: italic; margin-top: 4px; }
-.key-banner { color: #c0392b; font-weight: bold; text-align: center; margin-bottom: 4px; font-size: 10pt; letter-spacing: 0.5px; }
-.answer-line { margin-top: 3px; color: #c0392b; font-weight: bold; }
-.answer-line .std-badge { margin-left: 4px; margin-right: 4px; }
-.rationale { font-style: italic; color: #555; font-weight: normal; }
-.summary-grid { display: grid; grid-template-columns: repeat(10, 1fr); gap: 4px 6px; margin: 8px 0 12px 0; font-size: 9.5pt; }
-.summary-item { border: 0.5pt solid #bbb; padding: 3px 4px; text-align: center; }
-.key-eyebrow { color: #c0392b !important; font-weight: bold; }
-@media print { body { padding: 0.5in 0.7in; } }
-@page { margin: 0.5in 0.7in 0.7in 0.7in; }
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'EB Garamond',Georgia,serif;font-size:11pt;line-height:1.5;padding:.5in .7in;color:#1a1a1a;background:#fff;}
+.page-header{display:flex;justify-content:space-between;border-bottom:.5pt solid #000;padding-bottom:3px;margin-bottom:10px;font-size:9.5pt;}
+.title-block{text-align:center;margin-bottom:10px;}
+.title-block h1{font-size:16pt;font-weight:bold;margin-bottom:2px;}
+.title-block .eyebrow{font-size:9.5pt;color:#1a5276;letter-spacing:.5px;text-transform:uppercase;}
+.name-line{margin-bottom:10px;font-size:10pt;}
+.name-line span{display:inline-block;border-bottom:1px solid #000;min-width:180px;}
+.note-flag{border:1px solid #555;padding:6px 10px;margin:8px 0;font-size:9.5pt;}
+.sec-head{color:#1a5276;font-size:12pt;font-weight:bold;border-bottom:.5pt solid #1a5276;padding-bottom:2px;margin:16px 0 8px;page-break-after:avoid;}
+.q{margin-bottom:9px;page-break-inside:avoid;}
+.q .num{font-weight:bold;}
+.choices{margin:2px 0 0 18px;font-size:10.5pt;}
+.choices span{display:block;padding:1px 0;}
+.answer-sheet{margin-top:20px;border-top:1.5pt solid #000;padding-top:10px;}
+.answer-sheet h3{font-size:10pt;font-weight:bold;text-align:center;margin-bottom:8px;letter-spacing:.5px;text-transform:uppercase;}
+.ans-grid{display:grid;grid-template-columns:repeat(10,1fr);gap:4px;font-size:8.5pt;}
+.ans-cell{border:1px solid #888;padding:3px 2px;text-align:center;page-break-inside:avoid;}
+.ans-cell .qn{font-weight:bold;font-size:7.5pt;border-bottom:.5pt solid #ccc;margin-bottom:2px;}
+.ans-cell .opts{letter-spacing:2px;color:#333;}
+@media print{body{padding:.5in .65in;} @page{margin:.5in .65in .65in .65in;}}
 </style>
 </head>
 <body>
-<div class="page-header"><span>SAAS &middot; Chemistry 10 &middot; Martin &middot; Spring 2026</span><span>Student Copy</span></div>
-<div class="title-block"><div class="eyebrow">Chemistry 10 &mdash; Spring Cumulative Exam</div><h1>Spring Cumulative Exam</h1><div>SAAS &middot; Teacher Martin &middot; Spring 2026</div></div>
-<div class="name-line">Name:<span style="width:210px;"></span> &nbsp;&nbsp; Date:<span style="width:110px;"></span> &nbsp;&nbsp; Block:<span style="width:70px;"></span></div>
-<div class="note-flag"><strong>60 questions &middot; No calculator &middot; Bring your own periodic table</strong><br><span class="note" style="display:block;margin:2px 0 0 0;">No calculator. No periodic table provided &mdash; use your own.</span></div>
-<div class="section-head">Section 1: Molecular Shape</div>
-<p class="instruction">Choose the best answer for each question. Mark only one answer per item.</p>
-<div class="prob-block">
-  <div class="question-stem">1. The central atom in water (H₂O) has 2 bonding pairs and 2 lone pairs. What is the total number of negative charge centers on the central oxygen?</div>
-  <div class="choices">
-    <span class="choice">A) 2</span>
-    <span class="choice">B) 3</span>
-    <span class="choice">C) 4</span>
-    <span class="choice">D) 6</span>
-  </div>
+<div class="page-header"><span>SAAS &middot; Chemistry 10 &middot; Teacher Martin</span><span>Spring 2026</span></div>
+<div class="title-block">
+  <p class="eyebrow">Spring Cumulative Exam</p>
+  <h1>Chemistry 10 &mdash; Final Practice</h1>
 </div>
-<div class="prob-block">
-  <div class="question-stem">2. Based on 4 charge centers with 2 lone pairs, what is the molecular shape of H₂O?</div>
-  <div class="choices">
-    <span class="choice">A) Tetrahedral</span>
-    <span class="choice">B) Trigonal pyramidal</span>
-    <span class="choice">C) Bent</span>
-    <span class="choice">D) Linear</span>
-  </div>
-</div>
-<div class="prob-block">
-  <div class="question-stem">3. What is the approximate bond angle in a bent molecule like H₂O?</div>
-  <div class="choices">
-    <span class="choice">A) 90°</span>
-    <span class="choice">B) ~104.5°</span>
-    <span class="choice">C) 120°</span>
-    <span class="choice">D) 180°</span>
-  </div>
-</div>
-<div class="prob-block">
-  <div class="question-stem">4. Carbon dioxide (CO₂) has 2 double bonds and 0 lone pairs on carbon. Its molecular shape is:</div>
-  <div class="choices">
-    <span class="choice">A) Bent</span>
-    <span class="choice">B) Trigonal planar</span>
-    <span class="choice">C) Linear</span>
-    <span class="choice">D) Tetrahedral</span>
-  </div>
-</div>
-<div class="prob-block">
-  <div class="question-stem">5. What is the bond angle in CO₂?</div>
-  <div class="choices">
-    <span class="choice">A) 90°</span>
-    <span class="choice">B) 109.5°</span>
-    <span class="choice">C) 120°</span>
-    <span class="choice">D) 180°</span>
-  </div>
-</div>
-<div class="prob-block">
-  <div class="question-stem">6. NH₃ has 3 bonding pairs and 1 lone pair on nitrogen. Its molecular shape is:</div>
-  <div class="choices">
-    <span class="choice">A) Trigonal planar</span>
-    <span class="choice">B) Trigonal pyramidal</span>
-    <span class="choice">C) Tetrahedral</span>
-    <span class="choice">D) Bent</span>
-  </div>
-</div>
-<div class="prob-block">
-  <div class="question-stem">7. The bond angle in NH₃ is ~107°, slightly less than the ideal 109.5°. Why?</div>
-  <div class="choices">
-    <span class="choice">A) The N–H bonds are longer than normal</span>
-    <span class="choice">B) The lone pair occupies more space than a bonding pair, compressing the bond angles</span>
-    <span class="choice">C) The nitrogen atom is too small to hold 4 pairs</span>
-    <span class="choice">D) The bonds are ionic</span>
-  </div>
-</div>
-<div class="prob-block">
-  <div class="question-stem">8. BeCl₂ has 2 bonding pairs and 0 lone pairs on beryllium. Its shape is:</div>
-  <div class="choices">
-    <span class="choice">A) Bent</span>
-    <span class="choice">B) Trigonal planar</span>
-    <span class="choice">C) Tetrahedral</span>
-    <span class="choice">D) Linear</span>
-  </div>
-</div>
-<div class="prob-block">
-  <div class="question-stem">9. A central atom with 4 bonding pairs and 0 lone pairs has which geometry?</div>
-  <div class="choices">
-    <span class="choice">A) Bent</span>
-    <span class="choice">B) Trigonal pyramidal</span>
-    <span class="choice">C) Tetrahedral</span>
-    <span class="choice">D) Trigonal planar</span>
-  </div>
-</div>
-<div class="prob-block">
-  <div class="question-stem">10. What bond angle is associated with trigonal planar geometry?</div>
-  <div class="choices">
-    <span class="choice">A) 90°</span>
-    <span class="choice">B) 109.5°</span>
-    <span class="choice">C) 120°</span>
-    <span class="choice">D) 180°</span>
-  </div>
-</div>
-<div class="section-head">Section 2: Polarity & Intermolecular Forces</div>
-<p class="instruction">Choose the best answer for each question. Mark only one answer per item.</p>
-<div class="prob-block">
-  <div class="question-stem">11. The electronegativity of N = 3.0 and H = 2.1. The N–H bond is:</div>
-  <div class="choices">
-    <span class="choice">A) Nonpolar covalent (ΔEN = 0)</span>
-    <span class="choice">B) Polar covalent (ΔEN = 0.9)</span>
-    <span class="choice">C) Ionic (ΔEN > 1.7)</span>
-    <span class="choice">D) Metallic</span>
-  </div>
-</div>
-<div class="prob-block">
-  <div class="question-stem">12. The C–C bond has ΔEN = 0. It is:</div>
-  <div class="choices">
-    <span class="choice">A) Ionic</span>
-    <span class="choice">B) Polar covalent</span>
-    <span class="choice">C) Nonpolar covalent</span>
-    <span class="choice">D) A hydrogen bond</span>
-  </div>
-</div>
-<div class="prob-block">
-  <div class="question-stem">13. In the C–O bond, oxygen is more electronegative (EN = 3.5 vs. C = 2.5). The polarity arrow points:</div>
-  <div class="choices">
-    <span class="choice">A) From O to C (toward the less electronegative atom)</span>
-    <span class="choice">B) From C to O (toward the more electronegative atom)</span>
-    <span class="choice">C) There is no polarity arrow — the bond is nonpolar</span>
-    <span class="choice">D) In both directions simultaneously</span>
-  </div>
-</div>
-<div class="prob-block">
-  <div class="question-stem">14. CO₂ has 2 polar C=O bonds arranged in a straight line (180°). The molecule is:</div>
-  <div class="choices">
-    <span class="choice">A) Polar — it has polar bonds</span>
-    <span class="choice">B) Nonpolar — the symmetric arrangement cancels the dipoles</span>
-    <span class="choice">C) Ionic — large electronegativity difference</span>
-    <span class="choice">D) Unable to interact with other molecules</span>
-  </div>
-</div>
-<div class="prob-block">
-  <div class="question-stem">15. H₂O is polar even though both O–H bonds are identical. This is because:</div>
-  <div class="choices">
-    <span class="choice">A) The bonds are ionic</span>
-    <span class="choice">B) The bent shape + lone pairs create an asymmetric charge distribution — net dipole remains</span>
-    <span class="choice">C) Oxygen is too large to be symmetric</span>
-    <span class="choice">D) The bond angles are exactly 180°</span>
-  </div>
-</div>
-<div class="prob-block">
-  <div class="question-stem">16. Which intermolecular force is present in ALL molecular substances regardless of polarity?</div>
-  <div class="choices">
-    <span class="choice">A) Hydrogen bonding</span>
-    <span class="choice">B) Dipole-dipole forces</span>
-    <span class="choice">C) London dispersion forces</span>
-    <span class="choice">D) Covalent bonds</span>
-  </div>
-</div>
-<div class="prob-block">
-  <div class="question-stem">17. For hydrogen bonding to occur, hydrogen must be covalently bonded directly to:</div>
-  <div class="choices">
-    <span class="choice">A) Carbon or Sulfur</span>
-    <span class="choice">B) N, O, or F</span>
-    <span class="choice">C) Any atom that has lone pairs</span>
-    <span class="choice">D) A metal atom</span>
-  </div>
-</div>
-<div class="prob-block">
-  <div class="question-stem">18. Which molecule experiences the strongest intermolecular forces?</div>
-  <div class="choices">
-    <span class="choice">A) CH₄</span>
-    <span class="choice">B) HF</span>
-    <span class="choice">C) Cl₂</span>
-    <span class="choice">D) N₂</span>
-  </div>
-</div>
-<div class="prob-block">
-  <div class="question-stem">19. Arrange by INCREASING boiling point: CH₄ (LDF only), HCl (dipole-dipole), H₂O (H-bonding)</div>
-  <div class="choices">
-    <span class="choice">A) H₂O < HCl < CH₄</span>
-    <span class="choice">B) HCl < CH₄ < H₂O</span>
-    <span class="choice">C) CH₄ < HCl < H₂O</span>
-    <span class="choice">D) CH₄ < H₂O < HCl</span>
-  </div>
-</div>
-<div class="prob-block">
-  <div class="question-stem">20. HF has a much higher boiling point than HCl, even though HCl has a greater molar mass. The best explanation is:</div>
-  <div class="choices">
-    <span class="choice">A) HF has stronger London dispersion forces</span>
-    <span class="choice">B) HF molecules can form hydrogen bonds with each other; HCl cannot</span>
-    <span class="choice">C) HCl is an ionic compound</span>
-    <span class="choice">D) HF molecules are smaller and move more slowly</span>
-  </div>
-</div>
-<div class="prob-block">
-  <div class="question-stem">21. "Like dissolves like" means:</div>
-  <div class="choices">
-    <span class="choice">A) Substances with similar molar masses always mix</span>
-    <span class="choice">B) Polar solutes dissolve in polar solvents; nonpolar solutes dissolve in nonpolar solvents</span>
-    <span class="choice">C) Ionic compounds only dissolve in ionic solvents</span>
-    <span class="choice">D) All molecular compounds dissolve in water</span>
-  </div>
-</div>
-<div class="prob-block">
-  <div class="question-stem">22. Which substance would dissolve most readily in a nonpolar solvent like hexane?</div>
-  <div class="choices">
-    <span class="choice">A) NaCl (ionic)</span>
-    <span class="choice">B) HF (polar, H-bonding)</span>
-    <span class="choice">C) H₂O (polar, H-bonding)</span>
-    <span class="choice">D) I₂ (nonpolar)</span>
-  </div>
-</div>
-<div class="page-break"></div>
-<div class="section-head">Section 3: Chemical Equations</div>
-<p class="instruction">Choose the best answer for each question. Mark only one answer per item.</p>
-<div class="prob-block">
-  <div class="question-stem">23. What coefficients correctly balance: ___ N₂ + ___ H₂ → ___ NH₃?</div>
-  <div class="choices">
-    <span class="choice">A) 1, 3, 2</span>
-    <span class="choice">B) 1, 2, 2</span>
-    <span class="choice">C) 2, 3, 4</span>
-    <span class="choice">D) 2, 6, 4</span>
-  </div>
-</div>
-<div class="prob-block">
-  <div class="question-stem">24. What coefficients correctly balance: ___ Fe + ___ O₂ → ___ Fe₂O₃?</div>
-  <div class="choices">
-    <span class="choice">A) 2, 1, 1</span>
-    <span class="choice">B) 4, 3, 2</span>
-    <span class="choice">C) 2, 3, 1</span>
-    <span class="choice">D) 1, 2, 2</span>
-  </div>
-</div>
-<div class="prob-block">
-  <div class="question-stem">25. Which equation is correctly balanced?</div>
-  <div class="choices">
-    <span class="choice">A) H₂ + O₂ → H₂O</span>
-    <span class="choice">B) 2H₂ + O₂ → 2H₂O</span>
-    <span class="choice">C) H₂ + 2O₂ → 2H₂O</span>
-    <span class="choice">D) 2H₂ + 2O₂ → H₂O</span>
-  </div>
-</div>
-<div class="prob-block">
-  <div class="question-stem">26. What coefficients correctly balance: ___ Al + ___ Cl₂ → ___ AlCl₃?</div>
-  <div class="choices">
-    <span class="choice">A) 1, 1, 1</span>
-    <span class="choice">B) 2, 3, 2</span>
-    <span class="choice">C) 3, 1, 2</span>
-    <span class="choice">D) 1, 2, 2</span>
-  </div>
-</div>
-<div class="prob-block">
-  <div class="question-stem">27. In the balanced equation 2Al + 3Cl₂ → 2AlCl₃, the mole ratio of Al to AlCl₃ is:</div>
-  <div class="choices">
-    <span class="choice">A) 3:2</span>
-    <span class="choice">B) 2:3</span>
-    <span class="choice">C) 1:1</span>
-    <span class="choice">D) 2:1</span>
-  </div>
-</div>
-<div class="prob-block">
-  <div class="question-stem">28. In N₂ + 3H₂ → 2NH₃, how many moles of NH₃ are produced from 6 mol H₂?</div>
-  <div class="choices">
-    <span class="choice">A) 2 mol</span>
-    <span class="choice">B) 4 mol</span>
-    <span class="choice">C) 6 mol</span>
-    <span class="choice">D) 12 mol</span>
-  </div>
-</div>
-<div class="prob-block">
-  <div class="question-stem">29. In 2Na + Cl₂ → 2NaCl, how many moles of NaCl form from 4 mol Na?</div>
-  <div class="choices">
-    <span class="choice">A) 2 mol</span>
-    <span class="choice">B) 4 mol</span>
-    <span class="choice">C) 8 mol</span>
-    <span class="choice">D) 1 mol</span>
-  </div>
-</div>
-<div class="prob-block">
-  <div class="question-stem">30. In CH₄ + 2O₂ → CO₂ + 2H₂O, the mole ratio of O₂ to H₂O is:</div>
-  <div class="choices">
-    <span class="choice">A) 2:1</span>
-    <span class="choice">B) 1:2</span>
-    <span class="choice">C) 1:1</span>
-    <span class="choice">D) 4:1</span>
-  </div>
-</div>
-<div class="section-head">Section 4: The Mole & Unit Conversion</div>
-<p class="instruction">Choose the best answer for each question. Mark only one answer per item.</p>
-<div class="prob-block">
-  <div class="question-stem">31. What is the molar mass of H₂O? (H = 1.0 g/mol, O = 16.0 g/mol)</div>
-  <div class="choices">
-    <span class="choice">A) 16.0 g/mol</span>
-    <span class="choice">B) 17.0 g/mol</span>
-    <span class="choice">C) 18.0 g/mol</span>
-    <span class="choice">D) 20.0 g/mol</span>
-  </div>
-</div>
-<div class="prob-block">
-  <div class="question-stem">32. What is the molar mass of CO₂? (C = 12.0, O = 16.0)</div>
-  <div class="choices">
-    <span class="choice">A) 28.0 g/mol</span>
-    <span class="choice">B) 40.0 g/mol</span>
-    <span class="choice">C) 44.0 g/mol</span>
-    <span class="choice">D) 56.0 g/mol</span>
-  </div>
-</div>
-<div class="prob-block">
-  <div class="question-stem">33. How many moles are in 46.0 g of NO₂? (Molar mass of NO₂ = 46.0 g/mol)</div>
-  <div class="choices">
-    <span class="choice">A) 0.50 mol</span>
-    <span class="choice">B) 1.0 mol</span>
-    <span class="choice">C) 2.0 mol</span>
-    <span class="choice">D) 92 mol</span>
-  </div>
-</div>
-<div class="prob-block">
-  <div class="question-stem">34. What is the mass of 3.0 mol of CO₂? (MM = 44.0 g/mol)</div>
-  <div class="choices">
-    <span class="choice">A) 44 g</span>
-    <span class="choice">B) 88 g</span>
-    <span class="choice">C) 132 g</span>
-    <span class="choice">D) 176 g</span>
-  </div>
-</div>
-<div class="prob-block">
-  <div class="question-stem">35. How many molecules are in 2.0 mol of H₂O?</div>
-  <div class="choices">
-    <span class="choice">A) 6.02 × 10²³</span>
-    <span class="choice">B) 1.20 × 10²⁴</span>
-    <span class="choice">C) 3.01 × 10²³</span>
-    <span class="choice">D) 2.41 × 10²⁴</span>
-  </div>
-</div>
-<div class="prob-block">
-  <div class="question-stem">36. The molar mass of CaCl₂ is: (Ca = 40.1, Cl = 35.5)</div>
-  <div class="choices">
-    <span class="choice">A) 75.6 g/mol</span>
-    <span class="choice">B) 111.1 g/mol</span>
-    <span class="choice">C) 76.0 g/mol</span>
-    <span class="choice">D) 147.0 g/mol</span>
-  </div>
-</div>
-<div class="prob-block">
-  <div class="question-stem">37. A student has 0.50 mol of NaCl (MM = 58.5 g/mol). What is the mass?</div>
-  <div class="choices">
-    <span class="choice">A) 14.6 g</span>
-    <span class="choice">B) 29.3 g</span>
-    <span class="choice">C) 58.5 g</span>
-    <span class="choice">D) 117 g</span>
-  </div>
-</div>
-<div class="prob-block">
-  <div class="question-stem">38. 1.204 × 10²⁴ molecules of O₂ equals how many moles? (Avogadro's # = 6.02 × 10²³)</div>
-  <div class="choices">
-    <span class="choice">A) 0.50 mol</span>
-    <span class="choice">B) 1.0 mol</span>
-    <span class="choice">C) 2.0 mol</span>
-    <span class="choice">D) 4.0 mol</span>
-  </div>
-</div>
-<div class="page-break"></div>
-<div class="section-head">Section 5: Stoichiometry</div>
-<p class="instruction">Choose the best answer for each question. Mark only one answer per item.</p>
-<div class="prob-block">
-  <div class="question-stem">39. In the balanced equation 4Fe + 3O₂ → 2Fe₂O₃, which conversion factor correctly converts mol Fe to mol Fe₂O₃?</div>
-  <div class="choices">
-    <span class="choice">A) (3 mol O₂)/(4 mol Fe)</span>
-    <span class="choice">B) (2 mol Fe₂O₃)/(4 mol Fe)</span>
-    <span class="choice">C) (4 mol Fe)/(2 mol Fe₂O₃)</span>
-    <span class="choice">D) (1 mol Fe₂O₃)/(2 mol Fe)</span>
-  </div>
-</div>
-<div class="prob-block">
-  <div class="question-stem">40. In 2H₂ + O₂ → 2H₂O: if 4.0 mol H₂ reacts completely, how many moles of H₂O form?</div>
-  <div class="choices">
-    <span class="choice">A) 2.0 mol</span>
-    <span class="choice">B) 4.0 mol</span>
-    <span class="choice">C) 8.0 mol</span>
-    <span class="choice">D) 1.0 mol</span>
-  </div>
-</div>
-<div class="prob-block">
-  <div class="question-stem">41. In CH₄ + 2O₂ → CO₂ + 2H₂O: what mass of H₂O (MM = 18.0 g/mol) is produced from 1.0 mol CH₄?</div>
-  <div class="choices">
-    <span class="choice">A) 9.0 g</span>
-    <span class="choice">B) 18.0 g</span>
-    <span class="choice">C) 36.0 g</span>
-    <span class="choice">D) 72.0 g</span>
-  </div>
-</div>
-<div class="prob-block">
-  <div class="question-stem">42. How many grams of CO₂ (MM = 44.0 g/mol) are produced when 2.0 mol CH₄ completely reacts? (CH₄ + 2O₂ → CO₂ + 2H₂O)</div>
-  <div class="choices">
-    <span class="choice">A) 44 g</span>
-    <span class="choice">B) 88 g</span>
-    <span class="choice">C) 22 g</span>
-    <span class="choice">D) 176 g</span>
-  </div>
-</div>
-<div class="prob-block">
-  <div class="question-stem">43. In N₂ + 3H₂ → 2NH₃: 6 mol N₂ and 6 mol H₂ are mixed. Which is the limiting reagent?</div>
-  <div class="choices">
-    <span class="choice">A) N₂</span>
-    <span class="choice">B) H₂</span>
-    <span class="choice">C) NH₃</span>
-    <span class="choice">D) Neither — they are in exact stoichiometric ratio</span>
-  </div>
-</div>
-<div class="prob-block">
-  <div class="question-stem">44. Using Q43, how many moles of NH₃ are produced?</div>
-  <div class="choices">
-    <span class="choice">A) 2 mol</span>
-    <span class="choice">B) 4 mol</span>
-    <span class="choice">C) 6 mol</span>
-    <span class="choice">D) 12 mol</span>
-  </div>
-</div>
-<div class="prob-block">
-  <div class="question-stem">45. In 2Na + Cl₂ → 2NaCl: 4 mol Na and 3 mol Cl₂ are available. The EXCESS reagent is:</div>
-  <div class="choices">
-    <span class="choice">A) Na</span>
-    <span class="choice">B) Cl₂</span>
-    <span class="choice">C) NaCl</span>
-    <span class="choice">D) There is no excess reagent</span>
-  </div>
-</div>
-<div class="prob-block">
-  <div class="question-stem">46. Using Q45, how many moles of Cl₂ remain unreacted after the reaction is complete?</div>
-  <div class="choices">
-    <span class="choice">A) 0 mol</span>
-    <span class="choice">B) 1 mol</span>
-    <span class="choice">C) 2 mol</span>
-    <span class="choice">D) 3 mol</span>
-  </div>
-</div>
-<div class="prob-block">
-  <div class="question-stem">47. The theoretical yield of a reaction is 50.0 g. The actual yield obtained is 40.0 g. The percent yield is:</div>
-  <div class="choices">
-    <span class="choice">A) 50%</span>
-    <span class="choice">B) 80%</span>
-    <span class="choice">C) 125%</span>
-    <span class="choice">D) 20%</span>
-  </div>
-</div>
-<div class="prob-block">
-  <div class="question-stem">48. A student calculates a theoretical yield of 25.0 g. If the percent yield is 80%, what is the actual yield?</div>
-  <div class="choices">
-    <span class="choice">A) 5.0 g</span>
-    <span class="choice">B) 20.0 g</span>
-    <span class="choice">C) 31.3 g</span>
-    <span class="choice">D) 25.0 g</span>
-  </div>
-</div>
-<div class="prob-block">
-  <div class="question-stem">49. In 4Fe + 3O₂ → 2Fe₂O₃: what mass of Fe₂O₃ (MM = 160 g/mol) forms from 4 mol Fe?</div>
-  <div class="choices">
-    <span class="choice">A) 80 g</span>
-    <span class="choice">B) 160 g</span>
-    <span class="choice">C) 320 g</span>
-    <span class="choice">D) 640 g</span>
-  </div>
-</div>
-<div class="prob-block">
-  <div class="question-stem">50. In 2Al + 3Cl₂ → 2AlCl₃: how many moles of AlCl₃ form from 3.0 mol Al?</div>
-  <div class="choices">
-    <span class="choice">A) 1.5 mol</span>
-    <span class="choice">B) 2.0 mol</span>
-    <span class="choice">C) 3.0 mol</span>
-    <span class="choice">D) 4.5 mol</span>
-  </div>
-</div>
-<div class="section-head">Section 6: Solutions & Molarity</div>
-<p class="instruction">Choose the best answer for each question. Mark only one answer per item.</p>
-<div class="prob-block">
-  <div class="question-stem">51. Molarity (M) is defined as:</div>
-  <div class="choices">
-    <span class="choice">A) Grams of solute per liter of solution</span>
-    <span class="choice">B) Moles of solute per liter of solution</span>
-    <span class="choice">C) Moles of solute per gram of solvent</span>
-    <span class="choice">D) Grams of solute per mL of solvent</span>
-  </div>
-</div>
-<div class="prob-block">
-  <div class="question-stem">52. In a solution of NaCl dissolved in water, the SOLUTE is:</div>
-  <div class="choices">
-    <span class="choice">A) Water</span>
-    <span class="choice">B) The solution</span>
-    <span class="choice">C) NaCl</span>
-    <span class="choice">D) The container</span>
-  </div>
-</div>
-<div class="prob-block">
-  <div class="question-stem">53. What is the molarity of a solution with 2.0 mol NaCl dissolved in 4.0 L of solution?</div>
-  <div class="choices">
-    <span class="choice">A) 0.25 M</span>
-    <span class="choice">B) 0.50 M</span>
-    <span class="choice">C) 2.0 M</span>
-    <span class="choice">D) 8.0 M</span>
-  </div>
-</div>
-<div class="prob-block">
-  <div class="question-stem">54. How many moles of KOH are in 2.0 L of a 3.0 M KOH solution?</div>
-  <div class="choices">
-    <span class="choice">A) 1.5 mol</span>
-    <span class="choice">B) 3.0 mol</span>
-    <span class="choice">C) 6.0 mol</span>
-    <span class="choice">D) 0.67 mol</span>
-  </div>
-</div>
-<div class="prob-block">
-  <div class="question-stem">55. A chemist needs to prepare 1.0 L of 0.25 M HCl. How many moles of HCl are required?</div>
-  <div class="choices">
-    <span class="choice">A) 0.10 mol</span>
-    <span class="choice">B) 0.25 mol</span>
-    <span class="choice">C) 0.50 mol</span>
-    <span class="choice">D) 1.0 mol</span>
-  </div>
-</div>
-<div class="prob-block">
-  <div class="question-stem">56. What volume (in liters) of a 2.0 M NaOH solution contains 1.0 mol of NaOH?</div>
-  <div class="choices">
-    <span class="choice">A) 0.25 L</span>
-    <span class="choice">B) 0.50 L</span>
-    <span class="choice">C) 1.0 L</span>
-    <span class="choice">D) 2.0 L</span>
-  </div>
-</div>
-<div class="prob-block">
-  <div class="question-stem">57. 58.5 g of NaCl (MM = 58.5 g/mol) is dissolved to make 500 mL of solution. What is the molarity?</div>
-  <div class="choices">
-    <span class="choice">A) 0.50 M</span>
-    <span class="choice">B) 1.0 M</span>
-    <span class="choice">C) 2.0 M</span>
-    <span class="choice">D) 4.0 M</span>
-  </div>
-</div>
-<div class="prob-block">
-  <div class="question-stem">58. How many grams of NaOH (MM = 40.0 g/mol) are needed to make 0.50 L of a 2.0 M solution?</div>
-  <div class="choices">
-    <span class="choice">A) 10 g</span>
-    <span class="choice">B) 20 g</span>
-    <span class="choice">C) 40 g</span>
-    <span class="choice">D) 80 g</span>
-  </div>
-</div>
-<div class="prob-block">
-  <div class="question-stem">59. Four cups (A, B, C, D) contain the same volume of solution. Cup A is very lightly shaded (few dissolved particles); Cup D is very dark (many particles). Which cup has the HIGHEST concentration?</div>
-  <div class="choices">
-    <span class="choice">A) Cup A</span>
-    <span class="choice">B) Cup B</span>
-    <span class="choice">C) Cup C</span>
-    <span class="choice">D) Cup D</span>
-  </div>
-</div>
-<div class="prob-block">
-  <div class="question-stem">60. A chemist adds more solvent to a 2.0 M solution without changing the amount of solute. The new concentration will be:</div>
-  <div class="choices">
-    <span class="choice">A) Greater than 2.0 M</span>
-    <span class="choice">B) Equal to 2.0 M</span>
-    <span class="choice">C) Less than 2.0 M</span>
-    <span class="choice">D) The molarity depends only on the solute</span>
-  </div>
-</div>
-<div class="answer-sheet page-break">
-  <div class="section-head">Answer Sheet</div>
-  <p class="instruction">Circle one letter for each question. Leave the number circle blank.</p>
-  <div class="answer-grid"><div class="answer-cell"><span class="answer-num">1</span><span class="choice-bubbles">
-            <span class="mini-choice"><span class="mini-circle"></span>A</span>
-            <span class="mini-choice"><span class="mini-circle"></span>B</span>
-            <span class="mini-choice"><span class="mini-circle"></span>C</span>
-            <span class="mini-choice"><span class="mini-circle"></span>D</span>
-            </span></div><div class="answer-cell"><span class="answer-num">2</span><span class="choice-bubbles">
-            <span class="mini-choice"><span class="mini-circle"></span>A</span>
-            <span class="mini-choice"><span class="mini-circle"></span>B</span>
-            <span class="mini-choice"><span class="mini-circle"></span>C</span>
-            <span class="mini-choice"><span class="mini-circle"></span>D</span>
-            </span></div><div class="answer-cell"><span class="answer-num">3</span><span class="choice-bubbles">
-            <span class="mini-choice"><span class="mini-circle"></span>A</span>
-            <span class="mini-choice"><span class="mini-circle"></span>B</span>
-            <span class="mini-choice"><span class="mini-circle"></span>C</span>
-            <span class="mini-choice"><span class="mini-circle"></span>D</span>
-            </span></div><div class="answer-cell"><span class="answer-num">4</span><span class="choice-bubbles">
-            <span class="mini-choice"><span class="mini-circle"></span>A</span>
-            <span class="mini-choice"><span class="mini-circle"></span>B</span>
-            <span class="mini-choice"><span class="mini-circle"></span>C</span>
-            <span class="mini-choice"><span class="mini-circle"></span>D</span>
-            </span></div><div class="answer-cell"><span class="answer-num">5</span><span class="choice-bubbles">
-            <span class="mini-choice"><span class="mini-circle"></span>A</span>
-            <span class="mini-choice"><span class="mini-circle"></span>B</span>
-            <span class="mini-choice"><span class="mini-circle"></span>C</span>
-            <span class="mini-choice"><span class="mini-circle"></span>D</span>
-            </span></div><div class="answer-cell"><span class="answer-num">6</span><span class="choice-bubbles">
-            <span class="mini-choice"><span class="mini-circle"></span>A</span>
-            <span class="mini-choice"><span class="mini-circle"></span>B</span>
-            <span class="mini-choice"><span class="mini-circle"></span>C</span>
-            <span class="mini-choice"><span class="mini-circle"></span>D</span>
-            </span></div><div class="answer-cell"><span class="answer-num">7</span><span class="choice-bubbles">
-            <span class="mini-choice"><span class="mini-circle"></span>A</span>
-            <span class="mini-choice"><span class="mini-circle"></span>B</span>
-            <span class="mini-choice"><span class="mini-circle"></span>C</span>
-            <span class="mini-choice"><span class="mini-circle"></span>D</span>
-            </span></div><div class="answer-cell"><span class="answer-num">8</span><span class="choice-bubbles">
-            <span class="mini-choice"><span class="mini-circle"></span>A</span>
-            <span class="mini-choice"><span class="mini-circle"></span>B</span>
-            <span class="mini-choice"><span class="mini-circle"></span>C</span>
-            <span class="mini-choice"><span class="mini-circle"></span>D</span>
-            </span></div><div class="answer-cell"><span class="answer-num">9</span><span class="choice-bubbles">
-            <span class="mini-choice"><span class="mini-circle"></span>A</span>
-            <span class="mini-choice"><span class="mini-circle"></span>B</span>
-            <span class="mini-choice"><span class="mini-circle"></span>C</span>
-            <span class="mini-choice"><span class="mini-circle"></span>D</span>
-            </span></div><div class="answer-cell"><span class="answer-num">10</span><span class="choice-bubbles">
-            <span class="mini-choice"><span class="mini-circle"></span>A</span>
-            <span class="mini-choice"><span class="mini-circle"></span>B</span>
-            <span class="mini-choice"><span class="mini-circle"></span>C</span>
-            <span class="mini-choice"><span class="mini-circle"></span>D</span>
-            </span></div><div class="answer-cell"><span class="answer-num">11</span><span class="choice-bubbles">
-            <span class="mini-choice"><span class="mini-circle"></span>A</span>
-            <span class="mini-choice"><span class="mini-circle"></span>B</span>
-            <span class="mini-choice"><span class="mini-circle"></span>C</span>
-            <span class="mini-choice"><span class="mini-circle"></span>D</span>
-            </span></div><div class="answer-cell"><span class="answer-num">12</span><span class="choice-bubbles">
-            <span class="mini-choice"><span class="mini-circle"></span>A</span>
-            <span class="mini-choice"><span class="mini-circle"></span>B</span>
-            <span class="mini-choice"><span class="mini-circle"></span>C</span>
-            <span class="mini-choice"><span class="mini-circle"></span>D</span>
-            </span></div><div class="answer-cell"><span class="answer-num">13</span><span class="choice-bubbles">
-            <span class="mini-choice"><span class="mini-circle"></span>A</span>
-            <span class="mini-choice"><span class="mini-circle"></span>B</span>
-            <span class="mini-choice"><span class="mini-circle"></span>C</span>
-            <span class="mini-choice"><span class="mini-circle"></span>D</span>
-            </span></div><div class="answer-cell"><span class="answer-num">14</span><span class="choice-bubbles">
-            <span class="mini-choice"><span class="mini-circle"></span>A</span>
-            <span class="mini-choice"><span class="mini-circle"></span>B</span>
-            <span class="mini-choice"><span class="mini-circle"></span>C</span>
-            <span class="mini-choice"><span class="mini-circle"></span>D</span>
-            </span></div><div class="answer-cell"><span class="answer-num">15</span><span class="choice-bubbles">
-            <span class="mini-choice"><span class="mini-circle"></span>A</span>
-            <span class="mini-choice"><span class="mini-circle"></span>B</span>
-            <span class="mini-choice"><span class="mini-circle"></span>C</span>
-            <span class="mini-choice"><span class="mini-circle"></span>D</span>
-            </span></div><div class="answer-cell"><span class="answer-num">16</span><span class="choice-bubbles">
-            <span class="mini-choice"><span class="mini-circle"></span>A</span>
-            <span class="mini-choice"><span class="mini-circle"></span>B</span>
-            <span class="mini-choice"><span class="mini-circle"></span>C</span>
-            <span class="mini-choice"><span class="mini-circle"></span>D</span>
-            </span></div><div class="answer-cell"><span class="answer-num">17</span><span class="choice-bubbles">
-            <span class="mini-choice"><span class="mini-circle"></span>A</span>
-            <span class="mini-choice"><span class="mini-circle"></span>B</span>
-            <span class="mini-choice"><span class="mini-circle"></span>C</span>
-            <span class="mini-choice"><span class="mini-circle"></span>D</span>
-            </span></div><div class="answer-cell"><span class="answer-num">18</span><span class="choice-bubbles">
-            <span class="mini-choice"><span class="mini-circle"></span>A</span>
-            <span class="mini-choice"><span class="mini-circle"></span>B</span>
-            <span class="mini-choice"><span class="mini-circle"></span>C</span>
-            <span class="mini-choice"><span class="mini-circle"></span>D</span>
-            </span></div><div class="answer-cell"><span class="answer-num">19</span><span class="choice-bubbles">
-            <span class="mini-choice"><span class="mini-circle"></span>A</span>
-            <span class="mini-choice"><span class="mini-circle"></span>B</span>
-            <span class="mini-choice"><span class="mini-circle"></span>C</span>
-            <span class="mini-choice"><span class="mini-circle"></span>D</span>
-            </span></div><div class="answer-cell"><span class="answer-num">20</span><span class="choice-bubbles">
-            <span class="mini-choice"><span class="mini-circle"></span>A</span>
-            <span class="mini-choice"><span class="mini-circle"></span>B</span>
-            <span class="mini-choice"><span class="mini-circle"></span>C</span>
-            <span class="mini-choice"><span class="mini-circle"></span>D</span>
-            </span></div><div class="answer-cell"><span class="answer-num">21</span><span class="choice-bubbles">
-            <span class="mini-choice"><span class="mini-circle"></span>A</span>
-            <span class="mini-choice"><span class="mini-circle"></span>B</span>
-            <span class="mini-choice"><span class="mini-circle"></span>C</span>
-            <span class="mini-choice"><span class="mini-circle"></span>D</span>
-            </span></div><div class="answer-cell"><span class="answer-num">22</span><span class="choice-bubbles">
-            <span class="mini-choice"><span class="mini-circle"></span>A</span>
-            <span class="mini-choice"><span class="mini-circle"></span>B</span>
-            <span class="mini-choice"><span class="mini-circle"></span>C</span>
-            <span class="mini-choice"><span class="mini-circle"></span>D</span>
-            </span></div><div class="answer-cell"><span class="answer-num">23</span><span class="choice-bubbles">
-            <span class="mini-choice"><span class="mini-circle"></span>A</span>
-            <span class="mini-choice"><span class="mini-circle"></span>B</span>
-            <span class="mini-choice"><span class="mini-circle"></span>C</span>
-            <span class="mini-choice"><span class="mini-circle"></span>D</span>
-            </span></div><div class="answer-cell"><span class="answer-num">24</span><span class="choice-bubbles">
-            <span class="mini-choice"><span class="mini-circle"></span>A</span>
-            <span class="mini-choice"><span class="mini-circle"></span>B</span>
-            <span class="mini-choice"><span class="mini-circle"></span>C</span>
-            <span class="mini-choice"><span class="mini-circle"></span>D</span>
-            </span></div><div class="answer-cell"><span class="answer-num">25</span><span class="choice-bubbles">
-            <span class="mini-choice"><span class="mini-circle"></span>A</span>
-            <span class="mini-choice"><span class="mini-circle"></span>B</span>
-            <span class="mini-choice"><span class="mini-circle"></span>C</span>
-            <span class="mini-choice"><span class="mini-circle"></span>D</span>
-            </span></div><div class="answer-cell"><span class="answer-num">26</span><span class="choice-bubbles">
-            <span class="mini-choice"><span class="mini-circle"></span>A</span>
-            <span class="mini-choice"><span class="mini-circle"></span>B</span>
-            <span class="mini-choice"><span class="mini-circle"></span>C</span>
-            <span class="mini-choice"><span class="mini-circle"></span>D</span>
-            </span></div><div class="answer-cell"><span class="answer-num">27</span><span class="choice-bubbles">
-            <span class="mini-choice"><span class="mini-circle"></span>A</span>
-            <span class="mini-choice"><span class="mini-circle"></span>B</span>
-            <span class="mini-choice"><span class="mini-circle"></span>C</span>
-            <span class="mini-choice"><span class="mini-circle"></span>D</span>
-            </span></div><div class="answer-cell"><span class="answer-num">28</span><span class="choice-bubbles">
-            <span class="mini-choice"><span class="mini-circle"></span>A</span>
-            <span class="mini-choice"><span class="mini-circle"></span>B</span>
-            <span class="mini-choice"><span class="mini-circle"></span>C</span>
-            <span class="mini-choice"><span class="mini-circle"></span>D</span>
-            </span></div><div class="answer-cell"><span class="answer-num">29</span><span class="choice-bubbles">
-            <span class="mini-choice"><span class="mini-circle"></span>A</span>
-            <span class="mini-choice"><span class="mini-circle"></span>B</span>
-            <span class="mini-choice"><span class="mini-circle"></span>C</span>
-            <span class="mini-choice"><span class="mini-circle"></span>D</span>
-            </span></div><div class="answer-cell"><span class="answer-num">30</span><span class="choice-bubbles">
-            <span class="mini-choice"><span class="mini-circle"></span>A</span>
-            <span class="mini-choice"><span class="mini-circle"></span>B</span>
-            <span class="mini-choice"><span class="mini-circle"></span>C</span>
-            <span class="mini-choice"><span class="mini-circle"></span>D</span>
-            </span></div><div class="answer-cell"><span class="answer-num">31</span><span class="choice-bubbles">
-            <span class="mini-choice"><span class="mini-circle"></span>A</span>
-            <span class="mini-choice"><span class="mini-circle"></span>B</span>
-            <span class="mini-choice"><span class="mini-circle"></span>C</span>
-            <span class="mini-choice"><span class="mini-circle"></span>D</span>
-            </span></div><div class="answer-cell"><span class="answer-num">32</span><span class="choice-bubbles">
-            <span class="mini-choice"><span class="mini-circle"></span>A</span>
-            <span class="mini-choice"><span class="mini-circle"></span>B</span>
-            <span class="mini-choice"><span class="mini-circle"></span>C</span>
-            <span class="mini-choice"><span class="mini-circle"></span>D</span>
-            </span></div><div class="answer-cell"><span class="answer-num">33</span><span class="choice-bubbles">
-            <span class="mini-choice"><span class="mini-circle"></span>A</span>
-            <span class="mini-choice"><span class="mini-circle"></span>B</span>
-            <span class="mini-choice"><span class="mini-circle"></span>C</span>
-            <span class="mini-choice"><span class="mini-circle"></span>D</span>
-            </span></div><div class="answer-cell"><span class="answer-num">34</span><span class="choice-bubbles">
-            <span class="mini-choice"><span class="mini-circle"></span>A</span>
-            <span class="mini-choice"><span class="mini-circle"></span>B</span>
-            <span class="mini-choice"><span class="mini-circle"></span>C</span>
-            <span class="mini-choice"><span class="mini-circle"></span>D</span>
-            </span></div><div class="answer-cell"><span class="answer-num">35</span><span class="choice-bubbles">
-            <span class="mini-choice"><span class="mini-circle"></span>A</span>
-            <span class="mini-choice"><span class="mini-circle"></span>B</span>
-            <span class="mini-choice"><span class="mini-circle"></span>C</span>
-            <span class="mini-choice"><span class="mini-circle"></span>D</span>
-            </span></div><div class="answer-cell"><span class="answer-num">36</span><span class="choice-bubbles">
-            <span class="mini-choice"><span class="mini-circle"></span>A</span>
-            <span class="mini-choice"><span class="mini-circle"></span>B</span>
-            <span class="mini-choice"><span class="mini-circle"></span>C</span>
-            <span class="mini-choice"><span class="mini-circle"></span>D</span>
-            </span></div><div class="answer-cell"><span class="answer-num">37</span><span class="choice-bubbles">
-            <span class="mini-choice"><span class="mini-circle"></span>A</span>
-            <span class="mini-choice"><span class="mini-circle"></span>B</span>
-            <span class="mini-choice"><span class="mini-circle"></span>C</span>
-            <span class="mini-choice"><span class="mini-circle"></span>D</span>
-            </span></div><div class="answer-cell"><span class="answer-num">38</span><span class="choice-bubbles">
-            <span class="mini-choice"><span class="mini-circle"></span>A</span>
-            <span class="mini-choice"><span class="mini-circle"></span>B</span>
-            <span class="mini-choice"><span class="mini-circle"></span>C</span>
-            <span class="mini-choice"><span class="mini-circle"></span>D</span>
-            </span></div><div class="answer-cell"><span class="answer-num">39</span><span class="choice-bubbles">
-            <span class="mini-choice"><span class="mini-circle"></span>A</span>
-            <span class="mini-choice"><span class="mini-circle"></span>B</span>
-            <span class="mini-choice"><span class="mini-circle"></span>C</span>
-            <span class="mini-choice"><span class="mini-circle"></span>D</span>
-            </span></div><div class="answer-cell"><span class="answer-num">40</span><span class="choice-bubbles">
-            <span class="mini-choice"><span class="mini-circle"></span>A</span>
-            <span class="mini-choice"><span class="mini-circle"></span>B</span>
-            <span class="mini-choice"><span class="mini-circle"></span>C</span>
-            <span class="mini-choice"><span class="mini-circle"></span>D</span>
-            </span></div><div class="answer-cell"><span class="answer-num">41</span><span class="choice-bubbles">
-            <span class="mini-choice"><span class="mini-circle"></span>A</span>
-            <span class="mini-choice"><span class="mini-circle"></span>B</span>
-            <span class="mini-choice"><span class="mini-circle"></span>C</span>
-            <span class="mini-choice"><span class="mini-circle"></span>D</span>
-            </span></div><div class="answer-cell"><span class="answer-num">42</span><span class="choice-bubbles">
-            <span class="mini-choice"><span class="mini-circle"></span>A</span>
-            <span class="mini-choice"><span class="mini-circle"></span>B</span>
-            <span class="mini-choice"><span class="mini-circle"></span>C</span>
-            <span class="mini-choice"><span class="mini-circle"></span>D</span>
-            </span></div><div class="answer-cell"><span class="answer-num">43</span><span class="choice-bubbles">
-            <span class="mini-choice"><span class="mini-circle"></span>A</span>
-            <span class="mini-choice"><span class="mini-circle"></span>B</span>
-            <span class="mini-choice"><span class="mini-circle"></span>C</span>
-            <span class="mini-choice"><span class="mini-circle"></span>D</span>
-            </span></div><div class="answer-cell"><span class="answer-num">44</span><span class="choice-bubbles">
-            <span class="mini-choice"><span class="mini-circle"></span>A</span>
-            <span class="mini-choice"><span class="mini-circle"></span>B</span>
-            <span class="mini-choice"><span class="mini-circle"></span>C</span>
-            <span class="mini-choice"><span class="mini-circle"></span>D</span>
-            </span></div><div class="answer-cell"><span class="answer-num">45</span><span class="choice-bubbles">
-            <span class="mini-choice"><span class="mini-circle"></span>A</span>
-            <span class="mini-choice"><span class="mini-circle"></span>B</span>
-            <span class="mini-choice"><span class="mini-circle"></span>C</span>
-            <span class="mini-choice"><span class="mini-circle"></span>D</span>
-            </span></div><div class="answer-cell"><span class="answer-num">46</span><span class="choice-bubbles">
-            <span class="mini-choice"><span class="mini-circle"></span>A</span>
-            <span class="mini-choice"><span class="mini-circle"></span>B</span>
-            <span class="mini-choice"><span class="mini-circle"></span>C</span>
-            <span class="mini-choice"><span class="mini-circle"></span>D</span>
-            </span></div><div class="answer-cell"><span class="answer-num">47</span><span class="choice-bubbles">
-            <span class="mini-choice"><span class="mini-circle"></span>A</span>
-            <span class="mini-choice"><span class="mini-circle"></span>B</span>
-            <span class="mini-choice"><span class="mini-circle"></span>C</span>
-            <span class="mini-choice"><span class="mini-circle"></span>D</span>
-            </span></div><div class="answer-cell"><span class="answer-num">48</span><span class="choice-bubbles">
-            <span class="mini-choice"><span class="mini-circle"></span>A</span>
-            <span class="mini-choice"><span class="mini-circle"></span>B</span>
-            <span class="mini-choice"><span class="mini-circle"></span>C</span>
-            <span class="mini-choice"><span class="mini-circle"></span>D</span>
-            </span></div><div class="answer-cell"><span class="answer-num">49</span><span class="choice-bubbles">
-            <span class="mini-choice"><span class="mini-circle"></span>A</span>
-            <span class="mini-choice"><span class="mini-circle"></span>B</span>
-            <span class="mini-choice"><span class="mini-circle"></span>C</span>
-            <span class="mini-choice"><span class="mini-circle"></span>D</span>
-            </span></div><div class="answer-cell"><span class="answer-num">50</span><span class="choice-bubbles">
-            <span class="mini-choice"><span class="mini-circle"></span>A</span>
-            <span class="mini-choice"><span class="mini-circle"></span>B</span>
-            <span class="mini-choice"><span class="mini-circle"></span>C</span>
-            <span class="mini-choice"><span class="mini-circle"></span>D</span>
-            </span></div><div class="answer-cell"><span class="answer-num">51</span><span class="choice-bubbles">
-            <span class="mini-choice"><span class="mini-circle"></span>A</span>
-            <span class="mini-choice"><span class="mini-circle"></span>B</span>
-            <span class="mini-choice"><span class="mini-circle"></span>C</span>
-            <span class="mini-choice"><span class="mini-circle"></span>D</span>
-            </span></div><div class="answer-cell"><span class="answer-num">52</span><span class="choice-bubbles">
-            <span class="mini-choice"><span class="mini-circle"></span>A</span>
-            <span class="mini-choice"><span class="mini-circle"></span>B</span>
-            <span class="mini-choice"><span class="mini-circle"></span>C</span>
-            <span class="mini-choice"><span class="mini-circle"></span>D</span>
-            </span></div><div class="answer-cell"><span class="answer-num">53</span><span class="choice-bubbles">
-            <span class="mini-choice"><span class="mini-circle"></span>A</span>
-            <span class="mini-choice"><span class="mini-circle"></span>B</span>
-            <span class="mini-choice"><span class="mini-circle"></span>C</span>
-            <span class="mini-choice"><span class="mini-circle"></span>D</span>
-            </span></div><div class="answer-cell"><span class="answer-num">54</span><span class="choice-bubbles">
-            <span class="mini-choice"><span class="mini-circle"></span>A</span>
-            <span class="mini-choice"><span class="mini-circle"></span>B</span>
-            <span class="mini-choice"><span class="mini-circle"></span>C</span>
-            <span class="mini-choice"><span class="mini-circle"></span>D</span>
-            </span></div><div class="answer-cell"><span class="answer-num">55</span><span class="choice-bubbles">
-            <span class="mini-choice"><span class="mini-circle"></span>A</span>
-            <span class="mini-choice"><span class="mini-circle"></span>B</span>
-            <span class="mini-choice"><span class="mini-circle"></span>C</span>
-            <span class="mini-choice"><span class="mini-circle"></span>D</span>
-            </span></div><div class="answer-cell"><span class="answer-num">56</span><span class="choice-bubbles">
-            <span class="mini-choice"><span class="mini-circle"></span>A</span>
-            <span class="mini-choice"><span class="mini-circle"></span>B</span>
-            <span class="mini-choice"><span class="mini-circle"></span>C</span>
-            <span class="mini-choice"><span class="mini-circle"></span>D</span>
-            </span></div><div class="answer-cell"><span class="answer-num">57</span><span class="choice-bubbles">
-            <span class="mini-choice"><span class="mini-circle"></span>A</span>
-            <span class="mini-choice"><span class="mini-circle"></span>B</span>
-            <span class="mini-choice"><span class="mini-circle"></span>C</span>
-            <span class="mini-choice"><span class="mini-circle"></span>D</span>
-            </span></div><div class="answer-cell"><span class="answer-num">58</span><span class="choice-bubbles">
-            <span class="mini-choice"><span class="mini-circle"></span>A</span>
-            <span class="mini-choice"><span class="mini-circle"></span>B</span>
-            <span class="mini-choice"><span class="mini-circle"></span>C</span>
-            <span class="mini-choice"><span class="mini-circle"></span>D</span>
-            </span></div><div class="answer-cell"><span class="answer-num">59</span><span class="choice-bubbles">
-            <span class="mini-choice"><span class="mini-circle"></span>A</span>
-            <span class="mini-choice"><span class="mini-circle"></span>B</span>
-            <span class="mini-choice"><span class="mini-circle"></span>C</span>
-            <span class="mini-choice"><span class="mini-circle"></span>D</span>
-            </span></div><div class="answer-cell"><span class="answer-num">60</span><span class="choice-bubbles">
-            <span class="mini-choice"><span class="mini-circle"></span>A</span>
-            <span class="mini-choice"><span class="mini-circle"></span>B</span>
-            <span class="mini-choice"><span class="mini-circle"></span>C</span>
-            <span class="mini-choice"><span class="mini-circle"></span>D</span>
-            </span></div></div>
-  <div class="answer-sheet-note">Questions 1–60 &middot; 6 rows by 10 columns</div>
-</div>
+<div class="name-line">Name: <span style="min-width:240px;">&nbsp;</span> &nbsp;&nbsp; Block: <span style="min-width:60px;">&nbsp;</span> &nbsp;&nbsp; Date: <span style="min-width:100px;">&nbsp;</span></div>
+<div class="note-flag"><strong>60 questions &middot; Multiple choice &middot; No calculator &middot; Bring your own periodic table.</strong> Circle the best answer for each question on the answer sheet at the end.</div>
+
+<!-- SECTION 1 -->
+<p class="sec-head">Section 1 &mdash; Molecular Shape</p>
+
+<div class="q"><span class="num">1.</span> The central atom in H<sub>2</sub>O has 2 bonding pairs and 2 lone pairs. What is the total number of negative charge centers on the central oxygen?
+<div class="choices"><span>A) 2</span><span>B) 3</span><span>C) 4</span><span>D) 6</span></div></div>
+
+<div class="q"><span class="num">2.</span> Based on 4 charge centers with 2 lone pairs, what is the molecular shape of H<sub>2</sub>O?
+<div class="choices"><span>A) Tetrahedral</span><span>B) Trigonal pyramidal</span><span>C) Bent</span><span>D) Linear</span></div></div>
+
+<div class="q"><span class="num">3.</span> What is the approximate bond angle in a bent molecule like H<sub>2</sub>O?
+<div class="choices"><span>A) 90&deg;</span><span>B) ~104.5&deg;</span><span>C) 120&deg;</span><span>D) 180&deg;</span></div></div>
+
+<div class="q"><span class="num">4.</span> Carbon dioxide (CO<sub>2</sub>) has 2 double bonds and 0 lone pairs on carbon. Its molecular shape is:
+<div class="choices"><span>A) Bent</span><span>B) Trigonal planar</span><span>C) Linear</span><span>D) Tetrahedral</span></div></div>
+
+<div class="q"><span class="num">5.</span> What is the bond angle in CO<sub>2</sub>?
+<div class="choices"><span>A) 90&deg;</span><span>B) 109.5&deg;</span><span>C) 120&deg;</span><span>D) 180&deg;</span></div></div>
+
+<div class="q"><span class="num">6.</span> NH<sub>3</sub> has 3 bonding pairs and 1 lone pair on nitrogen. Its molecular shape is:
+<div class="choices"><span>A) Trigonal planar</span><span>B) Trigonal pyramidal</span><span>C) Tetrahedral</span><span>D) Bent</span></div></div>
+
+<div class="q"><span class="num">7.</span> The bond angle in NH<sub>3</sub> is ~107&deg;, slightly less than the ideal 109.5&deg;. Why?
+<div class="choices"><span>A) The N&ndash;H bonds are longer than normal</span><span>B) The lone pair occupies more space than a bonding pair, compressing the bond angles</span><span>C) Nitrogen is too small to hold 4 pairs</span><span>D) The bonds are ionic</span></div></div>
+
+<div class="q"><span class="num">8.</span> BeCl<sub>2</sub> has 2 bonding pairs and 0 lone pairs on beryllium. Its shape is:
+<div class="choices"><span>A) Bent</span><span>B) Trigonal planar</span><span>C) Tetrahedral</span><span>D) Linear</span></div></div>
+
+<div class="q"><span class="num">9.</span> A central atom with 4 bonding pairs and 0 lone pairs has which geometry?
+<div class="choices"><span>A) Bent</span><span>B) Trigonal pyramidal</span><span>C) Tetrahedral</span><span>D) Trigonal planar</span></div></div>
+
+<div class="q"><span class="num">10.</span> What bond angle is associated with trigonal planar geometry?
+<div class="choices"><span>A) 90&deg;</span><span>B) 109.5&deg;</span><span>C) 120&deg;</span><span>D) 180&deg;</span></div></div>
+
+<!-- SECTION 2 -->
+<p class="sec-head">Section 2 &mdash; Polarity &amp; Intermolecular Forces</p>
+
+<div class="q"><span class="num">11.</span> The electronegativity of N = 3.0 and H = 2.1. The N&ndash;H bond is:
+<div class="choices"><span>A) Nonpolar covalent (&Delta;EN = 0)</span><span>B) Polar covalent (&Delta;EN = 0.9)</span><span>C) Ionic (&Delta;EN &gt; 1.7)</span><span>D) Metallic</span></div></div>
+
+<div class="q"><span class="num">12.</span> The C&ndash;C bond has &Delta;EN = 0. It is:
+<div class="choices"><span>A) Ionic</span><span>B) Polar covalent</span><span>C) Nonpolar covalent</span><span>D) A hydrogen bond</span></div></div>
+
+<div class="q"><span class="num">13.</span> In the C&ndash;O bond, oxygen is more electronegative (EN = 3.5 vs. C = 2.5). The polarity arrow points:
+<div class="choices"><span>A) From O to C (toward the less electronegative atom)</span><span>B) From C to O (toward the more electronegative atom)</span><span>C) No arrow &mdash; the bond is nonpolar</span><span>D) In both directions simultaneously</span></div></div>
+
+<div class="q"><span class="num">14.</span> CO<sub>2</sub> has 2 polar C=O bonds arranged in a straight line (180&deg;). The molecule is:
+<div class="choices"><span>A) Polar &mdash; it has polar bonds</span><span>B) Nonpolar &mdash; the symmetric arrangement cancels the dipoles</span><span>C) Ionic &mdash; large electronegativity difference</span><span>D) Unable to interact with other molecules</span></div></div>
+
+<div class="q"><span class="num">15.</span> H<sub>2</sub>O is polar even though both O&ndash;H bonds are identical. This is because:
+<div class="choices"><span>A) The bonds are ionic</span><span>B) The bent shape and lone pairs create an asymmetric charge distribution &mdash; a net dipole remains</span><span>C) Oxygen is too large to be symmetric</span><span>D) The bond angles are exactly 180&deg;</span></div></div>
+
+<div class="q"><span class="num">16.</span> Which intermolecular force is present in ALL molecular substances regardless of polarity?
+<div class="choices"><span>A) Hydrogen bonding</span><span>B) Dipole-dipole forces</span><span>C) London dispersion forces</span><span>D) Covalent bonds</span></div></div>
+
+<div class="q"><span class="num">17.</span> For hydrogen bonding to occur, hydrogen must be covalently bonded directly to:
+<div class="choices"><span>A) Carbon or Sulfur</span><span>B) N, O, or F</span><span>C) Any atom that has lone pairs</span><span>D) A metal atom</span></div></div>
+
+<div class="q"><span class="num">18.</span> Which molecule experiences the strongest intermolecular forces?
+<div class="choices"><span>A) CH<sub>4</sub></span><span>B) HF</span><span>C) Cl<sub>2</sub></span><span>D) N<sub>2</sub></span></div></div>
+
+<div class="q"><span class="num">19.</span> Arrange by INCREASING boiling point: CH<sub>4</sub> (LDF only), HCl (dipole-dipole), H<sub>2</sub>O (H-bonding):
+<div class="choices"><span>A) H<sub>2</sub>O &lt; HCl &lt; CH<sub>4</sub></span><span>B) HCl &lt; CH<sub>4</sub> &lt; H<sub>2</sub>O</span><span>C) CH<sub>4</sub> &lt; HCl &lt; H<sub>2</sub>O</span><span>D) CH<sub>4</sub> &lt; H<sub>2</sub>O &lt; HCl</span></div></div>
+
+<div class="q"><span class="num">20.</span> HF has a much higher boiling point than HCl, even though HCl has greater molar mass. The best explanation is:
+<div class="choices"><span>A) HF has stronger London dispersion forces</span><span>B) HF molecules can form hydrogen bonds with each other; HCl cannot</span><span>C) HCl is an ionic compound</span><span>D) HF molecules are smaller and move more slowly</span></div></div>
+
+<div class="q"><span class="num">21.</span> &ldquo;Like dissolves like&rdquo; means:
+<div class="choices"><span>A) Substances with similar molar masses always mix</span><span>B) Polar solutes dissolve in polar solvents; nonpolar solutes dissolve in nonpolar solvents</span><span>C) Ionic compounds only dissolve in ionic solvents</span><span>D) All molecular compounds dissolve in water</span></div></div>
+
+<div class="q"><span class="num">22.</span> Which substance would dissolve most readily in a nonpolar solvent like hexane?
+<div class="choices"><span>A) NaCl (ionic)</span><span>B) HF (polar, H-bonding)</span><span>C) H<sub>2</sub>O (polar, H-bonding)</span><span>D) I<sub>2</sub> (nonpolar)</span></div></div>
+
+<!-- SECTION 3 -->
+<p class="sec-head">Section 3 &mdash; Chemical Equations</p>
+
+<div class="q"><span class="num">23.</span> What coefficients correctly balance: ___ N<sub>2</sub> + ___ H<sub>2</sub> &rarr; ___ NH<sub>3</sub>?
+<div class="choices"><span>A) 1, 3, 2</span><span>B) 1, 2, 2</span><span>C) 2, 3, 4</span><span>D) 2, 6, 4</span></div></div>
+
+<div class="q"><span class="num">24.</span> What coefficients correctly balance: ___ Fe + ___ O<sub>2</sub> &rarr; ___ Fe<sub>2</sub>O<sub>3</sub>?
+<div class="choices"><span>A) 2, 1, 1</span><span>B) 4, 3, 2</span><span>C) 2, 3, 1</span><span>D) 1, 2, 2</span></div></div>
+
+<div class="q"><span class="num">25.</span> Which equation is correctly balanced?
+<div class="choices"><span>A) H<sub>2</sub> + O<sub>2</sub> &rarr; H<sub>2</sub>O</span><span>B) 2H<sub>2</sub> + O<sub>2</sub> &rarr; 2H<sub>2</sub>O</span><span>C) H<sub>2</sub> + 2O<sub>2</sub> &rarr; 2H<sub>2</sub>O</span><span>D) 2H<sub>2</sub> + 2O<sub>2</sub> &rarr; H<sub>2</sub>O</span></div></div>
+
+<div class="q"><span class="num">26.</span> What coefficients correctly balance: ___ Al + ___ Cl<sub>2</sub> &rarr; ___ AlCl<sub>3</sub>?
+<div class="choices"><span>A) 1, 1, 1</span><span>B) 2, 3, 2</span><span>C) 3, 1, 2</span><span>D) 1, 2, 2</span></div></div>
+
+<div class="q"><span class="num">27.</span> In the balanced equation 2Al + 3Cl<sub>2</sub> &rarr; 2AlCl<sub>3</sub>, the mole ratio of Al to AlCl<sub>3</sub> is:
+<div class="choices"><span>A) 3:2</span><span>B) 2:3</span><span>C) 1:1</span><span>D) 2:1</span></div></div>
+
+<div class="q"><span class="num">28.</span> In N<sub>2</sub> + 3H<sub>2</sub> &rarr; 2NH<sub>3</sub>, how many moles of NH<sub>3</sub> are produced from 6 mol H<sub>2</sub>?
+<div class="choices"><span>A) 2 mol</span><span>B) 4 mol</span><span>C) 6 mol</span><span>D) 12 mol</span></div></div>
+
+<div class="q"><span class="num">29.</span> In 2Na + Cl<sub>2</sub> &rarr; 2NaCl, how many moles of NaCl form from 4 mol Na?
+<div class="choices"><span>A) 2 mol</span><span>B) 4 mol</span><span>C) 8 mol</span><span>D) 1 mol</span></div></div>
+
+<div class="q"><span class="num">30.</span> In CH<sub>4</sub> + 2O<sub>2</sub> &rarr; CO<sub>2</sub> + 2H<sub>2</sub>O, the mole ratio of O<sub>2</sub> to H<sub>2</sub>O is:
+<div class="choices"><span>A) 2:1</span><span>B) 1:2</span><span>C) 1:1</span><span>D) 4:1</span></div></div>
+
+<!-- SECTION 4 -->
+<p class="sec-head">Section 4 &mdash; The Mole &amp; Unit Conversion</p>
+
+<div class="q"><span class="num">31.</span> What is the molar mass of H<sub>2</sub>O? (H = 1.0, O = 16.0 g/mol)
+<div class="choices"><span>A) 16.0 g/mol</span><span>B) 17.0 g/mol</span><span>C) 18.0 g/mol</span><span>D) 20.0 g/mol</span></div></div>
+
+<div class="q"><span class="num">32.</span> What is the molar mass of CO<sub>2</sub>? (C = 12.0, O = 16.0 g/mol)
+<div class="choices"><span>A) 28.0 g/mol</span><span>B) 40.0 g/mol</span><span>C) 44.0 g/mol</span><span>D) 56.0 g/mol</span></div></div>
+
+<div class="q"><span class="num">33.</span> How many moles are in 46.0 g of NO<sub>2</sub>? (Molar mass of NO<sub>2</sub> = 46.0 g/mol)
+<div class="choices"><span>A) 0.50 mol</span><span>B) 1.0 mol</span><span>C) 2.0 mol</span><span>D) 92 mol</span></div></div>
+
+<div class="q"><span class="num">34.</span> What is the mass of 3.0 mol of CO<sub>2</sub>? (MM = 44.0 g/mol)
+<div class="choices"><span>A) 44 g</span><span>B) 88 g</span><span>C) 132 g</span><span>D) 176 g</span></div></div>
+
+<div class="q"><span class="num">35.</span> How many molecules are in 2.0 mol of H<sub>2</sub>O? (Avogadro&rsquo;s # = 6.02 &times; 10<sup>23</sup>)
+<div class="choices"><span>A) 6.02 &times; 10<sup>23</sup></span><span>B) 1.20 &times; 10<sup>24</sup></span><span>C) 3.01 &times; 10<sup>23</sup></span><span>D) 2.41 &times; 10<sup>24</sup></span></div></div>
+
+<div class="q"><span class="num">36.</span> The molar mass of CaCl<sub>2</sub> is: (Ca = 40.1, Cl = 35.5 g/mol)
+<div class="choices"><span>A) 75.6 g/mol</span><span>B) 111.1 g/mol</span><span>C) 76.0 g/mol</span><span>D) 147.0 g/mol</span></div></div>
+
+<div class="q"><span class="num">37.</span> A student has 0.50 mol of NaCl (MM = 58.5 g/mol). What is the mass?
+<div class="choices"><span>A) 14.6 g</span><span>B) 29.3 g</span><span>C) 58.5 g</span><span>D) 117 g</span></div></div>
+
+<div class="q"><span class="num">38.</span> 1.204 &times; 10<sup>24</sup> molecules of O<sub>2</sub> equals how many moles?
+<div class="choices"><span>A) 0.50 mol</span><span>B) 1.0 mol</span><span>C) 2.0 mol</span><span>D) 4.0 mol</span></div></div>
+
+<!-- SECTION 5 -->
+<p class="sec-head">Section 5 &mdash; Stoichiometry</p>
+
+<div class="q"><span class="num">39.</span> In 4Fe + 3O<sub>2</sub> &rarr; 2Fe<sub>2</sub>O<sub>3</sub>, which conversion factor correctly converts mol Fe to mol Fe<sub>2</sub>O<sub>3</sub>?
+<div class="choices"><span>A) (3 mol O<sub>2</sub>) / (4 mol Fe)</span><span>B) (2 mol Fe<sub>2</sub>O<sub>3</sub>) / (4 mol Fe)</span><span>C) (4 mol Fe) / (2 mol Fe<sub>2</sub>O<sub>3</sub>)</span><span>D) (1 mol Fe<sub>2</sub>O<sub>3</sub>) / (2 mol Fe)</span></div></div>
+
+<div class="q"><span class="num">40.</span> In 2H<sub>2</sub> + O<sub>2</sub> &rarr; 2H<sub>2</sub>O: if 4.0 mol H<sub>2</sub> reacts completely, how many moles of H<sub>2</sub>O form?
+<div class="choices"><span>A) 2.0 mol</span><span>B) 4.0 mol</span><span>C) 8.0 mol</span><span>D) 1.0 mol</span></div></div>
+
+<div class="q"><span class="num">41.</span> In CH<sub>4</sub> + 2O<sub>2</sub> &rarr; CO<sub>2</sub> + 2H<sub>2</sub>O: what mass of H<sub>2</sub>O (MM = 18.0 g/mol) is produced from 1.0 mol CH<sub>4</sub>?
+<div class="choices"><span>A) 9.0 g</span><span>B) 18.0 g</span><span>C) 36.0 g</span><span>D) 72.0 g</span></div></div>
+
+<div class="q"><span class="num">42.</span> How many grams of CO<sub>2</sub> (MM = 44.0 g/mol) are produced when 2.0 mol CH<sub>4</sub> reacts? (CH<sub>4</sub> + 2O<sub>2</sub> &rarr; CO<sub>2</sub> + 2H<sub>2</sub>O)
+<div class="choices"><span>A) 44 g</span><span>B) 88 g</span><span>C) 22 g</span><span>D) 176 g</span></div></div>
+
+<div class="q"><span class="num">43.</span> In N<sub>2</sub> + 3H<sub>2</sub> &rarr; 2NH<sub>3</sub>: 6 mol N<sub>2</sub> and 6 mol H<sub>2</sub> are mixed. Which is the limiting reagent?
+<div class="choices"><span>A) N<sub>2</sub></span><span>B) H<sub>2</sub></span><span>C) NH<sub>3</sub></span><span>D) Neither &mdash; they are in exact stoichiometric ratio</span></div></div>
+
+<div class="q"><span class="num">44.</span> Using the reaction from Q43, how many moles of NH<sub>3</sub> are produced?
+<div class="choices"><span>A) 2 mol</span><span>B) 4 mol</span><span>C) 6 mol</span><span>D) 12 mol</span></div></div>
+
+<div class="q"><span class="num">45.</span> In 2Na + Cl<sub>2</sub> &rarr; 2NaCl: 4 mol Na and 3 mol Cl<sub>2</sub> are available. The EXCESS reagent is:
+<div class="choices"><span>A) Na</span><span>B) Cl<sub>2</sub></span><span>C) NaCl</span><span>D) There is no excess</span></div></div>
+
+<div class="q"><span class="num">46.</span> Using Q45, how many moles of Cl<sub>2</sub> remain unreacted after the reaction is complete?
+<div class="choices"><span>A) 0 mol</span><span>B) 1 mol</span><span>C) 2 mol</span><span>D) 3 mol</span></div></div>
+
+<div class="q"><span class="num">47.</span> The theoretical yield of a reaction is 50.0 g. The actual yield obtained is 40.0 g. The percent yield is:
+<div class="choices"><span>A) 50%</span><span>B) 80%</span><span>C) 125%</span><span>D) 20%</span></div></div>
+
+<div class="q"><span class="num">48.</span> A student calculates a theoretical yield of 25.0 g. If the percent yield is 80%, the actual yield is:
+<div class="choices"><span>A) 5.0 g</span><span>B) 20.0 g</span><span>C) 31.3 g</span><span>D) 25.0 g</span></div></div>
+
+<div class="q"><span class="num">49.</span> In 4Fe + 3O<sub>2</sub> &rarr; 2Fe<sub>2</sub>O<sub>3</sub>: what mass of Fe<sub>2</sub>O<sub>3</sub> (MM = 160 g/mol) forms from 4 mol Fe?
+<div class="choices"><span>A) 80 g</span><span>B) 160 g</span><span>C) 320 g</span><span>D) 640 g</span></div></div>
+
+<div class="q"><span class="num">50.</span> In 2Al + 3Cl<sub>2</sub> &rarr; 2AlCl<sub>3</sub>: how many moles of AlCl<sub>3</sub> form from 3.0 mol Al?
+<div class="choices"><span>A) 1.5 mol</span><span>B) 2.0 mol</span><span>C) 3.0 mol</span><span>D) 4.5 mol</span></div></div>
+
+<!-- SECTION 6 -->
+<p class="sec-head">Section 6 &mdash; Solutions &amp; Molarity</p>
+
+<div class="q"><span class="num">51.</span> Molarity (M) is defined as:
+<div class="choices"><span>A) Grams of solute per liter of solution</span><span>B) Moles of solute per liter of solution</span><span>C) Moles of solute per gram of solvent</span><span>D) Grams of solute per mL of solvent</span></div></div>
+
+<div class="q"><span class="num">52.</span> In a solution of NaCl dissolved in water, the solute is:
+<div class="choices"><span>A) Water</span><span>B) The solution</span><span>C) NaCl</span><span>D) The container</span></div></div>
+
+<div class="q"><span class="num">53.</span> What is the molarity of a solution with 2.0 mol NaCl dissolved in 4.0 L of solution?
+<div class="choices"><span>A) 0.25 M</span><span>B) 0.50 M</span><span>C) 2.0 M</span><span>D) 8.0 M</span></div></div>
+
+<div class="q"><span class="num">54.</span> How many moles of KOH are in 2.0 L of a 3.0 M KOH solution?
+<div class="choices"><span>A) 1.5 mol</span><span>B) 3.0 mol</span><span>C) 6.0 mol</span><span>D) 0.67 mol</span></div></div>
+
+<div class="q"><span class="num">55.</span> A chemist needs to prepare 1.0 L of 0.25 M HCl. How many moles of HCl are required?
+<div class="choices"><span>A) 0.10 mol</span><span>B) 0.25 mol</span><span>C) 0.50 mol</span><span>D) 1.0 mol</span></div></div>
+
+<div class="q"><span class="num">56.</span> What volume (in liters) of a 2.0 M NaOH solution contains 1.0 mol of NaOH?
+<div class="choices"><span>A) 0.25 L</span><span>B) 0.50 L</span><span>C) 1.0 L</span><span>D) 2.0 L</span></div></div>
+
+<div class="q"><span class="num">57.</span> 58.5 g of NaCl (MM = 58.5 g/mol) is dissolved to make 500 mL of solution. What is the molarity?
+<div class="choices"><span>A) 0.50 M</span><span>B) 1.0 M</span><span>C) 2.0 M</span><span>D) 4.0 M</span></div></div>
+
+<div class="q"><span class="num">58.</span> How many grams of NaOH (MM = 40.0 g/mol) are needed to make 0.50 L of a 2.0 M solution?
+<div class="choices"><span>A) 10 g</span><span>B) 20 g</span><span>C) 40 g</span><span>D) 80 g</span></div></div>
+
+<div class="q"><span class="num">59.</span> Four identical cups contain the same volume of solution. Cup A is very lightly shaded (few dissolved particles); Cup D is very dark (many particles). Which has the HIGHEST molarity?
+<div class="choices"><span>A) Cup A</span><span>B) Cup B</span><span>C) Cup C</span><span>D) Cup D</span></div></div>
+
+<div class="q"><span class="num">60.</span> A chemist adds more solvent to a 2.0 M solution without changing the amount of solute. The new concentration will be:
+<div class="choices"><span>A) Greater than 2.0 M</span><span>B) Equal to 2.0 M</span><span>C) Less than 2.0 M</span><span>D) Molarity depends only on the solute</span></div></div>
+
 </body>
 </html>
